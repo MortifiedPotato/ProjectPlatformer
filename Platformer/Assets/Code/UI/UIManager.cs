@@ -12,9 +12,6 @@ public class UIManager : MonoBehaviour
     {
         //Assign singleton reference
         GameManager.Instance.UIManager = this;
-
-        //Disable Mouse Cursor
-        //Cursor.visible = false;
     }
 
     private void Update()

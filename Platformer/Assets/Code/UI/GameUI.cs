@@ -9,6 +9,8 @@ public class GameUI : MonoBehaviour
     {
         GameManager.Instance.UIManager.GameUI = this;
         Resume();
+
+        Cursor.visible = false;
     }
 
     private void OnDisable()
@@ -32,6 +34,7 @@ public class GameUI : MonoBehaviour
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1;
+        Cursor.visible = false;
         UIManager.isPaused = false;
     }
 
@@ -39,6 +42,7 @@ public class GameUI : MonoBehaviour
     {
         PausePanel.SetActive(true);
         Time.timeScale = 0;
+        Cursor.visible = true;
         UIManager.isPaused = true;
     }
 }

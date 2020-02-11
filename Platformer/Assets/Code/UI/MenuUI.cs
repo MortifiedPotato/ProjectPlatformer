@@ -11,6 +11,8 @@ public class MenuUI : MonoBehaviour
     {
         GameManager.Instance.UIManager.MenuUI = this;
         SetMenuState();
+
+        Cursor.visible = true;
     }
 
     public void ChangeMenuState(int index)

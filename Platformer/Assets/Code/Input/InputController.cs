@@ -3,28 +3,22 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    public float playerVelocity = 10f;
+    public float moveVelocity = 10f;
     public float jumpVelocity = 10f;
 
     public float aimSpeed = 10f;
     public float aimRadius;
 
     [SerializeField] GameObject AimReticle;
-    [SerializeField] Rigidbody2D playerRB;
     [SerializeField] GameObject Sickle;
 
-    Rigidbody2D SickleRB;
+    [SerializeField] Rigidbody2D playerRB;
+    [SerializeField] Rigidbody2D SickleRB;
 
     Vector2 i_movement;
     Vector2 i_aim;
 
-    //public bool isGrounded;
-
-
-    private void Start()
-    {
-        SickleRB = Sickle.GetComponent<Rigidbody2D>();
-    }
+    public bool isGrounded;
 
     private void Update()
     {
@@ -36,15 +30,9 @@ public class InputController : MonoBehaviour
         Movement();
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, aimRadius);
-    }
-
     void Movement()
     {
-        playerRB.velocity = (new Vector3(i_movement.x * (playerVelocity * Time.fixedDeltaTime), playerRB.velocity.y, 0));
+        playerRB.velocity = (new Vector3(i_movement.x * (moveVelocity * Time.fixedDeltaTime), playerRB.velocity.y, 0));
     }
 
     void Aim()
@@ -62,6 +50,17 @@ public class InputController : MonoBehaviour
         Vector3 offset = AimReticle.transform.localPosition - transform.localPosition;
         offset = offset.normalized * aimRadius;
         AimReticle.transform.localPosition = offset;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, aimRadius);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isGrounded = true;
     }
     // ----------------------------------------------------------------------------------------------------------------------------------
     // Input System Functions
@@ -88,7 +87,11 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            playerRB.velocity = (Vector3.up * jumpVelocity);
+            if (isGrounded)
+            {
+                playerRB.velocity = (Vector3.up * jumpVelocity);
+                isGrounded = false;
+            }
         }
     }
 
@@ -134,15 +137,17 @@ public class InputController : MonoBehaviour
 
     public void OnSwing(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (SickleRB)
         {
-            print("I AIM");
-        }
-        if (context.canceled)
-        {
-
-            SickleRB.AddForce(AimReticle.transform.position - Sickle.transform.position);
-            SickleRB.gravityScale = 1f;
+            if (context.performed)
+            {
+                print("I AIM");
+            }
+            if (context.canceled)
+            {
+                SickleRB.AddForce(AimReticle.transform.position - Sickle.transform.position);
+                SickleRB.gravityScale = 1f;
+            }
         }
     }
 
