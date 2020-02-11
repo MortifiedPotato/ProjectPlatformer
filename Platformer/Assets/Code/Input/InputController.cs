@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    public float moveSpeed = 10f;
-    public float jumpSpeed = 10f;
+    public float playerVelocity = 10f;
+    public float jumpVelocity = 10f;
 
     public float aimSpeed = 10f;
-    public float maxAimDist = 5f;
+    public float aimRadius;
 
     [SerializeField] GameObject AimReticle;
+    [SerializeField] Rigidbody2D playerRB;
     [SerializeField] GameObject Sickle;
 
     Rigidbody2D SickleRB;
@@ -17,7 +18,7 @@ public class InputController : MonoBehaviour
     Vector2 i_movement;
     Vector2 i_aim;
 
-    float aimDist;
+    //public bool isGrounded;
 
 
     private void Start()
@@ -27,23 +28,47 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        aimDist = Vector3.Distance(transform.position, AimReticle.transform.position);
+        Aim();
+    }
 
-        transform.position += new Vector3(i_movement.x * (moveSpeed * Time.deltaTime), 0, 0);
+    private void FixedUpdate()
+    {
+        Movement();
+    }
 
-        if (aimDist < maxAimDist)
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, aimRadius);
+    }
+
+    void Movement()
+    {
+        playerRB.velocity = (new Vector3(i_movement.x * (playerVelocity * Time.fixedDeltaTime), playerRB.velocity.y, 0));
+    }
+
+    void Aim()
+    {
+        if (GetComponent<PlayerInput>().currentControlScheme == "PC")
         {
-            AimReticle.transform.position += new Vector3(i_aim.x * (aimSpeed * Time.deltaTime), i_aim.y * (aimSpeed * Time.deltaTime), 0);
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            AimReticle.transform.localPosition = new Vector3(mousePos.x, mousePos.y);
         }
         else
         {
-            AimReticle.transform.position = Vector2.MoveTowards(AimReticle.transform.position, transform.position, .5f * Time.deltaTime);
+            AimReticle.transform.position += new Vector3(i_aim.x * (aimSpeed * Time.deltaTime), i_aim.y * (aimSpeed * Time.deltaTime), 0);
         }
+
+        Vector3 offset = AimReticle.transform.localPosition - transform.localPosition;
+        offset = offset.normalized * aimRadius;
+        AimReticle.transform.localPosition = offset;
     }
+    // ----------------------------------------------------------------------------------------------------------------------------------
+    // Input System Functions
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        i_movement = context.action.ReadValue<Vector2>();
+        i_movement = context.action.ReadValue<Vector2>() * 50;
     }
 
     public void OnAim(InputAction.CallbackContext context)
@@ -59,20 +84,11 @@ public class InputController : MonoBehaviour
         }
     }
 
-    public void OnResetAim(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            AimReticle.transform.localPosition = Vector3.zero;
-            i_aim = Vector2.zero;
-        }
-    }
-
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector3.up * (jumpSpeed * 80));
+            playerRB.velocity = (Vector3.up * jumpVelocity);
         }
     }
 
@@ -124,7 +140,7 @@ public class InputController : MonoBehaviour
         }
         if (context.canceled)
         {
-            
+
             SickleRB.AddForce(AimReticle.transform.position - Sickle.transform.position);
             SickleRB.gravityScale = 1f;
         }
