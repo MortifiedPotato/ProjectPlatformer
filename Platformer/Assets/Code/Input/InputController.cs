@@ -10,11 +10,20 @@ public class InputController : MonoBehaviour
     public float maxAimDist = 5f;
 
     [SerializeField] GameObject AimReticle;
+    [SerializeField] GameObject Sickle;
+
+    Rigidbody2D SickleRB;
 
     Vector2 i_movement;
     Vector2 i_aim;
 
     float aimDist;
+
+
+    private void Start()
+    {
+        SickleRB = Sickle.GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
@@ -111,7 +120,13 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-
+            print("I AIM");
+        }
+        if (context.canceled)
+        {
+            
+            SickleRB.AddForce(AimReticle.transform.position - Sickle.transform.position);
+            SickleRB.gravityScale = 1f;
         }
     }
 

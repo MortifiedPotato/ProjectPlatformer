@@ -53,6 +53,7 @@ MonoBehaviour:
   aimSpeed: 10
   maxAimDist: 3
   AimReticle: {fileID: 5663296773412392578}
+  Sickle: {fileID: 0}
 --- !u!114 &1429208506798267692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +176,18 @@ MonoBehaviour:
     m_ActionId: 4b11cb57-7766-4649-9004-45d19c893f2a
     m_ActionName: Player/CycleDown[/DualShock4GamepadHID/dpad/down,/Keyboard/downArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnSwing
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: 1ac8c399-631c-40d3-98ac-76c947ba1b7a
     m_ActionName: Player/Swing[/DualShock4GamepadHID/leftTrigger,/Keyboard/leftShift]
   - m_PersistentCalls:
