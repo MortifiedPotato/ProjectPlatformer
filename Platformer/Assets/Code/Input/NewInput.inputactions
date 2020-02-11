@@ -30,14 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Reset Aim",
-                    "type": "Button",
-                    "id": "43af9e4c-0c32-4284-ab65-1049fef1b8ec",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "4cc90cce-509a-4850-b595-684222651e2f",
@@ -303,28 +295,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8afe7072-c303-47a6-a62a-32b8dd8fb167",
-                    "path": "<Gamepad>/rightStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Reset Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7e254263-a8c9-4bfc-8988-b48c076e75a1",
-                    "path": "<Mouse>/middleButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Reset Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

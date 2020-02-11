@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2418140371161212622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 4, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 1523166185066973180}
   m_Father: {fileID: 0}
@@ -48,11 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c11905a39a33ef4095d31c076424462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  jumpSpeed: 4
+  playerVelocity: 3
+  jumpVelocity: 6
   aimSpeed: 10
-  maxAimDist: 3
+  aimRadius: 0.4
   AimReticle: {fileID: 5663296773412392578}
+  playerRB: {fileID: 4574357993022742585}
 --- !u!114 &1429208506798267692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,23 +112,8 @@ MonoBehaviour:
     m_ActionName: Player/Aim[/DualShock4GamepadHID/rightStick/up,/DualShock4GamepadHID/rightStick/down,/DualShock4GamepadHID/rightStick/left,/DualShock4GamepadHID/rightStick/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2418140371161212622}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-    m_ActionId: 17869287-e4f8-4ca6-ae77-fec5b5e4f0d0
-    m_ActionName: Player/Crouch[/DualShock4GamepadHID/leftStickPress,/Keyboard/leftCtrl]
-  - m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: -8887659312466857329}
-        m_MethodName: OnResetAim
+        m_MethodName: OnCrouch
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -137,8 +123,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-    m_ActionId: 43af9e4c-0c32-4284-ab65-1049fef1b8ec
-    m_ActionName: Player/Reset Aim[/DualShock4GamepadHID/rightStickPress,/Mouse/middleButton]
+    m_ActionId: 17869287-e4f8-4ca6-ae77-fec5b5e4f0d0
+    m_ActionName: Player/Crouch[/DualShock4GamepadHID/leftStickPress,/Keyboard/leftCtrl]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -8887659312466857329}
@@ -155,39 +141,138 @@ MonoBehaviour:
     m_ActionId: 4cc90cce-509a-4850-b595-684222651e2f
     m_ActionName: Player/Jump[/DualShock4GamepadHID/buttonSouth,/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnCancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: 43f01f03-5396-47b7-aa14-679d8523477f
     m_ActionName: Player/Cancel[/DualShock4GamepadHID/buttonEast,/Keyboard/q]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: c544ab89-5fa8-403f-931a-8577f53b132a
     m_ActionName: Player/Interact[/DualShock4GamepadHID/buttonWest,/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: b4ed77d7-b958-4785-b662-8013a671d959
     m_ActionName: Player/Pause[/DualShock4GamepadHID/start,/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnCycleUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: 239f432c-7278-4d70-8c25-6b9beed307f7
     m_ActionName: Player/CycleUp[/DualShock4GamepadHID/dpad/up,/Keyboard/upArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnCycleDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: 4b11cb57-7766-4649-9004-45d19c893f2a
     m_ActionName: Player/CycleDown[/DualShock4GamepadHID/dpad/down,/Keyboard/downArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnSwing
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: 1ac8c399-631c-40d3-98ac-76c947ba1b7a
     m_ActionName: Player/Swing[/DualShock4GamepadHID/leftTrigger,/Keyboard/leftShift]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnDetach
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: 96e3720e-5a0a-49ec-af33-e84bb003e5c0
     m_ActionName: Player/Detach[/DualShock4GamepadHID/leftShoulder,/Keyboard/leftAlt]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnPull
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: fed3b41a-02b4-4ef2-9f1d-a8b9b0d356e2
     m_ActionName: Player/Pull[/DualShock4GamepadHID/rightTrigger,/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8887659312466857329}
+        m_MethodName: OnYank
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: 2dbbecb8-8439-44d5-9454-610a64125ef0
     m_ActionName: Player/Yank[/DualShock4GamepadHID/rightShoulder,/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -277,8 +362,8 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Material: {fileID: 6200000, guid: 0a69c25f7cbde7e4caf82d162d43ced7, type: 2}
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -308,7 +393,7 @@ Transform:
   m_GameObject: {fileID: 5663296773412392578}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2418140371161212624}
   m_RootOrder: 0
