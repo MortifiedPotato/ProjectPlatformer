@@ -13,8 +13,6 @@ public class HookScript : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private int throwStrength;
 
-    private bool sickleThrown;
-
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
