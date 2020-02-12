@@ -6,3 +6,10 @@ public enum MenuStates
     Controls,
     Credits,
 }
+
+public enum HookStates
+{
+    Inactive,
+    Thrown,
+    Hooked
+}
