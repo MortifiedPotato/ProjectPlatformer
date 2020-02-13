@@ -3,26 +3,57 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    public float moveVelocity = 10f;
-    public float jumpVelocity = 10f;
+    [Header("General Variables")]
+    public float moveVelocity = 15f;
+    public float jumpVelocity = 15f;
 
     public float aimSpeed = 10f;
-    public float aimRadius;
+    public float aimRadius = 2;
 
+
+    [Header("Movement Variables")]
+    [SerializeField]
+    public float fGroundedRememberTime = .25f;
+    float fGroundedRemember;
+
+    [SerializeField]
+    float fHorizontalAcceleration = 1;
+    [SerializeField]
+    [Range(0, 1)]
+    float fHorizontalDampingBasic = .5f;
+    [SerializeField]
+    [Range(0, 1)]
+    float fHorizontalDampingWhenStopping = 0.5f;
+    [SerializeField]
+    [Range(0, 1)]
+    float fHorizontalDampingWhenTurning = 0.5f;
+
+    [Range(.1f, 1)] public float fCutJumpHeight = .5f;
+
+    [Header("Object Variables")]
     [SerializeField] GameObject AimReticle;
     [SerializeField] GameObject Sickle;
 
-    [SerializeField] Rigidbody2D playerRB;
-    [SerializeField] Rigidbody2D SickleRB;
+    [Header("Component Variables")]
+    [SerializeField] Rigidbody2D rigid;
+    [SerializeField] HookScript hook;
 
     Vector2 i_movement;
     Vector2 i_aim;
 
+    [Header("")]
     public bool isGrounded;
 
     private void Update()
     {
         Aim();
+
+        fGroundedRemember -= Time.deltaTime;
+
+        if (isGrounded)
+        {
+            fGroundedRemember = fGroundedRememberTime;
+        }
     }
 
     private void FixedUpdate()
@@ -32,7 +63,26 @@ public class InputController : MonoBehaviour
 
     void Movement()
     {
-        playerRB.velocity = (new Vector3(i_movement.x * (moveVelocity * Time.fixedDeltaTime), playerRB.velocity.y, 0));
+        //rigid.velocity = (new Vector3(i_movement.x * (moveVelocity * Time.fixedDeltaTime), rigid.velocity.y, 0));
+
+        float fHorizontalVelocity = rigid.velocity.x;
+        fHorizontalVelocity += i_movement.x;
+
+        if (Mathf.Abs(i_movement.x) < 0.0f)
+        {
+            fHorizontalVelocity *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.fixedDeltaTime * 10f);
+        }
+        else if (Mathf.Sign(i_movement.x) != Mathf.Sign(fHorizontalVelocity))
+        {
+            fHorizontalVelocity *= Mathf.Pow(1f - fHorizontalDampingWhenTurning, Time.fixedDeltaTime * 10f);
+        }
+        else
+        {
+            fHorizontalVelocity *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.fixedDeltaTime * 10f);
+        }
+
+        //rigid.velocity = (new Vector2(fHorizontalVelocity * (moveVelocity * Time.fixedDeltaTime), rigid.velocity.y));
+        rigid.AddForce(new Vector2(fHorizontalVelocity * (moveVelocity * Time.fixedDeltaTime), rigid.velocity.y));
     }
 
     void Aim()
@@ -62,6 +112,11 @@ public class InputController : MonoBehaviour
     {
         isGrounded = true;
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isGrounded = false;
+    }
     // ----------------------------------------------------------------------------------------------------------------------------------
     // Input System Functions
 
@@ -87,10 +142,19 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            if (isGrounded)
+            if (isGrounded || fGroundedRemember > 0)
             {
-                playerRB.velocity = (Vector3.up * jumpVelocity);
+                rigid.velocity = (new Vector3(rigid.velocity.x, jumpVelocity, 0));
+                fGroundedRemember = 0f;
                 isGrounded = false;
+            }
+        }
+
+        if (context.canceled)
+        {
+            if (rigid.velocity.y > 0)
+            {
+                rigid.velocity = new Vector2(rigid.velocity.x, rigid.velocity.y * fCutJumpHeight);
             }
         }
     }
@@ -137,17 +201,14 @@ public class InputController : MonoBehaviour
 
     public void OnSwing(InputAction.CallbackContext context)
     {
-        if (SickleRB)
+        if (context.performed)
         {
-            if (context.performed)
-            {
-                print("I AIM");
-            }
-            if (context.canceled)
-            {
-                SickleRB.AddForce(AimReticle.transform.position - Sickle.transform.position);
-                SickleRB.gravityScale = 1f;
-            }
+            print("I AIM");
+        }
+        if (context.canceled)
+        {
+            hook.ThrowOrRetrieve();
+            hook.OnHookUpdate?.Invoke();
         }
     }
 
