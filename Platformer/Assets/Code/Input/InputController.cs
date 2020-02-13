@@ -207,8 +207,7 @@ public class InputController : MonoBehaviour
         }
         if (context.canceled)
         {
-            hook.ThrowOrRetrieve();
-            hook.OnHookUpdate?.Invoke();
+
         }
     }
 
