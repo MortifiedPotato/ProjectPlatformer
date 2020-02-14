@@ -32,11 +32,10 @@ public class InputController : MonoBehaviour
 
     [Header("Object Variables")]
     [SerializeField] GameObject AimReticle;
-    [SerializeField] GameObject Sickle;
 
     [Header("Component Variables")]
     [SerializeField] Rigidbody2D rigid;
-    [SerializeField] HookScript hook;
+    [SerializeField] Grapple grapple;
 
     Vector2 i_movement;
     Vector2 i_aim;
@@ -198,16 +197,16 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            if (hook.hookState == HookStates.Inactive)
+            if (grapple.g_State == GrappleState.Inactive)
             {
-                hook.hookState = HookStates.Aiming;
+                grapple.g_State = GrappleState.Aiming;
             }
         }
         if (context.canceled)
         {
-            if (hook.hookState == HookStates.Aiming)
+            if (grapple.g_State == GrappleState.Aiming)
             {
-                hook.hookState = HookStates.Throw;
+                grapple.g_State = GrappleState.Throw;
             }
 
         }
@@ -217,7 +216,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            hook.hookState = HookStates.Retrieve;
+            grapple.g_State = GrappleState.Retrieve;
         }
     }
 
@@ -225,7 +224,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            hook.hookState = HookStates.Climb;
+            grapple.g_State = GrappleState.Climb;
         }
     }
 
@@ -233,7 +232,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            hook.hookState = HookStates.Yank;
+            grapple.g_State = GrappleState.Yank;
         }
     }
 }
