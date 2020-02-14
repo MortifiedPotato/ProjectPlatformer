@@ -25,8 +25,9 @@ public class WayPointScript : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, waypoints.Peek().transform.position) > minDist)
             {
-                gameObject.transform.LookAt(waypoints.Peek().transform.position);
-                gameObject.transform.position += gameObject.transform.forward * speed * Time.deltaTime;
+                //gameObject.transform.LookAt(waypoints.Peek().transform.position);
+                //gameObject.transform.position += gameObject.transform.forward * speed * Time.deltaTime;
+                transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), waypoints.Peek().transform.position, speed * Time.deltaTime);
             }
             else
             {
