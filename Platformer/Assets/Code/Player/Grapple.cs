@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HookScript : MonoBehaviour
+public class Grapple : MonoBehaviour
 {
     Rigidbody2D _rb;
     Collider2D _Coll;
 
-    public HookStates hookState;
+    public GrappleState g_State;
 
     [SerializeField] private GameObject Reticle;
     [SerializeField] private GameObject Player;
@@ -17,50 +17,49 @@ public class HookScript : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _Coll = GetComponent<Collider2D>();
-        hookState = HookStates.Inactive;
+        g_State = GrappleState.Inactive;
     }
     void Update()
     {
-        HookSwitch();
-        print(hookState);
+        GrappleSwitch();
     }
 
-    void HookSwitch()
+    void GrappleSwitch()
     {
-        switch (hookState)
+        switch (g_State)
         {
-            case HookStates.Inactive:
+            case GrappleState.Inactive:
                 transform.position = Player.transform.position;
                 _Coll.enabled = false;
                 _rb.gravityScale = 0;
                 break;
-            case HookStates.Aiming:
+            case GrappleState.Aiming:
                 transform.position = Player.transform.position;
 
                 break;
-            case HookStates.Throw:
+            case GrappleState.Throw:
                 //Throw Hook
                 _rb.AddForce((Reticle.transform.position - transform.position) * throwStrength);
                 _rb.gravityScale = 1;
                 _Coll.enabled = true;
-                hookState = HookStates.Thrown;
+                g_State = GrappleState.Thrown;
                 break;
-            case HookStates.Thrown:
+            case GrappleState.Thrown:
 
                 break;
-            case HookStates.Retrieve:
+            case GrappleState.Retrieve:
                 _rb.constraints = RigidbodyConstraints2D.None;
                 _rb.velocity = Vector3.zero;
-                hookState = HookStates.Inactive;
+                g_State = GrappleState.Inactive;
                 break;
-            case HookStates.Hooked:
+            case GrappleState.Hooked:
                 _rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
                 _rb.velocity = Vector3.zero;
                 break;
-            case HookStates.Climb:
+            case GrappleState.Climb:
 
                 break;
-            case HookStates.Yank:
+            case GrappleState.Yank:
                 break;
         }
     }
@@ -69,7 +68,7 @@ public class HookScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Environment")
         {
-            hookState = HookStates.Hooked;
+            g_State = GrappleState.Hooked;
         }
     }
 }

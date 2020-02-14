@@ -7,7 +7,7 @@ public enum MenuStates
     Credits,
 }
 
-public enum HookStates
+public enum GrappleState
 {
     Inactive,
     Aiming,
