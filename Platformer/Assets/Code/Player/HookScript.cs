@@ -7,7 +7,7 @@ public class HookScript : MonoBehaviour
     Rigidbody2D _rb;
     Collider2D _Coll;
 
-    HookStates hookState;
+    public HookStates hookState;
 
     [SerializeField] private GameObject Reticle;
     [SerializeField] private GameObject Player;
@@ -17,10 +17,12 @@ public class HookScript : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _Coll = GetComponent<Collider2D>();
+        hookState = HookStates.Inactive;
     }
     void Update()
     {
         HookSwitch();
+        print(hookState);
     }
 
     void HookSwitch()
@@ -31,33 +33,34 @@ public class HookScript : MonoBehaviour
                 transform.position = Player.transform.position;
                 _Coll.enabled = false;
                 _rb.gravityScale = 0;
+                break;
+            case HookStates.Aiming:
+                transform.position = Player.transform.position;
 
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    //Throw Hook
-                    _rb.AddForce((Reticle.transform.position - transform.position) * throwStrength);
-                    _rb.gravityScale = 1;
-                    _Coll.enabled = true;
-                    hookState = HookStates.Thrown;
-                }
+                break;
+            case HookStates.Throw:
+                //Throw Hook
+                _rb.AddForce((Reticle.transform.position - transform.position) * throwStrength);
+                _rb.gravityScale = 1;
+                _Coll.enabled = true;
+                hookState = HookStates.Thrown;
                 break;
             case HookStates.Thrown:
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    //Retrieve hook
-                    hookState = HookStates.Inactive;
-                }
+
+                break;
+            case HookStates.Retrieve:
+                _rb.constraints = RigidbodyConstraints2D.None;
+                _rb.velocity = Vector3.zero;
+                hookState = HookStates.Inactive;
                 break;
             case HookStates.Hooked:
                 _rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
                 _rb.velocity = Vector3.zero;
+                break;
+            case HookStates.Climb:
 
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    //Retrieve hook
-                    hookState = HookStates.Inactive;
-                    _rb.constraints = RigidbodyConstraints2D.None;
-                }
+                break;
+            case HookStates.Yank:
                 break;
         }
     }

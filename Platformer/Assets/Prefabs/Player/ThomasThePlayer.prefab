@@ -54,10 +54,16 @@ MonoBehaviour:
   jumpVelocity: 8
   aimSpeed: 10
   aimRadius: 3
+  fGroundedRememberTime: 0.25
+  fHorizontalAcceleration: 1
+  fHorizontalDampingBasic: 0.5
+  fHorizontalDampingWhenStopping: 0.5
+  fHorizontalDampingWhenTurning: 0.5
+  fCutJumpHeight: 0.5
   AimReticle: {fileID: 7865873858477003439}
   Sickle: {fileID: 2571873084408200371}
-  playerRB: {fileID: 2074543878346112020}
-  SickleRB: {fileID: 2571873084408200374}
+  rigid: {fileID: 2074543878346112020}
+  hook: {fileID: 2571873084408200372}
   isGrounded: 0
 --- !u!114 &3487107042332393729
 MonoBehaviour:
@@ -571,6 +577,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f13f32055b55904ca3081a7e832882e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hookState: 0
+  Reticle: {fileID: 0}
+  Player: {fileID: 0}
+  throwStrength: 0
 --- !u!50 &2571873084408200374
 Rigidbody2D:
   serializedVersion: 4

@@ -108,14 +108,9 @@ public class InputController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, aimRadius);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         isGrounded = true;
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        isGrounded = false;
     }
     // ----------------------------------------------------------------------------------------------------------------------------------
     // Input System Functions
@@ -203,10 +198,17 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            print("I AIM");
+            if (hook.hookState == HookStates.Inactive)
+            {
+                hook.hookState = HookStates.Aiming;
+            }
         }
         if (context.canceled)
         {
+            if (hook.hookState == HookStates.Aiming)
+            {
+                hook.hookState = HookStates.Throw;
+            }
 
         }
     }
@@ -215,7 +217,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-
+            hook.hookState = HookStates.Retrieve;
         }
     }
 
@@ -223,7 +225,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-
+            hook.hookState = HookStates.Climb;
         }
     }
 
@@ -231,7 +233,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-
+            hook.hookState = HookStates.Yank;
         }
     }
 }
