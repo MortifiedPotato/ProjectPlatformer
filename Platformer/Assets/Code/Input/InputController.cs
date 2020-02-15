@@ -1,32 +1,28 @@
 ﻿using UnityEngine.InputSystem;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerInput), typeof(Rigidbody2D))]
 public class InputController : MonoBehaviour
 {
     [Header("General Variables")]
-    public float moveVelocity = 15f;
-    public float jumpVelocity = 15f;
+    public bool isGrounded;
+    public bool isSwinging;
+    public bool isJumping;
 
-    public float aimSpeed = 10f;
-    public float aimRadius = 2;
+    public float respawnHeight = -10f;
 
+    public float speed = 1f;
+    public float jumpSpeed = 3f;
+    public float climbSpeed = 3f;
+
+    public Vector2 aimDirection;
+    public float aimDistance = 1f;
+    public float aimAngle;
 
     [Header("Movement Variables")]
     [SerializeField]
     public float fGroundedRememberTime = .25f;
     float fGroundedRemember;
-
-    [SerializeField]
-    float fHorizontalAcceleration = 1;
-    [SerializeField]
-    [Range(0, 1)]
-    float fHorizontalDampingBasic = .5f;
-    [SerializeField]
-    [Range(0, 1)]
-    float fHorizontalDampingWhenStopping = 0.5f;
-    [SerializeField]
-    [Range(0, 1)]
-    float fHorizontalDampingWhenTurning = 0.5f;
 
     [Range(.1f, 1)] public float fCutJumpHeight = .5f;
 
@@ -34,18 +30,108 @@ public class InputController : MonoBehaviour
     [SerializeField] GameObject AimReticle;
 
     [Header("Component Variables")]
-    [SerializeField] Rigidbody2D rigid;
-    [SerializeField] Grapple grapple;
+    Rigidbody2D rb;
+    GrappleSystem grapple;
 
-    Vector2 i_movement;
-    Vector2 i_aim;
+    public SpriteRenderer playerSprite;
+    public Vector2 ropeHook;
+    public float swingForce = 4f;
 
-    [Header("")]
-    public bool isGrounded;
+    Vector2 i_moveInput;
+    Vector2 i_aimInput;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        grapple = GetComponent<GrappleSystem>();
+    }
 
     private void Update()
     {
-        Aim();
+        CheckRespawnHeight();
+        CheckForGround();
+        HandleAim();
+
+        grapple.HandleRopeLength(i_moveInput.y);
+    }
+
+    private void FixedUpdate()
+    {
+        HandleMovement();
+    }
+
+    void HandleAim()
+    {
+        if (GetComponent<PlayerInput>().currentControlScheme == "PC")
+        {
+            var worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
+            var facingDirection = worldMousePosition - transform.position;
+            aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
+        }
+        else
+        {
+            aimAngle = Mathf.Atan2(i_aimInput.y, i_aimInput.x);
+        }
+
+        if (aimAngle < 0f)
+        {
+            aimAngle = Mathf.PI * 2 + aimAngle;
+        }
+
+        aimDirection = Quaternion.Euler(0, 0, aimAngle * Mathf.Rad2Deg) * Vector2.right;
+    }
+
+    void HandleMovement()
+    {
+        if (i_moveInput.x < 0f || i_moveInput.x > 0f)
+        {
+            if (isSwinging)
+            {
+                var playerToHookDirection = (ropeHook - (Vector2)transform.position).normalized;
+
+                Vector2 perpendicularDirection;
+                if (i_moveInput.x < 0)
+                {
+                    perpendicularDirection = new Vector2(-playerToHookDirection.y, playerToHookDirection.x);
+                    var leftPerpPos = (Vector2)transform.position - perpendicularDirection * -2f;
+                    Debug.DrawLine(transform.position, leftPerpPos, Color.green, 0f);
+                }
+                else
+                {
+                    perpendicularDirection = new Vector2(playerToHookDirection.y, -playerToHookDirection.x);
+                    var rightPerpPos = (Vector2)transform.position + perpendicularDirection * 2f;
+                    Debug.DrawLine(transform.position, rightPerpPos, Color.green, 0f);
+                }
+
+                var force = perpendicularDirection * swingForce;
+                rb.AddForce(force, ForceMode2D.Force);
+            }
+            else
+            {
+                if (isGrounded)
+                {
+                    var groundForce = speed * 2f;
+                    rb.AddForce(new Vector2((i_moveInput.x * groundForce - rb.velocity.x) * groundForce, 0));
+                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+                }
+            }
+        }
+
+        if (!isSwinging)
+        {
+            if (!isGrounded) return;
+
+            if (isJumping)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            }
+        }
+    }
+
+    void CheckForGround()
+    {
+        var halfHeight = playerSprite.bounds.extents.y;
+        isGrounded = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.025f);
 
         fGroundedRemember -= Time.deltaTime;
 
@@ -55,73 +141,25 @@ public class InputController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    void CheckRespawnHeight()
     {
-        Movement();
+        if (transform.position.y <= respawnHeight)
+        {
+            GameManager.Instance.SceneController.ResetScene();
+        }
     }
 
-    void Movement()
-    {
-        //rigid.velocity = (new Vector3(i_movement.x * (moveVelocity * Time.fixedDeltaTime), rigid.velocity.y, 0));
-
-        float fHorizontalVelocity = rigid.velocity.x;
-        fHorizontalVelocity += i_movement.x;
-
-        if (Mathf.Abs(i_movement.x) < 0.0f)
-        {
-            fHorizontalVelocity *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.fixedDeltaTime * 10f);
-        }
-        else if (Mathf.Sign(i_movement.x) != Mathf.Sign(fHorizontalVelocity))
-        {
-            fHorizontalVelocity *= Mathf.Pow(1f - fHorizontalDampingWhenTurning, Time.fixedDeltaTime * 10f);
-        }
-        else
-        {
-            fHorizontalVelocity *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.fixedDeltaTime * 10f);
-        }
-
-        //rigid.velocity = (new Vector2(fHorizontalVelocity * (moveVelocity * Time.fixedDeltaTime), rigid.velocity.y));
-        rigid.AddForce(new Vector2(fHorizontalVelocity * (moveVelocity * Time.fixedDeltaTime), rigid.velocity.y));
-    }
-
-    void Aim()
-    {
-        if (GetComponent<PlayerInput>().currentControlScheme == "PC")
-        {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            AimReticle.transform.localPosition = new Vector3(mousePos.x, mousePos.y);
-        }
-        else
-        {
-            AimReticle.transform.position += new Vector3(i_aim.x * (aimSpeed * Time.deltaTime), i_aim.y * (aimSpeed * Time.deltaTime), 0);
-        }
-
-        Vector3 offset = AimReticle.transform.localPosition - transform.localPosition;
-        offset = offset.normalized * aimRadius;
-        AimReticle.transform.localPosition = offset;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, aimRadius);
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        isGrounded = true;
-    }
     // ----------------------------------------------------------------------------------------------------------------------------------
     // Input System Functions
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        i_movement = context.action.ReadValue<Vector2>() * 50;
+        i_moveInput = context.action.ReadValue<Vector2>();
     }
 
     public void OnAim(InputAction.CallbackContext context)
     {
-        i_aim = context.action.ReadValue<Vector2>();
+        i_aimInput = context.action.ReadValue<Vector2>();
     }
 
     public void OnCrouch(InputAction.CallbackContext context)
@@ -136,20 +174,17 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            if (isGrounded || fGroundedRemember > 0)
-            {
-                rigid.velocity = (new Vector3(rigid.velocity.x, jumpVelocity, 0));
-                fGroundedRemember = 0f;
-                isGrounded = false;
-            }
+            isJumping = true;
         }
 
         if (context.canceled)
         {
-            if (rigid.velocity.y > 0)
+            if (rb.velocity.y > 0)
             {
-                rigid.velocity = new Vector2(rigid.velocity.x, rigid.velocity.y * fCutJumpHeight);
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * fCutJumpHeight);
             }
+
+            isJumping = false;
         }
     }
 
@@ -197,18 +232,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            if (grapple.g_State == GrappleState.Inactive)
-            {
-                grapple.g_State = GrappleState.Aiming;
-            }
-        }
-        if (context.canceled)
-        {
-            if (grapple.g_State == GrappleState.Aiming)
-            {
-                grapple.g_State = GrappleState.Throw;
-            }
-
+            grapple.ShootGrapple(aimDirection);
         }
     }
 
@@ -216,7 +240,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            grapple.g_State = GrappleState.Retrieve;
+            grapple.ResetRope();
         }
     }
 
@@ -224,7 +248,6 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            grapple.g_State = GrappleState.Climb;
         }
     }
 
@@ -232,7 +255,6 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            grapple.g_State = GrappleState.Yank;
         }
     }
 }

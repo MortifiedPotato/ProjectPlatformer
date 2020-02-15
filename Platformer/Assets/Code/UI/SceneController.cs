@@ -40,6 +40,11 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    public void ResetScene()
+    {
+        StartCoroutine(LoadSceneAsync(GetBuildIndex()));
+    }
+
     /// <summary>
     /// Ends the application
     /// </summary>

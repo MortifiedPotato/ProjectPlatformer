@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class RopeBridge : MonoBehaviour
 {
     public Transform StartPoint;
     public Transform EndPoint;
 
+    private EdgeCollider2D edgeCollider;
     private LineRenderer lineRenderer;
     private List<RopeSegment> ropeSegments = new List<RopeSegment>();
     private float ropeSegLen = 0.25f;
@@ -17,7 +19,10 @@ public class RopeBridge : MonoBehaviour
     void Start()
     {
         this.lineRenderer = this.GetComponent<LineRenderer>();
+        this.edgeCollider = this.GetComponent<EdgeCollider2D>();
         Vector3 ropeStartPoint = StartPoint.position;
+
+        edgeCollider.points = new Vector2[segmentLength];
 
         for (int i = 0; i < segmentLength; i++)
         {
@@ -53,7 +58,7 @@ public class RopeBridge : MonoBehaviour
         }
 
         //CONSTRAINTS
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 10; i++)
         {
             this.ApplyConstraint();
         }
@@ -113,13 +118,16 @@ public class RopeBridge : MonoBehaviour
         lineRenderer.endWidth = lineWidth;
 
         Vector3[] ropePositions = new Vector3[this.segmentLength];
+        Vector2[] edgePositions = new Vector2[this.segmentLength];
         for (int i = 0; i < this.segmentLength; i++)
         {
             ropePositions[i] = this.ropeSegments[i].posNow;
+            edgePositions[i] = this.ropeSegments[i].posNow;
         }
 
         lineRenderer.positionCount = ropePositions.Length;
         lineRenderer.SetPositions(ropePositions);
+        edgeCollider.points = edgePositions;
     }
 
     public struct RopeSegment
