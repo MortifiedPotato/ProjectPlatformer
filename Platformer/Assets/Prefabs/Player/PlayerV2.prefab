@@ -240,7 +240,7 @@ MonoBehaviour:
   isSwinging: 0
   isJumping: 0
   respawnHeight: -10
-  speed: 2.5
+  speed: 3
   jumpSpeed: 8
   climbSpeed: 3
   aimDirection: {x: 0, y: 0}
@@ -271,6 +271,7 @@ MonoBehaviour:
   ropeLayerMask:
     serializedVersion: 2
     m_Bits: 769
+  maxRopeLength: 8
 --- !u!114 &851052071162767951
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class GrappleSystem : MonoBehaviour
     public LayerMask ropeLayerMask;
 
     private LineRenderer ropeRenderer;
-    private float ropeMaxCastDistance = 20f;
+    public float maxRopeLength = 10f;
     private List<Vector2> ropePositions = new List<Vector2>();
 
     private bool ropeAttached;
@@ -109,7 +109,7 @@ public class GrappleSystem : MonoBehaviour
         if (ropeAttached) return;
         ropeRenderer.enabled = true;
 
-        var hit = Physics2D.Raycast(playerPosition, aimDirection, ropeMaxCastDistance, ropeLayerMask);
+        var hit = Physics2D.Raycast(playerPosition, aimDirection, maxRopeLength, ropeLayerMask);
 
         if (hit.collider != null)
         {

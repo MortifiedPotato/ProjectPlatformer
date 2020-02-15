@@ -11,8 +11,8 @@ public class InputController : MonoBehaviour
 
     public float respawnHeight = -10f;
 
-    public float speed = 1f;
-    public float jumpSpeed = 3f;
+    public float speed = 3f;
+    public float jumpSpeed = 8f;
     public float climbSpeed = 3f;
 
     public Vector2 aimDirection;
@@ -70,7 +70,8 @@ public class InputController : MonoBehaviour
         }
         else
         {
-            aimAngle = Mathf.Atan2(i_aimInput.y, i_aimInput.x);
+            var facingDirection = (new Vector3(i_aimInput.x, i_aimInput.y, 0) - transform.position);
+            aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
         }
 
         if (aimAngle < 0f)
