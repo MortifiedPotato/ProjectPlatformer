@@ -97,8 +97,8 @@ public class GrappleSystem : MonoBehaviour
             crosshairSprite.enabled = true;
         }
 
-        var x = transform.position.x + inputController.aimDistance * Mathf.Cos(aimAngle);
-        var y = transform.position.y + inputController.aimDistance * Mathf.Sin(aimAngle);
+        var x = transform.position.x + inputController.crosshairDistance * Mathf.Cos(aimAngle);
+        var y = transform.position.y + inputController.crosshairDistance * Mathf.Sin(aimAngle);
 
         var crossHairPosition = new Vector3(x, y, 0);
         crosshair.transform.position = crossHairPosition;

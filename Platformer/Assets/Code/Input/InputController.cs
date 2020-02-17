@@ -4,38 +4,37 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInput), typeof(Rigidbody2D))]
 public class InputController : MonoBehaviour
 {
-    [Header("General Variables")]
+    [Header("Movement Status")]
     public bool isGrounded;
     public bool isSwinging;
     public bool isJumping;
 
-    public float respawnHeight = -10f;
-
+    [Header("Movement Attributes")]
     public float speed = 3f;
     public float jumpSpeed = 8f;
     public float climbSpeed = 3f;
+    public float swingForce = 4f;
 
+    [Header("General Attributes")]
+    public float respawnHeight = -10f;
+
+    [Header("Aim Variables")]
     public Vector2 aimDirection;
-    public float aimDistance = 1f;
     public float aimAngle;
+    public float crosshairDistance = 1f;
 
-    [Header("Movement Variables")]
-    [SerializeField]
-    public float fGroundedRememberTime = .25f;
+    float fGroundedRememberTime = .25f;
+    float fCutJumpHeight = .5f;
     float fGroundedRemember;
 
-    [Range(.1f, 1)] public float fCutJumpHeight = .5f;
-
     [Header("Object Variables")]
-    [SerializeField] GameObject AimReticle;
+    public SpriteRenderer playerSprite;
+    [SerializeField] GameObject crosshair;
 
-    [Header("Component Variables")]
+    [HideInInspector] public Vector2 ropeHook;
+
     Rigidbody2D rb;
     GrappleSystem grapple;
-
-    public SpriteRenderer playerSprite;
-    public Vector2 ropeHook;
-    public float swingForce = 4f;
 
     Vector2 i_moveInput;
     Vector2 i_aimInput;
@@ -74,7 +73,9 @@ public class InputController : MonoBehaviour
     {
         if (GetComponent<PlayerInput>().currentControlScheme == "PC")
         {
-            var worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
+            var v3 = Input.mousePosition;
+            v3.z = 10;
+            var worldMousePosition = Camera.main.ScreenToWorldPoint(v3);
             var facingDirection = worldMousePosition - transform.position;
             aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
         }
@@ -161,7 +162,11 @@ public class InputController : MonoBehaviour
     {
         if (transform.position.y <= respawnHeight)
         {
-            GameManager.Instance.SceneController.ResetScene();
+            isDissolving = true;
+            if (fade <= 0f)
+            {
+                GameManager.Instance.SceneController.ResetScene();
+            }
         }
     }
 
@@ -204,7 +209,11 @@ public class InputController : MonoBehaviour
 
     public void OnAimHorizontal(InputAction.CallbackContext context)
     {
-        if (context.action.ReadValue<float>() >= .9f || context.action.ReadValue<float>() <= -.9f)
+        //if (context.action.ReadValue<float>() >= .9f || context.action.ReadValue<float>() <= -.9f)
+        //{
+        //}
+
+        if (context.action.ReadValue<float>() != 0)
         {
             i_aimInput.x = context.action.ReadValue<float>();
         }
@@ -212,7 +221,11 @@ public class InputController : MonoBehaviour
 
     public void OnAimVertical(InputAction.CallbackContext context)
     {
-        if (context.action.ReadValue<float>() >= .9f || context.action.ReadValue<float>() <= -.9f)
+        //if (context.action.ReadValue<float>() >= .9f || context.action.ReadValue<float>() <= -.9f)
+        //{
+        //}
+
+        if (context.action.ReadValue<float>() != 0)
         {
             i_aimInput.y = context.action.ReadValue<float>();
         }
