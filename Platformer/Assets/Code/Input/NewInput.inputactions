@@ -14,10 +14,18 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Aim",
+                    "name": "AimHorizontal",
                     "type": "PassThrough",
                     "id": "5a8c238b-8dde-4e41-b23c-b7778d5d37ea",
-                    "expectedControlType": "",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AimVertical",
+                    "type": "PassThrough",
+                    "id": "3c689e39-c4e0-4af5-9118-f6251d62d5e8",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
@@ -266,57 +274,35 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Gamepad",
-                    "id": "3ce359a4-4e5e-4adc-8d78-4b1b9602262e",
-                    "path": "2DVector",
+                    "name": "1D Axis",
+                    "id": "c545aa13-f6de-4895-bc4a-e36b7374ec30",
+                    "path": "1DAxis(whichSideWins=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "AimHorizontal",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "50270584-c84e-4432-8e08-efa52ff933bc",
-                    "path": "<Gamepad>/rightStick/up",
+                    "name": "negative",
+                    "id": "ae31ece6-ddbc-4e36-880b-f30a6d39c0af",
+                    "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Aim",
+                    "groups": "",
+                    "action": "AimHorizontal",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "774f4c99-b6a2-4437-a515-5d72355932ea",
-                    "path": "<Gamepad>/rightStick/down",
+                    "name": "positive",
+                    "id": "ad66f076-219f-4bd9-8aa9-fe146a14df86",
+                    "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "9d134d2e-f596-4209-b009-e45db3358917",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "b913d50b-9a1a-4308-b5da-e649683f756d",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Aim",
+                    "groups": "",
+                    "action": "AimHorizontal",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -517,6 +503,39 @@
                     "action": "Yank",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "a188c5c6-12cb-4f39-86a7-70a34a517852",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimVertical",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "f891854e-9fd8-405a-8414-af2954792c6b",
+                    "path": "<Gamepad>/rightStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimVertical",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d37b5fbc-4e9b-446e-9851-d42c416a317a",
+                    "path": "<Gamepad>/rightStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimVertical",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

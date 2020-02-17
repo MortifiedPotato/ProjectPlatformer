@@ -40,10 +40,18 @@ public class InputController : MonoBehaviour
     Vector2 i_moveInput;
     Vector2 i_aimInput;
 
+    //Dissolve
+    Material material;
+    bool isDissolving = false;
+    float fade = 1f;
+    //Dissolve end
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         grapple = GetComponent<GrappleSystem>();
+
+        material = playerSprite.material;
     }
 
     private void Update()
@@ -51,6 +59,8 @@ public class InputController : MonoBehaviour
         CheckRespawnHeight();
         CheckForGround();
         HandleAim();
+
+        Dissolve();
 
         grapple.HandleRopeLength(i_moveInput.y);
     }
@@ -70,8 +80,13 @@ public class InputController : MonoBehaviour
         }
         else
         {
-            var facingDirection = (new Vector3(i_aimInput.x, i_aimInput.y, 0) - transform.position);
-            aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
+            // Controller Aim Angle
+            aimAngle = Mathf.Atan2(i_aimInput.y, i_aimInput.x);
+            // Only the calculation here needs work
+            // Vector 2 i_aimInput needs to be converted
+
+            //https://forum.unity.com/threads/determining-rotation-and-converting-to-a-2d-direction-vector.416277/
+            //https://answers.unity.com/questions/927323/how-to-get-smooth-analog-joystick-rotation-without.html
         }
 
         if (aimAngle < 0f)
@@ -150,6 +165,35 @@ public class InputController : MonoBehaviour
         }
     }
 
+    void Dissolve()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            isDissolving = !isDissolving;
+        }
+
+        if (isDissolving)
+        {
+            fade -= Time.deltaTime;
+            if (fade <= 0f)
+            {
+                fade = 0f;
+            }
+
+            material.SetFloat("_Fade", fade);
+        }
+        else
+        {
+            fade += Time.deltaTime;
+            if (fade >= 1f)
+            {
+                fade = 1f;
+            }
+
+            material.SetFloat("_Fade", fade);
+        }
+    }
+
     // ----------------------------------------------------------------------------------------------------------------------------------
     // Input System Functions
 
@@ -158,9 +202,20 @@ public class InputController : MonoBehaviour
         i_moveInput = context.action.ReadValue<Vector2>();
     }
 
-    public void OnAim(InputAction.CallbackContext context)
+    public void OnAimHorizontal(InputAction.CallbackContext context)
     {
-        i_aimInput = context.action.ReadValue<Vector2>();
+        if (context.action.ReadValue<float>() >= .9f || context.action.ReadValue<float>() <= -.9f)
+        {
+            i_aimInput.x = context.action.ReadValue<float>();
+        }
+    }
+
+    public void OnAimVertical(InputAction.CallbackContext context)
+    {
+        if (context.action.ReadValue<float>() >= .9f || context.action.ReadValue<float>() <= -.9f)
+        {
+            i_aimInput.y = context.action.ReadValue<float>();
+        }
     }
 
     public void OnCrouch(InputAction.CallbackContext context)
@@ -209,7 +264,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-
+            GameManager.Instance.UIManager.PauseGame();
         }
     }
 

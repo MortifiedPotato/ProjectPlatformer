@@ -14,14 +14,6 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.UIManager = this;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseGame();
-        }
-    }
-
     public void PauseGame()
     {
         if (GameUI)
