@@ -11,6 +11,8 @@ public class WeaponScript : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             HealthScript EnemyHealth = collision.gameObject.GetComponent<HealthScript>();
+            Rigidbody2D EnemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
+            EnemyRB.AddForce(transform.up * 200);
             EnemyHealth.TakeDamage();
             
         }
