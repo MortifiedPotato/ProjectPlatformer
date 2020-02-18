@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public void Awake()
+    private void Start()
     {
         // Set Instance
         GameManager.Instance.SceneController = this;

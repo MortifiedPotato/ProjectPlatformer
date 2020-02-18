@@ -29,4 +29,4 @@ Material:
     - _Scale: 130
     m_Colors:
     - Color_B9D48136: {r: 4, g: 0, b: 0, a: 0}
-    - _Color: {r: 4, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 3.4039216, b: 0.7058824, a: 1}
