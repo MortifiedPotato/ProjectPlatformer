@@ -14,6 +14,7 @@ public class Floorchecker : MonoBehaviour
     {
         if (collision.gameObject.tag == "Environment")
         {
+            Enemy.rb.velocity = new Vector2(0, 0);
             Enemy.MoveRight = !Enemy.MoveRight;
         }
     }
