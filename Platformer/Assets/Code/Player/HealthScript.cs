@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class HealthScript : MonoBehaviour
 {
-    public int HealthPoints;
+    public int HealthPoints = 3;
+    public bool isDissolving;
+    public SpriteRenderer sprite;
+    public float deathHeight = -10;
+    public float fade = 1;
+    
+
+    private void Start()
+    {
+        sprite = GetComponentInChildren<SpriteRenderer>();
+    }
 
     void Update()
     {
@@ -17,24 +27,67 @@ public class HealthScript : MonoBehaviour
             Healing();
         }
 
-        print(HealthPoints);
+        if (transform.position.y <= deathHeight)
+        {
+            isDissolving = true;
+        }
+
+        Dissolve();
+        CheckDeath();
     }
 
 
     public void TakeDamage()
     {
-        if (HealthPoints <= 1)
+        HealthPoints--;
+
+        if (HealthPoints < 1)
         {
-            DestroyObject(this);
-        }
-        else
-        {
-            HealthPoints--;
+            isDissolving = true;
         }
     }
 
     public void Healing()
     {
         HealthPoints++;
+    }
+
+    void CheckDeath()
+    {
+        if (fade <= 0f)
+        {
+            if (GetComponent<InputController>())
+            {
+                GameManager.Instance.SceneController.ResetScene();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void Dissolve()
+    {
+        if (isDissolving)
+        {
+            fade -= Time.deltaTime;
+            if (fade <= 0f)
+            {
+                fade = 0f;
+            }
+
+            sprite.material.SetFloat("_Fade", fade);
+        }
+        else
+        {
+            fade += Time.deltaTime;
+            if (fade >= 1f)
+            {
+                fade = 1f;
+            }
+
+            sprite.material.SetFloat("_Fade", fade);
+        }
     }
 }

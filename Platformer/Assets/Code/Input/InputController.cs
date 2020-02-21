@@ -43,27 +43,16 @@ public class InputController : MonoBehaviour
     Vector2 i_moveInput;
     Vector2 i_aimInput;
 
-    //Dissolve
-    Material material;
-    bool isDissolving = false;
-    float fade = 1f;
-    //Dissolve end
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         grapple = GetComponent<GrappleSystem>();
-
-        material = playerSprite.material;
     }
 
     private void Update()
     {
-        CheckRespawnHeight();
         CheckForGround();
         HandleAim();
-
-        Dissolve();
 
         grapple.HandleRopeLength(i_moveInput.y);
     }
@@ -159,47 +148,6 @@ public class InputController : MonoBehaviour
         if (isGrounded)
         {
             fGroundedRemember = fGroundedRememberTime;
-        }
-    }
-
-    void CheckRespawnHeight()
-    {
-        if (transform.position.y <= respawnHeight)
-        {
-            isDissolving = true;
-            if (fade <= 0f)
-            {
-                GameManager.Instance.SceneController.ResetScene();
-            }
-        }
-    }
-
-    void Dissolve()
-    {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            isDissolving = !isDissolving;
-        }
-
-        if (isDissolving)
-        {
-            fade -= Time.deltaTime;
-            if (fade <= 0f)
-            {
-                fade = 0f;
-            }
-
-            material.SetFloat("_Fade", fade);
-        }
-        else
-        {
-            fade += Time.deltaTime;
-            if (fade >= 1f)
-            {
-                fade = 1f;
-            }
-
-            material.SetFloat("_Fade", fade);
         }
     }
 
