@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 
     public SceneController SceneController { get; set; }
     public UIManager UIManager { get; set; }
-    public Database Database { get; set; }
+    public DataManager dataManager { get; set; }
 
     private void Awake()
     {
