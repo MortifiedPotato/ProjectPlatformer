@@ -14,6 +14,10 @@ public class InputController : MonoBehaviour
     public float jumpSpeed = 8f;
     public float climbSpeed = 3f;
     public float swingForce = 4f;
+    public float yankForce = 7f;
+
+    public float scoreCountDown;
+    public int Score;
 
     [Header("General Attributes")]
     public float respawnHeight = -10f;
@@ -209,10 +213,6 @@ public class InputController : MonoBehaviour
 
     public void OnAimHorizontal(InputAction.CallbackContext context)
     {
-        //if (context.action.ReadValue<float>() >= .9f || context.action.ReadValue<float>() <= -.9f)
-        //{
-        //}
-
         if (context.action.ReadValue<float>() != 0)
         {
             i_aimInput.x = context.action.ReadValue<float>();
@@ -221,10 +221,6 @@ public class InputController : MonoBehaviour
 
     public void OnAimVertical(InputAction.CallbackContext context)
     {
-        //if (context.action.ReadValue<float>() >= .9f || context.action.ReadValue<float>() <= -.9f)
-        //{
-        //}
-
         if (context.action.ReadValue<float>() != 0)
         {
             i_aimInput.y = context.action.ReadValue<float>();
@@ -324,6 +320,11 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
+            if (ropeHook != Vector2.zero)
+            {
+                rb.AddForce((new Vector3(ropeHook.x, ropeHook.y, 0) - transform.position) * (yankForce * 10));
+                grapple.ResetRope();
+            }
         }
     }
 }

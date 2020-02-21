@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// Followed tutorial by Sean Duffy, who wrote a majority of the code
+
 public class GrappleSystem : MonoBehaviour
 {
     private bool isColliding;
@@ -142,6 +144,8 @@ public class GrappleSystem : MonoBehaviour
         ropeRenderer.SetPosition(1, transform.position);
         ropePositions.Clear();
         ropeHingeAnchorSprite.enabled = false;
+
+        inputController.ropeHook = Vector2.zero;
 
         wrapPointsLookup.Clear();
     }
