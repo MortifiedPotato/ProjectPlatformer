@@ -243,12 +243,13 @@ MonoBehaviour:
   jumpSpeed: 8
   climbSpeed: 3
   swingForce: 4
+  yankForce: 7
   respawnHeight: -10
   aimDirection: {x: 0, y: 0}
   aimAngle: 0
   crosshairDistance: 1
-  crosshair: {fileID: 6233554326018963937}
   playerSprite: {fileID: 9109488785574472038}
+  crosshair: {fileID: 6233554326018963937}
   ropeHook: {x: 0, y: 0}
 --- !u!114 &4149204017818456496
 MonoBehaviour:
