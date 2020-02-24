@@ -245,6 +245,8 @@ MonoBehaviour:
   climbSpeed: 3
   swingForce: 4
   yankForce: 7
+  scoreCountDown: 0
+  Score: 0
   respawnHeight: -10
   aimDirection: {x: 0, y: 0}
   aimAngle: 0
@@ -680,7 +682,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthPoints: 3
   isDissolving: 0
+  sprite: {fileID: 0}
   deathHeight: -10
+  fade: 1
 --- !u!1 &6233554326018963937
 GameObject:
   m_ObjectHideFlags: 0
