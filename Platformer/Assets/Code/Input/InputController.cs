@@ -141,7 +141,7 @@ public class InputController : MonoBehaviour
     void CheckForGround()
     {
         var halfHeight = playerSprite.bounds.extents.y;
-        isGrounded = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.025f);
+        isGrounded = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.025f, 1);
 
         fGroundedRemember -= Time.deltaTime;
 
