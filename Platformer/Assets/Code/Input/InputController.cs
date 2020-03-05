@@ -1,7 +1,7 @@
 ﻿using UnityEngine.InputSystem;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerInput), typeof(Rigidbody2D))]
+//[RequireComponent(typeof(PlayerInput), typeof(Rigidbody2D))]
 public class InputController : MonoBehaviour
 {
     [Header("Movement Status")]
@@ -201,19 +201,11 @@ public class InputController : MonoBehaviour
         }
     }
 
-    public void OnCancel(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-
-        }
-    }
-
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-
+            GetComponent<PlayerScript>().Attack();
         }
     }
 
@@ -222,22 +214,6 @@ public class InputController : MonoBehaviour
         if (context.performed)
         {
             GameManager.Instance.UIManager.PauseGame();
-        }
-    }
-
-    public void OnCycleUp(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-
-        }
-    }
-
-    public void OnCycleDown(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-
         }
     }
 
@@ -254,13 +230,6 @@ public class InputController : MonoBehaviour
         if (context.performed)
         {
             grapple.ResetRope();
-        }
-    }
-
-    public void OnPull(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
         }
     }
 
