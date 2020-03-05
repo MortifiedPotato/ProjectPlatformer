@@ -30,25 +30,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Crouch",
-                    "type": "Button",
-                    "id": "17869287-e4f8-4ca6-ae77-fec5b5e4f0d0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "4cc90cce-509a-4850-b595-684222651e2f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Cancel",
-                    "type": "Button",
-                    "id": "43f01f03-5396-47b7-aa14-679d8523477f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -70,22 +54,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "CycleUp",
-                    "type": "Button",
-                    "id": "239f432c-7278-4d70-8c25-6b9beed307f7",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "CycleDown",
-                    "type": "Button",
-                    "id": "4b11cb57-7766-4649-9004-45d19c893f2a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Swing",
                     "type": "Button",
                     "id": "1ac8c399-631c-40d3-98ac-76c947ba1b7a",
@@ -97,14 +65,6 @@
                     "name": "Detach",
                     "type": "Button",
                     "id": "96e3720e-5a0a-49ec-af33-e84bb003e5c0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Pull",
-                    "type": "Button",
-                    "id": "fed3b41a-02b4-4ef2-9f1d-a8b9b0d356e2",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -252,28 +212,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "0aa25c6c-98f1-48e2-a24a-287434008e91",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "baeaea6a-f8f9-4f48-8984-8a4b963c255d",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "1D Axis",
                     "id": "c545aa13-f6de-4895-bc4a-e36b7374ec30",
                     "path": "1DAxis(whichSideWins=1)",
@@ -305,28 +243,6 @@
                     "action": "AimHorizontal",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "0d9c3c33-28b1-4637-8de2-6f1bd7717bc5",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "76c2a784-3ee0-4e8d-8297-778e9ea2b86f",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -374,50 +290,6 @@
                 },
                 {
                     "name": "",
-                    "id": "c907b903-e27b-4932-901b-f69a774f10e0",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "CycleUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "919cf680-f399-4eb9-b227-02d9db657790",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "CycleUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "99cc63d4-01ec-4269-a3fe-12b68dec9c59",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "CycleDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "de57b657-a65f-4356-9a9e-9267981f9bad",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "CycleDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3fddbef5-f3c9-41b2-bebd-a0d8c8ce0888",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -457,28 +329,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Detach",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dde70cb5-42c3-45b3-b7d6-0c41ec538dfa",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Pull",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e668f574-fcbc-4140-a43c-89b8f9d56d44",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Pull",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

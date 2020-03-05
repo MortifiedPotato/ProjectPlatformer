@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour
         ResetWeapon();
     }
 
-    void Attack()
+    public void Attack()
     {
         if (inputscript.aimDirection.x < 0)
         {
