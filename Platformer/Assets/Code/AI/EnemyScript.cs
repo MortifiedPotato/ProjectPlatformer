@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class EnemyScript : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    [SerializeField] float MoveSpeed;
-    [SerializeField] float KnockBack;
-    HealthScript EnemyHealth;
+    Rigidbody2D rb;
+    [SerializeField] internal float MoveSpeed;
+    [SerializeField] internal float KnockBack;
     public bool MoveRight;
     public bool Moving;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        EnemyHealth = GetComponent<HealthScript>();
         KnockBack = KnockBack * 100;
     }
 
