@@ -2,16 +2,17 @@
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     // Pause state
     public static bool isPaused;
 
     public MenuUI MenuUI { get; set; }
     public GameUI GameUI { get; set; }
 
-    void Start()
+    private void Awake()
     {
-        //Assign singleton reference
-        GameManager.Instance.UIManager = this;
+        Instance = this;
     }
 
     public void PauseGame()

@@ -9,7 +9,7 @@ public class MenuUI : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.UIManager.MenuUI = this;
+        UIManager.Instance.MenuUI = this;
         SetMenuState();
 
         Cursor.visible = true;

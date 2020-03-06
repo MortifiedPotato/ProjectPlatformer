@@ -213,7 +213,7 @@ public class InputController : MonoBehaviour
     {
         if (context.performed)
         {
-            GameManager.Instance.UIManager.PauseGame();
+            UIManager.Instance.PauseGame();
         }
     }
 

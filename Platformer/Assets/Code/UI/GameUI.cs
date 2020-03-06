@@ -7,7 +7,7 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.UIManager.GameUI = this;
+        UIManager.Instance.GameUI = this;
         Resume();
 
         Cursor.visible = false;
