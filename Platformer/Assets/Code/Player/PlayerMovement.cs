@@ -11,6 +11,8 @@ namespace SoulHunter.Player
         public bool isSwinging;
         public bool isJumping;
 
+        public bool groundContact;
+
         [Header("Movement Attributes")]
         public float speed = 3f;
         public float jumpSpeed = 8f;
@@ -21,33 +23,72 @@ namespace SoulHunter.Player
         public float scoreCountDown;
         public int Score;
 
-        float fGroundedRememberTime = .25f;
+        public float fGroundedRememberTime = .25f;
         float fCutJumpHeight = .5f;
-        float fGroundedRemember;
+        public float fGroundedRemember;
 
         [Header("Object Variables")]
         public SpriteRenderer playerSprite;
+        [SerializeField] Animator anim;
 
         [HideInInspector]
         public Vector2 ropeHook;
 
         Rigidbody2D rigidBody;
 
-        Vector2 i_moveInput;
+        public Vector2 i_moveInput;
 
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();
+            anim = GetComponentInChildren<Animator>();
         }
 
         private void Update()
         {
             CheckForGround();
+            Animate();
         }
 
         private void FixedUpdate()
         {
             HandleMovement();
+        }
+
+        void Animate()
+        {
+            if (isGrounded)
+            {
+                anim.SetFloat("Speed", Mathf.Abs(GetComponent<PlayerMovement>().i_moveInput.x));
+            }
+            else
+            {
+                anim.SetFloat("Speed", 0);
+            }
+
+            if (isGrounded)
+            {
+                if (i_moveInput.x < 0)
+                {
+                    playerSprite.flipX = false;
+                }
+                else if (i_moveInput.x > 0)
+                {
+                    playerSprite.flipX = true;
+                }
+            }
+            else
+            {
+                if (rigidBody.velocity.x < 0)
+                {
+                    playerSprite.flipX = false;
+                }
+                else if (rigidBody.velocity.x > 0)
+                {
+                    playerSprite.flipX = true;
+                }
+            }
+
         }
 
         public void HandleMovement()
@@ -119,13 +160,26 @@ namespace SoulHunter.Player
         void CheckForGround()
         {
             var halfHeight = playerSprite.bounds.extents.y;
-            isGrounded = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.025f, 1);
+            groundContact = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), 0.05f, 1);
 
             fGroundedRemember -= Time.deltaTime;
 
-            if (isGrounded)
+            if (groundContact)
             {
                 fGroundedRemember = fGroundedRememberTime;
+                isGrounded = true;
+
+                return;
+            }
+
+            if (fGroundedRemember < 0 && !groundContact)
+            {
+                isGrounded = false;
+            }
+
+            if (isJumping)
+            {
+                fGroundedRemember = -1;
             }
         }
 

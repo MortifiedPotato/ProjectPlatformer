@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1154278114
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154278111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.05, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4149204017818456499}
@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7915397019460164817}
   - component: {fileID: 9109488785574472038}
+  - component: {fileID: 8402541731431483700}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -294,7 +295,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 6184959299203262911, guid: faa1368ef1493184fa99c20f3b3b6391,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -305,6 +307,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8402541731431483700
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881789387784613800}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d082ee1c11906614aadf7653219cca0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4149204017818456493
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +438,9 @@ MonoBehaviour:
   scoreCountDown: 0
   Score: 0
   playerSprite: {fileID: 9109488785574472038}
+  anim: {fileID: 8402541731431483700}
   ropeHook: {x: 0, y: 0}
+  i_moveInput: {x: 0, y: 0}
 --- !u!114 &4149204017818456496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680c748628db5a84195c446be7a8f5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isColliding: 0
   ropeHingeAnchor: {fileID: 1736730058511947120}
   ropeJoint: {fileID: 4149204017818456492}
   crosshair: {fileID: 952869050296627359}
@@ -481,8 +505,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.4, y: 0.4}
+  m_Offset: {x: 0, y: -0.18}
+  m_Size: {x: 0.5, y: 0.8}
   m_Direction: 0
 --- !u!232 &4149204017818456492
 DistanceJoint2D:
