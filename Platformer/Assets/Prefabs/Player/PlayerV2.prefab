@@ -430,6 +430,7 @@ MonoBehaviour:
   isGrounded: 0
   isSwinging: 0
   isJumping: 0
+  groundContact: 0
   speed: 3
   jumpSpeed: 8
   climbSpeed: 3
@@ -437,6 +438,8 @@ MonoBehaviour:
   yankForce: 7
   scoreCountDown: 0
   Score: 0
+  fGroundedRememberTime: 0.25
+  fGroundedRemember: 0
   playerSprite: {fileID: 9109488785574472038}
   anim: {fileID: 8402541731431483700}
   ropeHook: {x: 0, y: 0}
@@ -534,7 +537,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4149204017818456493}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
