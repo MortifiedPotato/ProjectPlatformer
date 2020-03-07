@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GrappleState
+{
+    Inactive,
+    Aiming,
+    Yank,
+    Climb,
+    Throw,
+    Thrown,
+    Retrieve,
+    Hooked
+}
+
 public class Grapple : MonoBehaviour
 {
     Rigidbody2D _rb;

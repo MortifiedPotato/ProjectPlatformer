@@ -428,7 +428,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6509935175031641709}
+      - m_Target: {fileID: 8336074100033087765}
         m_MethodName: ChangeScene
         m_Mode: 3
         m_Arguments:
@@ -524,7 +524,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8798499528262367623}
   - component: {fileID: 8336074100033087765}
-  - component: {fileID: 6509935175031641709}
   - component: {fileID: 7664237158814644911}
   - component: {fileID: 7183154097839010923}
   - component: {fileID: 2052925683024027562}
@@ -568,18 +567,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 7554282199119705196}
---- !u!114 &6509935175031641709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8019754582964637127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 563b92fada75f4c47bfbe2984c53bceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!223 &7664237158814644911
 Canvas:
   m_ObjectHideFlags: 0

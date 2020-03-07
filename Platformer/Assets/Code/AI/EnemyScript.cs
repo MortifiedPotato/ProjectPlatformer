@@ -2,60 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-public class EnemyScript : MonoBehaviour
+namespace SoulHunter.Enemy
 {
-    Rigidbody2D rb;
-    [SerializeField] internal float MoveSpeed;
-    [SerializeField] internal float KnockBack;
-    public bool MoveRight;
-    public bool Moving;
-    void Start()
+    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+    public class EnemyScript : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-        KnockBack = KnockBack * 100;
-    }
-
-    void FixedUpdate()
-    {
-        if (Moving)
+        Rigidbody2D rb;
+        [SerializeField] internal float MoveSpeed;
+        [SerializeField] internal float KnockBack;
+        public bool MoveRight;
+        public bool Moving;
+        void Start()
         {
-            if (MoveRight)
+            rb = GetComponent<Rigidbody2D>();
+            KnockBack = KnockBack * 100;
+        }
+
+        void FixedUpdate()
+        {
+            if (Moving)
             {
-                rb.velocity = (new Vector2(+MoveSpeed, 0));
+                if (MoveRight)
+                {
+                    rb.velocity = (new Vector2(+MoveSpeed, 0));
+                }
+                else
+                {
+                    rb.velocity = (new Vector2(-MoveSpeed, 0));
+                }
             }
-            else
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.tag == "P_weapon")
             {
-                rb.velocity = (new Vector2(-MoveSpeed, 0));
+                Moving = false;
+                Vector2 difference = transform.position - other.transform.position;
+                rb.AddForce(difference * KnockBack);
+                //rb.velocity = new Vector3(transform.position.x + difference.x, transform.position.y + difference.y, 0);
+                //transform.position = new Vector2(transform.position.x + difference.x * Time.deltaTime, transform.position.y + difference.y * Time.deltaTime);
             }
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "P_weapon")
+        private void OnCollisionExit2D(Collision2D other)
         {
-            Moving = false;
-            Vector2 difference = transform.position - other.transform.position;
-            rb.AddForce(difference * KnockBack);
-            //rb.velocity = new Vector3(transform.position.x + difference.x, transform.position.y + difference.y, 0);
-            //transform.position = new Vector2(transform.position.x + difference.x * Time.deltaTime, transform.position.y + difference.y * Time.deltaTime);
+            if (other.gameObject.tag == "Environment")
+            {
+                Moving = false;
+            }
         }
-    }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Environment")
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            Moving = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Environment")
-        {
-            Moving = true;
+            if (other.gameObject.tag == "Environment")
+            {
+                Moving = true;
+            }
         }
     }
 }

@@ -1,48 +1,50 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameUI : MonoBehaviour
+namespace SoulHunter.UI
 {
-    [SerializeField] GameObject PausePanel;
-
-    private void Start()
+    public class GameUI : SceneController
     {
-        UIManager.Instance.GameUI = this;
-        Resume();
+        [SerializeField] GameObject PausePanel;
 
-        Cursor.visible = false;
-    }
-
-    private void OnDisable()
-    {
-        Resume();
-    }
-
-    public void HandlePause()
-    {
-        if (!UIManager.isPaused)
+        private void Start()
         {
-            Pause();
+            UIManager.Instance.GameUI = this;
+            Resume();
+
+            Cursor.visible = false;
         }
-        else
+
+        private void OnDisable()
         {
             Resume();
         }
-    }
 
-    void Resume()
-    {
-        PausePanel.SetActive(false);
-        Time.timeScale = 1;
-        Cursor.visible = false;
-        UIManager.isPaused = false;
-    }
+        public void HandlePause()
+        {
+            if (!UIManager.isPaused)
+            {
+                Pause();
+            }
+            else
+            {
+                Resume();
+            }
+        }
 
-    void Pause()
-    {
-        PausePanel.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        UIManager.isPaused = true;
+        void Resume()
+        {
+            PausePanel.SetActive(false);
+            Time.timeScale = 1;
+            Cursor.visible = false;
+            UIManager.isPaused = false;
+        }
+
+        void Pause()
+        {
+            PausePanel.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            UIManager.isPaused = true;
+        }
     }
 }

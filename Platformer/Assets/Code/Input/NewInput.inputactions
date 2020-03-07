@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Interact",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "c544ab89-5fa8-403f-931a-8577f53b132a",
                     "expectedControlType": "",
@@ -251,7 +251,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Interact",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -262,7 +262,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Interact",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

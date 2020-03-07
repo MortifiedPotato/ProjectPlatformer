@@ -4,10 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    private void Start()
+    public static SceneController Instance { get; private set; }
+
+    private void Awake()
     {
         // Set Instance
-        GameManager.Instance.SceneController = this;
+        Instance = this;
     }
 
     /// <summary>

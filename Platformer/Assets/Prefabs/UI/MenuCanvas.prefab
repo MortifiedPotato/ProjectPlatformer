@@ -610,7 +610,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8115311769828486795}
+      - m_Target: {fileID: 8195116311491614251}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -1582,7 +1582,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7551338274533502493}
   - component: {fileID: 8195116311491614251}
-  - component: {fileID: 8115311769828486795}
   - component: {fileID: 7551338274533502490}
   - component: {fileID: 7551338274533502491}
   - component: {fileID: 7551338274533502488}
@@ -1632,18 +1631,6 @@ MonoBehaviour:
   - {fileID: 737366330412496567}
   - {fileID: 9073278565305618514}
   - {fileID: 9036743103055512434}
---- !u!114 &8115311769828486795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7551338274533502489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 563b92fada75f4c47bfbe2984c53bceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!223 &7551338274533502490
 Canvas:
   m_ObjectHideFlags: 0
@@ -2287,7 +2274,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8115311769828486795}
+      - m_Target: {fileID: 8195116311491614251}
         m_MethodName: ChangeScene
         m_Mode: 3
         m_Arguments:

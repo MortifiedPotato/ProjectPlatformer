@@ -67,9 +67,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2333098334240980330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6db998ddc6e3871498ed9834b2f8acd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 56ce3ab94d836474eae94d7b7cdbce9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soulsCollected: 0
+  velocityScore: 0
+  durationInAir: 0
+  timesJumped: 0
+  timesMissedGrapple: 0
+  timesHitGrapple: 0
+  timesMissedAttack: 0
+  timesHitAttack: 0
+  AliveEntities: []
 --- !u!114 &-7817032956366802835
 MonoBehaviour:
   m_ObjectHideFlags: 0

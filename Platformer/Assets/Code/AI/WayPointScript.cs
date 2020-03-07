@@ -5,7 +5,7 @@ using UnityEngine;
 public class WayPointScript : MonoBehaviour
 {
     public Queue<GameObject> waypoints = new Queue<GameObject>();
-    
+
     public int num = 0;
 
     public float minDist;

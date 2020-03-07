@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace SoulHunter.Base
 {
-    public static GameManager Instance;
-
-    public SceneController SceneController { get; set; }
-    public DataManager dataManager { get; set; }
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        Instance = this;
-        name = "Managers";
-        DontDestroyOnLoad(this);
+        public static GameManager Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+            name = "Managers";
+            DontDestroyOnLoad(this);
+        }
     }
 }

@@ -2,36 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+using SoulHunter.Enemy;
+
+namespace SoulHunter.Base
 {
-    [Header("Game Statistics")]
-    public int soulsCollected;
-    public int velocityScore;
-    public float durationInAir;
-
-    [Header("Input Statistics")]
-    public int timesJumped;
-    public int timesMissedGrapple;
-    public int timesHitGrapple;
-    public int timesMissedAttack;
-    public int timesHitAttack;
-
-    public List<HealthScript> AliveEntities = new List<HealthScript>();
-
-    void Start()
+    public class DataManager : MonoBehaviour
     {
-        GameManager.Instance.dataManager = this;
+        public static DataManager Instance;
+
+        [Header("Game Statistics")]
+        public int soulsCollected;
+        public int velocityScore;
+        public float durationInAir;
+
+        [Header("Input Statistics")]
+        public int timesJumped;
+        public int timesMissedGrapple;
+        public int timesHitGrapple;
+        public int timesMissedAttack;
+        public int timesHitAttack;
+
+        public List<EnemyScript> AliveEnemies = new List<EnemyScript>();
+
+        void Start()
+        {
+            Instance = this;
+        }
+
+        public void HandleEntityRegistry(EnemyScript entity)
+        {
+            if (!AliveEnemies.Contains(entity))
+            {
+                AliveEnemies.Add(entity);
+            }
+            else
+            {
+                AliveEnemies.Remove(entity);
+            }
+        }
     }
-
-    public void HandleEntityRegistry(HealthScript entity)
-    {
-        if (!AliveEntities.Contains(entity))
-        {
-            AliveEntities.Add(entity);
-        }
-        else
-        {
-            AliveEntities.Remove(entity);
-        }
-    } 
 }
