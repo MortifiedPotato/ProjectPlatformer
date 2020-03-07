@@ -5,9 +5,9 @@ using UnityEngine;
 // Followed tutorial by Sean Duffy, who wrote a majority of the code
 namespace SoulHunter.Player
 {
-    public class GrappleSystem : MonoBehaviour, IMoveInput
+    public class GrappleSystem : MonoBehaviour, IVerticalInput
     {
-        private bool isColliding;
+        public bool isColliding;
 
         public GameObject ropeHingeAnchor;
         public DistanceJoint2D ropeJoint;
@@ -308,9 +308,9 @@ namespace SoulHunter.Player
             distanceSet = true;
         }
 
-        public void HandleMoveInput(Vector2 input)
+        public void VerticalMoveInput(float vertical)
         {
-            verticalInput = input.y;
+            verticalInput = vertical;
         }
     }
 }

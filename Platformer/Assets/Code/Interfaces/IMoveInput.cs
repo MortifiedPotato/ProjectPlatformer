@@ -6,4 +6,9 @@ namespace SoulHunter.Player
     {
         void HandleMoveInput(Vector2 moveInput);
     }
+
+    public interface IVerticalInput
+    {
+        void VerticalMoveInput(float VerticalInput);
+    }
 }

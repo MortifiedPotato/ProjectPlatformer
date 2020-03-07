@@ -11,6 +11,7 @@ namespace SoulHunter.Input
     {
         //Interfaces
         IMoveInput i_MoveInput;
+        IVerticalInput i_VerticalInput;
         IAimInput i_AimInput;
 
         //Scripts
@@ -22,6 +23,7 @@ namespace SoulHunter.Input
         {
             //Get Interfaces
             i_MoveInput = GetComponent<IMoveInput>();
+            i_VerticalInput = GetComponent<IVerticalInput>();
             i_AimInput = GetComponent<IAimInput>();
 
             //Get Scripts
@@ -33,6 +35,7 @@ namespace SoulHunter.Input
         public void OnMove(InputAction.CallbackContext context)
         {
             i_MoveInput?.HandleMoveInput(context.action.ReadValue<Vector2>());
+            i_VerticalInput?.VerticalMoveInput(context.action.ReadValue<Vector2>().y);
         }
 
         public void OnAimHorizontal(InputAction.CallbackContext context)
