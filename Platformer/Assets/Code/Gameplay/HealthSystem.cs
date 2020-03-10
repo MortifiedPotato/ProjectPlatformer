@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SoulHunter.Player;
 
 namespace SoulHunter.Gameplay
 {
@@ -23,7 +24,7 @@ namespace SoulHunter.Gameplay
             }
 
             Dissolve();
-            CheckDeath();
+            HandleDeath();
         }
 
         public void TakeDamage()
@@ -41,11 +42,14 @@ namespace SoulHunter.Gameplay
             HealthPoints++;
         }
 
-        internal virtual void CheckDeath()
+        protected virtual void HandleDeath()
         {
             if (fade <= 0f)
             {
-                Destroy(gameObject);
+                if (!GetComponent<PlayerBase>())
+                {
+                    Destroy(gameObject);
+                }
             }
         }
 

@@ -8,7 +8,7 @@ namespace SoulHunter.Player
 {
     public class PlayerBase : HealthSystem
     {
-        internal override void CheckDeath()
+        protected override void HandleDeath()
         {
             if (fade <= 0f)
             {
