@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using SoulHunter.Gameplay;
+
 namespace SoulHunter.Enemy
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-    public class EnemyScript : MonoBehaviour
+    public class EnemyScript : HealthSystem
     {
         Rigidbody2D rb;
         [SerializeField] internal float MoveSpeed;
         [SerializeField] internal float KnockBack;
+        //[SerializeField] GameObject _GroundCheck;
+
         public bool MoveRight;
         public bool Moving;
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            //_GroundCheck = gameObject.GetComponentsInChildren<CircleCollider2D>();
             KnockBack = KnockBack * 100;
+           // FloorChecker = _GroundCheck.GetComponent<CircleCollider2D>();
         }
 
         void FixedUpdate()

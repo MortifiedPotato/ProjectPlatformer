@@ -6,7 +6,7 @@ namespace SoulHunter.Gameplay
     {
         public int HealthPoints = 3;
         public bool isDissolving;
-        public SpriteRenderer sprite;
+        SpriteRenderer sprite;
         public float deathHeight = -10;
         internal float fade = 1;
 
