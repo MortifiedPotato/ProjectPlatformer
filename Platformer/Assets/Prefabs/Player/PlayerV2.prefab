@@ -341,7 +341,6 @@ GameObject:
   - component: {fileID: 8774804050221565623}
   - component: {fileID: 4149204017818456496}
   - component: {fileID: 888956467}
-  - component: {fileID: 8163790008843273406}
   - component: {fileID: 4149204017818456498}
   - component: {fileID: 4149204017818456492}
   - component: {fileID: 4149204017818456497}
@@ -444,6 +443,7 @@ MonoBehaviour:
   anim: {fileID: 8402541731431483700}
   ropeHook: {x: 0, y: 0}
   i_moveInput: {x: 0, y: 0}
+  velocity: {x: 0, y: 0}
 --- !u!114 &4149204017818456496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,22 +479,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackduration: 2
   Weapon: {fileID: 1154278111}
---- !u!114 &8163790008843273406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149204017818456493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6edcf0d805444244ad4e3eb5c0428f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthPoints: 3
-  isDissolving: 0
-  sprite: {fileID: 0}
-  deathHeight: -10
 --- !u!70 &4149204017818456498
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -863,7 +847,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

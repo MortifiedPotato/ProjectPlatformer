@@ -10,9 +10,9 @@ namespace SoulHunter.Input
     public class InputController : MonoBehaviour
     {
         //Interfaces
-        IMoveInput i_MoveInput;
-        IVerticalInput i_VerticalInput;
+        IMoveInput[] i_MoveInput;
         IAimInput i_AimInput;
+
 
         //Scripts
         PlayerMovement playerMovement;
@@ -22,8 +22,7 @@ namespace SoulHunter.Input
         private void Awake()
         {
             //Get Interfaces
-            i_MoveInput = GetComponent<IMoveInput>();
-            i_VerticalInput = GetComponent<IVerticalInput>();
+            i_MoveInput = GetComponents<IMoveInput>();
             i_AimInput = GetComponent<IAimInput>();
 
             //Get Scripts
@@ -34,8 +33,10 @@ namespace SoulHunter.Input
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            i_MoveInput?.HandleMoveInput(context.action.ReadValue<Vector2>());
-            i_VerticalInput?.VerticalMoveInput(context.action.ReadValue<Vector2>().y);
+            for (int i = 0; i < i_MoveInput.Length; i++)
+            {
+                i_MoveInput[i]?.HandleMoveInput(context.action.ReadValue<Vector2>());
+            }
         }
 
         public void OnAimHorizontal(InputAction.CallbackContext context)

@@ -29,25 +29,32 @@ namespace SoulHunter.Player
 
         [Header("Object Variables")]
         public SpriteRenderer playerSprite;
+        GameObject dustParticle;
+        Rigidbody2D rigidBody;
         [SerializeField] Animator anim;
 
         [HideInInspector]
         public Vector2 ropeHook;
 
-        Rigidbody2D rigidBody;
-
         public Vector2 i_moveInput;
+        public Vector2 velocity;
 
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();
             anim = GetComponentInChildren<Animator>();
+            dustParticle = Resources.Load("Particles/DustDirtyPoof") as GameObject;
         }
 
         private void Update()
         {
             CheckForGround();
             Animate();
+
+            if (Time.frameCount%5==0)
+            {
+                velocity = rigidBody.velocity;
+            }
         }
 
         private void FixedUpdate()
@@ -186,6 +193,14 @@ namespace SoulHunter.Player
         public void HandleMoveInput(Vector2 input)
         {
             i_moveInput = input;
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (velocity.y < -5)
+            {
+                Instantiate(dustParticle, new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z + 1) , dustParticle.transform.rotation);
+            }
         }
     }
 }
