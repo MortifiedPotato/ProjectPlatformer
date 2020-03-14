@@ -16,6 +16,9 @@ namespace SoulHunter.Dialogue
 
         Animator animator;
 
+        [SerializeField] TMP_FontAsset dialogueFont;
+        [SerializeField] TMP_FontAsset normalFont;
+
         [SerializeField] GameObject dialogueBox;
 
         [SerializeField] Button ContinueButton;
@@ -31,16 +34,18 @@ namespace SoulHunter.Dialogue
             animator = dialogueBox.GetComponent<Animator>();
         }
 
-        public void StartDialogue(Dialogue dialogue)
+        public void StartDialogue(Dialogue _dialogue, Color _nameColor, Color _dialogueColor)
         {
             animator.SetBool("inDialogue", true);
             ContinueButton.Select();
 
-            nameText.text = dialogue.name;
+            nameText.text = _dialogue.name;
+            nameText.color = _nameColor;
+            dialogueText.color = _dialogueColor;
 
             sentences.Clear();
 
-            foreach (string sentence in dialogue.sentences)
+            foreach (string sentence in _dialogue.sentences)
             {
                 sentences.Enqueue(sentence);
             }
@@ -61,22 +66,29 @@ namespace SoulHunter.Dialogue
             {
                 if (sentences.Count == 0)
                 {
+                    dialogueText.alignment = TextAlignmentOptions.Center;
                     dialogueText.fontStyle = FontStyles.Italic;
+                    dialogueText.color = Color.white;
+                    dialogueText.font = normalFont;
+                    dialogueText.fontSize = 20;
                     EndDialogue();
                     return;
                 }
 
+                dialogueText.alignment = TextAlignmentOptions.TopLeft;
                 dialogueText.fontStyle = FontStyles.Normal;
+                dialogueText.font = dialogueFont;
+                dialogueText.fontSize = 36;
                 string sentence = sentences.Dequeue();
                 StopAllCoroutines();
                 StartCoroutine(TypeSentence(sentence));
             }
         }
 
-        IEnumerator TypeSentence(string sentence)
+        IEnumerator TypeSentence(string _sentence)
         {
             dialogueText.text = "";
-            foreach (char letter in sentence.ToCharArray())
+            foreach (char letter in _sentence.ToCharArray())
             {
                 dialogueText.text += letter;
                 yield return null;
