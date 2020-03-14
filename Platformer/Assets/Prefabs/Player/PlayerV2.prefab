@@ -395,10 +395,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9462880efdc1fd478f557ab984fcf06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthPoints: 3
-  isDissolving: 0
-  sprite: {fileID: 0}
+  Health: 0
   deathHeight: -10
+  fade: 1
+  characterSprite: {fileID: 9109488785574472038}
 --- !u!114 &8869320439067664212
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -226,9 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3edca2b6dd2477b4099806cbf7b66cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthPoints: 3
-  isDissolving: 0
+  Health: 0
   deathHeight: -10
+  fade: 1
+  characterSprite: {fileID: 6763832758375902552}
   MoveSpeed: 3
   KnockBack: 3
   MoveRight: 0

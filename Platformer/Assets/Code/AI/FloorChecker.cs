@@ -17,8 +17,6 @@ namespace SoulHunter.Enemy
             if (collision.gameObject.tag == "Environment")
             {
                 Enemy.MoveRight = !Enemy.MoveRight;
-                print("I wanna turn around");
-
             }
         }
     }
