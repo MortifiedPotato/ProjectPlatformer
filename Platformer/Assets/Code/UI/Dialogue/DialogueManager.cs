@@ -85,6 +85,19 @@ namespace SoulHunter.Dialogue
             }
         }
 
+        public void CancelDialogue()
+        {
+            StopAllCoroutines();
+            animator.SetBool("inDialogue", false);
+        }
+
+        void EndDialogue()
+        {
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(">>End of conversation.<<"));
+            nonTriggerable = true;
+        }
+
         IEnumerator TypeSentence(string _sentence)
         {
             dialogueText.text = "";
@@ -93,13 +106,6 @@ namespace SoulHunter.Dialogue
                 dialogueText.text += letter;
                 yield return null;
             }
-        }
-
-        void EndDialogue()
-        {
-            StopAllCoroutines();
-            StartCoroutine(TypeSentence(">>End of conversation.<<"));
-            nonTriggerable = true;
         }
     }
 

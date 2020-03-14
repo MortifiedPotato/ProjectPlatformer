@@ -4,6 +4,7 @@ namespace SoulHunter.Dialogue
 {
     public class DialogueTrigger : MonoBehaviour
     {
+        public bool repeatable;
         public Color nameColor = Color.white;
         public Color dialogueColor = Color.white;
 
@@ -11,20 +12,40 @@ namespace SoulHunter.Dialogue
 
         bool hasBeenPlayed;
 
-        public void TriggerDialogue()
+        void TriggerDialogue()
         {
             DialogueManager.Instance.StartDialogue(dialogue, nameColor, dialogueColor);
+        }
+
+        void CancelDialogue()
+        {
+            DialogueManager.Instance.CancelDialogue();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Player"))
             {
-                if (!hasBeenPlayed)
+                if (repeatable)
                 {
                     TriggerDialogue();
-                    hasBeenPlayed = true;
                 }
+                else
+                {
+                    if (!hasBeenPlayed)
+                    {
+                        TriggerDialogue();
+                        hasBeenPlayed = true;
+                    }
+                }
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                CancelDialogue();
             }
         }
     }
