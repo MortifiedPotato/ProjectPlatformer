@@ -5,15 +5,21 @@ namespace SoulHunter.Gameplay
 {
     public class HealthSystem : MonoBehaviour
     {
-        public int HealthPoints = 3;
-        public bool isDissolving;
-        SpriteRenderer sprite;
+        const int maxHealth = 3;
+        public int Health;
+
         public float deathHeight = -10;
-        internal float fade = 1;
+        public float fade = 1;
+
+        bool isDissolving;
+
+        [SerializeField] SpriteRenderer characterSprite;
 
         private void Start()
         {
-            sprite = GetComponentInChildren<SpriteRenderer>();
+            //sprite = GetComponentInChildren<SpriteRenderer>();
+
+            Health = maxHealth;
         }
 
         private void Update()
@@ -29,9 +35,9 @@ namespace SoulHunter.Gameplay
 
         public void TakeDamage()
         {
-            HealthPoints--;
+            Health--;
 
-            if (HealthPoints < 1)
+            if (Health < 1)
             {
                 isDissolving = true;
             }
@@ -39,7 +45,7 @@ namespace SoulHunter.Gameplay
 
         void Healing()
         {
-            HealthPoints++;
+            Health++;
         }
 
         protected virtual void HandleDeath()
@@ -63,7 +69,7 @@ namespace SoulHunter.Gameplay
                     fade = 0f;
                 }
 
-                sprite.material.SetFloat("_Fade", fade);
+                characterSprite.material.SetFloat("_Fade", fade);
             }
             else
             {
@@ -73,7 +79,7 @@ namespace SoulHunter.Gameplay
                     fade = 1f;
                 }
 
-                sprite.material.SetFloat("_Fade", fade);
+                characterSprite.material.SetFloat("_Fade", fade);
             }
         }
     }

@@ -11,7 +11,7 @@ namespace SoulHunter.UI
             UIManager.Instance.GameUI = this;
             Resume();
 
-            Cursor.visible = false;
+            Cursor.visible = true;
         }
 
         private void OnDisable()
