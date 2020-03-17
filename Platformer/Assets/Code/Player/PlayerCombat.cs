@@ -7,7 +7,8 @@ namespace SoulHunter.Combat
 {
     public class PlayerCombat : MonoBehaviour
     {
-        [SerializeField] float attackduration;
+        [SerializeField] float attackDuration;
+        Collider2D OverlapCircle;
         public GameObject Weapon;
         float attackTimer;
         bool attacking;
@@ -15,7 +16,8 @@ namespace SoulHunter.Combat
         void Start()
         {
             Weapon.SetActive(false);
-            attackduration = attackduration / 10;
+            attackDuration = attackDuration / 10;
+            OverlapCircle = Physics2D.OverlapCircle(transform.position, 2f, 11);
         }
 
         void Update()
@@ -24,6 +26,11 @@ namespace SoulHunter.Combat
             {
                 attackTimer += Time.deltaTime;
             }
+            if (OverlapCircle.gameObject.CompareTag("Enemy"))
+            {
+                print("Enemy is in range");
+            }
+
             ResetWeapon();
         }
 
@@ -43,7 +50,7 @@ namespace SoulHunter.Combat
 
         void ResetWeapon()
         {
-            if (attackTimer >= attackduration)
+            if (attackTimer >= attackDuration)
             {
                 Weapon.SetActive(false);
                 attackTimer = 0;
