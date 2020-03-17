@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 586697287}
   - component: {fileID: 586697289}
   - component: {fileID: 586697288}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,9 +88,9 @@ GameObject:
   - component: {fileID: 9181093968343972745}
   - component: {fileID: 8177338680363609118}
   - component: {fileID: 912443719982999557}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyWeapon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6763832758375902555}
   - component: {fileID: 6763832758375902552}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,8 +278,8 @@ GameObject:
   - component: {fileID: 6763832758573670801}
   - component: {fileID: 12805095}
   - component: {fileID: 5602860212185814074}
-  - component: {fileID: 8406643884713664678}
-  m_Layer: 0
+  - component: {fileID: -6654593870103700218}
+  m_Layer: 11
   m_Name: Sprenemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.11237991}
   serializedVersion: 2
   m_Radius: 0.3287543
---- !u!114 &8406643884713664678
+--- !u!114 &-6654593870103700218
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -369,8 +369,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6763832758573670802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5387bb5858dbf53468514fc382c8a680, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e6567fa96dffb5429c44dc23f37e507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackduration: 2
+  attackduration: 0
   Weapon: {fileID: 5518214823143716770}
