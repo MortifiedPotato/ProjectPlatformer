@@ -26,17 +26,9 @@ namespace SoulHunter.Dialogue
         {
             if (collision.CompareTag("Player"))
             {
-                if (repeatable)
+                if (!hasBeenPlayed || repeatable)
                 {
                     TriggerDialogue();
-                }
-                else
-                {
-                    if (!hasBeenPlayed)
-                    {
-                        TriggerDialogue();
-                        hasBeenPlayed = true;
-                    }
                 }
             }
         }
@@ -46,6 +38,11 @@ namespace SoulHunter.Dialogue
             if (collision.CompareTag("Player"))
             {
                 CancelDialogue();
+
+                if (DialogueManager.Instance.sentences.Count == 0 && !repeatable)
+                {
+                    hasBeenPlayed = true;
+                }
             }
         }
     }

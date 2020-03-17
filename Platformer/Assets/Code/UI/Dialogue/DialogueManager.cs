@@ -10,19 +10,21 @@ namespace SoulHunter.Dialogue
     {
         public static DialogueManager Instance;
 
-        private Queue<string> sentences;
+        public Queue<string> sentences;
 
         bool nonTriggerable;
 
         Animator animator;
 
+        [Header("Fonts")]
         [SerializeField] TMP_FontAsset dialogueFont;
         [SerializeField] TMP_FontAsset normalFont;
 
+        [Header("Objects")]
         [SerializeField] GameObject dialogueBox;
-
         [SerializeField] Button ContinueButton;
 
+        [Header("Texts")]
         [SerializeField] TextMeshProUGUI nameText;
         [SerializeField] TextMeshProUGUI dialogueText;
 

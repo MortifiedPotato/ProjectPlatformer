@@ -5,7 +5,7 @@ using UnityEngine;
 // Followed tutorial by Sean Duffy, who wrote a majority of the code
 namespace SoulHunter.Player
 {
-    public class GrappleSystem : MonoBehaviour, IMoveInput
+    public class GrappleSystem : MonoBehaviour, Input.IMoveInput
     {
         public bool isColliding;
 
@@ -129,6 +129,9 @@ namespace SoulHunter.Player
                     ropeJoint.enabled = true;
                     ropeHingeAnchorSprite.enabled = true;
                 }
+
+                //This needs to stay as it often needs to be tested. Can be temporarily commented.
+                Debug.Log($"Grapple is attached to {hit.transform.name}");
             }
             else
             {
