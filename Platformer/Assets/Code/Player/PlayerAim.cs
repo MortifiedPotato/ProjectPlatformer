@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SoulHunter.Player
 {
-    public class PlayerAim : MonoBehaviour, IAimInput
+    public class PlayerAim : MonoBehaviour, Input.IAimInput
     {
         [Header("Aim Variables")]
         public Vector2 aimDirection;

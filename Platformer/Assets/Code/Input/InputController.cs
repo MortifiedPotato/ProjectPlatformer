@@ -12,18 +12,19 @@ namespace SoulHunter.Input
         //Interfaces
         IMoveInput[] i_MoveInput;
         IAimInput i_AimInput;
-
+        ITogglePause i_TogglePause;
 
         //Scripts
         PlayerMovement playerMovement;
         PlayerCombat playerCombat;
         GrappleSystem grappleSystem;
 
-        private void Awake()
+        private void Start()
         {
             //Get Interfaces
             i_MoveInput = GetComponents<IMoveInput>();
             i_AimInput = GetComponent<IAimInput>();
+            i_TogglePause = UIManager.Instance.GameCanvas?.GetComponent<PauseMenu>();
 
             //Get Scripts
             playerMovement = GetComponent<PlayerMovement>();
@@ -83,7 +84,7 @@ namespace SoulHunter.Input
         {
             if (context.performed)
             {
-                UIManager.Instance?.PauseGame();
+                i_TogglePause?.TogglePause();
             }
         }
 
