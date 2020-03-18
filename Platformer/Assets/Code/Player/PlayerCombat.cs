@@ -10,7 +10,7 @@ namespace SoulHunter.Combat
         [SerializeField] float attackDuration;
         Collider2D OverlapCircle;
         public GameObject Weapon;
-        float attackTimer;
+        float attackTimer = 2f;
         bool attacking;
 
         void Start()

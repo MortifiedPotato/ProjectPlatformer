@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SoulHunter.Player
+namespace SoulHunter.Input
 {
     public interface IMoveInput
     {

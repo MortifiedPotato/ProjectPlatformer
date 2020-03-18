@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SoulHunter.Player
 {
-    public class PlayerMovement : MonoBehaviour, IMoveInput
+    public class PlayerMovement : MonoBehaviour, Input.IMoveInput
     {
         [Header("Movement Status")]
         public bool isGrounded;

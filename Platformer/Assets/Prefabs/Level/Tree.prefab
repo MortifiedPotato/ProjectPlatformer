@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3870007080367455532}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1245,7 +1245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7143101647903890377}
   - component: {fileID: 7143101647903890422}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cavity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1736,7 +1736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1185036480854918168}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Bark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

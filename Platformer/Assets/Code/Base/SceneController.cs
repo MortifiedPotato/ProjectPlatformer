@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using UnityEngine.SceneManagement;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
+using SoulHunter.UI;
 
 public class SceneController : MonoBehaviour
 {
@@ -57,11 +59,22 @@ public class SceneController : MonoBehaviour
 
     IEnumerator LoadSceneAsync(int index)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(index);
 
-        while (!asyncLoad.isDone)
+        UIManager.Instance.LoadingScreenCanvas.SetActive(true);
+
+        while (!operation.isDone)
         {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+
+            UIManager.Instance.loadingBar.value = progress;
+
             yield return null;
+        }
+
+        if (operation.isDone)
+        {
+            UIManager.Instance.LoadingScreenCanvas.SetActive(false);
         }
     }
 }

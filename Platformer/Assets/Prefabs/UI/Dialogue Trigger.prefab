@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2003867850857481581}
   - component: {fileID: 2003867850857481554}
   - component: {fileID: 2003867850857481555}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Dialogue Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984883cef4657654983c1c3f64244ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatable: 0
   nameColor: {r: 1, g: 1, b: 1, a: 1}
   dialogueColor: {r: 1, g: 1, b: 1, a: 1}
   dialogue:
