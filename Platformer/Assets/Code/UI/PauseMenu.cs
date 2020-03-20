@@ -2,7 +2,7 @@
 
 namespace SoulHunter.UI
 {
-    public class PauseMenu : SceneController, Input.ITogglePause
+    public class PauseMenu : MonoBehaviour, Input.ITogglePause
     {
         public static bool GameIsPaused;
 
@@ -10,6 +10,8 @@ namespace SoulHunter.UI
 
         private void Start()
         {
+            Input.InputController.Instance.i_TogglePause = this;
+
             GameIsPaused = false;
             HandlePause();
         }
@@ -44,6 +46,11 @@ namespace SoulHunter.UI
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
+        }
+
+        public void ChangeIt(int index)
+        {
+            SceneController.Instance.ChangeScene(index);
         }
     }
 }

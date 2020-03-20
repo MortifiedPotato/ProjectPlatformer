@@ -9,22 +9,28 @@ namespace SoulHunter.Input
 {
     public class InputController : MonoBehaviour
     {
+        public static InputController Instance;
+        
         //Interfaces
         IMoveInput[] i_MoveInput;
         IAimInput i_AimInput;
-        ITogglePause i_TogglePause;
+        public ITogglePause i_TogglePause;
 
         //Scripts
         PlayerMovement playerMovement;
         PlayerCombat playerCombat;
         GrappleSystem grappleSystem;
 
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         private void Start()
         {
             //Get Interfaces
             i_MoveInput = GetComponents<IMoveInput>();
             i_AimInput = GetComponent<IAimInput>();
-            i_TogglePause = UIManager.Instance.GameCanvas?.GetComponent<PauseMenu>();
 
             //Get Scripts
             playerMovement = GetComponent<PlayerMovement>();

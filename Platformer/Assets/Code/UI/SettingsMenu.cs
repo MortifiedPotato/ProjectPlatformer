@@ -21,7 +21,7 @@ namespace SoulHunter.UI
         public void SetVolume(float volume)
         {
             audioMixer.SetFloat("Volume", volume);
-            GameSettings.Instance.soundVolume = volume;
+            //GameSettings.Instance.soundVolume = volume;
 
             float displayValue = volume / 80;
             volumePercentage.text = Mathf.Round((displayValue + 1) * 100).ToString();

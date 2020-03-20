@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace SoulHunter.UI
@@ -9,7 +10,6 @@ namespace SoulHunter.UI
 
         // Pause state
         public static bool GameIsPaused;
-
         public GameObject MenuCanvas { get; set; }
         public GameObject GameCanvas { get; set; }
 

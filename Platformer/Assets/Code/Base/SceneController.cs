@@ -61,20 +61,15 @@ public class SceneController : MonoBehaviour
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(index);
 
-        UIManager.Instance.LoadingScreenCanvas.SetActive(true);
+        //UIManager.Instance.LoadingScreenCanvas.SetActive(true);
 
         while (!operation.isDone)
         {
-            float progress = Mathf.Clamp01(operation.progress / .9f);
-
-            UIManager.Instance.loadingBar.value = progress;
-
+            //float progress = Mathf.Clamp01(operation.progress / .9f);
+            //UIManager.Instance.loadingBar.value = progress;
             yield return null;
         }
 
-        if (operation.isDone)
-        {
-            UIManager.Instance.LoadingScreenCanvas.SetActive(false);
-        }
+        //UIManager.Instance.LoadingScreenCanvas.SetActive(false);
     }
 }

@@ -295,8 +295,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6184959299203262911, guid: faa1368ef1493184fa99c20f3b3b6391,
-    type: 3}
+  m_Sprite: {fileID: 40843185749886244, guid: f8ebd974fd464fb43b80bae13f4abb05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -478,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDuration: 2
+  Overlap: {fileID: 0}
   Weapon: {fileID: 1154278111}
 --- !u!70 &4149204017818456498
 CapsuleCollider2D:
@@ -493,7 +493,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.18}
-  m_Size: {x: 0.5, y: 0.8}
+  m_Size: {x: 0.7, y: 1.2}
   m_Direction: 0
 --- !u!232 &4149204017818456492
 DistanceJoint2D:

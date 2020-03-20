@@ -861,6 +861,11 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6524293612322828580, guid: 782724363090eee479c1dc6a8b67dfea,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6551259726081489692, guid: 782724363090eee479c1dc6a8b67dfea,
         type: 3}
       propertyPath: m_AnchorMax.y
