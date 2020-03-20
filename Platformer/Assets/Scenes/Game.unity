@@ -334,7 +334,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009552181, y: 0.017688394}
+  m_Offset: {x: -0.012213439, y: 0.017688394}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -345,7 +345,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4328132, y: 1.1242249}
+  m_Size: {x: 1.6927814, y: 1.1242249}
   m_EdgeRadius: 0
 --- !u!1 &281926762
 GameObject:
@@ -470,9 +470,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 228613480}
     m_Modifications:
+    - target: {fileID: -6654593870103700218, guid: 08b982582fca1944c89bfa948043bf14,
+        type: 3}
+      propertyPath: attackduration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 586697285, guid: 08b982582fca1944c89bfa948043bf14, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031363807636148437, guid: 08b982582fca1944c89bfa948043bf14,
+        type: 3}
+      propertyPath: KnockBack
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5518214823143716770, guid: 08b982582fca1944c89bfa948043bf14,
         type: 3}
@@ -3436,9 +3446,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 228613480}
     m_Modifications:
+    - target: {fileID: -6654593870103700218, guid: 08b982582fca1944c89bfa948043bf14,
+        type: 3}
+      propertyPath: attackduration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 586697285, guid: 08b982582fca1944c89bfa948043bf14, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031363807636148437, guid: 08b982582fca1944c89bfa948043bf14,
+        type: 3}
+      propertyPath: KnockBack
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5518214823143716770, guid: 08b982582fca1944c89bfa948043bf14,
         type: 3}
@@ -4645,6 +4665,10 @@ PrefabInstance:
       propertyPath: _overlap
       value: 
       objectReference: {fileID: 234035953}
+    - target: {fileID: 888956467, guid: 5d4c67715df8e9a429f45a182fad5359, type: 3}
+      propertyPath: attackDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1154278111, guid: 5d4c67715df8e9a429f45a182fad5359, type: 3}
       propertyPath: m_IsActive
       value: 1

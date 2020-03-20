@@ -17,7 +17,6 @@ namespace SoulHunter.Combat
         {
             Weapon.SetActive(false);
             attackDuration = attackDuration / 10;
-            
         }
 
         void Update()
@@ -26,6 +25,7 @@ namespace SoulHunter.Combat
             {
                 attackTimer += Time.deltaTime;
             }
+            //print(GetComponent<HealthSystem>().Health);
 
             ResetWeapon();
         }
@@ -51,14 +51,6 @@ namespace SoulHunter.Combat
                 Weapon.SetActive(false);
                 attackTimer = 0;
                 attacking = false;
-            }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                GetComponent<HealthSystem>().TakeDamage();
             }
         }
 

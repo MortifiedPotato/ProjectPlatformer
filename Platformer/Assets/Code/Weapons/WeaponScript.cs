@@ -10,6 +10,7 @@ namespace SoulHunter.Weapons
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
+
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 HealthSystem EnemyHealth = collision.gameObject.GetComponent<HealthSystem>();
