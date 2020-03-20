@@ -25,7 +25,6 @@ namespace SoulHunter.Combat
             {
                 attackTimer += Time.deltaTime;
             }
-            //print(GetComponent<HealthSystem>().Health);
 
             ResetWeapon();
         }
