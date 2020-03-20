@@ -12,7 +12,7 @@ namespace SoulHunter.Player
         {
             if (fade <= 0f)
             {
-                SceneController.Instance.ResetScene();
+                Base.SceneController.Instance.ResetScene();
             }
         }
     }

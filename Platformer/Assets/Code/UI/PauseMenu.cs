@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SoulHunter.UI
 {
@@ -48,9 +49,9 @@ namespace SoulHunter.UI
             GameIsPaused = true;
         }
 
-        public void ChangeIt(int index)
+        public void ChangeScene(int index)
         {
-            SceneController.Instance.ChangeScene(index);
+            SceneManager.LoadScene(index);
         }
     }
 }

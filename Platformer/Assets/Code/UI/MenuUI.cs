@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using SoulHunter.Base;
+
 namespace SoulHunter.UI
 {
     public class MenuUI : MonoBehaviour
@@ -10,12 +12,12 @@ namespace SoulHunter.UI
             Cursor.visible = true;
         }
 
-        public void ChangeIt(int index)
+        public void ChangeScene(int index)
         {
             SceneController.Instance.ChangeScene(index);
         }
 
-        public void QuitIt()
+        public void QuitGame()
         {
             SceneController.Instance.QuitGame();
         }

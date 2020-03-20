@@ -12,13 +12,6 @@ public class Initializer : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void Initialize()
     {
-        if (File.Exists(Application.dataPath + "/Resources/" + ManagerPath + ".prefab"))
-        {
-            Instantiate(Resources.Load(ManagerPath));
-        }
-        else
-        {
-            Debug.LogError("Managers prefab can not be found at Resources/" + ManagerPath);
-        }
+        Instantiate(Resources.Load(ManagerPath));
     }
 }
