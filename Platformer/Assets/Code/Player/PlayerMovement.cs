@@ -77,22 +77,22 @@ namespace SoulHunter.Player
             {
                 if (i_moveInput.x < 0)
                 {
-                    playerSprite.flipX = false;
+                    playerSprite.flipX = true;
                 }
                 else if (i_moveInput.x > 0)
                 {
-                    playerSprite.flipX = true;
+                    playerSprite.flipX = false;
                 }
             }
             else
             {
                 if (rigidBody.velocity.x < 0)
                 {
-                    playerSprite.flipX = false;
+                    playerSprite.flipX = true;
                 }
                 else if (rigidBody.velocity.x > 0)
                 {
-                    playerSprite.flipX = true;
+                    playerSprite.flipX = false;
                 }
             }
 
