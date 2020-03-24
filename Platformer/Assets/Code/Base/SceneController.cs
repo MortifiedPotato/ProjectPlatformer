@@ -67,6 +67,7 @@ public class SceneController : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
             UIManager.Instance.loadingBar.value = progress;
+            UIManager.Instance.percentage.text = $"{(progress * 100).ToString()}%";
             yield return null;
         }
 

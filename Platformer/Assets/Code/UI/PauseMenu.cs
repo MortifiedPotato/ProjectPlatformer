@@ -51,7 +51,7 @@ namespace SoulHunter.UI
 
         public void ChangeScene(int index)
         {
-            SceneManager.LoadScene(index);
+            SceneController.Instance.ChangeScene(index);
         }
     }
 }

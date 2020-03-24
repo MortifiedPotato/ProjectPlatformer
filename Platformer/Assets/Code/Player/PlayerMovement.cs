@@ -197,9 +197,15 @@ namespace SoulHunter.Player
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            // Ground Impact Particle
             if (velocity.y < -5)
             {
                 Instantiate(dustParticle, new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z + 1) , dustParticle.transform.rotation);
+            }
+            
+            // Ground Impact Shake
+            if (velocity.y < -8)
+            {
                 CameraManager.Instance.ShakeCamera(1, 0, 0);
             }
         }

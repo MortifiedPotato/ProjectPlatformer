@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 namespace SoulHunter.UI
 {
@@ -14,6 +15,7 @@ namespace SoulHunter.UI
         public GameObject GameCanvas { get; set; }
 
         public GameObject LoadingScreenCanvas;
+        public TextMeshProUGUI percentage;
         public Slider loadingBar;
 
         private void Awake()
