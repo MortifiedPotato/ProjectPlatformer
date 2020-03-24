@@ -412,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimDirection: {x: 0, y: 0}
   aimAngle: 0
-  crosshairDistance: 1
+  crosshairDistance: 1.5
 --- !u!114 &8774804050221565623
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-using SoulHunter.Base;
-
 namespace SoulHunter.UI
 {
     public class MenuUI : MonoBehaviour

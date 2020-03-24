@@ -302,7 +302,7 @@
                 {
                     "name": "",
                     "id": "c4303334-ccbb-4f18-8197-7587c206d0c3",
-                    "path": "<Keyboard>/leftShift",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -324,7 +324,7 @@
                 {
                     "name": "",
                     "id": "707e0305-786f-4ec8-a257-897afff13e6f",
-                    "path": "<Keyboard>/leftAlt",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",

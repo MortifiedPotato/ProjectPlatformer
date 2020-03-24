@@ -200,6 +200,7 @@ namespace SoulHunter.Player
             if (velocity.y < -5)
             {
                 Instantiate(dustParticle, new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z + 1) , dustParticle.transform.rotation);
+                CameraManager.Instance.ShakeCamera(1, 0, 0);
             }
         }
     }
