@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 
 using SoulHunter.Input;
 using SoulHunter.Dialogue;
@@ -10,6 +11,7 @@ namespace SoulHunter.UI
         public static bool GameIsPaused;
 
         public GameObject PauseMenuUI;
+        [SerializeField] Button continueButton;
 
         private void Start()
         {
@@ -50,6 +52,8 @@ namespace SoulHunter.UI
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
+
+            continueButton.Select();
         }
 
         public void ChangeScene(int index)
