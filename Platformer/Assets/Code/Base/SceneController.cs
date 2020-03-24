@@ -1,17 +1,25 @@
 ﻿using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
-
-using SoulHunter.UI;
+using TMPro;
 
 public class SceneController : MonoBehaviour
 {
     public static SceneController Instance { get; private set; }
 
+    public GameObject loadingBar;
+    public TextMeshProUGUI loadingProgress;
+
+    Animator transitionAnimator;
+    Slider loadingSlider;
+
     private void Awake()
     {
         // Set Instance
         Instance = this;
+        transitionAnimator = GetComponent<Animator>();
+        loadingSlider = loadingBar.GetComponent<Slider>();
     }
 
     /// <summary>
@@ -32,21 +40,26 @@ public class SceneController : MonoBehaviour
         return SceneManager.sceneCountInBuildSettings;
     }
 
+    public void TransitionScene(int index)
+    {
+        transitionAnimator.SetBool("isLoading", true);
+        transitionAnimator.SetInteger("index", index);
+    }
+
     /// <summary>
     /// Loads the scene specified with an int (Scene Index)
     /// </summary>
     /// <param name="sceneIndex"></param>
-    public void ChangeScene(int index)
+    void ChangeScene()
     {
-        if (GetBuildIndex() != index)
-        {
-            StartCoroutine(LoadSceneAsync(index));
-        }
+        int index = transitionAnimator.GetInteger("index");
+        StartCoroutine(LoadSceneAsync(index));
     }
 
     public void ResetScene()
     {
-        StartCoroutine(LoadSceneAsync(GetBuildIndex()));
+        transitionAnimator.SetBool("isLoading", true);
+        transitionAnimator.SetInteger("index", GetBuildIndex());
     }
 
     /// <summary>
@@ -61,16 +74,18 @@ public class SceneController : MonoBehaviour
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(index);
 
-        UIManager.Instance.LoadingScreenCanvas.SetActive(true);
+        loadingBar.SetActive(true);
 
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
-            UIManager.Instance.loadingBar.value = progress;
-            UIManager.Instance.percentage.text = $"{(progress * 100).ToString()}%";
+            loadingSlider.value = progress;
+            loadingProgress.text = $"{(progress * 100).ToString()}%";
             yield return null;
         }
 
-        UIManager.Instance.LoadingScreenCanvas.SetActive(false);
+        loadingBar.SetActive(false);
+
+        transitionAnimator.SetBool("isLoading", false);
     }
 }

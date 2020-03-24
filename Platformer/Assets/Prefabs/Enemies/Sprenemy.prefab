@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 586697287}
   - component: {fileID: 586697289}
   - component: {fileID: 586697288}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6763832758375902555}
   - component: {fileID: 6763832758375902552}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6763832758573670802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.22, y: 2.47, z: -1.5375}
+  m_LocalPosition: {x: 3.22, y: 2.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6763832758375902555}

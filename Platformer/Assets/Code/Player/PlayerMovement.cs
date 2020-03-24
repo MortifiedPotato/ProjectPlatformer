@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SoulHunter.Player
 {
@@ -11,7 +9,7 @@ namespace SoulHunter.Player
         public bool isSwinging;
         public bool isJumping;
 
-        public bool groundContact;
+        bool[] groundColliders = new bool[3];
 
         [Header("Movement Attributes")]
         public float speed = 3f;
@@ -28,6 +26,7 @@ namespace SoulHunter.Player
         public float fGroundedRemember;
 
         [Header("Object Variables")]
+        public LayerMask groundCheckLayer;
         public SpriteRenderer playerSprite;
         GameObject dustParticle;
         Rigidbody2D rigidBody;
@@ -167,21 +166,26 @@ namespace SoulHunter.Player
         void CheckForGround()
         {
             var halfHeight = playerSprite.bounds.extents.y;
-            groundContact = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), 0.05f, 1);
+            groundColliders[0] = Physics2D.OverlapCircle(new Vector2(transform.position.x + 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
+            groundColliders[1] = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
+            groundColliders[2] = Physics2D.OverlapCircle(new Vector2(transform.position.x - 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
 
             fGroundedRemember -= Time.deltaTime;
 
-            if (groundContact)
+            for (int i = 0; i < groundColliders.Length; i++)
             {
-                fGroundedRemember = fGroundedRememberTime;
-                isGrounded = true;
+                if (groundColliders[i])
+                {
+                    fGroundedRemember = fGroundedRememberTime;
+                    isGrounded = true;
 
-                return;
-            }
+                    return;
+                }
 
-            if (fGroundedRemember < 0 && !groundContact)
-            {
-                isGrounded = false;
+                if (fGroundedRemember < 0 && !groundColliders[i])
+                {
+                    isGrounded = false;
+                }
             }
 
             if (isJumping)
@@ -208,6 +212,15 @@ namespace SoulHunter.Player
             {
                 CameraManager.Instance.ShakeCamera(1, 0, 0);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            var halfHeight = playerSprite.bounds.extents.y;
+            Gizmos.DrawWireSphere(new Vector3(transform.position.x + 0.4f, transform.position.y - halfHeight, -2), 0.1f);
+            Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y - halfHeight, -2), 0.1f);
+            Gizmos.DrawWireSphere(new Vector3(transform.position.x - 0.4f, transform.position.y - halfHeight, -2), 0.1f);
         }
     }
 }

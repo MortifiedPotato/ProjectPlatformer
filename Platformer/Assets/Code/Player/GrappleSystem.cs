@@ -131,7 +131,7 @@ namespace SoulHunter.Player
                 }
 
                 //This needs to stay as it often needs to be tested. Can be temporarily commented.
-                Debug.Log($"Grapple is attached to {hit.transform.name}");
+                //Debug.Log($"Grapple is attached to {hit.transform.name}");
             }
             else
             {

@@ -46,14 +46,9 @@ namespace SoulHunter.Player
             aimDirection = Quaternion.Euler(0, 0, aimAngle * Mathf.Rad2Deg) * Vector2.right;
         }
 
-        public void HandleAimInputX(float input)
+        public void HandleAimInput(Vector2 input)
         {
-            i_aimInput.x = input;
-        }
-
-        public void HandleAimInputY(float input)
-        {
-            i_aimInput.y = input;
+            i_aimInput = input;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+
+using SoulHunter.Input;
+using SoulHunter.Dialogue;
 
 namespace SoulHunter.UI
 {
@@ -11,7 +13,7 @@ namespace SoulHunter.UI
 
         private void Start()
         {
-            Input.InputController.Instance.i_TogglePause = this;
+            InputController.Instance.i_TogglePause = this;
 
             GameIsPaused = false;
             HandlePause();
@@ -33,6 +35,7 @@ namespace SoulHunter.UI
             {
                 Pause();
             }
+            DialogueManager.Instance.PauseCheck();
         }
 
         void Resume()
@@ -51,7 +54,7 @@ namespace SoulHunter.UI
 
         public void ChangeScene(int index)
         {
-            SceneController.Instance.ChangeScene(index);
+            SceneController.Instance.TransitionScene(index);
         }
     }
 }

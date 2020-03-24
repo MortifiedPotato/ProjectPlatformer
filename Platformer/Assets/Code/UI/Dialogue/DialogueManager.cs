@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
+using SoulHunter.UI;
+
 namespace SoulHunter.Dialogue
 {
     public class DialogueManager : MonoBehaviour
@@ -106,7 +108,19 @@ namespace SoulHunter.Dialogue
             foreach (char letter in _sentence.ToCharArray())
             {
                 dialogueText.text += letter;
-                yield return null;
+                yield return new WaitForSeconds(GameSettings.dialogueSpeed / 10);
+            }
+        }
+
+        public void PauseCheck()
+        {
+            if (PauseMenu.GameIsPaused)
+            {
+                animator.SetBool("GameIsPaused", true);
+            }
+            else
+            {
+                animator.SetBool("GameIsPaused", false);
             }
         }
     }

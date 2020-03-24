@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7597881708445454105}
   - component: {fileID: 2522151444399461526}
   - component: {fileID: 7158392135104081750}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Branch 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3870007080367455532}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Roots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 962234937166689421}
   - component: {fileID: 3332297948898419631}
   - component: {fileID: 3544957925354530506}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Branch 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1615254488724558599}
   - component: {fileID: 4756734506803764871}
   - component: {fileID: 6061122895435542294}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Branch 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1245,7 +1245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7143101647903890377}
   - component: {fileID: 7143101647903890422}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cavity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1736,7 +1736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1185036480854918168}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Main Bark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

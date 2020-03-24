@@ -3,7 +3,6 @@ using UnityEngine;
 
 using SoulHunter.Player;
 using SoulHunter.Combat;
-using SoulHunter.UI;
 
 namespace SoulHunter.Input
 {
@@ -38,27 +37,19 @@ namespace SoulHunter.Input
             grappleSystem = GetComponent<GrappleSystem>();
         }
 
+        public void OnAim(InputAction.CallbackContext context)
+        {
+            if (context.action.ReadValue<Vector2>() != Vector2.zero)
+            {
+                i_AimInput?.HandleAimInput(context.action.ReadValue<Vector2>());
+            }
+        }
+
         public void OnMove(InputAction.CallbackContext context)
         {
             for (int i = 0; i < i_MoveInput.Length; i++)
             {
                 i_MoveInput[i]?.HandleMoveInput(context.action.ReadValue<Vector2>());
-            }
-        }
-
-        public void OnAimHorizontal(InputAction.CallbackContext context)
-        {
-            if (context.action.ReadValue<float>() != 0)
-            {
-                i_AimInput?.HandleAimInputX(context.action.ReadValue<float>());
-            }
-        }
-
-        public void OnAimVertical(InputAction.CallbackContext context)
-        {
-            if (context.action.ReadValue<float>() != 0)
-            {
-                i_AimInput?.HandleAimInputY(context.action.ReadValue<float>());
             }
         }
 

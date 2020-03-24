@@ -6,39 +6,23 @@
             "id": "32bfaffb-75ba-4d53-b68a-859aa4049f26",
             "actions": [
                 {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "05be01c1-fc6b-465a-96e5-4b5a806e8d81",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone",
+                    "interactions": ""
+                },
+                {
                     "name": "Move",
                     "type": "PassThrough",
-                    "id": "05be01c1-fc6b-465a-96e5-4b5a806e8d81",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "AimHorizontal",
-                    "type": "PassThrough",
                     "id": "5a8c238b-8dde-4e41-b23c-b7778d5d37ea",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "AimVertical",
-                    "type": "PassThrough",
-                    "id": "3c689e39-c4e0-4af5-9118-f6251d62d5e8",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "Jump",
-                    "type": "Button",
-                    "id": "4cc90cce-509a-4850-b595-684222651e2f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Attack",
                     "type": "Button",
                     "id": "c544ab89-5fa8-403f-931a-8577f53b132a",
                     "expectedControlType": "",
@@ -46,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Pause",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "b4ed77d7-b958-4785-b662-8013a671d959",
                     "expectedControlType": "",
@@ -54,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Swing",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "1ac8c399-631c-40d3-98ac-76c947ba1b7a",
                     "expectedControlType": "",
@@ -62,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Detach",
+                    "name": "Swing",
                     "type": "Button",
                     "id": "96e3720e-5a0a-49ec-af33-e84bb003e5c0",
                     "expectedControlType": "",
@@ -70,9 +54,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Yank",
+                    "name": "Detach",
                     "type": "Button",
                     "id": "2dbbecb8-8439-44d5-9454-610a64125ef0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Yank",
+                    "type": "Button",
+                    "id": "3619b3d6-1fe2-464e-8266-b525f6a32476",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -212,39 +204,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "c545aa13-f6de-4895-bc4a-e36b7374ec30",
-                    "path": "1DAxis(whichSideWins=1)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AimHorizontal",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "ae31ece6-ddbc-4e36-880b-f30a6d39c0af",
-                    "path": "<Gamepad>/rightStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AimHorizontal",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "ad66f076-219f-4bd9-8aa9-fe146a14df86",
-                    "path": "<Gamepad>/rightStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AimHorizontal",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "351d6ee5-8e44-414d-a920-6e52a758ada7",
                     "path": "<Gamepad>/buttonWest",
@@ -355,35 +314,57 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "a188c5c6-12cb-4f39-86a7-70a34a517852",
-                    "path": "1DAxis(whichSideWins=1)",
+                    "name": "2D Vector",
+                    "id": "f91389be-e81d-4495-b528-a373c21efbaf",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AimVertical",
+                    "action": "Aim",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "f891854e-9fd8-405a-8414-af2954792c6b",
-                    "path": "<Gamepad>/rightStick/y",
+                    "name": "up",
+                    "id": "11d94df3-2bd6-4ef1-bd0e-217db55b963d",
+                    "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "AimVertical",
+                    "groups": "Gamepad",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
-                    "id": "d37b5fbc-4e9b-446e-9851-d42c416a317a",
-                    "path": "<Gamepad>/rightStick/y",
+                    "name": "down",
+                    "id": "9677a945-8082-477a-99d5-93764a51958e",
+                    "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "AimVertical",
+                    "groups": "Gamepad",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "79e2b703-cde1-4746-a864-06e548f7190c",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "c64dad06-b0bc-43c4-ae73-5b0931de5680",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

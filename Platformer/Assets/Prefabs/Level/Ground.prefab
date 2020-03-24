@@ -581,7 +581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5680242030760285681}
   - component: {fileID: 131756499616990041}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground
   m_TagString: Environment
   m_Icon: {fileID: 0}

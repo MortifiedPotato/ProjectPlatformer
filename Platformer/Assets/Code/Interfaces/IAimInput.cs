@@ -1,8 +1,9 @@
-﻿namespace SoulHunter.Input
+﻿using UnityEngine;
+
+namespace SoulHunter.Input
 {
     public interface IAimInput
     {
-        void HandleAimInputX(float inputX);
-        void HandleAimInputY(float inputY);
+        void HandleAimInput(Vector2 input);
     }
 }

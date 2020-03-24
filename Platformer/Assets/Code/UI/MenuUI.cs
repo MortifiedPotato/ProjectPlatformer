@@ -12,7 +12,7 @@ namespace SoulHunter.UI
 
         public void ChangeScene(int index)
         {
-            SceneController.Instance.ChangeScene(index);
+            SceneController.Instance.TransitionScene(index);
         }
 
         public void QuitGame()
