@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac3741cb3376cc4dbc6955b98b9fcd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundVolume: 0
+  soundVolume: 10
 --- !u!114 &701978077323445963
 MonoBehaviour:
   m_ObjectHideFlags: 0

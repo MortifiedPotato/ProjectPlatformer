@@ -8,11 +8,16 @@ namespace SoulHunter
     {
         public static GameSettings Instance;
 
-        public float soundVolume = 0;
+        public float soundVolume = 10;
 
         private void Awake()
         {
             Instance = this;
+        }
+
+        private void Start()
+        {
+            soundVolume = 10;
         }
     }
 }

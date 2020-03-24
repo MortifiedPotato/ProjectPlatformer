@@ -12,19 +12,27 @@ namespace SoulHunter.UI
         [SerializeField] TextMeshProUGUI volumePercentage;
         [SerializeField] Slider volumeSlider;
 
-        private void Start()
+        float SavedValue;
+
+        private void OnEnable()
         {
-            volumeSlider.value = GameSettings.Instance.soundVolume;
-            SetVolume(GameSettings.Instance.soundVolume);
+            CalculateValues();
+
+            volumeSlider.value = SavedValue;
+            SetVolume(SavedValue);
+        }
+        void CalculateValues()
+        {
+            SavedValue = GameSettings.Instance.soundVolume / 10;
         }
 
         public void SetVolume(float volume)
         {
-            audioMixer.SetFloat("Volume", volume);
-            //GameSettings.Instance.soundVolume = volume;
+            audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
+            GameSettings.Instance.soundVolume = volume * 10;
 
-            float displayValue = volume / 80;
-            volumePercentage.text = Mathf.Round((displayValue + 1) * 100).ToString();
+            float displayValue = Mathf.Round(GameSettings.Instance.soundVolume);
+            volumePercentage.text = displayValue.ToString();
         }
     }
 }
