@@ -7,7 +7,7 @@ using SoulHunter.Gameplay;
 namespace SoulHunter.Enemy
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-    public class EnemyScript : HealthSystem
+    public class EnemyScript : MonoBehaviour
     {
         Rigidbody2D rb;
         [SerializeField] internal float MoveSpeed;

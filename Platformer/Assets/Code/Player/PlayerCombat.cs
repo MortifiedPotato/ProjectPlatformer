@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 using SoulHunter.Player;
-using SoulHunter.Gameplay;
 
 namespace SoulHunter.Combat
 {
@@ -33,10 +32,12 @@ namespace SoulHunter.Combat
         {
             if (GetComponent<PlayerAim>().aimDirection.x < 0)
             {
+                // Attack Left
                 Weapon.transform.localPosition = new Vector3(-1, 0, 0);
             }
             else
             {
+                //Attack Right
                 Weapon.transform.localPosition = new Vector3(1, 0, 0);
             }
             Weapon.SetActive(true);

@@ -8,12 +8,26 @@ namespace SoulHunter.Player
 {
     public class PlayerBase : HealthSystem
     {
+        protected override void Start()
+        {
+            base.Start();
+            DespawnTimer = 1f;
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            Dissolve();
+        }
+
+        void Dissolve()
+        {
+            characterSprite.material.SetFloat("_Fade", DespawnTimer);
+        }
+
         protected override void HandleDeath()
         {
-            if (fade <= 0f)
-            {
-                SceneController.Instance.ResetScene();
-            }
+            SceneController.Instance.ResetScene();
         }
     }
 }

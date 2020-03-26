@@ -204,7 +204,7 @@ namespace SoulHunter.Player
             // Ground Impact Particle
             if (velocity.y < -5)
             {
-                Instantiate(dustParticle, new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z + 1) , dustParticle.transform.rotation);
+                Instantiate(dustParticle, new Vector3(transform.position.x, transform.position.y - playerSprite.bounds.extents.y, transform.position.z + 1) , dustParticle.transform.rotation);
             }
             
             // Ground Impact Shake

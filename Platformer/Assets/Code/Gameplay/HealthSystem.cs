@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using SoulHunter.Player;
 
 namespace SoulHunter.Gameplay
 {
@@ -8,79 +7,63 @@ namespace SoulHunter.Gameplay
         const int maxHealth = 3;
         public int Health;
 
-        public float deathHeight = -10;
-        public float fade = 1;
+        public bool isDead;
 
-        bool isDissolving;
+        [SerializeField] protected float expirationHeight = -10;
+        [SerializeField] protected float DespawnTimer = 10;
 
-        [SerializeField] SpriteRenderer characterSprite;
+        [SerializeField] protected SpriteRenderer characterSprite;
 
-        private void Start()
+        protected virtual void Start()
         {
-            //sprite = GetComponentInChildren<SpriteRenderer>();
-
             Health = maxHealth;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
-            if (transform.position.y <= deathHeight)
-            {
-                isDissolving = true;
-            }
+            HandleFallDeath();
 
-            Dissolve();
-            HandleDeath();
+            HandleDespawn();
+
+            if (isDead && DespawnTimer <= 0f)
+            {
+                HandleDeath();
+            }
         }
 
-        public void TakeDamage()
+        public virtual void TakeDamage()
         {
             Health--;
 
             if (Health < 1)
             {
-                isDissolving = true;
+                isDead = true;
             }
         }
 
-        void Healing()
+        void HandleFallDeath()
         {
-            Health++;
+            if (transform.position.y <= expirationHeight)
+            {
+                isDead = true;
+            }
+        }
+
+        void HandleDespawn()
+        {
+            if (isDead)
+            {
+                DespawnTimer -= Time.deltaTime;
+                if (DespawnTimer <= 0f)
+                {
+                    DespawnTimer = 0f;
+                }
+            }
         }
 
         protected virtual void HandleDeath()
         {
-            if (fade <= 0f)
-            {
-                if (!GetComponent<PlayerBase>())
-                {
-                    Destroy(gameObject);
-                }
-            }
-        }
-
-        void Dissolve()
-        {
-            if (isDissolving)
-            {
-                fade -= Time.deltaTime;
-                if (fade <= 0f)
-                {
-                    fade = 0f;
-                }
-
-                characterSprite.material.SetFloat("_Fade", fade);
-            }
-            else
-            {
-                fade += Time.deltaTime;
-                if (fade >= 1f)
-                {
-                    fade = 1f;
-                }
-
-                characterSprite.material.SetFloat("_Fade", fade);
-            }
+            Destroy(gameObject);
         }
     }
 }
