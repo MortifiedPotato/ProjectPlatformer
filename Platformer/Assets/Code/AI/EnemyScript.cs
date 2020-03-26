@@ -12,16 +12,21 @@ namespace SoulHunter.Enemy
         Rigidbody2D rb;
         [SerializeField] internal float MoveSpeed;
         [SerializeField] internal float KnockBack;
-        //[SerializeField] GameObject _GroundCheck;
+        [SerializeField] float flipDirectionTimer;
+
+        float chngeDirTimer;
 
         public bool MoveRight;
         public bool Moving;
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            //_GroundCheck = gameObject.GetComponentsInChildren<CircleCollider2D>();
             KnockBack = KnockBack * 100;
-           // FloorChecker = _GroundCheck.GetComponent<CircleCollider2D>();
+        }
+
+        private void Update()
+        {
+            RandomDirectionChange();
         }
 
         void FixedUpdate()
@@ -30,15 +35,31 @@ namespace SoulHunter.Enemy
             {
                 if (MoveRight)
                 {
-                    rb.velocity = (new Vector2(+MoveSpeed, 0));
+                    //rb.velocity = (new Vector2(+MoveSpeed, 0));
+                    //rb.AddRelativeForce(new Vector2(+MoveSpeed, 0));
+                    transform.position = (new Vector2(transform.position.x + MoveSpeed * Time.deltaTime, 0));
                 }
                 else
                 {
-                    rb.velocity = (new Vector2(-MoveSpeed, 0));
+                    //rb.velocity = (new Vector2(-MoveSpeed, 0));
+                    //rb.AddRelativeForce(new Vector2(-MoveSpeed, 0));
+                    transform.position = (new Vector2(transform.position.x - MoveSpeed * Time.deltaTime, 0));
+
                 }
             }
         }
 
+        void RandomDirectionChange()
+        {
+            chngeDirTimer += Time.deltaTime;
+            if (chngeDirTimer >= flipDirectionTimer)
+            {
+                rb.velocity = new Vector2(0, 0);
+                MoveRight = !MoveRight;
+                flipDirectionTimer = Random.Range(2, 6);
+                chngeDirTimer = 0;
+            }
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -50,13 +71,19 @@ namespace SoulHunter.Enemy
                 //rb.velocity = new Vector3(transform.position.x + difference.x, transform.position.y + difference.y, 0);
                 //transform.position = new Vector2(transform.position.x + difference.x * Time.deltaTime, transform.position.y + difference.y * Time.deltaTime);
             }
+
+            if (other.tag == "Edge")
+            {
+                rb.velocity = new Vector2(0, 0);
+                MoveRight = !MoveRight;
+            }
         }
 
         private void OnCollisionExit2D(Collision2D other)
         {
             if (other.gameObject.tag == "Environment")
             {
-                Moving = false;
+                //Moving = false;
             }
         }
 
@@ -65,6 +92,10 @@ namespace SoulHunter.Enemy
             if (other.gameObject.tag == "Environment")
             {
                 Moving = true;
+            }
+            else
+            {
+                Moving = false;
             }
         }
     }
