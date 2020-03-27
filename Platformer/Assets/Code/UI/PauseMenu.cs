@@ -2,14 +2,13 @@
 using UnityEngine;
 
 using SoulHunter.Input;
+using SoulHunter.Player;
 using SoulHunter.Dialogue;
 
 namespace SoulHunter.UI
 {
     public class PauseMenu : MonoBehaviour, Input.ITogglePause
     {
-        public static bool GameIsPaused;
-
         public GameObject PauseMenuUI;
         [SerializeField] Button continueButton;
 
@@ -17,19 +16,19 @@ namespace SoulHunter.UI
         {
             InputController.Instance.i_TogglePause = this;
 
-            GameIsPaused = false;
+            GameManager.GameIsPaused = false;
             HandlePause();
         }
 
         public void TogglePause()
         {
-            GameIsPaused = !GameIsPaused;
+            GameManager.GameIsPaused = !GameManager.GameIsPaused;
             HandlePause();
         }
 
         void HandlePause()
         {
-            if (!GameIsPaused)
+            if (!GameManager.GameIsPaused)
             {
                 Resume();
             }
@@ -42,16 +41,23 @@ namespace SoulHunter.UI
 
         void Resume()
         {
+            if (!GameManager.inDialogue)
+            {
+                PlayerBase.isPaused = false;
+            }
+
             PauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
-            GameIsPaused = false;
+            GameManager.GameIsPaused = false;
         }
 
         void Pause()
         {
+            PlayerBase.isPaused = true;
+
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
-            GameIsPaused = true;
+            GameManager.GameIsPaused = true;
 
             continueButton.Select();
         }

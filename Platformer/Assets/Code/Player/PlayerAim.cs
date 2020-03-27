@@ -14,7 +14,14 @@ namespace SoulHunter.Player
 
         private void Update()
         {
-            HandleAim();
+            if (!PlayerBase.isPaused)
+            {
+                HandleAim();
+            }
+            else
+            {
+                aimDirection = Vector2.zero;
+            }
         }
 
         public void HandleAim()

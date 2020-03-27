@@ -8,6 +8,8 @@ namespace SoulHunter.Player
 {
     public class PlayerBase : HealthSystem
     {
+        public static bool isPaused;
+
         protected override void Start()
         {
             base.Start();

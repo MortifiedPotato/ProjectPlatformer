@@ -50,6 +50,12 @@ namespace SoulHunter.Player
         {
             playerPosition = transform.position;
 
+            if (PlayerBase.isPaused)
+            {
+                crosshairSprite.enabled = false;
+                return;
+            }
+
             if (!ropeAttached)
             {
                 playerMovement.isSwinging = false;

@@ -58,12 +58,15 @@ namespace SoulHunter.Player
 
         private void FixedUpdate()
         {
-            HandleMovement();
+            if (!PlayerBase.isPaused)
+            {
+                HandleMovement();
+            }
         }
 
         void Animate()
         {
-            if (isGrounded)
+            if (isGrounded && !PlayerBase.isPaused)
             {
                 anim.SetFloat("Speed", Mathf.Abs(GetComponent<PlayerMovement>().i_moveInput.x));
             }
@@ -72,7 +75,7 @@ namespace SoulHunter.Player
                 anim.SetFloat("Speed", 0);
             }
 
-            if (isGrounded)
+            if (isGrounded && !PlayerBase.isPaused)
             {
                 if (i_moveInput.x < 0)
                 {
