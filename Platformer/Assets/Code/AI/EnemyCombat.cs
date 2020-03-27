@@ -7,14 +7,16 @@ using SoulHunter.Gameplay;
 
 public class EnemyCombat : MonoBehaviour
 {
-    [SerializeField] float attackduration;
+    [SerializeField] float attackDuration;
+    [SerializeField] float attackCooldown;
     public GameObject Weapon;
     float attackTimer;
+    float cooldown;
     bool attacking;
     void Start()
     {
         Weapon.SetActive(false);
-        attackduration = attackduration / 10;
+        attackDuration = attackDuration / 10;
     }
 
     void Update()
@@ -23,37 +25,37 @@ public class EnemyCombat : MonoBehaviour
         {
             attackTimer += Time.deltaTime;
         }
+        cooldown += Time.deltaTime;
         ResetWeapon();
     }
 
     public void Attack()
     {
-        if (GetComponent<EnemyScript>().MoveRight == false)
+        if (cooldown > attackCooldown)
         {
-            Weapon.transform.localPosition = new Vector3(-.5f, 0, 0);
+            if (GetComponent<EnemyScript>().MoveRight == false)
+            {
+                Weapon.transform.localPosition = new Vector3(-.5f, 0, 0);
+            }
+            else
+            {
+                Weapon.transform.localPosition = new Vector3(.5f, 0, 0);
+            }
+            Weapon.SetActive(true);
+            attacking = true;
+            cooldown = 0;
+            print("I let enemy attack");
         }
-        else
-        {
-            Weapon.transform.localPosition = new Vector3(.5f, 0, 0);
-        }
-        Weapon.SetActive(true);
-        attacking = true;
     }
 
     void ResetWeapon()
     {
-        if (attackTimer >= attackduration)
+        if (attackTimer >= attackDuration)
         {
             Weapon.SetActive(false);
             attackTimer = 0;
             attacking = false;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("P_weapon"))
-        {
-            GetComponent<HealthSystem>().TakeDamage();
-        }
-    }
+    
 }

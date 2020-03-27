@@ -59,6 +59,7 @@ namespace SoulHunter.Combat
             if (other.gameObject.CompareTag("Enemy"))
             {
                 other.GetComponent<EnemyCombat>().Attack();
+                
             }
         }
     }
