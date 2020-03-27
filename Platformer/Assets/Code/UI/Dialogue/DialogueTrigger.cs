@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 using SoulHunter.Player;
 
@@ -15,21 +14,37 @@ namespace SoulHunter.Dialogue
 
         public Dialogue dialogue;
 
+        ParticleSystem dialogueParticle;
+
         bool detected = false;
+
+        private void Start()
+        {
+            dialogueParticle = GetComponentInChildren<ParticleSystem>();
+
+            if (isActivatable)
+            {
+                dialogueParticle.Play();
+            }
+        }
+
+        public void ManageDialogueTrigger(bool toggle)
+        {
+            if (toggle || isRepeatable)
+            {
+                isActivatable = true;
+                dialogueParticle.Play();
+            }
+            else
+            {
+                isActivatable = false;
+                dialogueParticle.Stop();
+            }
+        }
 
         void TriggerDialogue()
         {
-            DialogueManager.Instance.StartDialogue(dialogue, nameColor, dialogueColor);
-        }
-
-        void CancelDialogue()
-        {
-            DialogueManager.Instance.CancelDialogue();
-
-            if (DialogueManager.Instance.sentences.Count == 0 && !isRepeatable)
-            {
-                isActivatable = false;
-            }
+            DialogueManager.Instance.StartDialogue(this, dialogue, nameColor, dialogueColor);
         }
 
         private void OnTriggerStay2D(Collider2D collision)
@@ -43,6 +58,11 @@ namespace SoulHunter.Dialogue
                     return;
                 }
 
+                if (!GameManager.triggeringDialogue)
+                {
+                    return;
+                }
+
                 if (isActivatable || isRepeatable)
                 {
                     if (!detected)
@@ -51,7 +71,6 @@ namespace SoulHunter.Dialogue
                         detected = true;
                     }
                 }
-
             }
         }
 
@@ -59,15 +78,8 @@ namespace SoulHunter.Dialogue
         {
             if (collision.CompareTag("Player"))
             {
-                CancelDialogue();
-                StartCoroutine(CoolDownDialogue());
+                detected = false;
             }
-        }
-
-        IEnumerator CoolDownDialogue()
-        {
-            yield return new WaitForSeconds(1);
-            detected = false;
         }
     }
 }

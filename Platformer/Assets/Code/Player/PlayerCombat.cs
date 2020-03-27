@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-using SoulHunter.Player;
+using SoulHunter.Enemy;
 
-namespace SoulHunter.Combat
+namespace SoulHunter.Player
 {
     public class PlayerCombat : MonoBehaviour
     {
@@ -63,8 +63,10 @@ namespace SoulHunter.Combat
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                other.GetComponent<EnemyCombat>().Attack();
-                
+                if (!other.GetComponent<EnemyBase>().isDead)
+                {
+                    other.GetComponent<EnemyCombat>().Attack();
+                }
             }
         }
     }

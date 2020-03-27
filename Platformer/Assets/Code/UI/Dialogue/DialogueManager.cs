@@ -14,6 +14,8 @@ namespace SoulHunter.Dialogue
 
         public Queue<string> sentences;
 
+        public DialogueTrigger currentTrigger;
+
         bool nonTriggerable;
 
         Animator animator;
@@ -38,12 +40,14 @@ namespace SoulHunter.Dialogue
             animator = dialogueBox.GetComponent<Animator>();
         }
 
-        public void StartDialogue(Dialogue _dialogue, Color _nameColor, Color _dialogueColor)
+        public void StartDialogue(DialogueTrigger trigger, Dialogue _dialogue, Color _nameColor, Color _dialogueColor)
         {
+            currentTrigger = trigger;
+
             PlayerBase.isPaused = true;
 
             animator.SetBool("inDialogue", true);
-            GameManager.inDialogue = true;
+            GameManager.initiatedDialogue = true;
             ContinueButton.Select();
 
             nameText.text = _dialogue.name;
@@ -67,7 +71,7 @@ namespace SoulHunter.Dialogue
             if (nonTriggerable)
             {
                 animator.SetBool("inDialogue", false);
-                GameManager.inDialogue = false;
+                GameManager.initiatedDialogue = false;
                 PlayerBase.isPaused = false;
                 nonTriggerable = false;
             }
@@ -94,20 +98,17 @@ namespace SoulHunter.Dialogue
             }
         }
 
-        public void CancelDialogue()
-        {
-            StopAllCoroutines();
-            animator.SetBool("inDialogue", false);
-            GameManager.inDialogue = false;
-
-            PlayerBase.isPaused = false;
-        }
-
         void EndDialogue()
         {
             StopAllCoroutines();
             StartCoroutine(TypeSentence(">>End of conversation.<<"));
+            GameManager.initiatedDialogue = false;
+            PlayerBase.isPaused = false;
             nonTriggerable = true;
+
+            animator.SetBool("inDialogue", false);
+
+            currentTrigger.ManageDialogueTrigger(false);
         }
 
         IEnumerator TypeSentence(string _sentence)

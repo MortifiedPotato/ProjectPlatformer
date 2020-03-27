@@ -55,15 +55,17 @@ namespace SoulHunter.Player
 
         private void FixedUpdate()
         {
-            if (!PlayerBase.isPaused)
-            {
-                HandleMovement();
-            }
+            HandleMovement();
         }
 
         public void HandleMovement()
         {
-            if (i_moveInput.x < 0f || i_moveInput.x > 0f)
+            if (PlayerBase.isPaused)
+            {
+                return;
+            }
+
+            if (i_moveInput.x < -0.01f || i_moveInput.x > 0.01f)
             {
                 if (isSwinging)
                 {
@@ -185,7 +187,7 @@ namespace SoulHunter.Player
             }
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;
             var halfHeight = playerSprite.bounds.extents.y;

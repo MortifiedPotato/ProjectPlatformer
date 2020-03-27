@@ -13,6 +13,8 @@ namespace SoulHunter.Enemy
         {
             base.Start();
             characterSprite.enabled = false;
+
+            GameManager.Instance.EnemyListRegistry(this);
         }
 
         public override void TakeDamage()
@@ -30,6 +32,19 @@ namespace SoulHunter.Enemy
                 var emission = characterParticle.emission;
                 emission.enabled = false;
             }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.EnemyListRegistry(this);
         }
     }
 }

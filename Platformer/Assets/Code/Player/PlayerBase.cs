@@ -9,6 +9,7 @@ namespace SoulHunter.Player
     public class PlayerBase : HealthSystem
     {
         public static bool isPaused;
+        public bool isTeleporting;
 
         protected override void Start()
         {
@@ -20,11 +21,26 @@ namespace SoulHunter.Player
         {
             base.Update();
             Dissolve();
+
+            if (isTeleporting)
+            {
+                DespawnTimer -= Time.deltaTime;
+                if (DespawnTimer <= 0f)
+                {
+                    DespawnTimer = 0f;
+                    Teleport();
+                }
+            }
         }
 
         void Dissolve()
         {
             characterSprite.material.SetFloat("_Fade", DespawnTimer);
+        }
+
+        void Teleport()
+        {
+            SceneController.Instance.TransitionScene(0);
         }
 
         protected override void HandleDeath()
