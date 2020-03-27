@@ -814,7 +814,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
-        m_MethodName: OnAttack
+        m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -829,7 +829,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
-        m_MethodName: OnPause
+        m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -844,7 +844,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
-        m_MethodName: OnSwing
+        m_MethodName: OnPause
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -859,7 +859,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
-        m_MethodName: OnDetach
+        m_MethodName: OnSwing
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -874,7 +874,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
-        m_MethodName: OnYank
+        m_MethodName: OnDetach
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -886,6 +886,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3619b3d6-1fe2-464e-8266-b525f6a32476
     m_ActionName: Player/Yank[/XInputControllerWindows/rightShoulder,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c7ee19a9-deba-42e9-9db6-3a19e5546b43
+    m_ActionName: Player/Yank[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player

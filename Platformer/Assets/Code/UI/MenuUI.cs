@@ -7,7 +7,7 @@ namespace SoulHunter.UI
         void Start()
         {
             UIManager.Instance.MenuCanvas = gameObject;
-            Cursor.visible = true;
+            Cursor.visible = false;
         }
 
         public void ChangeScene(int index)

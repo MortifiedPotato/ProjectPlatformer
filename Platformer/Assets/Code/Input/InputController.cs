@@ -69,6 +69,14 @@ namespace SoulHunter.Input
             }
         }
 
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+
+            }
+        }
+
         public void OnAttack(InputAction.CallbackContext context)
         {
             if (context.performed)

@@ -7,7 +7,7 @@ namespace SoulHunter.UI
         private void Start()
         {
             UIManager.Instance.GameCanvas = gameObject;
-            Cursor.visible = true;
+            Cursor.visible = false;
         }
     }
 }
