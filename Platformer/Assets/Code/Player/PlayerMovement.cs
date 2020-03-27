@@ -30,7 +30,6 @@ namespace SoulHunter.Player
         public SpriteRenderer playerSprite;
         GameObject dustParticle;
         Rigidbody2D rigidBody;
-        [SerializeField] Animator anim;
 
         [HideInInspector]
         public Vector2 ropeHook;
@@ -41,14 +40,12 @@ namespace SoulHunter.Player
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();
-            anim = GetComponentInChildren<Animator>();
             dustParticle = Resources.Load("Particles/DustDirtyPoof") as GameObject;
         }
 
         private void Update()
         {
             CheckForGround();
-            Animate();
 
             if (Time.frameCount%5==0)
             {
@@ -62,42 +59,6 @@ namespace SoulHunter.Player
             {
                 HandleMovement();
             }
-        }
-
-        void Animate()
-        {
-            if (isGrounded && !PlayerBase.isPaused)
-            {
-                anim.SetFloat("Speed", Mathf.Abs(GetComponent<PlayerMovement>().i_moveInput.x));
-            }
-            else
-            {
-                anim.SetFloat("Speed", 0);
-            }
-
-            if (isGrounded && !PlayerBase.isPaused)
-            {
-                if (i_moveInput.x < 0)
-                {
-                    playerSprite.flipX = true;
-                }
-                else if (i_moveInput.x > 0)
-                {
-                    playerSprite.flipX = false;
-                }
-            }
-            else
-            {
-                if (rigidBody.velocity.x < 0)
-                {
-                    playerSprite.flipX = true;
-                }
-                else if (rigidBody.velocity.x > 0)
-                {
-                    playerSprite.flipX = false;
-                }
-            }
-
         }
 
         public void HandleMovement()
@@ -213,7 +174,14 @@ namespace SoulHunter.Player
             // Ground Impact Shake
             if (velocity.y < -8)
             {
-                CameraManager.Instance.ShakeCamera(1, 0, 0);
+                if (velocity.y < -12)
+                {
+                    CameraManager.Instance.ShakeCamera(2, 6, 0);
+                }
+                else
+                {
+                    CameraManager.Instance.ShakeCamera(1, 0, 0);
+                }
             }
         }
 

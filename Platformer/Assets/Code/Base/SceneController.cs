@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
     public static SceneController Instance { get; private set; }
 
     public GameObject loadingBar;
+    public GameObject loadingArt;
     public TextMeshProUGUI loadingProgress;
 
     Animator transitionAnimator;
@@ -74,6 +75,7 @@ public class SceneController : MonoBehaviour
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(index);
 
+        loadingArt.SetActive(true);
         loadingBar.SetActive(true);
 
         while (!operation.isDone)

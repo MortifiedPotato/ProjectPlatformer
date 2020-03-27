@@ -10,7 +10,7 @@ namespace SoulHunter.Combat
         [SerializeField] BoxCollider2D Overlap;
         public GameObject Weapon;
         float attackTimer = 2f;
-        bool attacking;
+        public bool isAttacking;
 
         void Start()
         {
@@ -20,7 +20,7 @@ namespace SoulHunter.Combat
 
         void Update()
         {
-            if (attacking == true)
+            if (isAttacking == true)
             {
                 attackTimer += Time.deltaTime;
             }
@@ -30,6 +30,11 @@ namespace SoulHunter.Combat
 
         public void Attack()
         {
+            if (GetComponent<PlayerMovement>().isSwinging || isAttacking)
+            {
+                return;
+            }
+
             if (GetComponent<PlayerAim>().aimDirection.x < 0)
             {
                 // Attack Left
@@ -41,7 +46,7 @@ namespace SoulHunter.Combat
                 Weapon.transform.localPosition = new Vector3(1, 0, 0);
             }
             Weapon.SetActive(true);
-            attacking = true;
+            isAttacking = true;
         }
 
         void ResetWeapon()
@@ -50,7 +55,7 @@ namespace SoulHunter.Combat
             {
                 Weapon.SetActive(false);
                 attackTimer = 0;
-                attacking = false;
+                isAttacking = false;
             }
         }
 
