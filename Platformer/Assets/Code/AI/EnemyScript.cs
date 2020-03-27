@@ -35,16 +35,11 @@ namespace SoulHunter.Enemy
             {
                 if (MoveRight)
                 {
-                    //rb.velocity = (new Vector2(+MoveSpeed, 0));
-                    //rb.AddRelativeForce(new Vector2(+MoveSpeed, 0));
-                    transform.position = (new Vector2(transform.position.x + MoveSpeed * Time.deltaTime, 0));
+                    transform.Translate(Vector2.right * MoveSpeed * Time.deltaTime);
                 }
                 else
                 {
-                    //rb.velocity = (new Vector2(-MoveSpeed, 0));
-                    //rb.AddRelativeForce(new Vector2(-MoveSpeed, 0));
-                    transform.position = (new Vector2(transform.position.x - MoveSpeed * Time.deltaTime, 0));
-
+                    transform.Translate(Vector2.left * MoveSpeed * Time.deltaTime);
                 }
             }
         }
@@ -76,14 +71,6 @@ namespace SoulHunter.Enemy
             {
                 rb.velocity = new Vector2(0, 0);
                 MoveRight = !MoveRight;
-            }
-        }
-
-        private void OnCollisionExit2D(Collision2D other)
-        {
-            if (other.gameObject.tag == "Environment")
-            {
-                //Moving = false;
             }
         }
 
