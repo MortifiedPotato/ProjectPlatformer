@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f5c23055a50be4b8cefc086a7824fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KnockBack: 0
+  KnockBack: 30
 --- !u!1 &6763832758375902554
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6567fa96dffb5429c44dc23f37e507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackduration: 2
+  attackDuration: 1
+  attackCooldown: 2
   Weapon: {fileID: 5518214823143716770}
 --- !u!50 &6763832758573670801
 Rigidbody2D:
