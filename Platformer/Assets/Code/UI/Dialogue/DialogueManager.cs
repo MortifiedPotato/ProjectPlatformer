@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-using SoulHunter.UI;
+using SoulHunter.Player;
 
 namespace SoulHunter.Dialogue
 {
@@ -40,7 +40,10 @@ namespace SoulHunter.Dialogue
 
         public void StartDialogue(Dialogue _dialogue, Color _nameColor, Color _dialogueColor)
         {
+            PlayerBase.isPaused = true;
+
             animator.SetBool("inDialogue", true);
+            GameManager.inDialogue = true;
             ContinueButton.Select();
 
             nameText.text = _dialogue.name;
@@ -64,6 +67,8 @@ namespace SoulHunter.Dialogue
             if (nonTriggerable)
             {
                 animator.SetBool("inDialogue", false);
+                GameManager.inDialogue = false;
+                PlayerBase.isPaused = false;
                 nonTriggerable = false;
             }
             else
@@ -93,6 +98,9 @@ namespace SoulHunter.Dialogue
         {
             StopAllCoroutines();
             animator.SetBool("inDialogue", false);
+            GameManager.inDialogue = false;
+
+            PlayerBase.isPaused = false;
         }
 
         void EndDialogue()
@@ -114,7 +122,7 @@ namespace SoulHunter.Dialogue
 
         public void PauseCheck()
         {
-            if (PauseMenu.GameIsPaused)
+            if (GameManager.GameIsPaused)
             {
                 animator.SetBool("GameIsPaused", true);
             }

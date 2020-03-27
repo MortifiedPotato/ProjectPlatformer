@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+
+using SoulHunter.Player;
 
 namespace SoulHunter.Dialogue
 {
@@ -11,6 +14,8 @@ namespace SoulHunter.Dialogue
         public Color dialogueColor = Color.white;
 
         public Dialogue dialogue;
+
+        bool detected = false;
 
         void TriggerDialogue()
         {
@@ -27,14 +32,26 @@ namespace SoulHunter.Dialogue
             }
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.CompareTag("Player"))
+            PlayerMovement player = collision.GetComponent<PlayerMovement>();
+            if (player != null)
             {
+                if (player.isSwinging)
+                {
+                    detected = false;
+                    return;
+                }
+
                 if (isActivatable || isRepeatable)
                 {
-                    TriggerDialogue();
+                    if (!detected)
+                    {
+                        TriggerDialogue();
+                        detected = true;
+                    }
                 }
+
             }
         }
 
@@ -43,7 +60,14 @@ namespace SoulHunter.Dialogue
             if (collision.CompareTag("Player"))
             {
                 CancelDialogue();
+                StartCoroutine(CoolDownDialogue());
             }
+        }
+
+        IEnumerator CoolDownDialogue()
+        {
+            yield return new WaitForSeconds(1);
+            detected = false;
         }
     }
 }
