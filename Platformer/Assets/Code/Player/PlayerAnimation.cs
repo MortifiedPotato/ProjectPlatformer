@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using SoulHunter.Combat;
-
 namespace SoulHunter.Player
 {
     public class PlayerAnimation : MonoBehaviour
@@ -30,20 +28,17 @@ namespace SoulHunter.Player
 
         void Update()
         {
-            MatchBools();
-            AnimateOnGround();
+            UpdateValues();
+            FlipTexture();
         }
 
-        void MatchBools()
+        void UpdateValues()
         {
             anim.SetBool("isJumping", movement.isJumping);
             anim.SetBool("isSwinging", movement.isSwinging);
             anim.SetBool("isGrounded", movement.isGrounded);
             anim.SetBool("isAttacking", combat.isAttacking);
-        }
 
-        void AnimateOnGround()
-        {
             if (movement.isGrounded && !PlayerBase.isPaused)
             {
                 anim.SetFloat("Speed", Mathf.Abs(GetComponent<PlayerMovement>().i_moveInput.x));
@@ -52,7 +47,10 @@ namespace SoulHunter.Player
             {
                 anim.SetFloat("Speed", 0);
             }
+        }
 
+        void FlipTexture()
+        {
             if (movement.isGrounded && !PlayerBase.isPaused)
             {
                 if (movement.i_moveInput.x < 0)
@@ -79,21 +77,6 @@ namespace SoulHunter.Player
                 else if (rigidBody.velocity.x > 0)
                 {
                     playerSprite.flipX = false;
-                }
-            }
-        }
-
-        void AnimateMidAir()
-        {
-            if (movement.isSwinging)
-            {
-                anim.SetBool("isSwinging", true);
-            }
-            else
-            {
-                if (movement.isGrounded)
-                {
-                    anim.SetBool("isGrounded", true);
                 }
             }
         }

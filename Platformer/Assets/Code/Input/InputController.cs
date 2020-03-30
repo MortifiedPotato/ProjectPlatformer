@@ -2,7 +2,6 @@
 using UnityEngine;
 
 using SoulHunter.Player;
-using SoulHunter.Combat;
 
 namespace SoulHunter.Input
 {
@@ -47,14 +46,22 @@ namespace SoulHunter.Input
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            for (int i = 0; i < i_MoveInput.Length; i++)
+            if (context.performed)
             {
-                i_MoveInput[i]?.HandleMoveInput(context.action.ReadValue<Vector2>());
+                for (int i = 0; i < i_MoveInput.Length; i++)
+                {
+                    i_MoveInput[i]?.HandleMoveInput(context.action.ReadValue<Vector2>());
+                }
             }
         }
 
         public void OnJump(InputAction.CallbackContext context)
         {
+            if (PlayerBase.isPaused)
+            {
+                return;
+            }
+
             if (context.performed)
             {
                 if (playerMovement)
@@ -69,8 +76,26 @@ namespace SoulHunter.Input
             }
         }
 
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                GameManager.triggeringDialogue = true;
+            }
+
+            if (context.canceled)
+            {
+                GameManager.triggeringDialogue = false;
+            }
+        }
+
         public void OnAttack(InputAction.CallbackContext context)
         {
+            if (PlayerBase.isPaused)
+            {
+                return;
+            }
+
             if (context.performed)
             {
                 playerCombat?.Attack();
@@ -87,6 +112,11 @@ namespace SoulHunter.Input
 
         public void OnSwing(InputAction.CallbackContext context)
         {
+            if (PlayerBase.isPaused)
+            {
+                return;
+            }
+
             if (context.performed)
             {
                 grappleSystem?.ShootGrapple(GetComponent<PlayerAim>().aimDirection);
@@ -95,6 +125,11 @@ namespace SoulHunter.Input
 
         public void OnDetach(InputAction.CallbackContext context)
         {
+            if (PlayerBase.isPaused)
+            {
+                return;
+            }
+
             if (context.performed)
             {
                 grappleSystem?.ResetRope();
@@ -103,6 +138,11 @@ namespace SoulHunter.Input
 
         public void OnYank(InputAction.CallbackContext context)
         {
+            if (PlayerBase.isPaused)
+            {
+                return;
+            }
+
             if (context.performed)
             {
                 playerMovement?.Yank();

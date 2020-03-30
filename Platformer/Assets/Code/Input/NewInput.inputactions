@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Attack",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "b4ed77d7-b958-4785-b662-8013a671d959",
                     "expectedControlType": "",
@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Pause",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "1ac8c399-631c-40d3-98ac-76c947ba1b7a",
                     "expectedControlType": "",
@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Swing",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "96e3720e-5a0a-49ec-af33-e84bb003e5c0",
                     "expectedControlType": "",
@@ -54,7 +54,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Detach",
+                    "name": "Swing",
                     "type": "Button",
                     "id": "2dbbecb8-8439-44d5-9454-610a64125ef0",
                     "expectedControlType": "",
@@ -62,9 +62,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Yank",
+                    "name": "Detach",
                     "type": "Button",
                     "id": "3619b3d6-1fe2-464e-8266-b525f6a32476",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Yank",
+                    "type": "Button",
+                    "id": "c7ee19a9-deba-42e9-9db6-3a19e5546b43",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -367,6 +375,28 @@
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3e7533c2-31cf-47d5-a347-ed2b71b18094",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c049066f-5353-47d8-95e3-01de0b4d1e1a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

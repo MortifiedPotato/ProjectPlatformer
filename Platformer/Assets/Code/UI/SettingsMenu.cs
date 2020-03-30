@@ -39,10 +39,12 @@ namespace SoulHunter.UI
             if (GameSettings.isFullscreen)
             {
                 fullscreenToggle.isOn = true;
+                Application.runInBackground = false;
             }
             else
             {
                 fullscreenToggle.isOn = false;
+                Application.runInBackground = true;
             }
 
             volumeSlider.value = GameSettings.soundVolume / 10;
@@ -56,11 +58,13 @@ namespace SoulHunter.UI
             if (fullscreen)
             {
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+                Application.runInBackground = false;
                 GameSettings.isFullscreen = true;
             }
             else
             {
                 Screen.fullScreenMode = FullScreenMode.Windowed;
+                Application.runInBackground = true;
                 GameSettings.isFullscreen = false;
             }
         }

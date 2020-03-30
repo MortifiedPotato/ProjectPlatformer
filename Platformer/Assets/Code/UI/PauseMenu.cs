@@ -41,7 +41,7 @@ namespace SoulHunter.UI
 
         void Resume()
         {
-            if (!GameManager.inDialogue)
+            if (!GameManager.initiatedDialogue)
             {
                 PlayerBase.isPaused = false;
             }
