@@ -43,7 +43,6 @@ namespace SoulHunter.Enemy
                 Weapon.SetActive(true);
                 attacking = true;
                 cooldown = 0;
-                print("I let enemy attack");
             }
         }
 

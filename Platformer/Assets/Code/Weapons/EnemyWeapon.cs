@@ -14,7 +14,7 @@ namespace SoulHunter.Weapons
             {
                 HealthSystem PlayerHealth = collision.gameObject.GetComponent<HealthSystem>();
                 Rigidbody2D PlayerRB = collision.gameObject.GetComponent<Rigidbody2D>();
-                PlayerRB.AddForce(transform.up * 100);
+                PlayerRB.AddForce(transform.up * 30);
                 Vector2 WeaponOwnerPos = transform.parent.gameObject.transform.position;
                 if (WeaponOwnerPos.x < transform.position.x)
                 {
@@ -25,6 +25,7 @@ namespace SoulHunter.Weapons
                     PlayerRB.AddForce(Vector2.left * KnockBack);
                 }
                 PlayerHealth.TakeDamage();
+                gameObject.SetActive(false);
             }
         }
     }
