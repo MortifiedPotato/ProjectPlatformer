@@ -4,12 +4,7 @@ namespace SoulHunter.Player
 {
     public class PlayerMovement : MonoBehaviour, Input.IMoveInput
     {
-        [Header("Movement Status")]
-        public bool isGrounded;
-        public bool isSwinging;
-        public bool isJumping;
-
-        bool[] groundColliders = new bool[3];
+        PlayerBase playerBase;
 
         [Header("Movement Attributes")]
         public float speed = 3f;
@@ -24,6 +19,8 @@ namespace SoulHunter.Player
         public float fGroundedRememberTime = .25f;
         float fCutJumpHeight = .5f;
         public float fGroundedRemember;
+
+        bool[] groundColliders = new bool[3];
 
         [Header("Object Variables")]
         public LayerMask groundCheckLayer;
@@ -41,6 +38,7 @@ namespace SoulHunter.Player
         {
             rigidBody = GetComponent<Rigidbody2D>();
             dustParticle = Resources.Load("Particles/DustDirtyPoof") as GameObject;
+            playerBase = GetComponent<PlayerBase>();
         }
 
         private void Update()
@@ -67,7 +65,7 @@ namespace SoulHunter.Player
 
             if (i_moveInput.x < -0.01f || i_moveInput.x > 0.01f)
             {
-                if (isSwinging)
+                if (playerBase.isSwinging)
                 {
                     var playerToHookDirection = (ropeHook - (Vector2)transform.position).normalized;
 
@@ -90,7 +88,7 @@ namespace SoulHunter.Player
                 }
                 else
                 {
-                    if (isGrounded)
+                    if (playerBase.isGrounded)
                     {
                         var groundForce = speed * 2f;
                         rigidBody.AddForce(new Vector2((i_moveInput.x * groundForce - rigidBody.velocity.x) * groundForce, 0));
@@ -99,11 +97,11 @@ namespace SoulHunter.Player
                 }
             }
 
-            if (!isSwinging)
+            if (!playerBase.isSwinging)
             {
-                if (!isGrounded) return;
+                if (!playerBase.isGrounded) return;
 
-                if (isJumping)
+                if (playerBase.isJumping)
                 {
                     rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
                 }
@@ -126,7 +124,7 @@ namespace SoulHunter.Player
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y * fCutJumpHeight);
             }
 
-            isJumping = false;
+            playerBase.isJumping = false;
         }
 
         void CheckForGround()
@@ -143,18 +141,18 @@ namespace SoulHunter.Player
                 if (groundColliders[i])
                 {
                     fGroundedRemember = fGroundedRememberTime;
-                    isGrounded = true;
+                    playerBase.isGrounded = true;
 
                     return;
                 }
 
                 if (fGroundedRemember < 0 && !groundColliders[i])
                 {
-                    isGrounded = false;
+                    playerBase.isGrounded = false;
                 }
             }
 
-            if (isJumping)
+            if (playerBase.isJumping)
             {
                 fGroundedRemember = -1;
             }

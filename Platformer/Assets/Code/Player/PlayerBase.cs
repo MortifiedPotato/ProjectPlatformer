@@ -11,6 +11,12 @@ namespace SoulHunter.Player
         public static bool isPaused;
         public bool isTeleporting;
 
+        public bool isGrounded;
+        public bool isAttacking;
+        public bool isSwinging;
+        public bool isJumping;
+        public bool isThrowing;
+
         protected override void Start()
         {
             base.Start();

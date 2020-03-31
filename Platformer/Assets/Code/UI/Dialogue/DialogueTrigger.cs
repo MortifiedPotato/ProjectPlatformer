@@ -49,7 +49,7 @@ namespace SoulHunter.Dialogue
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            PlayerMovement player = collision.GetComponent<PlayerMovement>();
+            PlayerBase player = collision.GetComponent<PlayerBase>();
             if (player != null)
             {
                 if (player.isSwinging)

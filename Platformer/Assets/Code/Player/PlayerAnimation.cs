@@ -7,7 +7,7 @@ namespace SoulHunter.Player
     public class PlayerAnimation : MonoBehaviour
     {
         PlayerMovement movement;
-        PlayerCombat combat;
+        PlayerBase playerBase;
 
         Rigidbody2D rigidBody;
 
@@ -17,16 +17,18 @@ namespace SoulHunter.Player
         [SerializeField] GameObject LeftSlash;
         [SerializeField] GameObject RightSlash;
 
+        public RaycastHit2D hit;
+
         void Start()
         {
-            rigidBody = GetComponent<Rigidbody2D>();
-            movement = GetComponent<PlayerMovement>();
-            combat = GetComponent<PlayerCombat>();
-            playerSprite = movement.playerSprite;
-            anim = playerSprite.gameObject.GetComponent<Animator>();
+            rigidBody = GetComponentInParent<Rigidbody2D>();
+            movement = GetComponentInParent<PlayerMovement>();
+            playerBase = GetComponentInParent<PlayerBase>();
+            playerSprite = GetComponent<SpriteRenderer>();
+            anim = GetComponent<Animator>();
         }
 
-        void Update()
+        private void LateUpdate()
         {
             UpdateValues();
             FlipTexture();
@@ -34,14 +36,15 @@ namespace SoulHunter.Player
 
         void UpdateValues()
         {
-            anim.SetBool("isJumping", movement.isJumping);
-            anim.SetBool("isSwinging", movement.isSwinging);
-            anim.SetBool("isGrounded", movement.isGrounded);
-            anim.SetBool("isAttacking", combat.isAttacking);
+            anim.SetBool("isGrounded", playerBase.isGrounded);
+            anim.SetBool("isAttacking", playerBase.isAttacking);
+            anim.SetBool("isSwinging", playerBase.isSwinging);
+            anim.SetBool("isJumping", playerBase.isJumping);
+            anim.SetBool("isThrowing", playerBase.isThrowing);
 
-            if (movement.isGrounded && !PlayerBase.isPaused)
+            if (playerBase.isGrounded && !PlayerBase.isPaused)
             {
-                anim.SetFloat("Speed", Mathf.Abs(GetComponent<PlayerMovement>().i_moveInput.x));
+                anim.SetFloat("Speed", Mathf.Abs(movement.i_moveInput.x));
             }
             else
             {
@@ -51,7 +54,7 @@ namespace SoulHunter.Player
 
         void FlipTexture()
         {
-            if (movement.isGrounded && !PlayerBase.isPaused)
+            if (playerBase.isGrounded && !PlayerBase.isPaused)
             {
                 if (movement.i_moveInput.x < 0)
                 {
@@ -79,6 +82,22 @@ namespace SoulHunter.Player
                     playerSprite.flipX = false;
                 }
             }
+        }
+
+        public void FlipSlashSprites()
+        {
+            RightSlash.GetComponent<SpriteRenderer>().flipY = !RightSlash.GetComponent<SpriteRenderer>().flipY;
+            LeftSlash.GetComponent<SpriteRenderer>().flipY = !LeftSlash.GetComponent<SpriteRenderer>().flipY;
+        }
+
+        public void ResetThrowing()
+        {
+            playerBase.isThrowing = false;
+        }
+
+        public void InitiateGrapple()
+        {
+            GetComponentInParent<GrappleSystem>().InitiateGrapple(hit);
         }
     }
 }

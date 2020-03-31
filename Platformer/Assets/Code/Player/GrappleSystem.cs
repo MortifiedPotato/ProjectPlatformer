@@ -16,6 +16,7 @@ namespace SoulHunter.Player
 
         private Vector2 playerPosition;
         private PlayerMovement playerMovement;
+        private PlayerBase playerBase;
         private PlayerAim playerAim;
         private Rigidbody2D ropeHingeAnchorRb;
         private SpriteRenderer ropeHingeAnchorSprite;
@@ -39,6 +40,7 @@ namespace SoulHunter.Player
             playerPosition = transform.position;
 
             playerMovement = GetComponent<PlayerMovement>();
+            playerBase = GetComponent<PlayerBase>();
             playerAim = GetComponent<PlayerAim>();
             ropeRenderer = GetComponent<LineRenderer>();
 
@@ -58,13 +60,13 @@ namespace SoulHunter.Player
 
             if (!ropeAttached)
             {
-                playerMovement.isSwinging = false;
+                playerBase.isSwinging = false;
 
                 SetCrosshairPosition(playerAim.aimAngle);
             }
             if (ropeAttached)
             {
-                playerMovement.isSwinging = true;
+                playerBase.isSwinging = true;
                 playerMovement.ropeHook = ropePositions.Last();
 
                 crosshairSprite.enabled = false;
@@ -125,19 +127,8 @@ namespace SoulHunter.Player
 
             if (hit.collider != null)
             {
-                ropeAttached = true;
-                if (!ropePositions.Contains(hit.point))
-                {
-                    // Jump slightly to distance the player a little from the ground after grappling to something.
-                    transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
-                    ropePositions.Add(hit.point);
-                    ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
-                    ropeJoint.enabled = true;
-                    ropeHingeAnchorSprite.enabled = true;
-                }
-
-                //This needs to stay as it often needs to be tested. Can be temporarily commented.
-                //Debug.Log($"Grapple is attached to {hit.transform.name}");
+                GetComponentInChildren<PlayerAnimation>().hit = hit;
+                playerBase.isThrowing = true;
             }
             else
             {
@@ -147,11 +138,28 @@ namespace SoulHunter.Player
             }
         }
 
+        public void InitiateGrapple(RaycastHit2D hit)
+        {
+            ropeAttached = true;
+            if (!ropePositions.Contains(hit.point))
+            {
+                // Jump slightly to distance the player a little from the ground after grappling to something.
+                transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
+                ropePositions.Add(hit.point);
+                ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
+                ropeJoint.enabled = true;
+                ropeHingeAnchorSprite.enabled = true;
+            }
+
+            //This needs to stay as it often needs to be tested. Can be temporarily commented.
+            //Debug.Log($"Grapple is attached to {hit.transform.name}");
+        }
+
         public void ResetRope()
         {
             ropeJoint.enabled = false;
             ropeAttached = false;
-            playerMovement.isSwinging = false;
+            playerBase.isSwinging = false;
             ropeRenderer.positionCount = 2;
             ropeRenderer.SetPosition(0, transform.position);
             ropeRenderer.SetPosition(1, transform.position);
