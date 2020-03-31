@@ -61,8 +61,8 @@ namespace SoulHunter.Enemy
             if (other.tag == "P_weapon")
             {
                 Moving = false;
-                Vector2 difference = transform.position - other.transform.position;
-                rb.AddForce(difference * KnockBack);
+                //Vector2 difference = transform.position - other.transform.position;
+                //rb.AddForce(difference * KnockBack);
                 //rb.velocity = new Vector3(transform.position.x + difference.x, transform.position.y + difference.y, 0);
                 //transform.position = new Vector2(transform.position.x + difference.x * Time.deltaTime, transform.position.y + difference.y * Time.deltaTime);
             }

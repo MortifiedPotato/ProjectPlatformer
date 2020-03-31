@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382127bd71737c646a26481b7ac294bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Knockback: 0
+  Knockback: 30
 --- !u!1 &357410299473576312
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +438,7 @@ MonoBehaviour:
   expirationHeight: -10
   DespawnTimer: 10
   characterSprite: {fileID: 9109488785574472038}
+  isTeleporting: 0
 --- !u!114 &8869320439067664212
 MonoBehaviour:
   m_ObjectHideFlags: 0
