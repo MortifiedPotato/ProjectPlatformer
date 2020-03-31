@@ -10,8 +10,7 @@ namespace SoulHunter.Enemy
     public class EnemyScript : MonoBehaviour
     {
         Rigidbody2D rb;
-        [SerializeField] internal float MoveSpeed;
-        [SerializeField] internal float KnockBack;
+        [SerializeField] protected float MoveSpeed;
         [SerializeField] float flipDirectionTimer;
 
         float chngeDirTimer;
@@ -21,7 +20,6 @@ namespace SoulHunter.Enemy
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            KnockBack = KnockBack * 100;
         }
 
         private void Update()
@@ -31,17 +29,21 @@ namespace SoulHunter.Enemy
 
         void FixedUpdate()
         {
-            if (Moving)
+            if (!GetComponent<EnemyBase>().isDead)
             {
-                if (MoveRight)
+                if (Moving)
                 {
-                    transform.Translate(Vector2.right * MoveSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    transform.Translate(Vector2.left * MoveSpeed * Time.deltaTime);
+                    if (MoveRight)
+                    {
+                        transform.Translate(Vector2.right * MoveSpeed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        transform.Translate(Vector2.left * MoveSpeed * Time.deltaTime);
+                    }
                 }
             }
+            
         }
 
         void RandomDirectionChange()
@@ -61,10 +63,6 @@ namespace SoulHunter.Enemy
             if (other.tag == "P_weapon")
             {
                 Moving = false;
-                //Vector2 difference = transform.position - other.transform.position;
-                //rb.AddForce(difference * KnockBack);
-                //rb.velocity = new Vector3(transform.position.x + difference.x, transform.position.y + difference.y, 0);
-                //transform.position = new Vector2(transform.position.x + difference.x * Time.deltaTime, transform.position.y + difference.y * Time.deltaTime);
             }
 
             if (other.tag == "Edge")

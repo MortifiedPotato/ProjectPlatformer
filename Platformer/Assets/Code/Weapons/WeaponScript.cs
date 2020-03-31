@@ -26,6 +26,8 @@ namespace SoulHunter.Weapons
                     EnemyRB.AddForce(Vector2.left * Knockback);
                 }
                 EnemyHealth.TakeDamage();
+
+                gameObject.SetActive(false);
             }
         }
     }

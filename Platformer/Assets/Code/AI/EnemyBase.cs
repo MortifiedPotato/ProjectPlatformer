@@ -38,6 +38,10 @@ namespace SoulHunter.Enemy
         {
             if (collision.gameObject.CompareTag("Player"))
             {
+                if (!isDead)
+                {
+                    return;
+                }
                 Destroy(gameObject);
             }
         }
