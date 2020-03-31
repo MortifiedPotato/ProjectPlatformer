@@ -48,7 +48,7 @@ namespace SoulHunter.Player
                 //Attack Right
                 Weapon.transform.localPosition = new Vector3(1, 0, 0);
             }
-            GetComponent<PlayerAnimation>().FlipSlashSprites();
+            GetComponentInChildren<PlayerAnimation>().FlipSlashSprites();
             Weapon.SetActive(true);
             playerBase.isAttacking = true;
         }
