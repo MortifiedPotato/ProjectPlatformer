@@ -1,40 +1,31 @@
 fileFormatVersion: 2
-guid: 13262274eb67fcf4bbd85796f3e3e870
+guid: c5dafa2c4945fef4fbdfff708ae07996
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 85541955598002004
-    second: Silhouettes_0
+      213: -8857837994041714146
+    second: Silhouettes2_0
   - first:
-      213: -6191149345242893199
-    second: Silhouettes_1
+      213: 2978592707271714764
+    second: Silhouettes2_1
   - first:
-      213: 3048778540859864215
-    second: Silhouettes_2
+      213: 2895332915716492488
+    second: Silhouettes2_2
   - first:
-      213: 6655033840684492693
-    second: Silhouettes_3
+      213: -7133365447751575229
+    second: Silhouettes2_3
   - first:
-      213: -4897061367701491406
-    second: Silhouettes_4
+      213: -2845556579454886680
+    second: Silhouettes2_4
   - first:
-      213: -5820791099429104680
-    second: Silhouettes_5
+      213: -2950872885137470940
+    second: Silhouettes2_5
   - first:
-      213: 5578141543065623950
-    second: Silhouettes_6
+      213: -27625060139647102
+    second: Silhouettes2_6
   - first:
-      213: -7094777964484831063
-    second: Silhouettes_7
-  - first:
-      213: -4758491737708824210
-    second: Silhouettes_8
-  - first:
-      213: 2089717452494428030
-    second: Silhouettes_9
-  - first:
-      213: 1273504638907008769
-    second: Silhouettes_10
+      213: -7036275593135114058
+    second: Silhouettes2_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -131,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Silhouettes_0
+      name: Silhouettes2_0
       rect:
         serializedVersion: 2
-        x: 167
-        y: 3461
-        width: 472
-        height: 332
+        x: 89
+        y: 2011
+        width: 2028
+        height: 1866
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 457afc494f7ef2100800000000000000
-      internalID: 85541955598002004
+      spriteID: e1a5f277643a21580800000000000000
+      internalID: -8857837994041714146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Silhouettes_2
+      name: Silhouettes2_1
       rect:
         serializedVersion: 2
-        x: 923
-        y: 3122
-        width: 176
-        height: 822
+        x: 2317
+        y: 2045
+        width: 1690
+        height: 1764
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79439c60eef6f4a20800000000000000
-      internalID: 3048778540859864215
+      spriteID: cc7ef773946165920800000000000000
+      internalID: 2978592707271714764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Silhouettes_3
+      name: Silhouettes2_6
       rect:
         serializedVersion: 2
-        x: 1298
-        y: 3522
-        width: 804
-        height: 374
+        x: 89
+        y: 1129
+        width: 2086
+        height: 678
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 597e33aa40e6b5c50800000000000000
-      internalID: 6655033840684492693
+      spriteID: 28f3a77772bdd9ff0800000000000000
+      internalID: -27625060139647102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Silhouettes_4
+      name: Silhouettes2_7
       rect:
         serializedVersion: 2
-        x: 2205
-        y: 3082
-        width: 264
-        height: 811
+        x: 245
+        y: 125
+        width: 1774
+        height: 830
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,113 +199,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2313ddeb1a42a0cb0800000000000000
-      internalID: -4897061367701491406
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Silhouettes_5
-      rect:
-        serializedVersion: 2
-        x: 2732
-        y: 2977
-        width: 867
-        height: 906
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d3d5ceb555683fa0800000000000000
-      internalID: -5820791099429104680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Silhouettes_6
-      rect:
-        serializedVersion: 2
-        x: 217
-        y: 2806
-        width: 372
-        height: 354
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e8d964ddd2a896d40800000000000000
-      internalID: 5578141543065623950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Silhouettes_7
-      rect:
-        serializedVersion: 2
-        x: 1264
-        y: 2757
-        width: 489
-        height: 387
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a8dc92f7094a8d90800000000000000
-      internalID: -7094777964484831063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Silhouettes_8
-      rect:
-        serializedVersion: 2
-        x: 1752
-        y: 2723
-        width: 304
-        height: 556
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e69fb33e9f076fdb0800000000000000
-      internalID: -4758491737708824210
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Silhouettes_9
-      rect:
-        serializedVersion: 2
-        x: 201
-        y: 221
-        width: 1745
-        height: 2064
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e775dd483fa200d10800000000000000
-      internalID: 2089717452494428030
+      spriteID: 6b83e69b0a02a5e90800000000000000
+      internalID: -7036275593135114058
       vertices: []
       indices: 
       edges: []
