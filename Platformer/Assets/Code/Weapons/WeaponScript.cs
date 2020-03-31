@@ -27,7 +27,6 @@ namespace SoulHunter.Weapons
                 }
                 EnemyHealth.TakeDamage();
 
-                gameObject.SetActive(false);
             }
         }
     }
