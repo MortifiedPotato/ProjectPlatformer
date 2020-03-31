@@ -88,7 +88,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3083480289600966763
 Transform:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,7 +141,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1343604932917172391, guid: 15b94866f6a58ae4d860545e8270ed49,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 7915397019460164817}
   - component: {fileID: 9109488785574472038}
   - component: {fileID: 8402541731431483700}
+  - component: {fileID: 5381134323129699461}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -361,6 +362,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5381134323129699461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881789387784613800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad5c7b4538b4554fb293cda611f144c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftSlash: {fileID: 357410299473576312}
+  RightSlash: {fileID: 9210192511736296819}
 --- !u!1 &4149204017818456493
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +388,6 @@ GameObject:
   - component: {fileID: 2067902339583395308}
   - component: {fileID: 5564521686295574165}
   - component: {fileID: 8869320439067664212}
-  - component: {fileID: 72310214595135332}
   - component: {fileID: 8774804050221565623}
   - component: {fileID: 4149204017818456496}
   - component: {fileID: 888956467}
@@ -439,6 +453,11 @@ MonoBehaviour:
   DespawnTimer: 10
   characterSprite: {fileID: 9109488785574472038}
   isTeleporting: 0
+  isGrounded: 0
+  isAttacking: 0
+  isSwinging: 0
+  isJumping: 0
+  isThrowing: 0
 --- !u!114 &8869320439067664212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,20 +473,6 @@ MonoBehaviour:
   aimDirection: {x: 0, y: 0}
   aimAngle: 0
   crosshairDistance: 1.5
---- !u!114 &72310214595135332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149204017818456493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad5c7b4538b4554fb293cda611f144c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LeftSlash: {fileID: 357410299473576312}
-  RightSlash: {fileID: 9210192511736296819}
 --- !u!114 &8774804050221565623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,9 +485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e443c8b17b26b4ea1531d6f645c32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 0
-  isSwinging: 0
-  isJumping: 0
   speed: 3
   jumpSpeed: 8
   climbSpeed: 3
@@ -535,7 +537,6 @@ MonoBehaviour:
   attackDuration: 1
   Overlap: {fileID: 1154278112}
   Weapon: {fileID: 1154278111}
-  isAttacking: 0
 --- !u!58 &9190005277524162411
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1107,7 +1108,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1127,7 +1128,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1343604932917172391, guid: 15b94866f6a58ae4d860545e8270ed49,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -16,6 +16,7 @@ namespace SoulHunter.Input
 
         //Scripts
         PlayerMovement playerMovement;
+        PlayerBase playerBase;
         PlayerCombat playerCombat;
         GrappleSystem grappleSystem;
 
@@ -32,6 +33,7 @@ namespace SoulHunter.Input
 
             //Get Scripts
             playerMovement = GetComponent<PlayerMovement>();
+            playerBase = GetComponent<PlayerBase>();
             playerCombat = GetComponent<PlayerCombat>();
             grappleSystem = GetComponent<GrappleSystem>();
         }
@@ -66,7 +68,7 @@ namespace SoulHunter.Input
             {
                 if (playerMovement)
                 {
-                    playerMovement.isJumping = true;
+                    playerBase.isJumping = true;
                 }
             }
 
