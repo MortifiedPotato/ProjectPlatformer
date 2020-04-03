@@ -26,7 +26,6 @@ namespace SoulHunter.Enemy
             }
             cooldown += Time.deltaTime;
             ResetWeapon();
-            print(cooldown);
         }
 
         public void Attack()

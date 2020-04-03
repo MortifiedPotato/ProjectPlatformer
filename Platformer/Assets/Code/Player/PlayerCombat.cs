@@ -8,12 +8,14 @@ namespace SoulHunter.Player
     {
         [SerializeField] float attackDuration;
         [SerializeField] BoxCollider2D Overlap;
+        SpriteRenderer playerSprite;
         public GameObject Weapon;
         float attackTimer = 2f;
         public bool isAttacking;
 
         void Start()
         {
+            playerSprite = GetComponentInChildren<SpriteRenderer>();
             Weapon.SetActive(false);
             attackDuration = attackDuration / 10;
         }
@@ -35,12 +37,14 @@ namespace SoulHunter.Player
                 return;
             }
 
-            if (GetComponent<PlayerAnimation>().playerSprite.flipX == true)
+            if (playerSprite.flipX == true)
             {
+                // Left
                 Weapon.transform.localPosition = new Vector3(-1, 0, 0);
             }
             else
             {
+                // Right
                 Weapon.transform.localPosition = new Vector3(1, 0, 0);
             }
             Weapon.SetActive(true);
