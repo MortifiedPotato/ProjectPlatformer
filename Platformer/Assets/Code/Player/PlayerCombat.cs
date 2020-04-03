@@ -35,14 +35,12 @@ namespace SoulHunter.Player
                 return;
             }
 
-            if (GetComponent<PlayerAim>().aimDirection.x < 0)
+            if (GetComponent<PlayerAnimation>().playerSprite.flipX == true)
             {
-                // Attack Left
                 Weapon.transform.localPosition = new Vector3(-1, 0, 0);
             }
             else
             {
-                //Attack Right
                 Weapon.transform.localPosition = new Vector3(1, 0, 0);
             }
             Weapon.SetActive(true);

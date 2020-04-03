@@ -635,6 +635,10 @@ PrefabInstance:
       propertyPath: _overlap
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1154278115, guid: 5d4c67715df8e9a429f45a182fad5359, type: 3}
+      propertyPath: Knockback
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 357410299473576312, guid: 5d4c67715df8e9a429f45a182fad5359,
         type: 3}
       propertyPath: m_IsActive
@@ -719,6 +723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564521686295574165, guid: 5d4c67715df8e9a429f45a182fad5359,
+        type: 3}
+      propertyPath: Health
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5689543747619177200, guid: 5d4c67715df8e9a429f45a182fad5359,
         type: 3}
@@ -1152,6 +1161,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621745071820290001, guid: d80d775e763812844a16e216e6f673f8,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.32006168
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621745071820290001, guid: d80d775e763812844a16e216e6f673f8,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1401234
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621745071820290001, guid: d80d775e763812844a16e216e6f673f8,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.19489479
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621745071820290001, guid: d80d775e763812844a16e216e6f673f8,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.2819004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d80d775e763812844a16e216e6f673f8, type: 3}

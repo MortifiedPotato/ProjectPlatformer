@@ -11,7 +11,7 @@ namespace SoulHunter.Player
 
         Rigidbody2D rigidBody;
 
-        SpriteRenderer playerSprite;
+        public SpriteRenderer playerSprite;
         Animator anim;
 
         [SerializeField] GameObject LeftSlash;
