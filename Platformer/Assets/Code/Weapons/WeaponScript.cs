@@ -9,6 +9,7 @@ namespace SoulHunter.Weapons
     public class WeaponScript : MonoBehaviour
     {
         [SerializeField] float Knockback;
+        
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Enemy"))
