@@ -127,7 +127,20 @@ namespace SoulHunter.Player
 
             if (hit.collider != null)
             {
-                GetComponentInChildren<PlayerAnimation>().hit = hit;
+                ropeAttached = true;
+                if (!ropePositions.Contains(hit.point))
+                {
+                    // Jump slightly to distance the player a little from the ground after grappling to something.
+                    transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
+                    ropePositions.Add(hit.point);
+                    ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
+                    ropeJoint.enabled = true;
+                    ropeHingeAnchorSprite.enabled = true;
+
+                    //This needs to stay as it often needs to be tested. Can be temporarily commented.
+                    //Debug.Log($"Grapple is attached to {hit.transform.name}");
+                }
+
                 playerBase.isThrowing = true;
             }
             else
@@ -136,23 +149,6 @@ namespace SoulHunter.Player
                 ropeAttached = false;
                 ropeJoint.enabled = false;
             }
-        }
-
-        public void InitiateGrapple(RaycastHit2D hit)
-        {
-            ropeAttached = true;
-            if (!ropePositions.Contains(hit.point))
-            {
-                // Jump slightly to distance the player a little from the ground after grappling to something.
-                transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
-                ropePositions.Add(hit.point);
-                ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
-                ropeJoint.enabled = true;
-                ropeHingeAnchorSprite.enabled = true;
-            }
-
-            //This needs to stay as it often needs to be tested. Can be temporarily commented.
-            //Debug.Log($"Grapple is attached to {hit.transform.name}");
         }
 
         public void ResetRope()

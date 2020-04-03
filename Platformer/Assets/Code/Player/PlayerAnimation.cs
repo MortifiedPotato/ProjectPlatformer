@@ -17,8 +17,6 @@ namespace SoulHunter.Player
         [SerializeField] GameObject LeftSlash;
         [SerializeField] GameObject RightSlash;
 
-        public RaycastHit2D hit;
-
         void Start()
         {
             rigidBody = GetComponentInParent<Rigidbody2D>();
@@ -93,11 +91,6 @@ namespace SoulHunter.Player
         public void ResetThrowing()
         {
             playerBase.isThrowing = false;
-        }
-
-        public void InitiateGrapple()
-        {
-            GetComponentInParent<GrappleSystem>().InitiateGrapple(hit);
         }
     }
 }
