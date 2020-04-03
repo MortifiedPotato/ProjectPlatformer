@@ -60,11 +60,6 @@ namespace SoulHunter.Enemy
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "P_weapon")
-            {
-                Moving = false;
-            }
-
             if (other.tag == "Edge")
             {
                 rb.velocity = new Vector2(0, 0);
@@ -78,7 +73,10 @@ namespace SoulHunter.Enemy
             {
                 Moving = true;
             }
-            else
+        }
+        private void OnCollisionExit2D(Collision2D other)
+        {
+            if (other.gameObject.tag == "Environment")
             {
                 Moving = false;
             }
