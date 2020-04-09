@@ -4,7 +4,7 @@ using SoulHunter.Gameplay;
 
 namespace SoulHunter.Enemy
 {
-    public class EnemyBase : HealthSystem
+    public class EnemyBase : Damageable
     {
         [SerializeField] ParticleSystem characterParticle;
         [SerializeField] CircleCollider2D corpseCollider;

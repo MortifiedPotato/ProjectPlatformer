@@ -6,16 +6,18 @@ using SoulHunter.Gameplay;
 
 namespace SoulHunter.Player
 {
-    public class PlayerBase : HealthSystem
+    public class PlayerBase : Damageable // Mort
     {
         public static bool isPaused;
-        public bool isTeleporting;
+        public static bool isTeleporting;
 
-        public bool isGrounded;
-        public bool isAttacking;
-        public bool isSwinging;
-        public bool isJumping;
-        public bool isThrowing;
+        public static bool isGrounded;
+        public static bool isAttacking;
+        public static bool isSwinging;
+        public static bool isJumping;
+        public static bool isThrowing;
+
+        public static Transform teleportDestination;
 
         protected override void Start()
         {
@@ -37,6 +39,14 @@ namespace SoulHunter.Player
                     Teleport();
                 }
             }
+            else
+            {
+                DespawnTimer += Time.deltaTime;
+                if (DespawnTimer >= 1f)
+                {
+                    DespawnTimer = 1f;
+                }
+            }
         }
 
         void Dissolve()
@@ -46,7 +56,8 @@ namespace SoulHunter.Player
 
         void Teleport()
         {
-            SceneController.Instance.TransitionScene(0);
+            transform.position = teleportDestination.position;
+            isTeleporting = false;
         }
 
         protected override void HandleDeath()

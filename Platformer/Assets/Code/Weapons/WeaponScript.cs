@@ -14,7 +14,7 @@ namespace SoulHunter.Weapons
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                HealthSystem EnemyHealth = collision.gameObject.GetComponent<HealthSystem>();
+                Damageable EnemyHealth = collision.gameObject.GetComponent<Damageable>();
                 Rigidbody2D EnemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
                 EnemyRB.AddForce(transform.up * 100);
                 Vector2 WeaponOwnerPos = transform.parent.gameObject.transform.position;

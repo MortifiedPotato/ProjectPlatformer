@@ -7,8 +7,6 @@ namespace SoulHunter.Player
     public class PlayerAnimation : MonoBehaviour
     {
         PlayerMovement movement;
-        PlayerBase playerBase;
-
         Rigidbody2D rigidBody;
 
         public SpriteRenderer playerSprite;
@@ -21,7 +19,6 @@ namespace SoulHunter.Player
         {
             rigidBody = GetComponentInParent<Rigidbody2D>();
             movement = GetComponentInParent<PlayerMovement>();
-            playerBase = GetComponentInParent<PlayerBase>();
             playerSprite = GetComponent<SpriteRenderer>();
             anim = GetComponent<Animator>();
         }
@@ -34,13 +31,13 @@ namespace SoulHunter.Player
 
         void UpdateValues()
         {
-            anim.SetBool("isGrounded", playerBase.isGrounded);
-            anim.SetBool("isAttacking", playerBase.isAttacking);
-            anim.SetBool("isSwinging", playerBase.isSwinging);
-            anim.SetBool("isJumping", playerBase.isJumping);
-            anim.SetBool("isThrowing", playerBase.isThrowing);
+            anim.SetBool("isGrounded", PlayerBase.isGrounded);
+            anim.SetBool("isAttacking", PlayerBase.isAttacking);
+            anim.SetBool("isSwinging", PlayerBase.isSwinging);
+            anim.SetBool("isJumping", PlayerBase.isJumping);
+            anim.SetBool("isThrowing", PlayerBase.isThrowing);
 
-            if (playerBase.isGrounded && !PlayerBase.isPaused)
+            if (PlayerBase.isGrounded && !PlayerBase.isPaused)
             {
                 anim.SetFloat("Speed", Mathf.Abs(movement.i_moveInput.x));
             }
@@ -52,7 +49,7 @@ namespace SoulHunter.Player
 
         void FlipTexture()
         {
-            if (playerBase.isGrounded && !PlayerBase.isPaused)
+            if (PlayerBase.isGrounded && !PlayerBase.isPaused)
             {
                 if (movement.i_moveInput.x < 0)
                 {
@@ -90,7 +87,7 @@ namespace SoulHunter.Player
 
         public void ResetThrowing()
         {
-            playerBase.isThrowing = false;
+            PlayerBase.isThrowing = false;
         }
     }
 }

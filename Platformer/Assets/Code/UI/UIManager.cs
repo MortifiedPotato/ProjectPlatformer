@@ -15,13 +15,5 @@ namespace SoulHunter.UI
         {
             Instance = this;
         }
-
-        private void Update()
-        {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Cursor.visible = true;
-            }
-        }
     }
 }

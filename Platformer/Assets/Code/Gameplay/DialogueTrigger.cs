@@ -4,30 +4,33 @@ using SoulHunter.Player;
 
 namespace SoulHunter.Dialogue
 {
-    public class DialogueTrigger : MonoBehaviour
+    public class DialogueTrigger : Interactable // Mort
     {
-        public bool isActivatable = true;
-        public bool isRepeatable;
-
+        // Dialogue Name Text Color
         public Color nameColor = Color.white;
+
+        // Dialogue Sentence Text Color
         public Color dialogueColor = Color.white;
 
         public Dialogue dialogue;
-
         ParticleSystem dialogueParticle;
-
         bool detected = false;
 
         private void Start()
         {
             dialogueParticle = GetComponentInChildren<ParticleSystem>();
 
+            // Play particle if dialogue is activatable
             if (isActivatable)
             {
                 dialogueParticle.Play();
             }
         }
 
+        /// <summary>
+        /// Set Current Dialogue Trigger State
+        /// </summary>
+        /// <param name="toggle"></param>
         public void ManageDialogueTrigger(bool toggle)
         {
             if (toggle || isRepeatable)
@@ -42,6 +45,7 @@ namespace SoulHunter.Dialogue
             }
         }
 
+        // Start Dialogue
         void TriggerDialogue()
         {
             DialogueManager.Instance.StartDialogue(this, dialogue, nameColor, dialogueColor);
@@ -49,20 +53,22 @@ namespace SoulHunter.Dialogue
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            PlayerBase player = collision.GetComponent<PlayerBase>();
-            if (player != null)
+            if (collision.CompareTag("Player"))
             {
-                if (player.isSwinging)
+                // If player is swinging, return.
+                if (PlayerBase.isSwinging)
                 {
                     detected = false;
                     return;
                 }
 
-                if (!GameManager.triggeringDialogue)
+                // If player isn't interacting, return.
+                if (!GameManager.interacting)
                 {
                     return;
                 }
 
+                // If either activatable or repeatable, start dialogue.
                 if (isActivatable || isRepeatable)
                 {
                     if (!detected)

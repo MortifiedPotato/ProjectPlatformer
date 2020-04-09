@@ -3011,7 +3011,7 @@ GameObject:
   - component: {fileID: 5575027773066222087}
   m_Layer: 2
   m_Name: Confiner
-  m_TagString: Untagged
+  m_TagString: Confiner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -2,7 +2,7 @@
 
 namespace SoulHunter.Gameplay
 {
-    public class HealthSystem : MonoBehaviour
+    public class Damageable : MonoBehaviour
     {
         const int maxHealth = 3;
         public int Health;

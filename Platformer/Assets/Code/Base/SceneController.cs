@@ -43,8 +43,8 @@ public class SceneController : MonoBehaviour
 
     public void TransitionScene(int index)
     {
-        transitionAnimator.SetBool("isLoading", true);
-        transitionAnimator.SetInteger("index", index);
+        transitionAnimator?.SetBool("isLoading", true);
+        transitionAnimator?.SetInteger("index", index);
     }
 
     /// <summary>
@@ -59,8 +59,8 @@ public class SceneController : MonoBehaviour
 
     public void ResetScene()
     {
-        transitionAnimator.SetBool("isLoading", true);
-        transitionAnimator.SetInteger("index", GetBuildIndex());
+        transitionAnimator?.SetBool("isLoading", true);
+        transitionAnimator?.SetInteger("index", GetBuildIndex());
     }
 
     /// <summary>
@@ -88,6 +88,6 @@ public class SceneController : MonoBehaviour
 
         loadingBar.SetActive(false);
 
-        transitionAnimator.SetBool("isLoading", false);
+        transitionAnimator?.SetBool("isLoading", false);
     }
 }

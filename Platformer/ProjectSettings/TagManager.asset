@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - P_weapon
   - Edge
+  - Confiner
+  - Portal
   layers:
   - Default
   - TransparentFX

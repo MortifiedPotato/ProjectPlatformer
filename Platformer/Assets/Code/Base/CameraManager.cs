@@ -11,26 +11,29 @@ public class CameraManager : MonoBehaviour
     private float ShakeElapsedTime = 0f;
 
     // Cinemachine Shake
-    public CinemachineVirtualCamera VirtualCamera;
+    public CinemachineConfiner confiner;
+    public CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin virtualCameraNoise;
 
     private void Awake()
     {
         Instance = this;
-        VirtualCamera =  GetComponentInChildren<CinemachineVirtualCamera>();
+        virtualCamera =  GetComponentInChildren<CinemachineVirtualCamera>();
+        confiner = virtualCamera.GetComponent<CinemachineConfiner>();
     }
 
     private void Start()
     {
-        if (VirtualCamera != null)
+        if (virtualCamera != null)
         {
-            virtualCameraNoise = VirtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
+            virtualCameraNoise = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
         }
     }
 
     public void UpdateConfiner(PolygonCollider2D collider)
     {
-        VirtualCamera.GetComponent<CinemachineConfiner>().m_BoundingShape2D = collider;
+        confiner.m_BoundingShape2D = collider;
+        confiner.InvalidatePathCache();
     }
 
     /// <summary>
@@ -62,7 +65,7 @@ public class CameraManager : MonoBehaviour
     private void Update()
     {
         // If the Cinemachine components are not set, avoid update
-        if (VirtualCamera != null || virtualCameraNoise != null)
+        if (virtualCamera != null || virtualCameraNoise != null)
         {
             // Set Cinemachine Camera Noise parameters
             if (ShakeElapsedTime > 0)

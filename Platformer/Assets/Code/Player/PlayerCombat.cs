@@ -6,10 +6,7 @@ namespace SoulHunter.Player
 {
     public class PlayerCombat : MonoBehaviour
     {
-        PlayerBase playerBase;
-
         [SerializeField] float attackDuration;
-        [SerializeField] BoxCollider2D Overlap;
         SpriteRenderer playerSprite;
         public GameObject Weapon;
         float attackTimer = 2f;
@@ -19,13 +16,11 @@ namespace SoulHunter.Player
             playerSprite = GetComponentInChildren<SpriteRenderer>();
             Weapon.SetActive(false);
             attackDuration = attackDuration / 10;
-
-            playerBase = GetComponent<PlayerBase>();
         }
 
         void Update()
         {
-            if (playerBase.isAttacking == true)
+            if (PlayerBase.isAttacking == true)
             {
                 attackTimer += Time.deltaTime;
             }
@@ -35,7 +30,7 @@ namespace SoulHunter.Player
 
         public void Attack()
         {
-            if (playerBase.isSwinging || playerBase.isAttacking)
+            if (PlayerBase.isSwinging || PlayerBase.isAttacking)
             {
                 return;
             }
@@ -52,7 +47,7 @@ namespace SoulHunter.Player
             }
             GetComponentInChildren<PlayerAnimation>().FlipSlashSprites();
             Weapon.SetActive(true);
-            playerBase.isAttacking = true;
+            PlayerBase.isAttacking = true;
         }
 
         void ResetWeapon()
@@ -61,7 +56,7 @@ namespace SoulHunter.Player
             {
                 Weapon.SetActive(false);
                 attackTimer = 0;
-                playerBase.isAttacking = false;
+                PlayerBase.isAttacking = false;
             }
         }
 

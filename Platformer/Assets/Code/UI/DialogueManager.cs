@@ -8,12 +8,15 @@ using SoulHunter.Player;
 
 namespace SoulHunter.Dialogue
 {
-    public class DialogueManager : MonoBehaviour
+    public class DialogueManager : MonoBehaviour // Mort
     {
+        // Singleton Instance
         public static DialogueManager Instance;
 
+        // Queue of dialogue sentences
         public Queue<string> sentences;
 
+        // Currently triggered dialogue
         public DialogueTrigger currentTrigger;
 
         bool nonTriggerable;

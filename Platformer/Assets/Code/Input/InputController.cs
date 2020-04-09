@@ -15,10 +15,9 @@ namespace SoulHunter.Input
         public ITogglePause i_TogglePause;
 
         //Scripts
-        PlayerMovement playerMovement;
-        PlayerBase playerBase;
         PlayerCombat playerCombat;
         GrappleSystem grappleSystem;
+        PlayerMovement playerMovement;
 
         private void Awake()
         {
@@ -32,10 +31,9 @@ namespace SoulHunter.Input
             i_AimInput = GetComponent<IAimInput>();
 
             //Get Scripts
-            playerMovement = GetComponent<PlayerMovement>();
-            playerBase = GetComponent<PlayerBase>();
             playerCombat = GetComponent<PlayerCombat>();
             grappleSystem = GetComponent<GrappleSystem>();
+            playerMovement = GetComponent<PlayerMovement>();
         }
 
         public void OnAim(InputAction.CallbackContext context)
@@ -68,7 +66,7 @@ namespace SoulHunter.Input
             {
                 if (playerMovement)
                 {
-                    playerBase.isJumping = true;
+                    PlayerBase.isJumping = true;
                 }
             }
 
@@ -82,12 +80,12 @@ namespace SoulHunter.Input
         {
             if (context.performed)
             {
-                GameManager.triggeringDialogue = true;
+                GameManager.interacting = true;
             }
 
             if (context.canceled)
             {
-                GameManager.triggeringDialogue = false;
+                GameManager.interacting = false;
             }
         }
 

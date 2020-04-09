@@ -16,7 +16,6 @@ namespace SoulHunter.Player
 
         private Vector2 playerPosition;
         private PlayerMovement playerMovement;
-        private PlayerBase playerBase;
         private PlayerAim playerAim;
         private Rigidbody2D ropeHingeAnchorRb;
         private SpriteRenderer ropeHingeAnchorSprite;
@@ -39,10 +38,9 @@ namespace SoulHunter.Player
             ropeJoint.enabled = false;
             playerPosition = transform.position;
 
-            playerMovement = GetComponent<PlayerMovement>();
-            playerBase = GetComponent<PlayerBase>();
             playerAim = GetComponent<PlayerAim>();
             ropeRenderer = GetComponent<LineRenderer>();
+            playerMovement = GetComponent<PlayerMovement>();
 
             ropeHingeAnchorRb = ropeHingeAnchor.GetComponent<Rigidbody2D>();
             ropeHingeAnchorSprite = ropeHingeAnchor.GetComponent<SpriteRenderer>();
@@ -60,13 +58,13 @@ namespace SoulHunter.Player
 
             if (!ropeAttached)
             {
-                playerBase.isSwinging = false;
+                PlayerBase.isSwinging = false;
 
                 SetCrosshairPosition(playerAim.aimAngle);
             }
             if (ropeAttached)
             {
-                playerBase.isSwinging = true;
+                PlayerBase.isSwinging = true;
                 playerMovement.ropeHook = ropePositions.Last();
 
                 crosshairSprite.enabled = false;
@@ -141,7 +139,7 @@ namespace SoulHunter.Player
                     //Debug.Log($"Grapple is attached to {hit.transform.name}");
                 }
 
-                playerBase.isThrowing = true;
+                PlayerBase.isThrowing = true;
             }
             else
             {
@@ -155,7 +153,7 @@ namespace SoulHunter.Player
         {
             ropeJoint.enabled = false;
             ropeAttached = false;
-            playerBase.isSwinging = false;
+            PlayerBase.isSwinging = false;
             ropeRenderer.positionCount = 2;
             ropeRenderer.SetPosition(0, transform.position);
             ropeRenderer.SetPosition(1, transform.position);

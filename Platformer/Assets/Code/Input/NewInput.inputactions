@@ -35,7 +35,7 @@
                     "id": "b4ed77d7-b958-4785-b662-8013a671d959",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 },
                 {
                     "name": "Attack",

@@ -10,7 +10,7 @@ namespace SoulHunter
         public static GameManager Instance;
 
         public static bool GameIsPaused;
-        public static bool triggeringDialogue;
+        public static bool interacting;
         public static bool initiatedDialogue;
 
         public List<EnemyBase> Enemies = new List<EnemyBase>();
