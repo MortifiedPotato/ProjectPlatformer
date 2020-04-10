@@ -4,9 +4,10 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class SceneController : MonoBehaviour
+public class SceneController : MonoBehaviour // Mort
 {
-    public static SceneController Instance { get; private set; }
+    // Singleton Instance
+    public static SceneController Instance;
 
     public GameObject loadingBar;
     public GameObject loadingArt;

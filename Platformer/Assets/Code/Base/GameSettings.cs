@@ -4,13 +4,16 @@ using UnityEngine;
 
 namespace SoulHunter
 {
-    public class GameSettings : MonoBehaviour
+    public class GameSettings : MonoBehaviour // Mort
     {
+        // Singleton Instance
         public static GameSettings Instance;
 
+        // List of resolution options
         public List<string> options = new List<string>();
         public Resolution[] resolutions;
 
+        // Saved Settings
         public static bool isFullscreen;
         public static int qualityIndex;
         public static int resolution;
@@ -28,6 +31,9 @@ namespace SoulHunter
             SetDefaultSettings();
         }
 
+        /// <summary>
+        /// Prepares list of resolutions for use
+        /// </summary>
         void GetResolutions()
         {
             resolutions = Screen.resolutions;
@@ -46,6 +52,9 @@ namespace SoulHunter
             }
         }
 
+        /// <summary>
+        /// Sets the default settings to use at game start
+        /// </summary>
         void SetDefaultSettings()
         {
             isFullscreen = true;

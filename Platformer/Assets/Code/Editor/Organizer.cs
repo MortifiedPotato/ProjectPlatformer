@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Linq;
 using System.IO;
 
-public class Organizer : EditorWindow
+public class Organizer : EditorWindow // Mort
 {
     GUISkin mySkin;
 
@@ -69,6 +69,9 @@ public class Organizer : EditorWindow
         GUILayout.Label("Made by Mort");
     }
 
+    /// <summary>
+    /// Create necessary folders for 2D art
+    /// </summary>
     static void CreateFolders2DArt()
     {
         //Game Sprites
@@ -88,6 +91,9 @@ public class Organizer : EditorWindow
         AssetDatabase.SaveAssets();
     }
 
+    /// <summary>
+    /// Create necessary folders for 3D art
+    /// </summary>
     static void CreateFolders3DArt()
     {
         //Models
@@ -113,6 +119,9 @@ public class Organizer : EditorWindow
         AssetDatabase.SaveAssets();
     }
 
+    /// <summary>
+    /// Create necessary folders for developers
+    /// </summary>
     static void CreateCodeFolders()
     {
         Directory.CreateDirectory(DevDir + "Compilations");
@@ -124,6 +133,9 @@ public class Organizer : EditorWindow
         AssetDatabase.SaveAssets();
     }
 
+    /// <summary>
+    /// Create necessary folders for audio files
+    /// </summary>
     static void CreateAudioFolders()
     {
         Directory.CreateDirectory(AudioDir + "Sound FX");

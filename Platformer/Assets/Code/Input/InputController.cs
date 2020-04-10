@@ -5,8 +5,9 @@ using SoulHunter.Player;
 
 namespace SoulHunter.Input
 {
-    public class InputController : MonoBehaviour
+    public class InputController : MonoBehaviour // Mort
     {
+        // Singleton Instance
         public static InputController Instance;
         
         //Interfaces
@@ -36,6 +37,10 @@ namespace SoulHunter.Input
             playerMovement = GetComponent<PlayerMovement>();
         }
 
+        /// <summary>
+        /// Gets aim input and sends it through an interface
+        /// </summary>
+        /// <param name="context"></param>
         public void OnAim(InputAction.CallbackContext context)
         {
             if (context.action.ReadValue<Vector2>() != Vector2.zero)
@@ -44,6 +49,10 @@ namespace SoulHunter.Input
             }
         }
 
+        /// <summary>
+        /// Gets movement input and sends it through an interface
+        /// </summary>
+        /// <param name="context"></param>
         public void OnMove(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -55,6 +64,10 @@ namespace SoulHunter.Input
             }
         }
 
+        /// <summary>
+        /// Gets jump input and sets its bool
+        /// </summary>
+        /// <param name="context"></param>
         public void OnJump(InputAction.CallbackContext context)
         {
             if (PlayerBase.isPaused)
@@ -76,6 +89,10 @@ namespace SoulHunter.Input
             }
         }
 
+        /// <summary>
+        /// Gets interact input and sets its bool
+        /// </summary>
+        /// <param name="context"></param>
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -89,6 +106,10 @@ namespace SoulHunter.Input
             }
         }
 
+        /// <summary>
+        /// Gets attack input and calls its function
+        /// </summary>
+        /// <param name="context"></param>
         public void OnAttack(InputAction.CallbackContext context)
         {
             if (PlayerBase.isPaused)
@@ -102,6 +123,10 @@ namespace SoulHunter.Input
             }
         }
 
+        /// <summary>
+        /// Gets pause input and sets its bool
+        /// </summary>
+        /// <param name="context"></param>
         public void OnPause(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -110,6 +135,10 @@ namespace SoulHunter.Input
             }
         }
 
+        /// <summary>
+        /// Gets swing input and calls its function
+        /// </summary>
+        /// <param name="context"></param>
         public void OnSwing(InputAction.CallbackContext context)
         {
             if (PlayerBase.isPaused)
@@ -123,6 +152,10 @@ namespace SoulHunter.Input
             }
         }
 
+        /// <summary>
+        /// Gets Detach input and calls its function
+        /// </summary>
+        /// <param name="context"></param>
         public void OnDetach(InputAction.CallbackContext context)
         {
             if (PlayerBase.isPaused)
@@ -136,6 +169,10 @@ namespace SoulHunter.Input
             }
         }
 
+        /// <summary>
+        /// Gets yank function and calls its function
+        /// </summary>
+        /// <param name="context"></param>
         public void OnYank(InputAction.CallbackContext context)
         {
             if (PlayerBase.isPaused)

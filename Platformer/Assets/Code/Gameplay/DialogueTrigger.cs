@@ -18,6 +18,7 @@ namespace SoulHunter.Dialogue
 
         private void Start()
         {
+            // Get dialogue particle system
             dialogueParticle = GetComponentInChildren<ParticleSystem>();
 
             // Play particle if dialogue is activatable
@@ -45,7 +46,9 @@ namespace SoulHunter.Dialogue
             }
         }
 
-        // Start Dialogue
+        /// <summary>
+        /// Start dialogue
+        /// </summary>
         void TriggerDialogue()
         {
             DialogueManager.Instance.StartDialogue(this, dialogue, nameColor, dialogueColor);

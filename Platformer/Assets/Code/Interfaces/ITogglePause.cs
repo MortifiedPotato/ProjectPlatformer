@@ -1,6 +1,6 @@
 ﻿namespace SoulHunter.Input
 {
-    public interface ITogglePause
+    public interface ITogglePause // Mort
     {
         void TogglePause();
     }

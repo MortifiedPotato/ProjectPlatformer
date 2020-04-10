@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleScript : MonoBehaviour
+public class ParticleScript : MonoBehaviour // Mort
 {
     void Start()
     {
+        // Destroys particle after specified time
         Destroy(gameObject, 1f);
     }
 }

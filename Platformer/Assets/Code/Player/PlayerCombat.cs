@@ -36,13 +36,11 @@ namespace SoulHunter.Player
             }
 
             if (playerSprite.flipX == true)
-            {
-                // Left
+            {   // Left
                 Weapon.transform.localPosition = new Vector3(-1, 0, 0);
             }
             else
-            {
-                // Right
+            {   // Right
                 Weapon.transform.localPosition = new Vector3(1, 0, 0);
             }
             GetComponentInChildren<PlayerAnimation>().FlipSlashSprites();

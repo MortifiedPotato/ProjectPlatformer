@@ -23,15 +23,15 @@ namespace SoulHunter.Dialogue
 
         Animator animator;
 
-        [Header("Fonts")]
+        [Header("Fonts")] // Font variables
         [SerializeField] TMP_FontAsset dialogueFont;
         [SerializeField] TMP_FontAsset normalFont;
 
-        [Header("Objects")]
+        [Header("Objects")] // Object variables
         [SerializeField] GameObject dialogueBox;
         [SerializeField] Button ContinueButton;
 
-        [Header("Texts")]
+        [Header("Texts")] // Text variables
         [SerializeField] TextMeshProUGUI nameText;
         [SerializeField] TextMeshProUGUI dialogueText;
 
@@ -43,6 +43,13 @@ namespace SoulHunter.Dialogue
             animator = dialogueBox.GetComponent<Animator>();
         }
 
+        /// <summary>
+        /// Initializes dialogue and sets respective text colors
+        /// </summary>
+        /// <param name="trigger"></param>
+        /// <param name="_dialogue"></param>
+        /// <param name="_nameColor"></param>
+        /// <param name="_dialogueColor"></param>
         public void StartDialogue(DialogueTrigger trigger, Dialogue _dialogue, Color _nameColor, Color _dialogueColor)
         {
             currentTrigger = trigger;
@@ -67,6 +74,9 @@ namespace SoulHunter.Dialogue
             DisplayNextSentence();
         }
 
+        /// <summary>
+        /// Types the next sentence in the dialogue box
+        /// </summary>
         public void DisplayNextSentence()
         {
             ContinueButton.Select();
@@ -101,6 +111,9 @@ namespace SoulHunter.Dialogue
             }
         }
 
+        /// <summary>
+        /// Indicates end of dialogue and handles the termination of current dialogue
+        /// </summary>
         void EndDialogue()
         {
             StopAllCoroutines();
@@ -114,6 +127,11 @@ namespace SoulHunter.Dialogue
             currentTrigger.ManageDialogueTrigger(false);
         }
 
+        /// <summary>
+        /// Types dialogue in a typewriter style
+        /// </summary>
+        /// <param name="_sentence"></param>
+        /// <returns></returns>
         IEnumerator TypeSentence(string _sentence)
         {
             dialogueText.text = "";
@@ -124,6 +142,9 @@ namespace SoulHunter.Dialogue
             }
         }
 
+        /// <summary>
+        /// Pauses dialogue when game is paused
+        /// </summary>
         public void PauseCheck()
         {
             if (GameManager.GameIsPaused)

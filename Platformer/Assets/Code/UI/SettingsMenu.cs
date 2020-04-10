@@ -5,7 +5,7 @@ using TMPro;
 
 namespace SoulHunter.UI
 {
-    public class SettingsMenu : MonoBehaviour
+    public class SettingsMenu : MonoBehaviour // Mort
     {
         public AudioMixer audioMixer;
 
@@ -24,6 +24,9 @@ namespace SoulHunter.UI
             UpdateValues();
         }
 
+        /// <summary>
+        /// Fills dropdown menu with resolutions and sets up current resolution
+        /// </summary>
         void SetUpResolutions()
         {
             resolutionsDropdown.ClearOptions();
@@ -32,6 +35,9 @@ namespace SoulHunter.UI
             resolutionsDropdown.RefreshShownValue();
         }
 
+        /// <summary>
+        /// Updates settings menu with saved game settings
+        /// </summary>
         void UpdateValues()
         {
             graphicsDropdown.value = GameSettings.qualityIndex;
@@ -53,6 +59,10 @@ namespace SoulHunter.UI
             dialogueSlider.value = 1.0f - GameSettings.dialogueSpeed;
         }
 
+        /// <summary>
+        /// Toggles application fullscreen
+        /// </summary>
+        /// <param name="fullscreen"></param>
         public void ToggleFullscreen(bool fullscreen)
         {
             if (fullscreen)
@@ -69,12 +79,20 @@ namespace SoulHunter.UI
             }
         }
 
+        /// <summary>
+        /// Sets texture quality in settings
+        /// </summary>
+        /// <param name="qualityIndex"></param>
         public void SetQuality(int qualityIndex)
         {
             QualitySettings.SetQualityLevel(qualityIndex);
             GameSettings.qualityIndex = qualityIndex;
         }
 
+        /// <summary>
+        /// Sets resolution in settings
+        /// </summary>
+        /// <param name="resolutionIndex"></param>
         public void SetResolution(int resolutionIndex)
         {
             Resolution resolution = GameSettings.Instance.resolutions[resolutionIndex];
@@ -82,6 +100,10 @@ namespace SoulHunter.UI
             GameSettings.resolution = resolutionIndex;
         }
 
+        /// <summary>
+        /// Sets game volume in settings
+        /// </summary>
+        /// <param name="volume"></param>
         public void SetVolume(float volume)
         {
             audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
@@ -91,6 +113,10 @@ namespace SoulHunter.UI
             volumePercentage.text = displayValue.ToString();
         }
 
+        /// <summary>
+        /// Sets dialogue speed in settings
+        /// </summary>
+        /// <param name="speed"></param>
         public void SetDialogueSpeed(float speed)
         {
             GameSettings.dialogueSpeed = 1.0f - speed;

@@ -2,7 +2,7 @@
 
 namespace SoulHunter.Player
 {
-    public class PlayerMovement : MonoBehaviour, Input.IMoveInput
+    public class PlayerMovement : MonoBehaviour, Input.IMoveInput // Mort
     {
         [Header("Movement Attributes")]
         public float speed = 3f;
@@ -53,6 +53,9 @@ namespace SoulHunter.Player
             HandleMovement();
         }
 
+        /// <summary>
+        /// Handles player movement and jumping using input interfaces
+        /// </summary>
         public void HandleMovement()
         {
             if (PlayerBase.isPaused)
@@ -105,6 +108,9 @@ namespace SoulHunter.Player
             }
         }
 
+        /// <summary>
+        /// Handles yanking using input
+        /// </summary>
         public void Yank()
         {
             if (ropeHook != Vector2.zero)
@@ -114,6 +120,9 @@ namespace SoulHunter.Player
             }
         }
 
+        /// <summary>
+        /// Cuts jumps in half if input is released
+        /// </summary>
         public void CutJump()
         {
             if (rigidBody.velocity.y > 0)
@@ -124,6 +133,9 @@ namespace SoulHunter.Player
             PlayerBase.isJumping = false;
         }
 
+        /// <summary>
+        /// Checks for ground colliders at the base of player
+        /// </summary>
         void CheckForGround()
         {
             var halfHeight = playerSprite.bounds.extents.y;
@@ -155,6 +167,10 @@ namespace SoulHunter.Player
             }
         }
 
+        /// <summary>
+        /// Gets movement input and saves it in a local variable
+        /// </summary>
+        /// <param name="input"></param>
         public void HandleMoveInput(Vector2 input)
         {
             i_moveInput = input;

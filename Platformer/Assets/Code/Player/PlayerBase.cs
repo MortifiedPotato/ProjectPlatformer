@@ -8,6 +8,7 @@ namespace SoulHunter.Player
 {
     public class PlayerBase : Damageable // Mort
     {
+        // Player states
         public static bool isPaused;
         public static bool isTeleporting;
 
@@ -17,6 +18,7 @@ namespace SoulHunter.Player
         public static bool isJumping;
         public static bool isThrowing;
 
+        // Teleportation coordinates
         public static Transform teleportDestination;
 
         protected override void Start()
@@ -49,17 +51,26 @@ namespace SoulHunter.Player
             }
         }
 
+        /// <summary>
+        /// Syncs shader value with despawn value
+        /// </summary>
         void Dissolve()
         {
             characterSprite.material.SetFloat("_Fade", DespawnTimer);
         }
 
+        /// <summary>
+        /// Teleports player to the next destination
+        /// </summary>
         void Teleport()
         {
             transform.position = teleportDestination.position;
             isTeleporting = false;
         }
 
+        /// <summary>
+        /// Handles player death by restarting scene
+        /// </summary>
         protected override void HandleDeath()
         {
             SceneController.Instance.ResetScene();

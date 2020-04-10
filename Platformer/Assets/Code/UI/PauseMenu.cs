@@ -7,7 +7,7 @@ using SoulHunter.Dialogue;
 
 namespace SoulHunter.UI
 {
-    public class PauseMenu : MonoBehaviour, Input.ITogglePause
+    public class PauseMenu : MonoBehaviour, Input.ITogglePause // Mort
     {
         public GameObject PauseMenuUI;
         [SerializeField] Button continueButton;
@@ -20,12 +20,16 @@ namespace SoulHunter.UI
             HandlePause();
         }
 
+        /// <summary>
+        /// Toggles pause state
+        /// </summary>
         public void TogglePause()
         {
             GameManager.GameIsPaused = !GameManager.GameIsPaused;
             HandlePause();
         }
 
+        // Handles game pause
         void HandlePause()
         {
             if (!GameManager.GameIsPaused)
@@ -39,6 +43,9 @@ namespace SoulHunter.UI
             DialogueManager.Instance.PauseCheck();
         }
 
+        /// <summary>
+        /// Resume game
+        /// </summary>
         void Resume()
         {
             if (!GameManager.initiatedDialogue)
@@ -51,6 +58,9 @@ namespace SoulHunter.UI
             GameManager.GameIsPaused = false;
         }
 
+        /// <summary>
+        /// Pause game
+        /// </summary>
         void Pause()
         {
             PlayerBase.isPaused = true;
@@ -62,6 +72,10 @@ namespace SoulHunter.UI
             continueButton.Select();
         }
 
+        /// <summary>
+        /// Change scene function for buttons
+        /// </summary>
+        /// <param name="index"></param>
         public void ChangeScene(int index)
         {
             SceneController.Instance.TransitionScene(index);

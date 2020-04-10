@@ -1,7 +1,7 @@
 ﻿using Cinemachine;
 using UnityEngine;
 
-public class CameraManager : MonoBehaviour
+public class CameraManager : MonoBehaviour // Mort
 {
     public static CameraManager Instance;
 
@@ -24,12 +24,17 @@ public class CameraManager : MonoBehaviour
 
     private void Start()
     {
+        // If virtual camera exists, get camera noise component
         if (virtualCamera != null)
         {
             virtualCameraNoise = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
         }
     }
 
+    /// <summary>
+    /// Update confiner on the virtual camera
+    /// </summary>
+    /// <param name="collider"></param>
     public void UpdateConfiner(PolygonCollider2D collider)
     {
         confiner.m_BoundingShape2D = collider;

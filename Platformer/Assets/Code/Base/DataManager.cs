@@ -6,8 +6,9 @@ using SoulHunter.Enemy;
 
 namespace SoulHunter.Base
 {
-    public class DataManager : MonoBehaviour
+    public class DataManager : MonoBehaviour // Mort
     {
+        // Singleton Instance
         public static DataManager Instance;
 
         [Header("Game Statistics")]
@@ -22,23 +23,9 @@ namespace SoulHunter.Base
         public int timesMissedAttack;
         public int timesHitAttack;
 
-        public List<EnemyScript> AliveEnemies = new List<EnemyScript>();
-
         void Start()
         {
             Instance = this;
-        }
-
-        public void HandleEntityRegistry(EnemyScript entity)
-        {
-            if (!AliveEnemies.Contains(entity))
-            {
-                AliveEnemies.Add(entity);
-            }
-            else
-            {
-                AliveEnemies.Remove(entity);
-            }
         }
     }
 }

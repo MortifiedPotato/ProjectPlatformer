@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SoulHunter.Player
 {
-    public class PlayerAim : MonoBehaviour, Input.IAimInput
+    public class PlayerAim : MonoBehaviour, Input.IAimInput // Mort
     {
         [Header("Aim Variables")]
         public Vector2 aimDirection;
@@ -24,6 +24,9 @@ namespace SoulHunter.Player
             }
         }
 
+        /// <summary>
+        /// Uses aim input to reposition the crosshairs
+        /// </summary>
         public void HandleAim()
         {
             if (GetComponent<PlayerInput>().currentControlScheme == "PC")
@@ -53,6 +56,10 @@ namespace SoulHunter.Player
             aimDirection = Quaternion.Euler(0, 0, aimAngle * Mathf.Rad2Deg) * Vector2.right;
         }
 
+        /// <summary>
+        /// Takes aim input into a local variable
+        /// </summary>
+        /// <param name="input"></param>
         public void HandleAimInput(Vector2 input)
         {
             i_aimInput = input;

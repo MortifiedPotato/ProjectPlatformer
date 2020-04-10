@@ -2,7 +2,7 @@
 
 namespace SoulHunter.Input
 {
-    public interface IMoveInput
+    public interface IMoveInput // Mort
     {
         void HandleMoveInput(Vector2 moveInput);
     }
