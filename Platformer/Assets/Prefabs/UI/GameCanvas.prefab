@@ -1418,6 +1418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4461c80a1c7e24ebcc3fec43985da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthImage: {fileID: 21300000, guid: bd6a99e9f7605eb4abdc7842f77671dc, type: 3}
+  healthOffset: 110
 --- !u!114 &61545770054570438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,6 +1446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ffbb1d8083a314cbd6cd4ca8385bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTrigger: {fileID: 0}
   dialogueFont: {fileID: 11400000, guid: 178ba87b294a12846adeda61dc894ab0, type: 2}
   normalFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   dialogueBox: {fileID: 5841930906669798502}

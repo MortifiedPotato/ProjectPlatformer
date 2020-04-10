@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77c3d779c5844554ea01b47621a5c3d1, type: 3}
-  m_Name: GoldPortal
+  m_Name: PortalGold
   m_EditorClassIdentifier: 
   color: {r: 1, g: 0.7276479, b: 0, a: 0}

@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77c3d779c5844554ea01b47621a5c3d1, type: 3}
-  m_Name: GreenPortal
+  m_Name: PortalGreen
   m_EditorClassIdentifier: 
   color: {r: 0.053106308, g: 1, b: 0, a: 0}

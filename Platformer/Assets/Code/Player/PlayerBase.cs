@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using SoulHunter.UI;
 using SoulHunter.Gameplay;
 
 namespace SoulHunter.Player
 {
     public class PlayerBase : Damageable // Mort
     {
+        GameUI healthUI;
+
         // Player states
         public static bool isPaused;
         public static bool isTeleporting;
@@ -25,6 +28,7 @@ namespace SoulHunter.Player
         {
             base.Start();
             DespawnTimer = 1f;
+            healthUI = FindObjectOfType<GameUI>();
         }
 
         protected override void Update()
@@ -66,6 +70,13 @@ namespace SoulHunter.Player
         {
             transform.position = teleportDestination.position;
             isTeleporting = false;
+        }
+
+        public override void TakeDamage()
+        {
+            base.TakeDamage();
+
+            healthUI.removeHeart();
         }
 
         /// <summary>
