@@ -3466,10 +3466,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Gameplay, Input, UI & Sound Programmer
 
-    Level, Sound & Music Designer
+    Level, Game, Sound & Music
+    Designer
 
-    Technical
-    Supervisor'
+    Technical Supervisor'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 178ba87b294a12846adeda61dc894ab0, type: 2}
   m_sharedMaterial: {fileID: 6097557987192734440, guid: 178ba87b294a12846adeda61dc894ab0,
@@ -3520,7 +3520,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 69
+  m_firstOverflowCharacterIndex: 75
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_isTextTruncated: 0
@@ -3544,10 +3544,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1443344807108024741}
-    characterCount: 89
+    characterCount: 95
     spriteCount: 0
-    spaceCount: 12
-    wordCount: 11
+    spaceCount: 13
+    wordCount: 12
     linkCount: 0
     lineCount: 3
     pageCount: 1
@@ -8521,7 +8521,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'AI Programmer
+  m_text: 'Combat & AI Programmer
 
     Game & Story Designer'
   m_isRightToLeft: 0
@@ -8598,10 +8598,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3314468133899066208}
-    characterCount: 35
+    characterCount: 44
     spriteCount: 0
-    spaceCount: 5
-    wordCount: 5
+    spaceCount: 7
+    wordCount: 6
     linkCount: 0
     lineCount: 2
     pageCount: 1
