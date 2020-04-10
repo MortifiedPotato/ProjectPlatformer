@@ -267,6 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7915397019460164817}
   - component: {fileID: 9109488785574472038}
+  - component: {fileID: 3502789340385521187}
   - component: {fileID: 8402541731431483700}
   - component: {fileID: 5381134323129699461}
   m_Layer: 0
@@ -343,6 +344,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &3502789340385521187
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881789387784613800}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.354, y: 0.538}
+    newSize: {x: 0.354, y: 0.538}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.3}
+  m_EdgeRadius: 0
 --- !u!95 &8402541731431483700
 Animator:
   serializedVersion: 3
@@ -374,6 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad5c7b4538b4554fb293cda611f144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprite: {fileID: 0}
   LeftSlash: {fileID: 357410299473576312}
   RightSlash: {fileID: 9210192511736296819}
 --- !u!1 &4149204017818456493
@@ -388,13 +416,12 @@ GameObject:
   - component: {fileID: 2067902339583395308}
   - component: {fileID: 5564521686295574165}
   - component: {fileID: 8869320439067664212}
+  - component: {fileID: 422464920093837341}
   - component: {fileID: 8774804050221565623}
   - component: {fileID: 4149204017818456496}
-  - component: {fileID: 888956467}
   - component: {fileID: 9190005277524162411}
   - component: {fileID: 2357971737969766114}
   - component: {fileID: 4149204017818456492}
-  - component: {fileID: 3147132343454543826}
   - component: {fileID: 4149204017818456497}
   - component: {fileID: 2837681812426184538}
   - component: {fileID: 558433198320249125}
@@ -452,12 +479,6 @@ MonoBehaviour:
   expirationHeight: -10
   DespawnTimer: 10
   characterSprite: {fileID: 9109488785574472038}
-  isTeleporting: 0
-  isGrounded: 0
-  isAttacking: 0
-  isSwinging: 0
-  isJumping: 0
-  isThrowing: 0
 --- !u!114 &8869320439067664212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +494,20 @@ MonoBehaviour:
   aimDirection: {x: 0, y: 0}
   aimAngle: 0
   crosshairDistance: 1.5
+--- !u!114 &422464920093837341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4149204017818456493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5387bb5858dbf53468514fc382c8a680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDuration: 1
+  Weapon: {fileID: 1154278111}
 --- !u!114 &8774804050221565623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,21 +557,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4864
   maxRopeLength: 8
---- !u!114 &888956467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149204017818456493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5387bb5858dbf53468514fc382c8a680, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDuration: 1
-  Overlap: {fileID: 1154278112}
-  Weapon: {fileID: 1154278111}
 --- !u!58 &9190005277524162411
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -598,32 +618,6 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 0.005
   m_MaxDistanceOnly: 0
---- !u!61 &3147132343454543826
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149204017818456493}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.7, y: 1}
-  m_EdgeRadius: 0
 --- !u!120 &4149204017818456497
 LineRenderer:
   m_ObjectHideFlags: 0

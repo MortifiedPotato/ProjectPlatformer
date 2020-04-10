@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SoulHunter.Gameplay;
+using SoulHunter.Player;
 
 namespace SoulHunter.Weapons 
 {
@@ -10,10 +11,10 @@ namespace SoulHunter.Weapons
         [SerializeField] int KnockBack;
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (collision.GetComponent<PlayerAnimation>())
             {
-                Damageable PlayerHealth = collision.gameObject.GetComponent<Damageable>();
-                Rigidbody2D PlayerRB = collision.gameObject.GetComponent<Rigidbody2D>();
+                PlayerBase PlayerHealth = collision.gameObject.GetComponentInParent<PlayerBase>();
+                Rigidbody2D PlayerRB = collision.gameObject.GetComponentInParent<Rigidbody2D>();
                 PlayerRB.AddForce(transform.up * 30);
                 Vector2 WeaponOwnerPos = transform.parent.gameObject.transform.position;
                 if (WeaponOwnerPos.x < transform.position.x)
@@ -25,6 +26,7 @@ namespace SoulHunter.Weapons
                     PlayerRB.AddForce(Vector2.left * KnockBack);
                 }
                 PlayerHealth.TakeDamage();
+                Debug.Log("Attacked!");
             }
         }
     }
