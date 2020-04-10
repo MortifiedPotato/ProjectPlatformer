@@ -62,9 +62,9 @@ namespace SoulHunter.Player
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                if (!other.GetComponent<EnemyBase>().isDead)
+                if (!other.GetComponentInParent<EnemyBase>().isDead)
                 {
-                    other.GetComponent<EnemyCombat>().Attack();
+                    other.GetComponentInParent<EnemyCombat>().Attack();
                 }
             }
         }

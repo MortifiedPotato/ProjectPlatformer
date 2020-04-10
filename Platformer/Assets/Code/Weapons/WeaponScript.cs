@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using SoulHunter.Gameplay;
+using SoulHunter.Enemy;
 
 namespace SoulHunter.Weapons
 {
@@ -14,20 +15,22 @@ namespace SoulHunter.Weapons
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                Damageable EnemyHealth = collision.gameObject.GetComponent<Damageable>();
-                Rigidbody2D EnemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
-                EnemyRB.AddForce(transform.up * 100);
-                Vector2 WeaponOwnerPos = transform.parent.gameObject.transform.position;
-                if (WeaponOwnerPos.x < transform.position.x)
+                if (collision.GetComponent<SpriteRenderer>())
                 {
-                    EnemyRB.AddForce(Vector2.right * Knockback);
+                    EnemyBase EnemyHealth = collision.gameObject.GetComponentInParent<EnemyBase>();
+                    Rigidbody2D EnemyRB = collision.gameObject.GetComponentInParent<Rigidbody2D>();
+                    EnemyRB.AddForce(transform.up * 100);
+                    Vector2 WeaponOwnerPos = transform.parent.gameObject.transform.position;
+                    if (WeaponOwnerPos.x < transform.position.x)
+                    {
+                        EnemyRB.AddForce(Vector2.right * Knockback);
+                    }
+                    else
+                    {
+                        EnemyRB.AddForce(Vector2.left * Knockback);
+                    }
+                    EnemyHealth.TakeDamage();
                 }
-                else
-                {
-                    EnemyRB.AddForce(Vector2.left * Knockback);
-                }
-                EnemyHealth.TakeDamage();
-
             }
         }
     }
