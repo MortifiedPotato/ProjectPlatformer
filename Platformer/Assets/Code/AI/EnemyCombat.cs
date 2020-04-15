@@ -12,6 +12,7 @@ namespace SoulHunter.Enemy
         float attackTimer;
         float cooldown;
         bool attacking;
+
         void Start()
         {
             Weapon.SetActive(false);

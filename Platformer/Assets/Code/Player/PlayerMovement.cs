@@ -18,7 +18,7 @@ namespace SoulHunter.Player
         float fCutJumpHeight = .5f;
         public float fGroundedRemember;
 
-        bool[] groundColliders = new bool[3];
+        bool[] groundCollision = new bool[3];
 
         [Header("Object Variables")]
         public LayerMask groundCheckLayer;
@@ -155,15 +155,15 @@ namespace SoulHunter.Player
         void CheckForGround()
         {
             var halfHeight = playerSprite.bounds.extents.y;
-            groundColliders[0] = Physics2D.OverlapCircle(new Vector2(transform.position.x + 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
-            groundColliders[1] = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
-            groundColliders[2] = Physics2D.OverlapCircle(new Vector2(transform.position.x - 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
+            groundCollision[0] = Physics2D.OverlapCircle(new Vector2(transform.position.x + 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
+            groundCollision[1] = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
+            groundCollision[2] = Physics2D.OverlapCircle(new Vector2(transform.position.x - 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
 
             fGroundedRemember -= Time.deltaTime;
 
-            for (int i = 0; i < groundColliders.Length; i++)
+            for (int i = 0; i < groundCollision.Length; i++)
             {
-                if (groundColliders[i])
+                if (groundCollision[i])
                 {
                     fGroundedRemember = fGroundedRememberTime;
                     PlayerBase.isGrounded = true;
@@ -171,7 +171,7 @@ namespace SoulHunter.Player
                     return;
                 }
 
-                if (fGroundedRemember < 0 && !groundColliders[i])
+                if (fGroundedRemember < 0 && !groundCollision[i])
                 {
                     PlayerBase.isGrounded = false;
                 }

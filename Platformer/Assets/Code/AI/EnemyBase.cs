@@ -11,7 +11,7 @@ namespace SoulHunter.Enemy
 
         protected void Start()
         {
-            characterSprite.enabled = false;
+            //characterSprite.enabled = false;
             GameManager.Instance.EnemyListRegistry(this);
         }
 

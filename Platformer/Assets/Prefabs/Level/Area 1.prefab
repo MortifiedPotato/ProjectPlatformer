@@ -6426,6 +6426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5575027773820672214}
     m_Modifications:
+    - target: {fileID: 12805095, guid: 08b982582fca1944c89bfa948043bf14, type: 3}
+      propertyPath: fGroundedRememberTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6763832758573670800, guid: 08b982582fca1944c89bfa948043bf14,
         type: 3}
       propertyPath: m_LocalPosition.x

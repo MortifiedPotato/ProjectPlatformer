@@ -104,7 +104,7 @@ namespace SoulHunter.UI
         /// <param name="volume"></param>
         public void SetVolume(float volume)
         {
-            GameSettings.Instance.audioMixer?.SetFloat("Volume", Mathf.Log10(volume) * 20);
+            GameSettings.Instance?.audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
             GameSettings.soundVolume = volume * 10;
 
             float displayValue = Mathf.Round(GameSettings.soundVolume * 10);
