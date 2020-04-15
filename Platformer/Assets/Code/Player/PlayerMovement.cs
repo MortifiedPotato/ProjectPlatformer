@@ -21,9 +21,9 @@ namespace SoulHunter.Player
         bool[] groundCollision = new bool[3];
 
         [Header("Object Variables")]
+        [SerializeField] GameObject dustParticle;
         public LayerMask groundCheckLayer;
         public SpriteRenderer playerSprite;
-        GameObject dustParticle;
         Rigidbody2D rigidBody;
 
         [HideInInspector]
@@ -34,7 +34,6 @@ namespace SoulHunter.Player
 
         private void Awake()
         {
-            dustParticle = Resources.Load("Particles/DustDirtyPoof") as GameObject;
             rigidBody = GetComponent<Rigidbody2D>();
         }
 

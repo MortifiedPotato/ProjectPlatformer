@@ -13,6 +13,7 @@ namespace SoulHunter.Gameplay
 
         // Death status
         public bool isDead;
+        public bool immuneToDamage;
 
         // Height at which entities expire
         [SerializeField] protected float expirationHeight = -10;

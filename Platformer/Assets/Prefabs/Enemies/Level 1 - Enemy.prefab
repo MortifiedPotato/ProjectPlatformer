@@ -369,6 +369,7 @@ MonoBehaviour:
   characterSprite: {fileID: 6763832758375902552}
   characterParticle: {fileID: 0}
   corpseCollider: {fileID: 3864280707955754651}
+  soul: {fileID: 11400000, guid: 81087b02aa13e324599a0412bee05890, type: 2}
 --- !u!114 &12805095
 MonoBehaviour:
   m_ObjectHideFlags: 0

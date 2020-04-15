@@ -18,6 +18,7 @@ namespace SoulHunter.Dialogue
         public Queue<string> sentences;
 
         // Currently triggered dialogue
+        [HideInInspector]
         public DialogueTrigger currentTrigger;
 
         bool nonTriggerable;

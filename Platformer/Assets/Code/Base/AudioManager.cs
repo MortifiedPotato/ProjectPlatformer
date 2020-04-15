@@ -180,7 +180,7 @@ public static class AudioManager // Mort - Followed Tutorial by Code Monkey, mod
                 if (soundTimerDictionary.ContainsKey(sound))
                 {
                     float lastTimePlayed = soundTimerDictionary[sound];
-                    float playerMoveTimerMax = .3f;
+                    float playerMoveTimerMax = .35f;
                     if (lastTimePlayed + playerMoveTimerMax < Time.time)
                     {
                         soundTimerDictionary[sound] = Time.time;
