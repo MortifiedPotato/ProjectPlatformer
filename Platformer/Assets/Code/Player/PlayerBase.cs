@@ -7,7 +7,7 @@ namespace SoulHunter.Player
 {
     public class PlayerBase : Damageable // Mort
     {
-        GameUI healthUI;
+        GameUI healthUI; // <- Thomas
 
         // Player states
         public static bool isPaused;
@@ -25,7 +25,7 @@ namespace SoulHunter.Player
         protected void Start()
         {
             DespawnTimer = 1f;
-            healthUI = FindObjectOfType<GameUI>();
+            healthUI = FindObjectOfType<GameUI>(); // <- Thomas
         }
 
         protected override void Update()
@@ -95,6 +95,15 @@ namespace SoulHunter.Player
 
             CameraManager.Instance.ShakeCamera(1, 3, 0);
 
+            healthUI.UpdateHealthPanel(Health); // <- Thomas
+        }
+
+        /// <summary>
+        /// Heals the player
+        /// </summary>
+        public void Heal()
+        {
+            Health++;
             healthUI.UpdateHealthPanel(Health);
         }
 
@@ -106,6 +115,7 @@ namespace SoulHunter.Player
             if (isDead && !isTeleporting)
             {
                 isPaused = false;
+                immuneToDamage = false;
                 SceneController.Instance.ResetScene();
             }
         }

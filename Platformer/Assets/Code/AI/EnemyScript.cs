@@ -79,10 +79,8 @@ namespace SoulHunter.Enemy
                 if (fGroundedRemember < 0 && !groundCollision[i])
                 {
                     MoveRight = !MoveRight;
-                    Debug.Log("Avoided edge");
                 }
             }
-
         }
 
         void CheckForCollision()
@@ -100,7 +98,6 @@ namespace SoulHunter.Enemy
             if (horizontalCollision)
             {
                 MoveRight = !MoveRight;
-                Debug.Log("Avoided collision");
             }
         }
 
@@ -113,40 +110,19 @@ namespace SoulHunter.Enemy
                 MoveRight = !MoveRight;
                 flipDirectionTimer = Random.Range(2, 6);
                 chngeDirTimer = 0;
-
-                Debug.Log("Changed direction randomly");
             }
         }
 
         private void OnDrawGizmos()
         {
+            Gizmos.color = Color.red;
             var halfHeight = GetComponentInChildren<SpriteRenderer>().bounds.extents.y;
             Gizmos.DrawWireSphere(new Vector2(transform.position.x + 0.8f, transform.position.y - halfHeight), .15f);
             Gizmos.DrawWireSphere(new Vector2(transform.position.x - 0.8f, transform.position.y - halfHeight), .15f);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(new Vector2(transform.position.x - 1, transform.position.y), .15f);
+            Gizmos.DrawWireSphere(new Vector2(transform.position.x + 1, transform.position.y), .15f);
         }
-
-        //private void OnTriggerEnter2D(Collider2D other)
-        //{
-        //    if (other.tag == "Edge")
-        //    {
-        //        rb.velocity = new Vector2(0, 0);
-        //        MoveRight = !MoveRight;
-        //    }
-        //}
-
-        //private void OnCollisionEnter2D(Collision2D other)
-        //{
-        //    if (other.gameObject.tag == "Environment")
-        //    {
-        //        Moving = true;
-        //    }
-        //}
-        //private void OnCollisionExit2D(Collision2D other)
-        //{
-        //    if (other.gameObject.tag == "Environment")
-        //    {
-        //        Moving = false;
-        //    }
-        //}
     }
 }

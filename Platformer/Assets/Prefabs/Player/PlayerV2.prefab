@@ -529,6 +529,7 @@ MonoBehaviour:
   Score: 0
   fGroundedRememberTime: 0.25
   fGroundedRemember: 0
+  dustParticle: {fileID: 165672, guid: 24d496517ac8ec042893ce29ccd2952b, type: 3}
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 14336
