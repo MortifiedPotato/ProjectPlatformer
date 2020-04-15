@@ -93,6 +93,8 @@ namespace SoulHunter.Player
                 AudioManager.PlaySound(AudioManager.Sound.PlayerDeath, transform.position);
             }
 
+            CameraManager.Instance.ShakeCamera(1, 3, 0);
+
             healthUI.UpdateHealthPanel(Health);
         }
 
@@ -103,6 +105,7 @@ namespace SoulHunter.Player
         {
             if (isDead && !isTeleporting)
             {
+                isPaused = false;
                 SceneController.Instance.ResetScene();
             }
         }

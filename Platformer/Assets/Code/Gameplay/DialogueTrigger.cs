@@ -6,6 +6,9 @@ namespace SoulHunter.Dialogue
 {
     public class DialogueTrigger : Interactable // Mort
     {
+        // Toggle trigger dialogue with collision
+        public bool canTriggerByCollision;
+
         // Dialogue Name Text Color
         public Color nameColor = Color.white;
 
@@ -14,7 +17,7 @@ namespace SoulHunter.Dialogue
 
         public Dialogue dialogue;
         ParticleSystem dialogueParticle;
-        bool detected = false;
+        bool playerDetected = false;
 
         private void Start()
         {
@@ -61,12 +64,12 @@ namespace SoulHunter.Dialogue
                 // If player is swinging, return.
                 if (PlayerBase.isSwinging)
                 {
-                    detected = false;
+                    playerDetected = false;
                     return;
                 }
 
                 // If player isn't interacting, return.
-                if (!GameManager.interacting)
+                if (!GameManager.interacting && !canTriggerByCollision)
                 {
                     return;
                 }
@@ -74,10 +77,11 @@ namespace SoulHunter.Dialogue
                 // If either activatable or repeatable, start dialogue.
                 if (isActivatable || isRepeatable)
                 {
-                    if (!detected)
+                    if (!playerDetected)
                     {
                         TriggerDialogue();
-                        detected = true;
+                        playerDetected = true;
+                        canTriggerByCollision = false;
                     }
                 }
             }
@@ -87,7 +91,7 @@ namespace SoulHunter.Dialogue
         {
             if (collision.CompareTag("Player"))
             {
-                detected = false;
+                playerDetected = false;
             }
         }
     }
