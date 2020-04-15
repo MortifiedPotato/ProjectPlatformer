@@ -6,7 +6,9 @@ namespace SoulHunter.Gameplay
     {
         // Max HP constant value
         const int maxHealth = 3;
+
         // HP value
+        [HideInInspector]
         public int Health;
 
         // Death status
@@ -20,7 +22,7 @@ namespace SoulHunter.Gameplay
         // Entity sprite reference
         [SerializeField] protected SpriteRenderer characterSprite;
 
-        protected virtual void Start()
+        private void Awake()
         {
             // Set HP value to Max HP value at start
             Health = maxHealth;

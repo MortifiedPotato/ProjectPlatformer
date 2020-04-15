@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 
 using SoulHunter.Player;
+using UnityEngine.EventSystems;
 
 namespace SoulHunter.Dialogue
 {
@@ -72,6 +73,8 @@ namespace SoulHunter.Dialogue
             }
 
             DisplayNextSentence();
+
+            AudioManager.PlaySound(AudioManager.Sound.StartDialogue, currentTrigger.transform.position);
         }
 
         /// <summary>
@@ -125,6 +128,10 @@ namespace SoulHunter.Dialogue
             animator.SetBool("inDialogue", false);
 
             currentTrigger.ManageDialogueTrigger(false);
+
+            EventSystem.current.SetSelectedGameObject(null);
+
+            AudioManager.PlaySound(AudioManager.Sound.EndDialogue, currentTrigger.transform.position);
         }
 
         /// <summary>
@@ -147,7 +154,7 @@ namespace SoulHunter.Dialogue
         /// </summary>
         public void PauseCheck()
         {
-            if (GameManager.GameIsPaused)
+            if (GameManager.gameIsPaused)
             {
                 animator.SetBool("GameIsPaused", true);
             }

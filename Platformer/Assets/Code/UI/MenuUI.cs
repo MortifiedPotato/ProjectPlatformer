@@ -7,7 +7,7 @@ namespace SoulHunter.UI
         void Start()
         {
             // Sets reference inside UIManager
-            UIManager.Instance.MenuCanvas = gameObject;
+            CanvasHandler.Instance.MenuCanvas = gameObject;
             // Shows cursor
             Cursor.visible = true;
         }

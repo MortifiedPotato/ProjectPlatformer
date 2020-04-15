@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace SoulHunter
 {
@@ -19,6 +20,10 @@ namespace SoulHunter
         public static int resolution;
         public static float soundVolume;
         public static float dialogueSpeed;
+
+        // Audio Mixer
+        public AudioMixer audioMixer;
+        public AudioMixerGroup audioMixerGroup;
 
         private void Awake()
         {

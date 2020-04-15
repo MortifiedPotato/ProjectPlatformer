@@ -140,6 +140,7 @@ namespace SoulHunter.Player
                 }
 
                 PlayerBase.isThrowing = true;
+                AudioManager.PlaySound(AudioManager.Sound.GrappleThrow, transform.position);
             }
             else
             {
@@ -163,6 +164,8 @@ namespace SoulHunter.Player
             playerMovement.ropeHook = Vector2.zero;
 
             wrapPointsLookup.Clear();
+
+            AudioManager.PlaySound(AudioManager.Sound.GrappleDetach, transform.position);
         }
 
         private void UpdateRopePositions()

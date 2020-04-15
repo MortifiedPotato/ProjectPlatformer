@@ -11,7 +11,7 @@ namespace SoulHunter
         public static GameManager Instance;
 
         // Game Pause State
-        public static bool GameIsPaused;
+        public static bool gameIsPaused;
 
         // Player interact state
         public static bool interacting;
@@ -27,6 +27,8 @@ namespace SoulHunter
             Instance = this;
             name = "Managers";
             DontDestroyOnLoad(this);
+
+            AudioManager.Initialize();
         }
 
         /// <summary>
@@ -42,13 +44,6 @@ namespace SoulHunter
             else
             {
                 Enemies.Remove(enemy);
-
-                // Testing purposes
-
-                //if (Enemies.Count == 0)
-                //{
-                //    SceneController.Instance.TransitionScene(0);
-                //}
             }
         }
     }

@@ -43,6 +43,8 @@ namespace SoulHunter.Enemy
                 Weapon.SetActive(true);
                 attacking = true;
                 cooldown = 0;
+
+                AudioManager.PlaySound(AudioManager.Sound.EnemyAttack, transform.position);
             }
         }
 

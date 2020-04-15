@@ -9,11 +9,9 @@ namespace SoulHunter.Enemy
         [SerializeField] ParticleSystem characterParticle;
         [SerializeField] CircleCollider2D corpseCollider;
 
-        protected override void Start()
+        protected void Start()
         {
-            base.Start();
             characterSprite.enabled = false;
-
             GameManager.Instance.EnemyListRegistry(this);
         }
 
@@ -31,6 +29,12 @@ namespace SoulHunter.Enemy
 
                 var emission = characterParticle.emission;
                 emission.enabled = false;
+
+                AudioManager.PlaySound(AudioManager.Sound.EnemyDeath, transform.position);
+            }
+            else
+            {
+                AudioManager.PlaySound(AudioManager.Sound.EnemyHurt, transform.position);
             }
         }
 

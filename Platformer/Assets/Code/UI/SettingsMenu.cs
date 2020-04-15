@@ -7,8 +7,6 @@ namespace SoulHunter.UI
 {
     public class SettingsMenu : MonoBehaviour // Mort
     {
-        public AudioMixer audioMixer;
-
         [SerializeField] Toggle fullscreenToggle;
         [SerializeField] TMP_Dropdown graphicsDropdown;
         [SerializeField] TMP_Dropdown resolutionsDropdown;
@@ -106,7 +104,7 @@ namespace SoulHunter.UI
         /// <param name="volume"></param>
         public void SetVolume(float volume)
         {
-            audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
+            GameSettings.Instance.audioMixer?.SetFloat("Volume", Mathf.Log10(volume) * 20);
             GameSettings.soundVolume = volume * 10;
 
             float displayValue = Mathf.Round(GameSettings.soundVolume * 10);

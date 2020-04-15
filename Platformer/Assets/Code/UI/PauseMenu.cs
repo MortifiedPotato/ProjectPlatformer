@@ -16,7 +16,7 @@ namespace SoulHunter.UI
         {
             InputController.Instance.i_TogglePause = this;
 
-            GameManager.GameIsPaused = false;
+            GameManager.gameIsPaused = false;
             HandlePause();
         }
 
@@ -25,14 +25,14 @@ namespace SoulHunter.UI
         /// </summary>
         public void TogglePause()
         {
-            GameManager.GameIsPaused = !GameManager.GameIsPaused;
+            GameManager.gameIsPaused = !GameManager.gameIsPaused;
             HandlePause();
         }
 
         // Handles game pause
         void HandlePause()
         {
-            if (!GameManager.GameIsPaused)
+            if (!GameManager.gameIsPaused)
             {
                 Resume();
             }
@@ -55,7 +55,7 @@ namespace SoulHunter.UI
 
             PauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
-            GameManager.GameIsPaused = false;
+            GameManager.gameIsPaused = false;
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace SoulHunter.UI
 
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
-            GameManager.GameIsPaused = true;
+            GameManager.gameIsPaused = true;
 
             continueButton.Select();
         }

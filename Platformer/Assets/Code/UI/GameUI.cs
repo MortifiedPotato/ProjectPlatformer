@@ -11,26 +11,49 @@ namespace SoulHunter.UI
         private int playerHealth;
         [SerializeField] private Sprite healthImage;
         public float healthOffset;
-        public List<GameObject> healthList; 
+        public List<GameObject> healthList;
+
+        public GameObject healthPanel;
+
         private void Start()
         {
             // Gets player health
             playerHealth = FindObjectOfType<PlayerBase>().Health;
             // Sets reference inside UIManager
-            UIManager.Instance.GameCanvas = gameObject;
+            CanvasHandler.Instance.GameCanvas = gameObject;
             // Disables cursor
             Cursor.visible = false;
 
-            for (int i = 0; i < playerHealth; i++)
+            for (int i = 0; i < healthPanel.transform.childCount; i++)
             {
-                CreateHealthImage(new Vector2(-900 + i * healthOffset, 470));
+                healthList.Add(healthPanel.transform.GetChild(i).gameObject);
+            }
+
+            //for (int i = 0; i < playerHealth; i++)
+            //{
+            //    CreateHealthImage(new Vector2(-900 + i * healthOffset, 470));
+            //}
+        }
+
+        public void UpdateHealthPanel(int health)
+        {
+            for (int i = 0; i < healthList.Count; i++)
+            {
+                healthList[i].SetActive(false);
+            }
+
+            for (int i = 0; i < health; i++)
+            {
+                healthList[i].SetActive(true);
             }
         }
+
+        //----------------------------------
 
         private Image CreateHealthImage(Vector2 anchoredPosition)
         {
             GameObject healthGameObject = new GameObject("playerHealth", typeof(Image));
-            healthGameObject.transform.parent = transform;
+            healthGameObject.transform.parent = healthPanel.transform;
             healthGameObject.transform.localPosition = Vector2.zero;
 
             healthGameObject.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;

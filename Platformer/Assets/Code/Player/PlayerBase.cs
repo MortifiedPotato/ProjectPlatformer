@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using SoulHunter.UI;
 using SoulHunter.Gameplay;
@@ -24,9 +22,8 @@ namespace SoulHunter.Player
         // Teleportation coordinates
         public static Transform teleportDestination;
 
-        protected override void Start()
+        protected void Start()
         {
-            base.Start();
             DespawnTimer = 1f;
             healthUI = FindObjectOfType<GameUI>();
         }
@@ -36,13 +33,16 @@ namespace SoulHunter.Player
             base.Update();
             Dissolve();
 
-            if (isTeleporting)
+            if (isTeleporting || isDead)
             {
                 DespawnTimer -= Time.deltaTime;
                 if (DespawnTimer <= 0f)
                 {
                     DespawnTimer = 0f;
-                    Teleport();
+                    if (!isDead)
+                    {
+                        Teleport();
+                    }
                 }
             }
             else
@@ -51,6 +51,10 @@ namespace SoulHunter.Player
                 if (DespawnTimer >= 1f)
                 {
                     DespawnTimer = 1f;
+                }
+                else
+                {
+                    AudioManager.PlaySound(AudioManager.Sound.TeleportAppear, transform.position);
                 }
             }
         }
@@ -70,13 +74,26 @@ namespace SoulHunter.Player
         {
             transform.position = teleportDestination.position;
             isTeleporting = false;
+            isPaused = false;
         }
 
+        /// <summary>
+        /// Overrides default TakeDamage value to update UI and play unique sounds
+        /// </summary>
         public override void TakeDamage()
         {
             base.TakeDamage();
 
-            healthUI.removeHeart();
+            if (!isDead)
+            {
+                AudioManager.PlaySound(AudioManager.Sound.PlayerHurt, transform.position);
+            }
+            else
+            {
+                AudioManager.PlaySound(AudioManager.Sound.PlayerDeath, transform.position);
+            }
+
+            healthUI.UpdateHealthPanel(Health);
         }
 
         /// <summary>
@@ -84,7 +101,10 @@ namespace SoulHunter.Player
         /// </summary>
         protected override void HandleDeath()
         {
-            SceneController.Instance.ResetScene();
+            if (isDead && !isTeleporting)
+            {
+                SceneController.Instance.ResetScene();
+            }
         }
     }
 }

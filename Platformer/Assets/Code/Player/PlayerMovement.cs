@@ -85,6 +85,8 @@ namespace SoulHunter.Player
 
                     var force = perpendicularDirection * swingForce;
                     rigidBody.AddForce(force, ForceMode2D.Force);
+
+                    AudioManager.PlaySound(AudioManager.Sound.ClothFlowing, transform.position);
                 }
                 else
                 {
@@ -93,6 +95,19 @@ namespace SoulHunter.Player
                         var groundForce = speed * 2f;
                         rigidBody.AddForce(new Vector2((i_moveInput.x * groundForce - rigidBody.velocity.x) * groundForce, 0));
                         rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y);
+
+                        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, groundCheckLayer);
+                        if (hit.collider != null)
+                        {
+                            if (hit.transform.gameObject.layer == 12)
+                            {
+                                AudioManager.PlaySound(AudioManager.Sound.PlayerWalkWood, transform.position);
+                            }
+                            else if (hit.transform.gameObject.layer == 13)
+                            {
+                                AudioManager.PlaySound(AudioManager.Sound.PlayerWalkGrass, transform.position);
+                            }
+                        }
                     }
                 }
             }
@@ -104,6 +119,7 @@ namespace SoulHunter.Player
                 if (PlayerBase.isJumping)
                 {
                     rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+                    AudioManager.PlaySound(AudioManager.Sound.PlayerJump, transform.position);
                 }
             }
         }
@@ -182,6 +198,15 @@ namespace SoulHunter.Player
             if (velocity.y < -5)
             {
                 Instantiate(dustParticle, new Vector3(transform.position.x, transform.position.y - playerSprite.bounds.extents.y, transform.position.z + 1) , dustParticle.transform.rotation);
+
+                if (collision.transform.gameObject.layer == 12)
+                {
+                    AudioManager.PlaySound(AudioManager.Sound.PlayerLandWood, transform.position);
+                }
+                else if (collision.transform.gameObject.layer == 13)
+                {
+                    AudioManager.PlaySound(AudioManager.Sound.PlayerLandGrass, transform.position);
+                }
             }
             
             // Ground Impact Shake
