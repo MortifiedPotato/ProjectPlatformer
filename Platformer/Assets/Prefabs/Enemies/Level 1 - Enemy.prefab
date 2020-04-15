@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3edca2b6dd2477b4099806cbf7b66cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
+  MoveSpeed: 2
   flipDirectionTimer: 3
   MoveRight: 0
   Moving: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDuration: 1
-  attackCooldown: 5
+  attackCooldown: 2
   Weapon: {fileID: 5518214823143716770}
 --- !u!50 &6763832758573670801
 Rigidbody2D:
