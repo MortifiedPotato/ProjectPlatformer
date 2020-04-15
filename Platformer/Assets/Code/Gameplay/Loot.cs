@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using SoulHunter.Base;
+using SoulHunter.Player;
 
 public class Loot : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Loot : MonoBehaviour
             DataManager.Instance.soulsCollected = soulPower;
             Instantiate(particle, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
             AudioManager.PlaySound(AudioManager.Sound.CollectSoul, transform.position);
+            collision.transform.GetComponent<PlayerBase>().Heal();
             Destroy(gameObject);
             colliding = false;
         }
