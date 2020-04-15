@@ -9,19 +9,16 @@ public class SceneController : MonoBehaviour // Mort
     // Singleton Instance
     public static SceneController Instance;
 
-    public GameObject loadingBar;
-    public GameObject loadingArt;
-    public TextMeshProUGUI loadingProgress;
+    LoadingScreen loadingScreen;
 
     Animator transitionAnimator;
-    Slider loadingSlider;
 
     private void Awake()
     {
         // Set Instance
         Instance = this;
         transitionAnimator = GetComponent<Animator>();
-        loadingSlider = loadingBar.GetComponent<Slider>();
+        loadingScreen = GetComponent<LoadingScreen>();
     }
 
     /// <summary>
@@ -44,6 +41,8 @@ public class SceneController : MonoBehaviour // Mort
 
     public void TransitionScene(int index)
     {
+        loadingScreen.ShuffleImageAndTip();
+
         transitionAnimator?.SetBool("isLoading", true);
         transitionAnimator?.SetInteger("index", index);
     }
@@ -60,6 +59,8 @@ public class SceneController : MonoBehaviour // Mort
 
     public void ResetScene()
     {
+        loadingScreen.ShuffleImageAndTip();
+
         transitionAnimator?.SetBool("isLoading", true);
         transitionAnimator?.SetInteger("index", GetBuildIndex());
     }
@@ -76,18 +77,18 @@ public class SceneController : MonoBehaviour // Mort
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(index);
 
-        loadingArt.SetActive(true);
-        loadingBar.SetActive(true);
+        loadingScreen.artwork.SetActive(true);
+        loadingScreen.progressBar.SetActive(true);
 
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
-            loadingSlider.value = progress;
-            loadingProgress.text = $"{(progress * 100).ToString()}%";
+            loadingScreen.loadingSlider.value = progress;
+            loadingScreen.loadingProgressPercentage.text = $"{(progress * 100).ToString()}%";
             yield return null;
         }
 
-        loadingBar.SetActive(false);
+        loadingScreen.progressBar.SetActive(false);
 
         transitionAnimator?.SetBool("isLoading", false);
     }

@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 3361123914873655897}
   - component: {fileID: 7064756596038157822}
   - component: {fileID: 8607726491866115574}
+  - component: {fileID: 5024941079501689062}
   m_Layer: 2
   m_Name: SceneTransition
   m_TagString: Untagged
@@ -571,7 +572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -617,9 +618,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563b92fada75f4c47bfbe2984c53bceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingBar: {fileID: 484897808216899006}
-  loadingArt: {fileID: 8805120784910362113}
-  loadingProgress: {fileID: 8824294513412488349}
+--- !u!114 &5024941079501689062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2792570125765897073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce49081fe52510f459a55a43fb54abdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBar: {fileID: 484897808216899006}
+  artwork: {fileID: 8805120784910362113}
+  tips: {fileID: 6548579271085941524}
+  loadingProgressPercentage: {fileID: 8824294513412488349}
+  loadingSlider: {fileID: 20494749775218948}
+  library:
+    artwork:
+    - {fileID: 5149069995878886641, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: -6179092651603830040, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: 4224387637987799335, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: 8941041684258097004, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: -29125143022322726, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: 1820255899335137852, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    tips:
+    - Press Q to interact with dialogues and portals.
+    - Press E to attack.
+    - Grappling can be used to avoid hostile encounters.
+    - Collecting souls also heals you.
+    - Use elevation to your advantage.
+    - Press escape to pause the game at any moment.
 --- !u!1 &4442128062923363439
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,7 +943,7 @@ GameObject:
   - component: {fileID: 773907060318952789}
   - component: {fileID: 6548579271085941524}
   m_Layer: 5
-  m_Name: LoadingScreenArtCredit
+  m_Name: LoadingScreenTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -935,8 +965,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -120.00006, y: 60.09021}
-  m_SizeDelta: {x: 160, y: 60}
+  m_AnchoredPosition: {x: 160, y: -170}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &773907060318952789
 CanvasRenderer:
@@ -964,9 +994,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Drawn by:
-
-    Lot B (1GA1)'
+  m_text: Generic Game Tip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 178ba87b294a12846adeda61dc894ab0, type: 2}
   m_sharedMaterial: {fileID: 6097557987192734440, guid: 178ba87b294a12846adeda61dc894ab0,
@@ -998,8 +1026,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1041,12 +1069,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6548579271085941524}
-    characterCount: 22
+    characterCount: 16
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 5
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1091,7 +1119,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 1000, y: 1082}
+  m_SizeDelta: {x: 700, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6730581846503701636
 CanvasRenderer:
@@ -1119,7 +1147,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35832fee09b9a2d458d60fe3d15e990d, type: 3}
+  m_Sprite: {fileID: 4224387637987799335, guid: 15b94866f6a58ae4d860545e8270ed49,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
