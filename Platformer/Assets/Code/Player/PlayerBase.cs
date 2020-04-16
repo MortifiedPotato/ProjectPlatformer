@@ -110,6 +110,11 @@ namespace SoulHunter.Player
         /// </summary>
         public void Heal()
         {
+            if (Health >= maxHealth)
+            {
+                return;
+            }
+
             Health++;
             healthUI.UpdateHealthPanel(Health);
         }
