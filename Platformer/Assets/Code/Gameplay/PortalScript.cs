@@ -107,6 +107,11 @@ public class PortalScript : Interactable // Mort
             return;
         }
 
+        if (connectedPortals.Count == 0)
+        {
+            return;
+        }
+
         if (collision.CompareTag("Player"))
         {
             if (isActivatable || isRepeatable)
