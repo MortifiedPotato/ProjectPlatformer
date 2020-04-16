@@ -31,6 +31,11 @@ namespace SoulHunter.Weapons
                     }
                     EnemyHealth.TakeDamage();
                 }
+                AudioManager.PlaySound(AudioManager.Sound.PlayerAttackHit, transform.position);
+            }
+            else
+            {
+                AudioManager.PlaySound(AudioManager.Sound.PlayerAttackMiss, transform.position);
             }
         }
     }

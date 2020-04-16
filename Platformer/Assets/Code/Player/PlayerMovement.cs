@@ -1,40 +1,41 @@
-﻿using UnityEngine;
+﻿
+using Unity.Mathematics;
+using UnityEngine;
 
 namespace SoulHunter.Player
 {
     public class PlayerMovement : MonoBehaviour, Input.IMoveInput // Mort
     {
         [Header("Movement Attributes")]
-        public float speed = 3f;
+        public float moveSpeed = 3f;
         public float jumpSpeed = 8f;
-        public float climbSpeed = 3f;
         public float swingForce = 4f;
         public float yankForce = 7f;
 
-        public float scoreCountDown;
-        public int Score;
+        // Max Slope Climb Angle
+        float maxClimbAngle = 50;
 
-        public float fGroundedRememberTime = .25f;
+        // Jump Merchanics Values
+        float fGroundedRememberTime = .25f;
+        float fGroundedRemember;
         float fCutJumpHeight = .5f;
-        public float fGroundedRemember;
 
-        bool[] groundColliders = new bool[3];
+        // Ground Collision Checkers
+        bool[] groundCollision = new bool[3];
 
         [Header("Object Variables")]
+        [SerializeField] GameObject impactDustParticle;
         public LayerMask groundCheckLayer;
-        public SpriteRenderer playerSprite;
-        GameObject dustParticle;
         Rigidbody2D rigidBody;
 
-        [HideInInspector]
-        public Vector2 ropeHook;
-
+        // Movement Input Value
         public Vector2 i_moveInput;
+
         public Vector2 velocity;
+        public Vector2 oldVelocity;
 
         private void Awake()
         {
-            dustParticle = Resources.Load("Particles/DustDirtyPoof") as GameObject;
             rigidBody = GetComponent<Rigidbody2D>();
         }
 
@@ -42,9 +43,11 @@ namespace SoulHunter.Player
         {
             CheckForGround();
 
+            velocity.x = i_moveInput.x * moveSpeed;
+
             if (Time.frameCount%5==0)
             {
-                velocity = rigidBody.velocity;
+                oldVelocity = rigidBody.velocity;
             }
         }
 
@@ -67,7 +70,7 @@ namespace SoulHunter.Player
             {
                 if (PlayerBase.isSwinging)
                 {
-                    var playerToHookDirection = (ropeHook - (Vector2)transform.position).normalized;
+                    var playerToHookDirection = (PlayerBase.ropeHook - (Vector2)transform.position).normalized;
 
                     Vector2 perpendicularDirection;
                     if (i_moveInput.x < 0)
@@ -85,14 +88,42 @@ namespace SoulHunter.Player
 
                     var force = perpendicularDirection * swingForce;
                     rigidBody.AddForce(force, ForceMode2D.Force);
+
+                    AudioManager.PlaySound(AudioManager.Sound.ClothFlowing, transform.position);
                 }
                 else
                 {
                     if (PlayerBase.isGrounded)
                     {
-                        var groundForce = speed * 2f;
+                        var groundForce = moveSpeed * 2f;
                         rigidBody.AddForce(new Vector2((i_moveInput.x * groundForce - rigidBody.velocity.x) * groundForce, 0));
-                        rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y);
+                        rigidBody.velocity = new Vector2(velocity.x, velocity.y);
+                        velocity.y = 0;
+
+                        RaycastHit2D slopeHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - .7f), Vector2.right * math.sign(velocity.x), 1.5f, groundCheckLayer);
+                        if (slopeHit)
+                        {
+                            float slopeAngle = Vector2.Angle(slopeHit.normal, Vector2.up);
+
+                            if (slopeAngle <= maxClimbAngle)
+                            {
+                                //print("Slope: " + slopeHit.transform.name + " - " + slopeAngle);
+                                ClimbSlope(ref velocity, slopeAngle);
+                            }
+                        }
+
+                        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, Vector2.down, 1f, groundCheckLayer);
+                        if (groundHit.collider != null)
+                        {
+                            if (groundHit.transform.gameObject.layer == 12)
+                            {
+                                AudioManager.PlaySound(AudioManager.Sound.PlayerWalkWood, transform.position);
+                            }
+                            else if (groundHit.transform.gameObject.layer == 13)
+                            {
+                                AudioManager.PlaySound(AudioManager.Sound.PlayerWalkGrass, transform.position);
+                            }
+                        }
                     }
                 }
             }
@@ -104,8 +135,21 @@ namespace SoulHunter.Player
                 if (PlayerBase.isJumping)
                 {
                     rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+                    AudioManager.PlaySound(AudioManager.Sound.PlayerJump, transform.position);
                 }
             }
+        }
+
+        /// <summary>
+        /// Compensates for the velocity at angles
+        /// </summary>
+        /// <param name="velocity"></param>
+        /// <param name="slopeAngle"></param>
+        void ClimbSlope(ref Vector2 velocity, float slopeAngle) // Made with the amazing tutorial of Sebastian Lague on youtube!
+        {
+            float moveDistance = Mathf.Abs(velocity.x);
+            velocity.y = Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance;
+            velocity.x = Mathf.Cos(slopeAngle * Mathf.Deg2Rad) * moveDistance * Mathf.Sign(velocity.x);
         }
 
         /// <summary>
@@ -113,9 +157,9 @@ namespace SoulHunter.Player
         /// </summary>
         public void Yank()
         {
-            if (ropeHook != Vector2.zero)
+            if (PlayerBase.ropeHook != Vector2.zero)
             {
-                rigidBody.AddForce((new Vector3(ropeHook.x, ropeHook.y, 0) - transform.position) * (yankForce * 10));
+                rigidBody.AddForce((new Vector3(PlayerBase.ropeHook.x, PlayerBase.ropeHook.y, 0) - transform.position) * (yankForce * 10));
                 GetComponent<GrappleSystem>().ResetRope();
             }
         }
@@ -138,16 +182,16 @@ namespace SoulHunter.Player
         /// </summary>
         void CheckForGround()
         {
-            var halfHeight = playerSprite.bounds.extents.y;
-            groundColliders[0] = Physics2D.OverlapCircle(new Vector2(transform.position.x + 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
-            groundColliders[1] = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
-            groundColliders[2] = Physics2D.OverlapCircle(new Vector2(transform.position.x - 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
+            var halfHeight = PlayerBase.playerSprite.bounds.extents.y;
+            groundCollision[0] = Physics2D.OverlapCircle(new Vector2(transform.position.x + 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
+            groundCollision[1] = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
+            groundCollision[2] = Physics2D.OverlapCircle(new Vector2(transform.position.x - 0.4f, transform.position.y - halfHeight), 0.1f, groundCheckLayer);
 
             fGroundedRemember -= Time.deltaTime;
 
-            for (int i = 0; i < groundColliders.Length; i++)
+            for (int i = 0; i < groundCollision.Length; i++)
             {
-                if (groundColliders[i])
+                if (groundCollision[i])
                 {
                     fGroundedRemember = fGroundedRememberTime;
                     PlayerBase.isGrounded = true;
@@ -155,7 +199,7 @@ namespace SoulHunter.Player
                     return;
                 }
 
-                if (fGroundedRemember < 0 && !groundColliders[i])
+                if (fGroundedRemember < 0 && !groundCollision[i])
                 {
                     PlayerBase.isGrounded = false;
                 }
@@ -179,15 +223,24 @@ namespace SoulHunter.Player
         private void OnCollisionEnter2D(Collision2D collision)
         {
             // Ground Impact Particle
-            if (velocity.y < -5)
+            if (oldVelocity.y < -5)
             {
-                Instantiate(dustParticle, new Vector3(transform.position.x, transform.position.y - playerSprite.bounds.extents.y, transform.position.z + 1) , dustParticle.transform.rotation);
+                Instantiate(impactDustParticle, new Vector3(transform.position.x, transform.position.y - PlayerBase.playerSprite.bounds.extents.y, transform.position.z + 1) , impactDustParticle.transform.rotation);
+
+                if (collision.transform.gameObject.layer == 12)
+                {
+                    AudioManager.PlaySound(AudioManager.Sound.PlayerLandWood, transform.position);
+                }
+                else if (collision.transform.gameObject.layer == 13)
+                {
+                    AudioManager.PlaySound(AudioManager.Sound.PlayerLandGrass, transform.position);
+                }
             }
             
             // Ground Impact Shake
-            if (velocity.y < -8)
+            if (oldVelocity.y < -8)
             {
-                if (velocity.y < -12)
+                if (oldVelocity.y < -12)
                 {
                     CameraManager.Instance.ShakeCamera(2, 6, 0);
                 }
@@ -198,13 +251,18 @@ namespace SoulHunter.Player
             }
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
-            Gizmos.color = Color.blue;
-            var halfHeight = playerSprite.bounds.extents.y;
-            Gizmos.DrawWireSphere(new Vector3(transform.position.x + 0.4f, transform.position.y - halfHeight, -2), 0.1f);
-            Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y - halfHeight, -2), 0.1f);
-            Gizmos.DrawWireSphere(new Vector3(transform.position.x - 0.4f, transform.position.y - halfHeight, -2), 0.1f);
+            if (PlayerBase.playerSprite)
+            {
+                Gizmos.color = Color.blue;
+                var halfHeight = PlayerBase.playerSprite.bounds.extents.y;
+                Gizmos.DrawWireSphere(new Vector3(transform.position.x + 0.4f, transform.position.y - halfHeight, -2), 0.1f);
+                Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y - halfHeight, -2), 0.1f);
+                Gizmos.DrawWireSphere(new Vector3(transform.position.x - 0.4f, transform.position.y - halfHeight, -2), 0.1f);
+            }
+
+            Gizmos.DrawRay(new Vector2(transform.position.x, transform.position.y - .7f), Vector2.right * Mathf.Sign(velocity.x));
         }
     }
 }

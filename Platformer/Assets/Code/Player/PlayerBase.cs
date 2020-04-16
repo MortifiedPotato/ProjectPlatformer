@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using SoulHunter.UI;
 using SoulHunter.Gameplay;
@@ -9,7 +7,7 @@ namespace SoulHunter.Player
 {
     public class PlayerBase : Damageable // Mort
     {
-        GameUI healthUI;
+        GameUI healthUI; // <- Thomas
 
         // Player states
         public static bool isPaused;
@@ -21,14 +19,20 @@ namespace SoulHunter.Player
         public static bool isJumping;
         public static bool isThrowing;
 
+        // Player sprite
+        public static SpriteRenderer playerSprite;
+
+        // Hook Position
+        [HideInInspector]
+        public static Vector2 ropeHook;
+
         // Teleportation coordinates
         public static Transform teleportDestination;
 
-        protected override void Start()
+        protected void Start()
         {
-            base.Start();
             DespawnTimer = 1f;
-            healthUI = FindObjectOfType<GameUI>();
+            healthUI = FindObjectOfType<GameUI>(); // <- Thomas
         }
 
         protected override void Update()
@@ -36,13 +40,16 @@ namespace SoulHunter.Player
             base.Update();
             Dissolve();
 
-            if (isTeleporting)
+            if (isTeleporting || isDead)
             {
                 DespawnTimer -= Time.deltaTime;
                 if (DespawnTimer <= 0f)
                 {
                     DespawnTimer = 0f;
-                    Teleport();
+                    if (!isDead)
+                    {
+                        Teleport();
+                    }
                 }
             }
             else
@@ -51,6 +58,10 @@ namespace SoulHunter.Player
                 if (DespawnTimer >= 1f)
                 {
                     DespawnTimer = 1f;
+                }
+                else
+                {
+                    AudioManager.PlaySound(AudioManager.Sound.TeleportAppear, transform.position);
                 }
             }
         }
@@ -70,13 +81,42 @@ namespace SoulHunter.Player
         {
             transform.position = teleportDestination.position;
             isTeleporting = false;
+            isPaused = false;
         }
 
+        /// <summary>
+        /// Overrides default TakeDamage value to update UI and play unique sounds
+        /// </summary>
         public override void TakeDamage()
         {
             base.TakeDamage();
 
-            healthUI.removeHeart();
+            if (!isDead)
+            {
+                AudioManager.PlaySound(AudioManager.Sound.PlayerHurt, transform.position);
+            }
+            else
+            {
+                AudioManager.PlaySound(AudioManager.Sound.PlayerDeath, transform.position);
+            }
+
+            CameraManager.Instance.ShakeCamera(1, 3, 0);
+
+            healthUI.UpdateHealthPanel(Health); // <- Thomas
+        }
+
+        /// <summary>
+        /// Heals the player
+        /// </summary>
+        public void Heal()
+        {
+            if (Health >= maxHealth)
+            {
+                return;
+            }
+
+            Health++;
+            healthUI.UpdateHealthPanel(Health);
         }
 
         /// <summary>
@@ -84,7 +124,12 @@ namespace SoulHunter.Player
         /// </summary>
         protected override void HandleDeath()
         {
-            SceneController.Instance.ResetScene();
+            if (isDead && !isTeleporting)
+            {
+                isPaused = false;
+                immuneToDamage = false;
+                SceneController.Instance.ResetScene();
+            }
         }
     }
 }

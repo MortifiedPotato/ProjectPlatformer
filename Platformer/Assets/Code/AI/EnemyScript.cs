@@ -17,6 +17,16 @@ namespace SoulHunter.Enemy
 
         public bool MoveRight;
         public bool Moving;
+
+        public float fGroundedRememberTime = .25f;
+        float fGroundedRemember;
+
+        bool horizontalCollision;
+        bool[] groundCollision = new bool[2];
+
+        [SerializeField] LayerMask collisionLayer;
+        [SerializeField] LayerMask groundCheckLayer;
+
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -24,6 +34,9 @@ namespace SoulHunter.Enemy
 
         private void Update()
         {
+            CheckForEdge();
+            CheckForCollision();
+
             RandomDirectionChange();
         }
 
@@ -43,7 +56,49 @@ namespace SoulHunter.Enemy
                     }
                 }
             }
-            
+        }
+
+        void CheckForEdge()
+        {
+            var halfHeight = GetComponentInChildren<SpriteRenderer>().bounds.extents.y;
+            groundCollision[0] = Physics2D.OverlapCircle(new Vector2(transform.position.x + 0.8f, transform.position.y - halfHeight), 0.15f, groundCheckLayer);
+            groundCollision[1] = Physics2D.OverlapCircle(new Vector2(transform.position.x - 0.8f, transform.position.y - halfHeight), 0.15f, groundCheckLayer);
+
+            fGroundedRemember -= Time.fixedDeltaTime;
+
+            for (int i = 0; i < groundCollision.Length; i++)
+            {
+                if (groundCollision[i])
+                {
+                    fGroundedRemember = fGroundedRememberTime;
+                    Moving = true;
+
+                    return;
+                }
+
+                if (fGroundedRemember < 0 && !groundCollision[i])
+                {
+                    MoveRight = !MoveRight;
+                }
+            }
+        }
+
+        void CheckForCollision()
+        {
+            float collisionOffset = 1;
+            if (MoveRight)
+            {
+                horizontalCollision = Physics2D.OverlapCircle(new Vector2(transform.position.x + collisionOffset, transform.position.y), 0.15f, collisionLayer);
+            }
+            else
+            {
+                horizontalCollision = Physics2D.OverlapCircle(new Vector2(transform.position.x - collisionOffset, transform.position.y), 0.15f, collisionLayer);
+            }
+
+            if (horizontalCollision)
+            {
+                MoveRight = !MoveRight;
+            }
         }
 
         void RandomDirectionChange()
@@ -58,28 +113,16 @@ namespace SoulHunter.Enemy
             }
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnDrawGizmos()
         {
-            if (other.tag == "Edge")
-            {
-                rb.velocity = new Vector2(0, 0);
-                MoveRight = !MoveRight;
-            }
-        }
+            Gizmos.color = Color.red;
+            var halfHeight = GetComponentInChildren<SpriteRenderer>().bounds.extents.y;
+            Gizmos.DrawWireSphere(new Vector2(transform.position.x + 0.8f, transform.position.y - halfHeight), .15f);
+            Gizmos.DrawWireSphere(new Vector2(transform.position.x - 0.8f, transform.position.y - halfHeight), .15f);
 
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if (other.gameObject.tag == "Environment")
-            {
-                Moving = true;
-            }
-        }
-        private void OnCollisionExit2D(Collision2D other)
-        {
-            if (other.gameObject.tag == "Environment")
-            {
-                Moving = false;
-            }
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(new Vector2(transform.position.x - 1, transform.position.y), .15f);
+            Gizmos.DrawWireSphere(new Vector2(transform.position.x + 1, transform.position.y), .15f);
         }
     }
 }

@@ -5,12 +5,15 @@ namespace SoulHunter.Gameplay
     public class Damageable : MonoBehaviour // Mort & Thomas
     {
         // Max HP constant value
-        const int maxHealth = 3;
+        protected const int maxHealth = 3;
+
         // HP value
+        [HideInInspector]
         public int Health;
 
         // Death status
         public bool isDead;
+        public bool immuneToDamage;
 
         // Height at which entities expire
         [SerializeField] protected float expirationHeight = -10;
@@ -20,7 +23,7 @@ namespace SoulHunter.Gameplay
         // Entity sprite reference
         [SerializeField] protected SpriteRenderer characterSprite;
 
-        protected virtual void Start()
+        private void Awake()
         {
             // Set HP value to Max HP value at start
             Health = maxHealth;

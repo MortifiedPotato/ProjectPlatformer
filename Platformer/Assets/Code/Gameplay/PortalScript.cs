@@ -113,9 +113,13 @@ public class PortalScript : Interactable // Mort
             {
                 // Set player teleportation state
                 PlayerBase.isTeleporting = true;
+                PlayerBase.isPaused = true;
 
                 // Set player teleportation destination
                 PlayerBase.teleportDestination = connectedPortals[Random.Range(0, connectedPortals.Count)].transform;
+
+                // Play teleportation audio
+                AudioManager.PlaySound(AudioManager.Sound.TeleportDissolve, transform.position);
             }
         }
     }

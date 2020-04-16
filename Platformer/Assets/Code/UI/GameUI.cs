@@ -9,44 +9,36 @@ namespace SoulHunter.UI
     public class GameUI : MonoBehaviour
     {
         private int playerHealth;
-        [SerializeField] private Sprite healthImage;
-        public float healthOffset;
-        public List<GameObject> healthList; 
+        public List<GameObject> healthList;
+
+        public GameObject healthPanel;
+
         private void Start()
         {
             // Gets player health
             playerHealth = FindObjectOfType<PlayerBase>().Health;
             // Sets reference inside UIManager
-            UIManager.Instance.GameCanvas = gameObject;
+            CanvasHandler.Instance.GameCanvas = gameObject;
             // Disables cursor
             Cursor.visible = false;
 
-            for (int i = 0; i < playerHealth; i++)
+            for (int i = 0; i < healthPanel.transform.childCount; i++)
             {
-                CreateHealthImage(new Vector2(-900 + i * healthOffset, 470));
+                healthList.Add(healthPanel.transform.GetChild(i).gameObject);
             }
         }
 
-        private Image CreateHealthImage(Vector2 anchoredPosition)
+        public void UpdateHealthPanel(int health)
         {
-            GameObject healthGameObject = new GameObject("playerHealth", typeof(Image));
-            healthGameObject.transform.parent = transform;
-            healthGameObject.transform.localPosition = Vector2.zero;
+            for (int i = 0; i < healthList.Count; i++)
+            {
+                healthList[i].SetActive(false);
+            }
 
-            healthGameObject.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-            healthGameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
-
-            Image heartImage = healthGameObject.GetComponent<Image>();
-            heartImage.sprite = healthImage;
-            healthList.Add(healthGameObject);
-            return heartImage;
-        }
-
-        public void removeHeart()
-        {
-            GameObject Tempname = healthList[healthList.Count - 1];
-            healthList.Remove(Tempname);
-            Destroy(Tempname);
+            for (int i = 0; i < health; i++)
+            {
+                healthList[i].SetActive(true);
+            }
         }
     }
 }

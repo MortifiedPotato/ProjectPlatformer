@@ -9,11 +9,10 @@ namespace SoulHunter.Enemy
         [SerializeField] ParticleSystem characterParticle;
         [SerializeField] CircleCollider2D corpseCollider;
 
-        protected override void Start()
-        {
-            base.Start();
-            characterSprite.enabled = false;
+        public SoulData soul;
 
+        protected void Start()
+        {
             GameManager.Instance.EnemyListRegistry(this);
         }
 
@@ -21,28 +20,28 @@ namespace SoulHunter.Enemy
         {
             base.TakeDamage();
 
-            if (isDead)
+            if (!isDead)
             {
-                for (int i = 0; i < GetComponents<Collider2D>().Length; i++)
-                {
-                    GetComponents<Collider2D>()[i].enabled = false;
-                }
-                corpseCollider.enabled = true;
-
-                var emission = characterParticle.emission;
-                emission.enabled = false;
+                AudioManager.PlaySound(AudioManager.Sound.EnemyHurt, transform.position);
             }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Player"))
+            else
             {
-                if (!isDead)
+                if (!immuneToDamage)
                 {
-                    return;
+                    immuneToDamage = true;
+
+                    AudioManager.PlaySound(AudioManager.Sound.EnemyDeath, transform.position);
+                    soul.SpawnParticle(transform.position);
+
+                    for (int i = 0; i < GetComponents<Collider2D>().Length; i++)
+                    {
+                        GetComponents<Collider2D>()[i].enabled = false;
+                    }
+                    corpseCollider.enabled = true;
+
+                    var emission = characterParticle.emission;
+                    emission.enabled = false;
                 }
-                Destroy(gameObject);
             }
         }
 
