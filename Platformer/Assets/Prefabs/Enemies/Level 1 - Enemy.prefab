@@ -215,6 +215,8 @@ GameObject:
   - component: {fileID: 6763832758375902555}
   - component: {fileID: 6763832758375902552}
   - component: {fileID: 6123859290043326138}
+  - component: {fileID: 5580655243225471347}
+  - component: {fileID: 6521662883455012226}
   m_Layer: 0
   m_Name: CharacterSprite
   m_TagString: Enemy
@@ -275,7 +277,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bd6a99e9f7605eb4abdc7842f77671dc, type: 3}
+  m_Sprite: {fileID: 6003725700113703971, guid: 4cbe9862428ffae4591065217a29d069,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -303,7 +306,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.92, y: 12.92}
+    oldSize: {x: 12.857142, y: 12.857142}
     newSize: {x: 12.92, y: 12.92}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -312,6 +315,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.92, y: 12.92}
   m_EdgeRadius: 0
+--- !u!114 &5580655243225471347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763832758375902554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1866a96455bc0d549894922efa306061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &6521662883455012226
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763832758375902554}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 409c546df96dfa44a83b32d2025a845a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6763832758573670802
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   isDead: 0
+  immuneToDamage: 0
   expirationHeight: -10
   DespawnTimer: 10
   characterSprite: {fileID: 6763832758375902552}

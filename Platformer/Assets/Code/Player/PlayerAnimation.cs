@@ -14,11 +14,6 @@ namespace SoulHunter.Player
         [SerializeField] GameObject LeftSlash;
         [SerializeField] GameObject RightSlash;
 
-        private void OnEnable()
-        {
-            PlayerBase.playerSprite = GetComponent<SpriteRenderer>();
-        }
-
         void Start()
         {
             PlayerBase.playerSprite = GetComponent<SpriteRenderer>();
