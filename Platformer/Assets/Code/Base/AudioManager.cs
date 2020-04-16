@@ -41,6 +41,7 @@ public static class AudioManager // Mort - Followed Tutorial by Code Monkey, mod
         soundTimerDictionary = new Dictionary<Sound, float>();
         soundTimerDictionary[Sound.PlayerWalkGrass] = 0;
         soundTimerDictionary[Sound.PlayerWalkWood] = 0;
+        soundTimerDictionary[Sound.PlayerJump] = 0;
         soundTimerDictionary[Sound.TeleportDissolve] = 0;
         soundTimerDictionary[Sound.TeleportAppear] = 0;
         soundTimerDictionary[Sound.ClothFlowing] = 0;
@@ -129,6 +130,22 @@ public static class AudioManager // Mort - Followed Tutorial by Code Monkey, mod
                 }
                 break;
             case Sound.PlayerWalkWood:
+                if (soundTimerDictionary.ContainsKey(sound))
+                {
+                    float lastTimePlayed = soundTimerDictionary[sound];
+                    float playerMoveTimerMax = .45f;
+                    if (lastTimePlayed + playerMoveTimerMax < Time.time)
+                    {
+                        soundTimerDictionary[sound] = Time.time;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                break;
+            case Sound.PlayerJump:
                 if (soundTimerDictionary.ContainsKey(sound))
                 {
                     float lastTimePlayed = soundTimerDictionary[sound];

@@ -9,17 +9,22 @@ namespace SoulHunter.Player
         PlayerMovement movement;
         Rigidbody2D rigidBody;
 
-        public SpriteRenderer playerSprite;
         Animator anim;
 
         [SerializeField] GameObject LeftSlash;
         [SerializeField] GameObject RightSlash;
 
+        private void OnEnable()
+        {
+            PlayerBase.playerSprite = GetComponent<SpriteRenderer>();
+        }
+
         void Start()
         {
+            PlayerBase.playerSprite = GetComponent<SpriteRenderer>();
+
             rigidBody = GetComponentInParent<Rigidbody2D>();
             movement = GetComponentInParent<PlayerMovement>();
-            playerSprite = GetComponent<SpriteRenderer>();
             anim = GetComponent<Animator>();
         }
 
@@ -58,13 +63,13 @@ namespace SoulHunter.Player
             {
                 if (movement.i_moveInput.x < 0)
                 {   // Direction Left
-                    playerSprite.flipX = true;
+                    PlayerBase.playerSprite.flipX = true;
                     LeftSlash.SetActive(true);
                     RightSlash.SetActive(false);
                 }
                 else if (movement.i_moveInput.x > 0)
                 {   // Direction Right
-                    playerSprite.flipX = false;
+                    PlayerBase.playerSprite.flipX = false;
                     LeftSlash.SetActive(false);
                     RightSlash.SetActive(true);
                 }
@@ -73,11 +78,11 @@ namespace SoulHunter.Player
             {
                 if (rigidBody.velocity.x < 0)
                 {   // turn left
-                    playerSprite.flipX = true;
+                    PlayerBase.playerSprite.flipX = true;
                 }
                 else if (rigidBody.velocity.x > 0)
                 {   // turn right
-                    playerSprite.flipX = false;
+                    PlayerBase.playerSprite.flipX = false;
                 }
             }
         }

@@ -15,7 +15,6 @@ namespace SoulHunter.Player
         public SpriteRenderer crosshairSprite;
 
         private Vector2 playerPosition;
-        private PlayerMovement playerMovement;
         private PlayerAim playerAim;
         private Rigidbody2D ropeHingeAnchorRb;
         private SpriteRenderer ropeHingeAnchorSprite;
@@ -24,6 +23,7 @@ namespace SoulHunter.Player
 
         private LineRenderer ropeRenderer;
         public float maxRopeLength = 10f;
+        public float climbSpeed = 3f;
         private List<Vector2> ropePositions = new List<Vector2>();
 
         private bool ropeAttached;
@@ -40,7 +40,6 @@ namespace SoulHunter.Player
 
             playerAim = GetComponent<PlayerAim>();
             ropeRenderer = GetComponent<LineRenderer>();
-            playerMovement = GetComponent<PlayerMovement>();
 
             ropeHingeAnchorRb = ropeHingeAnchor.GetComponent<Rigidbody2D>();
             ropeHingeAnchorSprite = ropeHingeAnchor.GetComponent<SpriteRenderer>();
@@ -65,7 +64,7 @@ namespace SoulHunter.Player
             if (ropeAttached)
             {
                 PlayerBase.isSwinging = true;
-                playerMovement.ropeHook = ropePositions.Last();
+                PlayerBase.ropeHook = ropePositions.Last();
 
                 crosshairSprite.enabled = false;
 
@@ -161,7 +160,7 @@ namespace SoulHunter.Player
             ropePositions.Clear();
             ropeHingeAnchorSprite.enabled = false;
 
-            playerMovement.ropeHook = Vector2.zero;
+            PlayerBase.ropeHook = Vector2.zero;
 
             wrapPointsLookup.Clear();
 
@@ -237,11 +236,11 @@ namespace SoulHunter.Player
         {
             if (vertical >= 1f && ropeAttached && !isColliding)
             {
-                ropeJoint.distance -= Time.deltaTime * playerMovement.climbSpeed;
+                ropeJoint.distance -= Time.deltaTime * climbSpeed;
             }
             else if (vertical < 0f && ropeAttached)
             {
-                ropeJoint.distance += Time.deltaTime * playerMovement.climbSpeed;
+                ropeJoint.distance += Time.deltaTime * climbSpeed;
             }
         }
 

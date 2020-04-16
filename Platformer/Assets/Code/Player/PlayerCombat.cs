@@ -7,13 +7,11 @@ namespace SoulHunter.Player
     public class PlayerCombat : MonoBehaviour
     {
         [SerializeField] float attackDuration;
-        SpriteRenderer playerSprite;
         public GameObject Weapon;
         float attackTimer = 2f;
 
         void Start()
         {
-            playerSprite = GetComponentInChildren<SpriteRenderer>();
             Weapon.SetActive(false);
             attackDuration = attackDuration / 10;
         }
@@ -35,7 +33,7 @@ namespace SoulHunter.Player
                 return;
             }
 
-            if (playerSprite.flipX == true)
+            if (PlayerBase.playerSprite.flipX == true)
             {   // Left
                 Weapon.transform.localPosition = new Vector3(-1, 0, 0);
             }

@@ -19,6 +19,13 @@ namespace SoulHunter.Player
         public static bool isJumping;
         public static bool isThrowing;
 
+        // Player sprite
+        public static SpriteRenderer playerSprite;
+
+        // Hook Position
+        [HideInInspector]
+        public static Vector2 ropeHook;
+
         // Teleportation coordinates
         public static Transform teleportDestination;
 

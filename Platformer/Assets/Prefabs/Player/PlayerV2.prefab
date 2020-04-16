@@ -401,7 +401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad5c7b4538b4554fb293cda611f144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 0}
   LeftSlash: {fileID: 357410299473576312}
   RightSlash: {fileID: 9210192511736296819}
 --- !u!1 &4149204017818456493
@@ -476,6 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   isDead: 0
+  immuneToDamage: 0
   expirationHeight: -10
   DespawnTimer: 10
   characterSprite: {fileID: 9109488785574472038}
@@ -520,23 +520,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e443c8b17b26b4ea1531d6f645c32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  moveSpeed: 3
   jumpSpeed: 8
-  climbSpeed: 3
   swingForce: 4
   yankForce: 7
-  scoreCountDown: 0
-  Score: 0
-  fGroundedRememberTime: 0.25
-  fGroundedRemember: 0
-  dustParticle: {fileID: 165672, guid: 24d496517ac8ec042893ce29ccd2952b, type: 3}
+  impactDustParticle: {fileID: 165672, guid: 24d496517ac8ec042893ce29ccd2952b, type: 3}
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 14336
-  playerSprite: {fileID: 9109488785574472038}
-  ropeHook: {x: 0, y: 0}
   i_moveInput: {x: 0, y: 0}
   velocity: {x: 0, y: 0}
+  oldVelocity: {x: 0, y: 0}
 --- !u!114 &4149204017818456496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +552,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4864
   maxRopeLength: 8
+  climbSpeed: 3
 --- !u!58 &9190005277524162411
 CircleCollider2D:
   m_ObjectHideFlags: 0
