@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using SoulHunter;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour // Mort
@@ -11,14 +12,18 @@ public class CameraManager : MonoBehaviour // Mort
     private float ShakeElapsedTime = 0f;
 
     // Cinemachine Shake
-    public CinemachineConfiner confiner;
-    public CinemachineVirtualCamera virtualCamera;
+    [HideInInspector] public CinemachineConfiner confiner;
+    [HideInInspector] public CinemachineVirtualCamera virtualCamera;
+
     private CinemachineBasicMultiChannelPerlin virtualCameraNoise;
+    private CinemachineFollowZoom virtualCameraFollowZoom;
+    private CinemachineTargetGroup targetGroup;
 
     private void Awake()
     {
         Instance = this;
         virtualCamera =  GetComponentInChildren<CinemachineVirtualCamera>();
+        targetGroup = GetComponentInChildren<CinemachineTargetGroup>();
         confiner = virtualCamera.GetComponent<CinemachineConfiner>();
     }
 
@@ -28,6 +33,7 @@ public class CameraManager : MonoBehaviour // Mort
         if (virtualCamera != null)
         {
             virtualCameraNoise = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
+            virtualCameraFollowZoom = virtualCamera.GetComponent<CinemachineFollowZoom>();
         }
     }
 
@@ -83,6 +89,19 @@ public class CameraManager : MonoBehaviour // Mort
                 // If Camera Shake effect is over, reset variables
                 virtualCameraNoise.m_AmplitudeGain = 0f;
                 ShakeElapsedTime = 0f;
+            }
+
+            // If player is in a dialogue, zoom in
+            if (GameManager.initiatedDialogue && virtualCameraFollowZoom.m_Width > 1)
+            {
+                virtualCameraFollowZoom.m_Width -= Time.deltaTime * 10;
+                targetGroup.m_Targets[1].radius = 0;
+            }
+            // If player is no longer in dialogue, zoom out
+            else if (!GameManager.initiatedDialogue && virtualCameraFollowZoom.m_Width < 12)
+            {
+                virtualCameraFollowZoom.m_Width += Time.deltaTime * 10;
+                targetGroup.m_Targets[1].radius = 4;
             }
         }
     }
