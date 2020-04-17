@@ -12,6 +12,8 @@ namespace SoulHunter.Enemy
         Rigidbody2D rb;
         [SerializeField] protected float MoveSpeed;
         [SerializeField] float flipDirectionTimer;
+        private SpriteRenderer RendererofSprites;
+        private EnemyAnimation animationOfEnemy;
 
         float chngeDirTimer;
 
@@ -30,6 +32,8 @@ namespace SoulHunter.Enemy
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            RendererofSprites = GetComponentInChildren<SpriteRenderer>();
+            animationOfEnemy = GetComponentInChildren<EnemyAnimation>();
         }
 
         private void Update()
@@ -46,12 +50,15 @@ namespace SoulHunter.Enemy
             {
                 if (Moving)
                 {
+                    animationOfEnemy.anim.SetFloat("Speed", Mathf.Abs(1));
                     if (MoveRight)
                     {
+                        RendererofSprites.flipX = false;
                         transform.Translate(Vector2.right * MoveSpeed * Time.deltaTime);
                     }
                     else
                     {
+                        RendererofSprites.flipX = true;
                         transform.Translate(Vector2.left * MoveSpeed * Time.deltaTime);
                     }
                 }
