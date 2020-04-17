@@ -118,6 +118,7 @@ namespace SoulHunter.Player
         public void ShootGrapple(Vector2 aimDirection)
         {
             if (ropeAttached) return;
+            if (PlayerBase.isGrounded) return;
             ropeRenderer.enabled = true;
 
             var hit = Physics2D.Raycast(playerPosition, aimDirection, maxRopeLength, ropeLayerMask);

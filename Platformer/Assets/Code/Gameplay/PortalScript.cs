@@ -3,6 +3,7 @@ using UnityEngine;
 
 using SoulHunter.Player;
 using SoulHunter;
+using System.Runtime.Remoting.Messaging;
 
 public class PortalScript : Interactable // Mort
 {
@@ -102,15 +103,11 @@ public class PortalScript : Interactable // Mort
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!GameManager.interacting)
-        {
-            return;
-        }
+        if (!GameManager.interacting) return;
 
-        if (connectedPortals.Count == 0)
-        {
-            return;
-        }
+        if (connectedPortals.Count == 0) return;
+
+        if (PlayerBase.isSwinging) return;
 
         if (collision.CompareTag("Player"))
         {

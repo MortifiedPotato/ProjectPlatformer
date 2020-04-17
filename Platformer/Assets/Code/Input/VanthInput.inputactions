@@ -54,28 +54,12 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Swing",
+                    "name": "Grapple",
                     "type": "Button",
                     "id": "2dbbecb8-8439-44d5-9454-610a64125ef0",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Detach",
-                    "type": "Button",
-                    "id": "3619b3d6-1fe2-464e-8266-b525f6a32476",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Yank",
-                    "type": "Button",
-                    "id": "c7ee19a9-deba-42e9-9db6-3a19e5546b43",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -192,7 +176,7 @@
                 {
                     "name": "",
                     "id": "50c75f30-45a5-486b-8639-30597dd364e7",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -225,7 +209,7 @@
                 {
                     "name": "",
                     "id": "61930edc-0bee-4969-9985-ec25a2914920",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -262,62 +246,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Swing",
+                    "action": "Grapple",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "c4303334-ccbb-4f18-8197-7587c206d0c3",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Swing",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4b809768-1228-4692-9da5-586324c85d9a",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Detach",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "707e0305-786f-4ec8-a257-897afff13e6f",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Detach",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9c4870c3-0cc8-45ef-a994-0cf057a540b3",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Yank",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f6bea7a5-6272-4c83-9d04-3400d9aeff39",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Yank",
+                    "action": "Grapple",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -390,7 +330,7 @@
                 {
                     "name": "",
                     "id": "c049066f-5353-47d8-95e3-01de0b4d1e1a",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

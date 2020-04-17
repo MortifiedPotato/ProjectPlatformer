@@ -13374,7 +13374,7 @@ PrefabInstance:
     - target: {fileID: 3422950349428540958, guid: 687464a8304d6a24885e918a32ef12c9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3422950349428540958, guid: 687464a8304d6a24885e918a32ef12c9,
         type: 3}
@@ -21368,7 +21368,7 @@ PrefabInstance:
     - target: {fileID: 3422950349428540958, guid: 687464a8304d6a24885e918a32ef12c9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3422950349428540958, guid: 687464a8304d6a24885e918a32ef12c9,
         type: 3}
@@ -42213,8 +42213,6 @@ MonoBehaviour:
   expirationHeight: -10
   DespawnTimer: 10
   characterSprite: {fileID: 1197350459337406508}
-  characterParticle: {fileID: 0}
-  corpseCollider: {fileID: 8710119171176305647}
   soul: {fileID: 11400000, guid: 81087b02aa13e324599a0412bee05890, type: 2}
 --- !u!4 &1523166185660750108 stripped
 Transform:
@@ -42324,7 +42322,7 @@ PrefabInstance:
     - target: {fileID: 4149204017818456493, guid: 5d4c67715df8e9a429f45a182fad5359,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Vanth
       objectReference: {fileID: 0}
     - target: {fileID: 4149204017818456499, guid: 5d4c67715df8e9a429f45a182fad5359,
         type: 3}
@@ -45426,8 +45424,6 @@ MonoBehaviour:
   expirationHeight: -10
   DespawnTimer: 10
   characterSprite: {fileID: 3302754405061635367}
-  characterParticle: {fileID: 0}
-  corpseCollider: {fileID: 5019514102141306596}
   soul: {fileID: 11400000, guid: 81087b02aa13e324599a0412bee05890, type: 2}
 --- !u!251 &3544957923410834447
 PlatformEffector2D:
@@ -50995,6 +50991,7 @@ MonoBehaviour:
   MoveRight: 0
   Moving: 0
   fGroundedRememberTime: 0.25
+  currentSpeed: 0
   collisionLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -51102,6 +51099,7 @@ MonoBehaviour:
   attackDuration: 1
   attackCooldown: 2
   Weapon: {fileID: 4367621419436996573}
+  attacking: 0
 --- !u!251 &6061122896324610762
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -55642,6 +55640,7 @@ MonoBehaviour:
   attackDuration: 1
   attackCooldown: 2
   Weapon: {fileID: 131874108304990934}
+  attacking: 0
 --- !u!114 &8072785548225815448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55659,6 +55658,7 @@ MonoBehaviour:
   MoveRight: 0
   Moving: 0
   fGroundedRememberTime: 1
+  currentSpeed: 0
   collisionLayer:
     serializedVersion: 2
     m_Bits: 2048

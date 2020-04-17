@@ -139,7 +139,7 @@ namespace SoulHunter.Input
         /// Gets swing input and calls its function
         /// </summary>
         /// <param name="context"></param>
-        public void OnSwing(InputAction.CallbackContext context)
+        public void OnGrapple(InputAction.CallbackContext context)
         {
             if (PlayerBase.isPaused)
             {
@@ -148,41 +148,14 @@ namespace SoulHunter.Input
 
             if (context.performed)
             {
-                grappleSystem?.ShootGrapple(GetComponent<PlayerAim>().aimDirection);
-            }
-        }
-
-        /// <summary>
-        /// Gets Detach input and calls its function
-        /// </summary>
-        /// <param name="context"></param>
-        public void OnDetach(InputAction.CallbackContext context)
-        {
-            if (PlayerBase.isPaused)
-            {
-                return;
-            }
-
-            if (context.performed)
-            {
-                grappleSystem?.ResetRope();
-            }
-        }
-
-        /// <summary>
-        /// Gets yank function and calls its function
-        /// </summary>
-        /// <param name="context"></param>
-        public void OnYank(InputAction.CallbackContext context)
-        {
-            if (PlayerBase.isPaused)
-            {
-                return;
-            }
-
-            if (context.performed)
-            {
-                playerMovement?.Yank();
+                if (!PlayerBase.isSwinging)
+                {
+                    grappleSystem?.ShootGrapple(GetComponent<PlayerAim>().aimDirection);
+                }
+                else
+                {
+                    grappleSystem?.ResetRope();
+                }
             }
         }
     }

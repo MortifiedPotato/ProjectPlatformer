@@ -79,7 +79,7 @@ namespace SoulHunter.Player
         /// </summary>
         void Teleport()
         {
-            transform.position = teleportDestination.position;
+            transform.position = new Vector3(teleportDestination.position.x, teleportDestination.position.y, 0);
             isTeleporting = false;
             isPaused = false;
         }

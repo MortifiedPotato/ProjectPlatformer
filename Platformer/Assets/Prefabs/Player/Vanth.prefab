@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 4149204017818456492}
   - component: {fileID: 4149204017818456497}
   - component: {fileID: 2837681812426184538}
-  - component: {fileID: 558433198320249125}
+  - component: {fileID: 590027495976451521}
   m_Layer: 10
   m_Name: PlayerV2
   m_TagString: Player
@@ -732,7 +732,7 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &558433198320249125
+--- !u!114 &590027495976451521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -772,7 +772,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 05be01c1-fc6b-465a-96e5-4b5a806e8d81
-    m_ActionName: Player/Aim[/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
+    m_ActionName: Player/Aim
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
@@ -787,7 +787,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 5a8c238b-8dde-4e41-b23c-b7778d5d37ea
-    m_ActionName: Player/Move[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
@@ -802,7 +802,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: c544ab89-5fa8-403f-931a-8577f53b132a
-    m_ActionName: Player/Jump[/XInputControllerWindows/buttonSouth,/Keyboard/space]
+    m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
@@ -817,7 +817,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: b4ed77d7-b958-4785-b662-8013a671d959
-    m_ActionName: Player/Attack[/XInputControllerWindows/buttonWest,/Keyboard/e]
+    m_ActionName: Player/Interact[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
@@ -832,7 +832,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 1ac8c399-631c-40d3-98ac-76c947ba1b7a
-    m_ActionName: Player/Pause[/XInputControllerWindows/start,/Keyboard/escape]
+    m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
@@ -847,11 +847,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 96e3720e-5a0a-49ec-af33-e84bb003e5c0
-    m_ActionName: Player/Swing[/XInputControllerWindows/leftTrigger,/Mouse/leftButton]
+    m_ActionName: Player/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2067902339583395308}
-        m_MethodName: OnSwing
+        m_MethodName: OnGrapple
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -862,26 +862,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 2dbbecb8-8439-44d5-9454-610a64125ef0
-    m_ActionName: Player/Detach[/XInputControllerWindows/leftShoulder,/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2067902339583395308}
-        m_MethodName: OnDetach
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3619b3d6-1fe2-464e-8266-b525f6a32476
-    m_ActionName: Player/Yank[/XInputControllerWindows/rightShoulder,/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c7ee19a9-deba-42e9-9db6-3a19e5546b43
-    m_ActionName: Player/Yank[/Mouse/leftButton]
+    m_ActionName: Player/Grapple[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player

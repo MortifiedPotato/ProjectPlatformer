@@ -17,7 +17,7 @@ namespace SoulHunter.Player
         float maxClimbAngle = 50;
 
         // Jump Merchanics Values
-        float fGroundedRememberTime = .25f;
+        float fGroundedRememberTime = .2f;
         float fGroundedRemember;
         float fCutJumpHeight = .5f;
 
@@ -142,6 +142,17 @@ namespace SoulHunter.Player
                     AudioManager.PlaySound(AudioManager.Sound.PlayerJump, transform.position);
                 }
             }
+            else
+            {
+                if (PlayerBase.isJumping)
+                {
+                    if (PlayerBase.ropeHook != Vector2.zero)
+                    {
+                        rigidBody.AddForce((new Vector3(PlayerBase.ropeHook.x, PlayerBase.ropeHook.y, 0) - transform.position) * (yankForce * 10));
+                        GetComponent<GrappleSystem>().ResetRope();
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -154,18 +165,6 @@ namespace SoulHunter.Player
             float moveDistance = Mathf.Abs(velocity.x);
             velocity.y = Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance;
             velocity.x = Mathf.Cos(slopeAngle * Mathf.Deg2Rad) * moveDistance * Mathf.Sign(velocity.x);
-        }
-
-        /// <summary>
-        /// Handles yanking using input
-        /// </summary>
-        public void Yank()
-        {
-            if (PlayerBase.ropeHook != Vector2.zero)
-            {
-                rigidBody.AddForce((new Vector3(PlayerBase.ropeHook.x, PlayerBase.ropeHook.y, 0) - transform.position) * (yankForce * 10));
-                GetComponent<GrappleSystem>().ResetRope();
-            }
         }
 
         /// <summary>
@@ -199,6 +198,11 @@ namespace SoulHunter.Player
                 {
                     fGroundedRemember = fGroundedRememberTime;
                     PlayerBase.isGrounded = true;
+
+                    if (PlayerBase.isSwinging)
+                    {
+                        GetComponent<GrappleSystem>().ResetRope();
+                    }
 
                     return;
                 }
