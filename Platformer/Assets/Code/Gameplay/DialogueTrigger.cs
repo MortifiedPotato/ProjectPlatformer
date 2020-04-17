@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using SoulHunter.Player;
+using UnityEngine.UI;
 
 namespace SoulHunter.Dialogue
 {
@@ -8,6 +9,9 @@ namespace SoulHunter.Dialogue
     {
         // Toggle trigger dialogue with collision
         public bool canTriggerByCollision;
+
+        // Dialogue Portrait
+        public Sprite portraitImage;
 
         // Dialogue Name Text Color
         public Color nameColor = Color.white;
@@ -17,7 +21,6 @@ namespace SoulHunter.Dialogue
 
         public Dialogue dialogue;
         ParticleSystem dialogueParticle;
-        bool playerDetected = false;
 
         private void Start()
         {
@@ -54,17 +57,22 @@ namespace SoulHunter.Dialogue
         /// </summary>
         void TriggerDialogue()
         {
-            DialogueManager.Instance.StartDialogue(this, dialogue, nameColor, dialogueColor);
+            DialogueManager.Instance.StartDialogue(this, dialogue, portraitImage, nameColor, dialogueColor);
         }
 
         private void OnTriggerStay2D(Collider2D collision)
         {
+            // If dialogue is already initiated, return.
+            if (GameManager.initiatedDialogue)
+            {
+                return;
+            }
+
             if (collision.CompareTag("Player"))
             {
                 // If player is swinging, return.
                 if (PlayerBase.isSwinging)
                 {
-                    playerDetected = false;
                     return;
                 }
 
@@ -77,21 +85,9 @@ namespace SoulHunter.Dialogue
                 // If either activatable or repeatable, start dialogue.
                 if (isActivatable || isRepeatable)
                 {
-                    if (!playerDetected)
-                    {
-                        TriggerDialogue();
-                        playerDetected = true;
-                        canTriggerByCollision = false;
-                    }
+                    TriggerDialogue();
+                    canTriggerByCollision = false;
                 }
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                playerDetected = false;
             }
         }
     }

@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &2003867850857481555
 MonoBehaviour:
@@ -124,6 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivatable: 1
   isRepeatable: 0
+  canTriggerByCollision: 0
+  portraitImage: {fileID: 0}
   nameColor: {r: 1, g: 1, b: 1, a: 1}
   dialogueColor: {r: 1, g: 1, b: 1, a: 1}
   dialogue:
@@ -171,6 +173,10 @@ PrefabInstance:
     - target: {fileID: 19829086, guid: 0a27a995f3451f741b32f5f6bf27155b, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19926774, guid: 0a27a995f3451f741b32f5f6bf27155b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a27a995f3451f741b32f5f6bf27155b, type: 3}
