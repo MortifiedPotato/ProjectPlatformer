@@ -33,6 +33,9 @@ namespace SoulHunter.Dialogue
         [SerializeField] GameObject dialogueBox;
         [SerializeField] Button ContinueButton;
 
+        [Header("Images")] // Image variables
+        [SerializeField] Image portraitImage;
+
         [Header("Texts")] // Text variables
         [SerializeField] TextMeshProUGUI nameText;
         [SerializeField] TextMeshProUGUI dialogueText;
@@ -52,7 +55,7 @@ namespace SoulHunter.Dialogue
         /// <param name="_dialogue"></param>
         /// <param name="_nameColor"></param>
         /// <param name="_dialogueColor"></param>
-        public void StartDialogue(DialogueTrigger trigger, Dialogue _dialogue, Color _nameColor, Color _dialogueColor)
+        public void StartDialogue(DialogueTrigger trigger, Dialogue _dialogue, Sprite _portrait, Color _nameColor, Color _dialogueColor)
         {
             currentTrigger = trigger;
 
@@ -65,6 +68,17 @@ namespace SoulHunter.Dialogue
             nameText.text = _dialogue.name;
             nameText.color = _nameColor;
             dialogueText.color = _dialogueColor;
+
+            if (_portrait)
+            {
+                portraitImage.color = Color.white;
+                portraitImage.sprite = _portrait;
+                portraitImage.preserveAspect = true;
+            }
+            else
+            {
+                portraitImage.color = Color.clear;
+            }
 
             sentences.Clear();
 

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -66,7 +67,7 @@ namespace SoulHunter.Player
                 return;
             }
 
-            if (i_moveInput.x < -0.01f || i_moveInput.x > 0.01f)
+            if (i_moveInput.x * Math.Sign(i_moveInput.x) > 0.01f)
             {
                 if (PlayerBase.isSwinging)
                 {
@@ -89,7 +90,10 @@ namespace SoulHunter.Player
                     var force = perpendicularDirection * swingForce;
                     rigidBody.AddForce(force, ForceMode2D.Force);
 
-                    AudioManager.PlaySound(AudioManager.Sound.ClothFlowing, transform.position);
+                    if (rigidBody.velocity.x * Math.Sign(rigidBody.velocity.x) > 4)
+                    {
+                        AudioManager.PlaySound(AudioManager.Sound.ClothFlowing, transform.position);
+                    }
                 }
                 else
                 {
