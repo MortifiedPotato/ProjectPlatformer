@@ -9,7 +9,7 @@ public class EnemyAnimation : MonoBehaviour // Mort
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigidbody;
 
-    Animator anim;
+    public Animator anim;
 
     private void Awake()
     {

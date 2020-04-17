@@ -8,17 +8,21 @@ namespace SoulHunter.Enemy
     {
         [SerializeField] ParticleSystem characterParticle;
         [SerializeField] CircleCollider2D corpseCollider;
+        EnemyAnimation animationOfEnemy;
 
         public SoulData soul;
 
         protected void Start()
         {
             GameManager.Instance.EnemyListRegistry(this);
+            animationOfEnemy = GetComponentInChildren<EnemyAnimation>();
         }
 
         public override void TakeDamage()
         {
             base.TakeDamage();
+
+            animationOfEnemy.anim.SetBool("isHurt", true);
 
             if (!isDead)
             {
@@ -26,6 +30,7 @@ namespace SoulHunter.Enemy
             }
             else
             {
+                animationOfEnemy.anim.SetBool("isDead", true);
                 if (!immuneToDamage)
                 {
                     immuneToDamage = true;
