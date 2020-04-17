@@ -8937,7 +8937,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Texture Artist, 2D Artist, Concept Artist
 
-    Level, Game & Story Designer'
+    Game & Story Designer'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 28c2fb404a822d048a0d287f8847e95d, type: 2}
   m_sharedMaterial: {fileID: -6072634643545151317, guid: 28c2fb404a822d048a0d287f8847e95d,

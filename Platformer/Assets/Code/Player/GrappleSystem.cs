@@ -20,6 +20,7 @@ namespace SoulHunter.Player
         private SpriteRenderer ropeHingeAnchorSprite;
 
         public LayerMask ropeLayerMask;
+        public LayerMask obstacleLayerMask;
 
         private LineRenderer ropeRenderer;
         public float maxRopeLength = 10f;
@@ -247,12 +248,18 @@ namespace SoulHunter.Player
 
         void OnTriggerStay2D(Collider2D colliderStay)
         {
-            isColliding = true;
+            if (colliderStay.transform.gameObject.layer == obstacleLayerMask)
+            {
+                isColliding = true;
+            }
         }
 
         private void OnTriggerExit2D(Collider2D colliderOnExit)
         {
-            isColliding = false;
+            if (colliderOnExit.transform.gameObject.layer == obstacleLayerMask)
+            {
+                isColliding = false;
+            }
         }
 
         void HandleRopeUnwrap()

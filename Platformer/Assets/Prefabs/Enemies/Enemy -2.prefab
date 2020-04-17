@@ -245,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1866a96455bc0d549894922efa306061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
 --- !u!95 &6521662883455012226
 Animator:
   serializedVersion: 3
@@ -280,7 +279,7 @@ GameObject:
   - component: {fileID: 6763832758573670801}
   - component: {fileID: 5602860212185814074}
   m_Layer: 11
-  m_Name: Level 1 - Enemy
+  m_Name: Enemy -2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,6 +337,7 @@ MonoBehaviour:
   MoveRight: 0
   Moving: 0
   fGroundedRememberTime: 0.25
+  currentSpeed: 0
   collisionLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -359,6 +359,7 @@ MonoBehaviour:
   attackDuration: 1
   attackCooldown: 2
   Weapon: {fileID: 5518214823143716770}
+  attacking: 0
 --- !u!50 &6763832758573670801
 Rigidbody2D:
   serializedVersion: 4

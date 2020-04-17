@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 2837681812426184538}
   - component: {fileID: 590027495976451521}
   m_Layer: 10
-  m_Name: PlayerV2
+  m_Name: Vanth
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,8 +529,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 14336
   i_moveInput: {x: 0, y: 0}
-  velocity: {x: 0, y: 0}
-  oldVelocity: {x: 0, y: 0}
 --- !u!114 &4149204017818456496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,6 +549,9 @@ MonoBehaviour:
   ropeLayerMask:
     serializedVersion: 2
     m_Bits: 4864
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 12288
   maxRopeLength: 8
   climbSpeed: 3
 --- !u!58 &9190005277524162411

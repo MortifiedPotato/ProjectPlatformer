@@ -30,10 +30,10 @@ namespace SoulHunter.Player
         Rigidbody2D rigidBody;
 
         // Movement Input Value
+        [HideInInspector]
         public Vector2 i_moveInput;
-
-        public Vector2 velocity;
-        public Vector2 oldVelocity;
+        Vector2 velocity;
+        Vector2 oldVelocity;
 
         private void Awake()
         {
