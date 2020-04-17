@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-
 using SoulHunter.Player;
-using UnityEngine.UI;
 
 namespace SoulHunter.Dialogue
 {
@@ -53,7 +51,7 @@ namespace SoulHunter.Dialogue
         }
 
         /// <summary>
-        /// Start dialogue
+        /// Starts dialogue
         /// </summary>
         void TriggerDialogue()
         {
@@ -86,7 +84,11 @@ namespace SoulHunter.Dialogue
                 if (isActivatable || isRepeatable)
                 {
                     TriggerDialogue();
-                    canTriggerByCollision = false;
+
+                    if (GameManager.initiatedDialogue)
+                    {
+                        canTriggerByCollision = false;
+                    }
                 }
             }
         }

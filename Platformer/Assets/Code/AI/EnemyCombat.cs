@@ -8,15 +8,13 @@ namespace SoulHunter.Enemy
     {
         [SerializeField] float attackDuration;
         [SerializeField] float attackCooldown;
-        private EnemyAnimation animationOfEnemy;
         public GameObject Weapon;
+        public bool attacking;
         float attackTimer;
         float cooldown;
-        bool attacking;
 
         void Start()
         {
-            animationOfEnemy = GetComponentInChildren<EnemyAnimation>();
             Weapon.SetActive(false);
             attackDuration = attackDuration / 10;
         }
@@ -35,7 +33,6 @@ namespace SoulHunter.Enemy
         {
             if (cooldown > attackCooldown)
             {
-                animationOfEnemy.anim.SetBool("isAttacking", true);
                 if (GetComponent<EnemyScript>().MoveRight == false)
                 {
                     Weapon.transform.localPosition = new Vector3(-.5f, 0, 0);

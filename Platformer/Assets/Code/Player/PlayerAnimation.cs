@@ -29,6 +29,9 @@ namespace SoulHunter.Player
             FlipTexture();
         }
 
+        /// <summary>
+        /// Updates animator values
+        /// </summary>
         void UpdateValues()
         {
             // Syncs animator booleans with static booleans

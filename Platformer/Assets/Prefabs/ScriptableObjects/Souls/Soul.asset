@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Soul
   m_EditorClassIdentifier: 
   color: {r: 0.11151934, g: 0, b: 1, a: 0}
-  soulPower: 10
+  soulPower: 1
   particle: {fileID: 6933704371035877320, guid: 7e73387590e9a584f9629f2537a4fb38,
     type: 3}

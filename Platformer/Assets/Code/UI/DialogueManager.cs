@@ -35,6 +35,7 @@ namespace SoulHunter.Dialogue
 
         [Header("Images")] // Image variables
         [SerializeField] Image portraitImage;
+        [SerializeField] Image portraitFrame;
 
         [Header("Texts")] // Text variables
         [SerializeField] TextMeshProUGUI nameText;
@@ -59,10 +60,10 @@ namespace SoulHunter.Dialogue
         {
             currentTrigger = trigger;
 
+            GameManager.initiatedDialogue = true;
             PlayerBase.isPaused = true;
 
-            animator.SetBool("inDialogue", true);
-            GameManager.initiatedDialogue = true;
+            animator.SetBool("inDialogue", GameManager.initiatedDialogue);
             ContinueButton.Select();
 
             nameText.text = _dialogue.name;
@@ -72,12 +73,14 @@ namespace SoulHunter.Dialogue
             if (_portrait)
             {
                 portraitImage.color = Color.white;
+                portraitFrame.color = Color.white;
                 portraitImage.sprite = _portrait;
                 portraitImage.preserveAspect = true;
             }
             else
             {
                 portraitImage.color = Color.clear;
+                portraitFrame.color = Color.clear;
             }
 
             sentences.Clear();
@@ -101,8 +104,8 @@ namespace SoulHunter.Dialogue
 
             if (nonTriggerable)
             {
-                animator.SetBool("inDialogue", false);
                 GameManager.initiatedDialogue = false;
+                animator.SetBool("inDialogue", GameManager.initiatedDialogue);
                 PlayerBase.isPaused = false;
                 nonTriggerable = false;
             }
@@ -110,7 +113,6 @@ namespace SoulHunter.Dialogue
             {
                 if (sentences.Count == 0)
                 {
-                    dialogueText.alignment = TextAlignmentOptions.Center;
                     dialogueText.fontStyle = FontStyles.Italic;
                     dialogueText.color = Color.white;
                     dialogueText.font = normalFont;
@@ -119,7 +121,6 @@ namespace SoulHunter.Dialogue
                     return;
                 }
 
-                dialogueText.alignment = TextAlignmentOptions.TopLeft;
                 dialogueText.fontStyle = FontStyles.Normal;
                 dialogueText.font = dialogueFont;
                 dialogueText.fontSize = 36;
@@ -132,7 +133,7 @@ namespace SoulHunter.Dialogue
         /// <summary>
         /// Indicates end of dialogue and handles the termination of current dialogue
         /// </summary>
-        void EndDialogue()
+        public void EndDialogue()
         {
             StopAllCoroutines();
             StartCoroutine(TypeSentence(">>End of conversation.<<"));
@@ -140,7 +141,7 @@ namespace SoulHunter.Dialogue
             PlayerBase.isPaused = false;
             nonTriggerable = true;
 
-            animator.SetBool("inDialogue", false);
+            animator.SetBool("inDialogue", GameManager.initiatedDialogue);
 
             currentTrigger.ManageDialogueTrigger(false);
 

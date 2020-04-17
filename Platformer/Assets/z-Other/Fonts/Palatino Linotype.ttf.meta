@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dd668e1903594864bbd6dfae0889fbcf
+guid: b868cf1c7a927a54ebc34423b41b3124
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Cardinal
+  fontName: Palatino Linotype
   fontNames:
-  - Cardinal
+  - Palatino Linotype
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
