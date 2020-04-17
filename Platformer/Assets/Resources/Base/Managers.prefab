@@ -65,7 +65,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '%'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 178ba87b294a12846adeda61dc894ab0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 28c2fb404a822d048a0d287f8847e95d, type: 2}
   m_sharedMaterial: {fileID: 6097557987192734440, guid: 178ba87b294a12846adeda61dc894ab0,
     type: 2}
   m_fontSharedMaterials: []
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &484897808216899006
@@ -996,7 +996,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Generic Game Tip
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 178ba87b294a12846adeda61dc894ab0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 28c2fb404a822d048a0d287f8847e95d, type: 2}
   m_sharedMaterial: {fileID: 6097557987192734440, guid: 178ba87b294a12846adeda61dc894ab0,
     type: 2}
   m_fontSharedMaterials: []
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &8805120784910362113

@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-
 using SoulHunter.Gameplay;
 
 namespace SoulHunter.Enemy
 {
     public class EnemyBase : Damageable
     {
-        [SerializeField] ParticleSystem characterParticle;
-        [SerializeField] CircleCollider2D corpseCollider;
         EnemyAnimation animationOfEnemy;
 
         public SoulData soul;
@@ -22,7 +19,7 @@ namespace SoulHunter.Enemy
         {
             base.TakeDamage();
 
-            animationOfEnemy.anim.SetBool("isHurt", true);
+            animationOfEnemy.HurtAnimation();
 
             if (!isDead)
             {
@@ -30,22 +27,14 @@ namespace SoulHunter.Enemy
             }
             else
             {
-                animationOfEnemy.anim.SetBool("isDead", true);
                 if (!immuneToDamage)
                 {
                     immuneToDamage = true;
 
+                    GetComponent<Collider2D>().enabled = false;
+
                     AudioManager.PlaySound(AudioManager.Sound.EnemyDeath, transform.position);
                     soul.SpawnParticle(transform.position);
-
-                    for (int i = 0; i < GetComponents<Collider2D>().Length; i++)
-                    {
-                        GetComponents<Collider2D>()[i].enabled = false;
-                    }
-                    corpseCollider.enabled = true;
-
-                    var emission = characterParticle.emission;
-                    emission.enabled = false;
                 }
             }
         }

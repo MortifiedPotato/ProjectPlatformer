@@ -45,6 +45,7 @@ public static class AudioManager // Mort - Followed Tutorial by Code Monkey, mod
         soundTimerDictionary[Sound.TeleportDissolve] = 0;
         soundTimerDictionary[Sound.TeleportAppear] = 0;
         soundTimerDictionary[Sound.ClothFlowing] = 0;
+        soundTimerDictionary[Sound.StartDialogue] = 0;
     }
 
     /// <summary>
@@ -198,6 +199,22 @@ public static class AudioManager // Mort - Followed Tutorial by Code Monkey, mod
                 {
                     float lastTimePlayed = soundTimerDictionary[sound];
                     float playerMoveTimerMax = .3f;
+                    if (lastTimePlayed + playerMoveTimerMax < Time.time)
+                    {
+                        soundTimerDictionary[sound] = Time.time;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                break;
+            case Sound.StartDialogue:
+                if (soundTimerDictionary.ContainsKey(sound))
+                {
+                    float lastTimePlayed = soundTimerDictionary[sound];
+                    float playerMoveTimerMax = .1f;
                     if (lastTimePlayed + playerMoveTimerMax < Time.time)
                     {
                         soundTimerDictionary[sound] = Time.time;
