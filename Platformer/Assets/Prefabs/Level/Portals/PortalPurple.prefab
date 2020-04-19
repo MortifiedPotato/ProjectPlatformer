@@ -66,6 +66,9 @@ MonoBehaviour:
   isActivatable: 1
   isRepeatable: 0
   portalType: {fileID: 11400000, guid: 99cb362963179964c85302a89fc1e6a2, type: 2}
+  aliveEntities:
+    serializedVersion: 2
+    m_Bits: 3072
 --- !u!1 &6655857789976288189
 GameObject:
   m_ObjectHideFlags: 0

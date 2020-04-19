@@ -6,22 +6,27 @@ public class CameraManager : MonoBehaviour // Mort
 {
     public static CameraManager Instance;
 
-    [SerializeField] float ShakeAmplitude = 1.2f;         // Cinemachine Noise Profile Parameter
-    [SerializeField] float ShakeFrequency = 2.0f;         // Cinemachine Noise Profile Parameter
+    // Cinemachine Shake Values
+    [SerializeField] float defaultShakeAmplitude = 1.2f;         // Cinemachine Noise Profile Parameter
+    [SerializeField] float defaultShakeFrequency = 2.0f;         // Cinemachine Noise Profile Parameter
 
-    private float ShakeElapsedTime = 0f;
+    float ShakeElapsedTime = 0f;
 
-    // Cinemachine Shake
-    [HideInInspector] public CinemachineConfiner confiner;
-    [HideInInspector] public CinemachineVirtualCamera virtualCamera;
+    // Cinemachine Virtual Camera
+    private CinemachineVirtualCamera virtualCamera;
 
+    // Cinemachine Components
     private CinemachineBasicMultiChannelPerlin virtualCameraNoise;
     private CinemachineFollowZoom virtualCameraFollowZoom;
     private CinemachineTargetGroup targetGroup;
+    private CinemachineConfiner confiner;
+
 
     private void Awake()
     {
         Instance = this;
+
+        // Get virtual camera & components
         virtualCamera =  GetComponentInChildren<CinemachineVirtualCamera>();
         targetGroup = GetComponentInChildren<CinemachineTargetGroup>();
         confiner = virtualCamera.GetComponent<CinemachineConfiner>();
@@ -57,7 +62,7 @@ public class CameraManager : MonoBehaviour // Mort
         // Set Cinemachine Camera Noise parameters
         if (amplitude <= 0)
         {
-            virtualCameraNoise.m_AmplitudeGain = ShakeAmplitude;
+            virtualCameraNoise.m_AmplitudeGain = defaultShakeAmplitude;
         }
         else
         {
@@ -65,7 +70,7 @@ public class CameraManager : MonoBehaviour // Mort
         }
         if (frequency <= 0)
         {
-            virtualCameraNoise.m_FrequencyGain = ShakeFrequency;
+            virtualCameraNoise.m_FrequencyGain = defaultShakeFrequency;
         }
         else
         {
@@ -75,34 +80,38 @@ public class CameraManager : MonoBehaviour // Mort
 
     private void Update()
     {
-        // If the Cinemachine components are not set, avoid update
-        if (virtualCamera != null || virtualCameraNoise != null)
-        {
-            // Set Cinemachine Camera Noise parameters
-            if (ShakeElapsedTime > 0)
-            {
-                // Update Shake Timer
-                ShakeElapsedTime -= Time.deltaTime;
-            }
-            else
-            {
-                // If Camera Shake effect is over, reset variables
-                virtualCameraNoise.m_AmplitudeGain = 0f;
-                ShakeElapsedTime = 0f;
-            }
+        // If the virtual camera is null, avoid update.
+        if (!virtualCamera) return;
 
-            // If player is in a dialogue, zoom in
-            if (GameManager.initiatedDialogue && virtualCameraFollowZoom.m_Width > 1)
-            {
-                virtualCameraFollowZoom.m_Width -= Time.deltaTime * 10;
-                targetGroup.m_Targets[1].radius = 0;
-            }
-            // If player is no longer in dialogue, zoom out
-            else if (!GameManager.initiatedDialogue && virtualCameraFollowZoom.m_Width < 12)
-            {
-                virtualCameraFollowZoom.m_Width += Time.deltaTime * 10;
-                targetGroup.m_Targets[1].radius = 4;
-            }
+        // If required cinemachine components are null, avoid update.
+        if (!virtualCameraNoise || !virtualCameraFollowZoom) return;
+
+        //----------------------------------------
+
+        // Set Cinemachine Camera Noise parameters
+        if (ShakeElapsedTime > 0)
+        {
+            // Update Shake Timer
+            ShakeElapsedTime -= Time.deltaTime;
+        }
+        else
+        {
+            // If Camera Shake effect is over, reset variables
+            virtualCameraNoise.m_AmplitudeGain = 0f;
+            ShakeElapsedTime = 0f;
+        }
+
+        // If player is in a dialogue, zoom in
+        if (GameManager.initiatedDialogue && virtualCameraFollowZoom.m_Width > 1)
+        {
+            virtualCameraFollowZoom.m_Width -= Time.deltaTime * 10;
+            targetGroup.m_Targets[1].radius = 0;
+        }
+        // If player is no longer in dialogue, zoom out
+        else if (!GameManager.initiatedDialogue && virtualCameraFollowZoom.m_Width < 12)
+        {
+            virtualCameraFollowZoom.m_Width += Time.deltaTime * 10;
+            targetGroup.m_Targets[1].radius = 4;
         }
     }
 }

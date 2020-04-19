@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
-
 using SoulHunter.Player;
+using UnityEngine;
 using SoulHunter;
-using System.Runtime.Remoting.Messaging;
 
 public class PortalScript : Interactable // Mort
 {
@@ -15,6 +13,14 @@ public class PortalScript : Interactable // Mort
 
     // List of connected portals
     List<PortalScript> connectedPortals = new List<PortalScript>();
+
+    // Layers to check collision with
+    [SerializeField] LayerMask aliveEntities;
+
+    private void Awake()
+    {
+        GameManager.Instance.PortalListRegistry(this);
+    }
 
     private void Start()
     {
@@ -54,26 +60,24 @@ public class PortalScript : Interactable // Mort
 
     void AssignConnectedPortals()
     {
-        // Save all objects with "Portal" tag in an array
-        GameObject[] allPortals = GameObject.FindGameObjectsWithTag("Portal");
-
         // Save Portals that have the same assigned color into Connected Portals list
-        for (int i = 0; i < allPortals.Length; i++)
+        for (int i = 0; i < GameManager.Instance.Portals.Count; i++)
         {
-            if (allPortals[i].Equals(gameObject))
+            if (GameManager.Instance.Portals[i].Equals(this))
             {
                 continue;
             }
 
-            if (allPortals[i].GetComponent<PortalScript>().portalType.color == portalType.color)
+            if (GameManager.Instance.Portals[i].portalType.color == portalType.color)
             {
-                connectedPortals.Add(allPortals[i].GetComponent<PortalScript>());
+                connectedPortals.Add(GameManager.Instance.Portals[i]);
             }
         }
 
         // Warn if no portals are connected to current portal
         if (connectedPortals.Count == 0)
         {
+            isActivatable = false;
             Debug.LogError($"No portals connected to {gameObject.name} in {transform.root.name}.");
         }
 
@@ -84,8 +88,20 @@ public class PortalScript : Interactable // Mort
         }
     }
 
+    /// <summary>
+    /// Selects a connected portal to send the player to
+    /// </summary>
+    /// <returns></returns>
+    Transform SelectPortalToTeleport()
+    {
+        return connectedPortals[Random.Range(0, connectedPortals.Count)].transform;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // If collision is not an alive entity, return.
+        if (!aliveEntities.Includes(collision.transform.gameObject.layer)) return; // Mort - custom extension method!
+
         if (isActivatable || isRepeatable)
         {
             // Play all particles
@@ -95,7 +111,8 @@ public class PortalScript : Interactable // Mort
             }
         }
 
-        if (collision.CompareTag("Player"))
+        // If collision is on player layer
+        if (collision.transform.gameObject.layer == 10)
         {   // Update Cinemachine Confiner
             CameraManager.Instance.UpdateConfiner(closestConfiner);
         }
@@ -103,35 +120,46 @@ public class PortalScript : Interactable // Mort
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!GameManager.interacting) return;
+        // If the portal is not activatable nor repeatable, return.
+        if (!isActivatable && !isRepeatable) return;
 
-        if (connectedPortals.Count == 0) return;
+        if (!GameManager.interacting) return;
 
         if (PlayerBase.isSwinging) return;
 
-        if (collision.CompareTag("Player"))
+        // If colliding object is on player layer
+        if (collision.transform.gameObject.layer == 10)
         {
-            if (isActivatable || isRepeatable)
-            {
-                // Set player teleportation state
-                PlayerBase.isTeleporting = true;
-                PlayerBase.isPaused = true;
+            // Set player teleportation state
+            PlayerBase.isTeleporting = true;
+            PlayerBase.isPaused = true;
 
-                // Set player teleportation destination
-                PlayerBase.teleportDestination = connectedPortals[Random.Range(0, connectedPortals.Count)].transform;
+            // Set player teleportation destination
+            PlayerBase.teleportDestination = SelectPortalToTeleport();
 
-                // Play teleportation audio
-                AudioManager.PlaySound(AudioManager.Sound.TeleportDissolve, transform.position);
-            }
+            // Play teleportation audio
+            AudioManager.PlaySound(AudioManager.Sound.TeleportDissolve, transform.position);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        // If there are any alive entities inside, return.
+        if (Physics2D.OverlapCircle(transform.position, GetComponent<CircleCollider2D>().radius, aliveEntities))
+        {
+            return;
+        }
+
         // Stop all particles
         foreach (var particleSystem in GetComponentsInChildren<ParticleSystem>())
         {
             particleSystem.Stop();
         }
+    }
+
+    private void OnDestroy()
+    {
+        // Remove this from the list of portals once destroyed
+        GameManager.Instance.PortalListRegistry(this);
     }
 }

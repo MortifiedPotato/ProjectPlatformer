@@ -1,8 +1,6 @@
 ﻿using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.UI;
 using UnityEngine;
-using TMPro;
 
 public class SceneController : MonoBehaviour // Mort
 {
@@ -11,13 +9,12 @@ public class SceneController : MonoBehaviour // Mort
 
     LoadingScreen loadingScreen;
 
-    Animator transitionAnimator;
+    int requestedIndex;
 
     private void Awake()
     {
         // Set Instance
         Instance = this;
-        transitionAnimator = GetComponent<Animator>();
         loadingScreen = GetComponent<LoadingScreen>();
     }
 
@@ -39,12 +36,14 @@ public class SceneController : MonoBehaviour // Mort
         return SceneManager.sceneCountInBuildSettings;
     }
 
+    /// <summary>
+    /// Transitions to a specified scene with a loading screen
+    /// </summary>
+    /// <param name="index"></param>
     public void TransitionScene(int index)
     {
-        loadingScreen.ShuffleImageAndTip();
-
-        transitionAnimator?.SetBool("isLoading", true);
-        transitionAnimator?.SetInteger("index", index);
+        requestedIndex = index;
+        loadingScreen.UpdateAnimatorValues(true, index);
     }
 
     /// <summary>
@@ -53,16 +52,13 @@ public class SceneController : MonoBehaviour // Mort
     /// <param name="sceneIndex"></param>
     void ChangeScene()
     {
-        int index = transitionAnimator.GetInteger("index");
-        StartCoroutine(LoadSceneAsync(index));
+        StartCoroutine(LoadSceneAsync(requestedIndex));
     }
 
     public void ResetScene()
     {
-        loadingScreen.ShuffleImageAndTip();
-
-        transitionAnimator?.SetBool("isLoading", true);
-        transitionAnimator?.SetInteger("index", GetBuildIndex());
+        requestedIndex = GetBuildIndex();
+        loadingScreen.UpdateAnimatorValues(true, requestedIndex);
     }
 
     /// <summary>
@@ -77,19 +73,17 @@ public class SceneController : MonoBehaviour // Mort
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(index);
 
-        loadingScreen.artwork.SetActive(true);
-        loadingScreen.progressBar.SetActive(true);
+        loadingScreen.ActivateElements();
 
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
-            loadingScreen.loadingSlider.value = progress;
-            loadingScreen.loadingProgressPercentage.text = $"{(progress * 100).ToString()}%";
+            loadingScreen.UpdateValues(progress);
             yield return null;
         }
 
-        loadingScreen.progressBar.SetActive(false);
+        loadingScreen.DisableElements();
 
-        transitionAnimator?.SetBool("isLoading", false);
+        loadingScreen.UpdateAnimatorValues(false, -1);
     }
 }

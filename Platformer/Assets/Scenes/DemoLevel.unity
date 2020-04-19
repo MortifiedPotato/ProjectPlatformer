@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -228,6 +228,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
+      propertyPath: dialogue.exchanges.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
       value: The one that masters it's own weapon will not be in danger.
       objectReference: {fileID: 0}
@@ -280,6 +290,20 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
       value: (Use X to attack)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[0]
+      value: 'The one that masters its own weapon will not be in danger.
+
+        (Use
+        X to attack)'
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -1929,7 +1953,7 @@ Transform:
   - {fileID: 265215470}
   - {fileID: 729312723}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &182029589
 GameObject:
@@ -7706,7 +7730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221232176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 178.4, y: 30, z: 0}
+  m_LocalPosition: {x: 178.4, y: 29.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1735307043}
@@ -7719,7 +7743,7 @@ Transform:
   - {fileID: 1769113006}
   - {fileID: 825593501}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &223323804
 GameObject:
@@ -7826,7 +7850,7 @@ Transform:
   - {fileID: 1827527623}
   - {fileID: 1421598845}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &237400253
 GameObject:
@@ -16387,7 +16411,7 @@ Transform:
   - {fileID: 1653922817}
   - {fileID: 285101246}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &555206693
 GameObject:
@@ -23205,24 +23229,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &695670378 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7466560398016492070, guid: 94beadcc2b386bf488bb023bccae8b14,
-    type: 3}
-  m_PrefabInstance: {fileID: 265215469}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &695670380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695670378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fbc3c756a100f4dbe6e699a9b3a21c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &695823221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23239,6 +23245,16 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -23294,6 +23310,20 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
       value: (Use right trigger to grapple)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[0]
+      value: 'The weapon is not only used for harm, but also for adventure.
+
+        (Use
+        left trigger to grapple)'
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -29157,7 +29187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &754916865
 PrefabInstance:
@@ -30216,6 +30246,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
+      propertyPath: dialogue.exchanges.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
       value: The interaction between adventurer and environment go hand in hand.
       objectReference: {fileID: 0}
@@ -30268,6 +30308,20 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
       value: (Use Y to interact with items and portals)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[0]
+      value: 'The interaction between adventurer and environment go hand in hand.
+
+        (Use
+        Y to interact)'
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -33292,7 +33346,7 @@ PrefabInstance:
     - target: {fileID: 6763832758573670800, guid: f028b0de46b23d546a0a390279cef805,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -118.35011
+      value: -138.16
       objectReference: {fileID: 0}
     - target: {fileID: 6763832758573670800, guid: f028b0de46b23d546a0a390279cef805,
         type: 3}
@@ -34307,7 +34361,7 @@ PrefabInstance:
     - target: {fileID: 2003867850857481552, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
       propertyPath: m_Name
-      value: Prologue
+      value: Prologue - Part 1
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -34316,9 +34370,133 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
+      propertyPath: conversation.dialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: conversation.dialogue.Array.data[0].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.persons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[11].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[12].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[13].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[14].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[15].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[16].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[17].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[18].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[19].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Vanth. I've summoned you from the depths of purgatory for I have a task
-        for you, Listen...
+      value: Vanth. I've summoned you from the void for I have a task for you, Listen...
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -34375,7 +34553,8 @@ PrefabInstance:
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: Prove yourself to me, and you may yet rule at my side, as my sole heir.
+      value: Prove yourself to me, bring at least 20 souls to me and you may yet
+        rule at my side, as my sole heir.
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -34386,6 +34565,280 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.sentences.Array.data[4]
       value: u kiddin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: conversation.dialogue.Array.data[0].name
+      value: Reaper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: conversation.dialogue.Array.data[0].sentences.Array.data[0]
+      value: Vanth, my child.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: conversation.dialogue.Array.data[0].sentences.Array.data[1]
+      value: Collect 20 souls for me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].person
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[0]
+      value: Your day is almost here, Vanth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[1]
+      value: Huh?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].person
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].sentences.Array.data[0]
+      value: My birthday isn't for another month..?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].sentences.Array.data[1]
+      value: I don't understand...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].sentences.Array.data[0]
+      value: In 3 days, you will be declared my heir.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].sentences.Array.data[0]
+      value: Your heir...? Then what?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: NPC
+      value: 
+      objectReference: {fileID: 1548976908}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[0]
+      value: You are strong, Vanth. You have the power you need to take my place
+        in the future.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].sentences.Array.data[0]
+      value: Power? You sit there on your throne and stroll from time to time. What
+        kind of power would you need to do that?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.data[0]
+      value: Quiet! It takes more than meets the eye. Those strolls you speak of;
+        That is my burden.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.data[0]
+      value: So you want me to take over that burden. Sounds easy enough.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.data[0]
+      value: Be quiet and do as I say.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.data[1]
+      value: You see those feeble creatures ahead? Take their souls.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].sentences.Array.data[0]
+      value: What?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].sentences.Array.data[0]
+      value: You said it was easy, did you not? I'm waiting...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[11].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[11].sentences.Array.data[0]
+      value: Is this what you do on your "strolls"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[12].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[12].sentences.Array.data[0]
+      value: Go ahead, Vanth. Show me how easy this burden is.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[13].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[13].sentences.Array.data[0]
+      value: I... I don't want to...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[14].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[14].sentences.Array.data[0]
+      value: It wasn't a request. As the spectre of death, I command you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[15].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[15].sentences.Array.data[0]
+      value: But...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[16].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[16].sentences.Array.data[0]
+      value: SILENCE! I had chosen you as my heir, but I see that I have made a mistake.
+        You're weak. I have raised a coward.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[17].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[17].sentences.Array.data[0]
+      value: Fa...father..?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[18].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[18].sentences.Array.data[0]
+      value: '*Starts to visibly lose temper*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[18].sentences.Array.data[1]
+      value: YOU ARE NOT WORTHY TO BE MY HEIR. YOU ARE HENCEFORTH BANISHED.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[19].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[19].sentences.Array.data[0]
+      value: I.. wait!.. I'm sorry, don't lea-
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -34708,6 +35161,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
+      propertyPath: dialogue.exchanges.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
       propertyPath: canTriggerByCollision
       value: 1
       objectReference: {fileID: 0}
@@ -34767,6 +35270,136 @@ PrefabInstance:
       propertyPath: dialogue.sentences.Array.data[2]
       value: Let us together return to the underworld to guide those who have passed...
       objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: NPC
+      value: 
+      objectReference: {fileID: 1996057109}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[0]
+      value: FATHER, I HAVE RETURNED!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].sentences.Array.data[0]
+      value: How dare you...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].sentences.Array.data[0]
+      value: I have come to cleanse my name. I am Vanth. Heir to the Grim Reaper,
+        Spectre of Death.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].sentences.Array.data[0]
+      value: The nerve on you to come back when I have banished you..
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[0]
+      value: I understand my mistake. I realized my weakness. But I understand your
+        burden now. My burden.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[1]
+      value: Father, I am here to once again become your heir. I am willing to become
+        stronger and follow in your footsteps.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].sentences.Array.data[0]
+      value: You're too late.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.data[0]
+      value: What do you mean too late? I... I've learned from my mistake... On my
+        way here, collected souls as you've commanded.. I.. I did it, father.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].character
+      value: 
+      objectReference: {fileID: 11400000, guid: d8d8f7c2f87f8864aa79e5ee5d4c960a,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.data[0]
+      value: That has never been the point.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.data[1]
+      value: The point of being the Spectre of Death is to show compassion to those
+        you guide to the afterlife. To empathize and ease their suffering.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.data[2]
+      value: You have chosen the path of blind selfishness. You are unfit.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.data[0]
+      value: '*Feeling mislead and betrayed, rushes towards the reaper and slashes
+        at where his throat would have been.*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.data[1]
+      value: Life is given, and life is taken. I am here to balance the cycle.
+      objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34805,7 +35438,7 @@ PrefabInstance:
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -37669,6 +38302,595 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1001 &1310976758
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1738268096}
+    m_Modifications:
+    - target: {fileID: 2003867850857481552, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_Name
+      value: Prologue - Part 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: conversation.dialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: conversation.dialogue.Array.data[0].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.persons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[11].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[12].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[13].sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[14].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[15].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[16].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[17].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[18].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[19].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[20].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Vanth. I've summoned you from the void for I have a task for you, Listen...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.name
+      value: Reaper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: nameColor.r
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: nameColor.g
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: nameColor.b
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogueColor.r
+      value: 0.735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogueColor.g
+      value: 0.026629325
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogueColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: canTriggerByCollision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: portraitImage
+      value: 
+      objectReference: {fileID: 2130535880278150251, guid: 5b188ce1d8b584448ab6d4c84173d50a,
+        type: 3}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: Free the miserable creatures lurking in this forest from their feeble
+        bodies, collect their souls.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: Prove yourself to me, bring at least 20 souls to me and you may yet
+        rule at my side, as my sole heir.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: No
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[4]
+      value: u kiddin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: conversation.dialogue.Array.data[0].name
+      value: Reaper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: conversation.dialogue.Array.data[0].sentences.Array.data[0]
+      value: Vanth, my child.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: conversation.dialogue.Array.data[0].sentences.Array.data[1]
+      value: Collect 20 souls for me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].person
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[0]
+      value: I just... I can't do it..
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[1]
+      value: Huh?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: NPC
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].sentences.Array.data[0]
+      value: Don't be sad, little one. All your woes will pass.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].sentences.Array.data[0]
+      value: '*Startled* Who.. who said that?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].sentences.Array.data[0]
+      value: I am the spirit of these woods, and I shall bring you to your destiny.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[0]
+      value: You don't even know who I am..
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].sentences.Array.data[0]
+      value: It is not I that needs to know, little one. It is YOU who has to realize
+        who you are, or rather will be.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.data[0]
+      value: Why do you speak in riddles? I already know who I am.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.data[0]
+      value: Well?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.data[0]
+      value: I am Vanth, heir to the Grim Reaper. Spectre of Death.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.data[1]
+      value: At least.. I was.. Until he banished me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].sentences.Array.data[0]
+      value: '"The one that brings balance to this world, and the next."'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].sentences.Array.data[0]
+      value: He kills the innocent.. takes their lives..
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].sentences.Array.data[1]
+      value: Now he wants me to "take over his throne".
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].sentences.Array.data[2]
+      value: I can't just go around killing anything that comes to my path... I don't
+        want to.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[11].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[11].sentences.Array.data[0]
+      value: Oh but neither does he, little one.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[12].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[12].sentences.Array.data[0]
+      value: What.. what do you mean?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[13].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[13].sentences.Array.data[0]
+      value: The Spectre of Death has a unique role in the grand scheme of things.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[13].sentences.Array.data[1]
+      value: The life that is given must also be taken. Only then can the cycle remain.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[13].sentences.Array.data[2]
+      value: Should either side cease to exist, the balance will fail.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[14].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[14].sentences.Array.data[0]
+      value: So he's not.. a senseless killer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[14].sentences.Array.data[1]
+      value: What do I need to do? Follow in his footsteps? Please.. I need answers..
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[15].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[15].sentences.Array.data[0]
+      value: I am not here to tell you which path to take. I'm merely here to guide
+        you through the path that you choose.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[16].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[16].sentences.Array.data[0]
+      value: I.. want to go home..
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[16].sentences.Array.data[1]
+      value: But I can't... I am banished.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[17].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[17].sentences.Array.data[0]
+      value: You have been raised to become his heir, little one. Prove your mettle,
+        and you might yet return home.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[18].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[18].sentences.Array.data[0]
+      value: But.. how? Do I have to kill those helpless creatures? Collect their
+        souls for father?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[18].sentences.Array.data[1]
+      value: Restore... the balance for the cycle?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[19].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[19].sentences.Array.data[0]
+      value: Follow what is in your heart, you will know what you must do.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[20].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[20].sentences.Array.data[0]
+      value: I will. Thank you, spirit.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 55815ac7d12e9884a88295b3aee29c0a, type: 3}
+--- !u!4 &1310976759 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1310976758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1312612876
 GameObject:
   m_ObjectHideFlags: 0
@@ -37975,7 +39197,7 @@ Transform:
   - {fileID: 1738268096}
   - {fileID: 1020846838}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1351466874
 GameObject:
@@ -38049,6 +39271,335 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1001 &1353830126
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1738268096}
+    m_Modifications:
+    - target: {fileID: 2003867850857481552, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_Name
+      value: Backstory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[0]
+      value: The creatures that roam this forest.. They are known to the inhabitants
+        as fanglings.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[1]
+      value: They are ancient creatures, and have lived here for decades.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[1].sentences.Array.data[0]
+      value: Wow. They look dangerous.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].sentences.Array.data[0]
+      value: They are now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[2].sentences.Array.data[1]
+      value: But these creatures used to be docile and friendly in the past.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[3].sentences.Array.data[0]
+      value: So what changed?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[0]
+      value: For years, they had been hunted for their fangs and leather.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[1]
+      value: First, the fanglings attempted to bride the hunters with offerings of
+        peace, but it wasn't enough for the hunters.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[2]
+      value: They kept coming back, and wanting more.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[3]
+      value: One day, the eldest of the fanglings had lost temper and bit a hunter's
+        arm.. hard.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[4]
+      value: The fangling kept his teeth clenched around the hunter's arm, as the
+        hunter screamed.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[5]
+      value: A transgression which drove a wedge between the inhabitants and the
+        fanglings.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[5].sentences.Array.data[0]
+      value: And they have been hostile ever since?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.data[0]
+      value: Not quite.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.data[1]
+      value: The fanglings had realized the consequences of their actions. They are
+        intelligent creatures, you know.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.data[2]
+      value: They attempted to make amends to the inhabitants to preserve peace..
+        but blood had already been spilled.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.data[3]
+      value: The inhabitants, in blind rage, sought retribution. They slaughtered
+        the fangling elders.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[6].sentences.Array.data[4]
+      value: The rest had scattered into the forest, ever distrustful of strangers.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[7].sentences.Array.data[0]
+      value: That's.. tragic.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.data[0]
+      value: Indeed it is.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[8].sentences.Array.data[1]
+      value: But there is yet salvation for them.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d00e459e161dab419ad0e2795f2c6bc,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].sentences.Array.data[0]
+      value: Salvation?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[9].sentences.Array.data[1]
+      value: You mean if I collect their souls for the afterlife?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[10].sentences.Array.data[0]
+      value: The shape of things to come will be your design.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 84.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 55815ac7d12e9884a88295b3aee29c0a, type: 3}
+--- !u!4 &1353830127 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1353830126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1356371217
 GameObject:
   m_ObjectHideFlags: 0
@@ -38194,7 +39745,7 @@ PrefabInstance:
     - target: {fileID: 6763832758573670800, guid: f028b0de46b23d546a0a390279cef805,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -109.38556
+      value: -134.82
       objectReference: {fileID: 0}
     - target: {fileID: 6763832758573670800, guid: f028b0de46b23d546a0a390279cef805,
         type: 3}
@@ -38673,7 +40224,7 @@ Transform:
   - {fileID: 1239538352}
   - {fileID: 304608055}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1401872861
 GameObject:
@@ -38782,7 +40333,7 @@ Transform:
   - {fileID: 323724185}
   - {fileID: 903131036}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1416221852
 GameObject:
@@ -39112,7 +40663,7 @@ Transform:
   - {fileID: 260122456}
   - {fileID: 1946712768}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1461585482
 GameObject:
@@ -40261,6 +41812,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
+      propertyPath: dialogue.exchanges.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
       value: The movement of itself shall be changed.
       objectReference: {fileID: 0}
@@ -40323,6 +41884,20 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.sentences.Array.data[3]
       value: (Use left trigger to jump)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].character
+      value: 
+      objectReference: {fileID: 11400000, guid: 42da6d707157e6a4a80046fece4807d0,
+        type: 2}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[0]
+      value: 'The movement of itself shall be changed.
+
+        (Use left stick to
+        walk)'
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -40462,6 +42037,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1548976908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7466560397239617535, guid: 94beadcc2b386bf488bb023bccae8b14,
+    type: 3}
+  m_PrefabInstance: {fileID: 265215469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1549687792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4685840063980493190, guid: 00f2b0b766ec84d43bbebc20baf4b7e5,
@@ -45975,7 +47556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653922815
 GameObject:
@@ -51826,6 +53407,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 664400776}
+  - {fileID: 1310976759}
+  - {fileID: 1353830127}
   - {fileID: 1126863958}
   m_Father: {fileID: 1347886383}
   m_RootOrder: 0
@@ -53003,7 +54586,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1879121268
 GameObject:
@@ -53814,7 +55397,7 @@ Transform:
   - {fileID: 731443217}
   - {fileID: 1444442140}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1978548469 stripped
 Transform:
@@ -58774,19 +60357,19 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!1 &2003218273 stripped
+--- !u!1 &1996057109 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2003867850857481552, guid: 55815ac7d12e9884a88295b3aee29c0a,
+  m_CorrespondingSourceObject: {fileID: 7466560397239617535, guid: 94beadcc2b386bf488bb023bccae8b14,
     type: 3}
-  m_PrefabInstance: {fileID: 1126863957}
+  m_PrefabInstance: {fileID: 825593500}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2003218274
+--- !u!114 &1996057110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003218273}
+  m_GameObject: {fileID: 1996057109}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b5ac11e806770249943b09871da69da, type: 3}
@@ -60297,7 +61880,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2104892685
 GameObject:
@@ -69119,7 +70702,7 @@ Transform:
   - {fileID: 1099604534797788456}
   - {fileID: 656836462}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1099604535902873436
 GameObject:
@@ -75617,7 +77200,7 @@ PrefabInstance:
     - target: {fileID: 8798499528262367623, guid: 96bc287b3dc2c5b41bd68f8ec84e7446,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8798499528262367623, guid: 96bc287b3dc2c5b41bd68f8ec84e7446,
         type: 3}
@@ -88564,7 +90147,7 @@ Transform:
   - {fileID: 4370765889596924617}
   - {fileID: 4370765888589517008}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &4370765889567775477
 GameObject:
@@ -97358,7 +98941,7 @@ PrefabInstance:
     - target: {fileID: 6517049827498285825, guid: 8eabe08c4720d5049bdbb6d28f6ab640,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6517049827498285825, guid: 8eabe08c4720d5049bdbb6d28f6ab640,
         type: 3}

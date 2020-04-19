@@ -22,6 +22,9 @@ namespace SoulHunter
         // List of enemies currently alive
         public List<EnemyBase> Enemies = new List<EnemyBase>();
 
+        // List of all portals
+        public List<PortalScript> Portals = new List<PortalScript>();
+
         private void Awake()
         {
             Instance = this;
@@ -44,6 +47,22 @@ namespace SoulHunter
             else
             {
                 Enemies.Remove(enemy);
+            }
+        }
+
+        /// <summary>
+        /// Adds or removes enemies to/from the list of currently alive enemies
+        /// </summary>
+        /// <param name="portal"></param>
+        public void PortalListRegistry(PortalScript portal)
+        {
+            if (!Portals.Contains(portal))
+            {
+                Portals.Add(portal);
+            }
+            else
+            {
+                Portals.Remove(portal);
             }
         }
     }

@@ -127,7 +127,7 @@ namespace SoulHunter.Player
             if (isDead && !isTeleporting)
             {
                 isPaused = false;
-                immuneToDamage = false;
+                gameObject.SetActive(false);
                 SceneController.Instance.ResetScene();
             }
         }

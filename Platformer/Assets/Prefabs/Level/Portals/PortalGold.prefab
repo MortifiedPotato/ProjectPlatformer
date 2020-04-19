@@ -14408,6 +14408,9 @@ MonoBehaviour:
   isActivatable: 1
   isRepeatable: 0
   portalType: {fileID: 11400000, guid: 03bd17ff18a415c45802d230bb181890, type: 2}
+  aliveEntities:
+    serializedVersion: 2
+    m_Bits: 3072
 --- !u!1001 &2820405631832052949
 PrefabInstance:
   m_ObjectHideFlags: 0

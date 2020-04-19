@@ -8,22 +8,26 @@ namespace SoulHunter.Dialogue
         // Toggle trigger dialogue with collision
         public bool canTriggerByCollision;
 
-        // Dialogue Portrait
-        public Sprite portraitImage;
+        // The NPC this dialogue belongs to
+        public GameObject NPC;
 
-        // Dialogue Name Text Color
-        public Color nameColor = Color.white;
-
-        // Dialogue Sentence Text Color
-        public Color dialogueColor = Color.white;
-
+        // Dialogue instance
         public Dialogue dialogue;
+
+        // Dialogue particle
         ParticleSystem dialogueParticle;
 
         private void Start()
         {
             // Get dialogue particle system
             dialogueParticle = GetComponentInChildren<ParticleSystem>();
+
+            // If dialogue contains no exchanges, deactivate.
+            if (dialogue.exchanges.Length < 1)
+            {
+                isActivatable = false;
+                return;
+            }
 
             // Play particle if dialogue is activatable
             if (isActivatable)
@@ -55,30 +59,22 @@ namespace SoulHunter.Dialogue
         /// </summary>
         void TriggerDialogue()
         {
-            DialogueManager.Instance.StartDialogue(this, dialogue, portraitImage, nameColor, dialogueColor);
+            DialogueManager.Instance.StartDialogue(this, dialogue);
         }
 
         private void OnTriggerStay2D(Collider2D collision)
         {
             // If dialogue is already initiated, return.
-            if (GameManager.initiatedDialogue)
-            {
-                return;
-            }
+            if (GameManager.initiatedDialogue) return;
 
-            if (collision.CompareTag("Player"))
+            // If collision is on the player layer
+            if (collision.transform.gameObject.layer == 10)
             {
+                // If player isn't interacting and dialogue can't be triggered by collision, return.
+                if (!GameManager.interacting && !canTriggerByCollision) return;
+
                 // If player is swinging, return.
-                if (PlayerBase.isSwinging)
-                {
-                    return;
-                }
-
-                // If player isn't interacting, return.
-                if (!GameManager.interacting && !canTriggerByCollision)
-                {
-                    return;
-                }
+                if (PlayerBase.isSwinging) return;
 
                 // If either activatable or repeatable, start dialogue.
                 if (isActivatable || isRepeatable)

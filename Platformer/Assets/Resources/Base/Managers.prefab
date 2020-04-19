@@ -66,8 +66,7 @@ MonoBehaviour:
   m_text: '%'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 28c2fb404a822d048a0d287f8847e95d, type: 2}
-  m_sharedMaterial: {fileID: 6097557987192734440, guid: 178ba87b294a12846adeda61dc894ab0,
-    type: 2}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -291,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies: []
+  Portals: []
 --- !u!114 &6740196368437301900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,11 +518,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1172756715075005732}
+  - component: {fileID: 8607726491866115574}
+  - component: {fileID: 5024941079501689062}
   - component: {fileID: 9082705241731814296}
   - component: {fileID: 3361123914873655897}
   - component: {fileID: 7064756596038157822}
-  - component: {fileID: 8607726491866115574}
-  - component: {fileID: 5024941079501689062}
   m_Layer: 2
   m_Name: SceneTransition
   m_TagString: Untagged
@@ -551,6 +551,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8607726491866115574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2792570125765897073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563b92fada75f4c47bfbe2984c53bceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5024941079501689062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2792570125765897073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce49081fe52510f459a55a43fb54abdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderObject: {fileID: 484897808216899006}
+  imageObject: {fileID: 8805120784910362113}
+  gameTips: {fileID: 6548579271085941524}
+  progressPercentage: {fileID: 8824294513412488349}
+  library:
+    artwork:
+    - {fileID: 5149069995878886641, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: -6179092651603830040, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: 4224387637987799335, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: 8941041684258097004, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: -29125143022322726, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    - {fileID: 1820255899335137852, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
+    tips:
+    - Let the spirit of the woods guide you to salvation.
+    - You can pause the game at any moment, even during dialogue.
+    - Grappling can be used to avoid hostile encounters... but at what cost?
+    - Collecting souls also heals you.
+    - Use elevation to your advantage.
 --- !u!222 &9082705241731814296
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -606,50 +648,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8607726491866115574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2792570125765897073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 563b92fada75f4c47bfbe2984c53bceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5024941079501689062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2792570125765897073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce49081fe52510f459a55a43fb54abdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  progressBar: {fileID: 484897808216899006}
-  artwork: {fileID: 8805120784910362113}
-  tips: {fileID: 6548579271085941524}
-  loadingProgressPercentage: {fileID: 8824294513412488349}
-  loadingSlider: {fileID: 20494749775218948}
-  library:
-    artwork:
-    - {fileID: 5149069995878886641, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
-    - {fileID: -6179092651603830040, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
-    - {fileID: 4224387637987799335, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
-    - {fileID: 8941041684258097004, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
-    - {fileID: -29125143022322726, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
-    - {fileID: 1820255899335137852, guid: 15b94866f6a58ae4d860545e8270ed49, type: 3}
-    tips:
-    - Press Q to interact with dialogues and portals.
-    - Press E to attack.
-    - Grappling can be used to avoid hostile encounters.
-    - Collecting souls also heals you.
-    - Use elevation to your advantage.
-    - Press escape to pause the game at any moment.
 --- !u!1 &4442128062923363439
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,8 +995,7 @@ MonoBehaviour:
   m_text: Generic Game Tip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 28c2fb404a822d048a0d287f8847e95d, type: 2}
-  m_sharedMaterial: {fileID: 6097557987192734440, guid: 178ba87b294a12846adeda61dc894ab0,
-    type: 2}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
