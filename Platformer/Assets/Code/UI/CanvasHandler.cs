@@ -16,6 +16,7 @@ namespace SoulHunter.UI
         private void Awake()
         {
             Instance = this;
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 }

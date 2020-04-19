@@ -123,7 +123,7 @@ PlayerSettings:
     16:10: 0
     16:9: 1
     Others: 0
-  bundleVersion: 0.2
+  bundleVersion: 1.1
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -287,7 +287,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 1094c5637f1d93c429713d8de7ba9f14, type: 3}
+      m_Icon: {fileID: 2800000, guid: a1261291737159d4f97c96a96b55e53f, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

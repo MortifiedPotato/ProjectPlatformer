@@ -221,6 +221,11 @@ namespace SoulHunter.Dialogue
                 animator.SetBool("GameIsPaused", false);
             }
         }
+
+        private void OnDestroy()
+        {
+            GameManager.initiatedDialogue = false;
+        }
     }
 
     [System.Serializable]
