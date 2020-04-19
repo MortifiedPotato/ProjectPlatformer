@@ -242,6 +242,8 @@ namespace SoulHunter.Player
             }
             else if (vertical < 0f && ropeAttached)
             {
+                if (ropeJoint.distance >= maxRopeLength) return;
+
                 ropeJoint.distance += Time.deltaTime * climbSpeed;
             }
         }

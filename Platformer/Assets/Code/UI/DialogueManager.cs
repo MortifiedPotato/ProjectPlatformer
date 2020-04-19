@@ -6,6 +6,7 @@ using TMPro;
 
 using SoulHunter.Player;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace SoulHunter.Dialogue
 {
@@ -96,6 +97,8 @@ namespace SoulHunter.Dialogue
         public void DisplayNextSentence()
         {
             ContinueButton.Select();
+
+            HandleNPCAnimation();
 
             if (nonTriggerable)
             {
@@ -207,6 +210,20 @@ namespace SoulHunter.Dialogue
             }
         }
 
+        void HandleNPCAnimation()
+        {
+            if (!currentTrigger.NPC) return;
+
+            if (currentDialogue.exchanges[currentExchange].isPointing)
+            {
+                currentTrigger.NPC?.GetComponentInChildren<Animator>().SetBool("isPointing", true);
+            }
+            else
+            {
+                currentTrigger.NPC?.GetComponentInChildren<Animator>().SetBool("isPointing", false);
+            }
+        }
+
         /// <summary>
         /// Pauses dialogue when game is paused
         /// </summary>
@@ -219,6 +236,17 @@ namespace SoulHunter.Dialogue
             else
             {
                 animator.SetBool("GameIsPaused", false);
+            }
+        }
+
+        private void Update()
+        {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                if (GameManager.initiatedDialogue)
+                {
+                    ContinueButton.Select();
+                }
             }
         }
 
@@ -237,6 +265,8 @@ namespace SoulHunter.Dialogue
     [System.Serializable]
     public class DialogueExchange
     {
+        public bool isPointing;
+
         public CharacterData character;
 
         [TextArea(3, 10)]

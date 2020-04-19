@@ -29,10 +29,14 @@ namespace SoulHunter.Player
         // Teleportation coordinates
         public static Transform teleportDestination;
 
+        // Spirit Anchor
+        [SerializeField] GameObject spiritAnchor;
+
         protected void Start()
         {
             DespawnTimer = 1f;
             healthUI = FindObjectOfType<GameUI>(); // <- Thomas
+            SpiritOfTheWoods.instance.spiritAnchor = spiritAnchor;
         }
 
         protected override void Update()

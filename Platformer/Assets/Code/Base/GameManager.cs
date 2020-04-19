@@ -2,6 +2,7 @@
 using UnityEngine;
 
 using SoulHunter.Enemy;
+using SoulHunter.Base;
 
 namespace SoulHunter
 {
@@ -49,7 +50,7 @@ namespace SoulHunter
                 Enemies.Remove(enemy);
 
                 // End Portal Conditions
-                if (Enemies.Count >= 20)
+                if (DataManager.Instance.soulsCollected >= 14)
                 {
                     for (int i = 0; i < Portals.Count; i++)
                     {

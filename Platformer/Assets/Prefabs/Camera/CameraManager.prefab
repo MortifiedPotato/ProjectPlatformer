@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Width: 12
   m_Damping: 1
-  m_MinFOV: 40
+  m_MinFOV: 34
   m_MaxFOV: 60
 --- !u!1 &6517049827498285838
 GameObject:
@@ -229,10 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b756de222f84ef46ba4dd04347b8561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShakeAmplitude: 1.2
-  ShakeFrequency: 2
-  confiner: {fileID: 0}
-  virtualCamera: {fileID: 0}
+  defaultShakeAmplitude: 1.2
+  defaultShakeFrequency: 2
 --- !u!1 &6517049828964160180
 GameObject:
   m_ObjectHideFlags: 0

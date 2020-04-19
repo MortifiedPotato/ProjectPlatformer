@@ -1,5 +1,4 @@
-﻿using UnityEngine.Audio;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
@@ -8,6 +7,7 @@ namespace SoulHunter.UI
     public class SettingsMenu : MonoBehaviour // Mort
     {
         [SerializeField] Toggle fullscreenToggle;
+        [SerializeField] Toggle tutorialsToggle;
         [SerializeField] TMP_Dropdown graphicsDropdown;
         [SerializeField] TMP_Dropdown resolutionsDropdown;
 
@@ -16,7 +16,7 @@ namespace SoulHunter.UI
         [SerializeField] Slider dialogueSlider;
         [SerializeField] TextMeshProUGUI dialoguePercentage;
 
-        private void OnEnable()
+        private void Start()
         {
             SetUpResolutions();
             UpdateValues();
@@ -51,6 +51,8 @@ namespace SoulHunter.UI
                 Application.runInBackground = true;
             }
 
+            tutorialsToggle.isOn = GameSettings.tutorialsEnabled;
+
             volumeSlider.value = GameSettings.soundVolume / 10;
             SetVolume(GameSettings.soundVolume / 10);
 
@@ -75,6 +77,15 @@ namespace SoulHunter.UI
                 Application.runInBackground = true;
                 GameSettings.isFullscreen = false;
             }
+        }
+
+        /// <summary>
+        /// Toggles in-game tutorials
+        /// </summary>
+        /// <param name="toggle"></param>
+        public void ToggleTutorials(bool toggle)
+        {
+            GameSettings.tutorialsEnabled = toggle;
         }
 
         /// <summary>

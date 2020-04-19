@@ -6,7 +6,6 @@ namespace SoulHunter.Enemy
     public class EnemyBase : Damageable
     {
         EnemyAnimation animationOfEnemy;
-
         public SoulData soul;
 
         protected void Start()

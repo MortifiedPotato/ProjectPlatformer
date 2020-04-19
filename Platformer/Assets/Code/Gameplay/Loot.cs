@@ -21,7 +21,7 @@ public class Loot : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             colliding = true;
-            DataManager.Instance.soulsCollected = soulPower;
+            DataManager.Instance.soulsCollected += soulPower;
             Instantiate(particle, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
             AudioManager.PlaySound(AudioManager.Sound.CollectSoul, transform.position);
             collision.transform.GetComponent<PlayerBase>().Heal();

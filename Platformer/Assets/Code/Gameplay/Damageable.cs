@@ -5,7 +5,7 @@ namespace SoulHunter.Gameplay
     public class Damageable : MonoBehaviour // Mort & Thomas
     {
         // Max HP constant value
-        protected const int maxHealth = 3;
+        public int maxHealth = 3;
 
         // HP value
         [HideInInspector]

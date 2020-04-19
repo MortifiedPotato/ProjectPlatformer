@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -16,6 +15,7 @@ namespace SoulHunter
 
         // Saved Settings
         public static bool isFullscreen;
+        public static bool tutorialsEnabled;
         public static int qualityIndex;
         public static int resolution;
         public static float soundVolume;
@@ -62,10 +62,23 @@ namespace SoulHunter
         /// </summary>
         void SetDefaultSettings()
         {
-            isFullscreen = true;
-            qualityIndex = 3;
-            soundVolume = 10;
-            dialogueSpeed = 0f;
+            // If game starts at main menu
+            if (SceneController.Instance.GetBuildIndex() == 0)
+            {
+                isFullscreen = true;
+                tutorialsEnabled = true;
+                qualityIndex = 3;
+                soundVolume = 10;
+                dialogueSpeed = 0f;
+            }
+            else
+            {// else if game starts in a level (developer settings)
+                isFullscreen = true;
+                tutorialsEnabled = false;
+                qualityIndex = 3;
+                soundVolume = 10;
+                dialogueSpeed = 0f;
+            }
         }
     }
 }
