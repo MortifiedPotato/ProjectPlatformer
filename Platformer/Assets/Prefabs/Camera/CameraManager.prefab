@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Width: 12
   m_Damping: 1
-  m_MinFOV: 34
+  m_MinFOV: 36
   m_MaxFOV: 60
 --- !u!1 &6517049827498285838
 GameObject:
