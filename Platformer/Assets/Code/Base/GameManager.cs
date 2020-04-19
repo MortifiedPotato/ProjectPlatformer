@@ -47,6 +47,15 @@ namespace SoulHunter
             else
             {
                 Enemies.Remove(enemy);
+
+                // End Portal Conditions
+                if (Enemies.Count >= 20)
+                {
+                    for (int i = 0; i < Portals.Count; i++)
+                    {
+                        Portals[i].isActivatable = true;
+                    }
+                }
             }
         }
 

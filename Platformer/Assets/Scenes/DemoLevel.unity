@@ -300,6 +300,11 @@ PrefabInstance:
         (Use
         X to attack)'
       objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: canTriggerByCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23513,6 +23518,11 @@ PrefabInstance:
         (Use
         left trigger to grapple)'
       objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: canTriggerByCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30505,6 +30515,11 @@ PrefabInstance:
 
         (Use
         Y to interact)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: canTriggerByCollision
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -42163,6 +42178,11 @@ PrefabInstance:
 
         (Use left stick to
         walk)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: canTriggerByCollision
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
