@@ -15,7 +15,7 @@ public class ServerRequest : MonoBehaviour
 
     private IEnumerator GetFruitASync()
     {
-        string json = JsonUtility.ToJson(InputSystem.loginData);
+        string json = JsonUtility.ToJson(LoginSystem.loginData);
         WWWForm form = new WWWForm();
         form.AddField("Counter", Counter);
         using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1/edsa-phpServer/fruit.php", form))
@@ -27,11 +27,11 @@ public class ServerRequest : MonoBehaviour
         }
     }
 
-    public IEnumerator CreateAccount(string json)
+    public IEnumerator RegisterAccount(string json)
     {
         WWWForm form = new WWWForm();
         form.AddField("userdata", json);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1/edsa-phpServer/CreateAccount.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1/edsa-Soul%20Hunter%20Data/CreateAccount.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -50,7 +50,7 @@ public class ServerRequest : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("userdata", json);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1/edsa-phpServer/login.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1/edsa-Soul%20Hunter%20Data/Login.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -80,10 +80,9 @@ public class ServerRequest : MonoBehaviour
 }
 
 [System.Serializable]
-
 public class LoginData
 {
-    public string email;
+    public string username;
     public string password;
 }
 
