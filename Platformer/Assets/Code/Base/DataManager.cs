@@ -11,8 +11,14 @@ namespace SoulHunter.Base
         // Singleton Instance
         public static DataManager Instance;
 
+        [Header("User")]
+        public static string username;
+        public static bool loggedIn;
+        public static bool createdAccount;
+
         [Header("Game Statistics")]
         public int soulsCollected;
+        public int timesTeleported;
         public int velocityScore;
         public float durationInAir;
 
