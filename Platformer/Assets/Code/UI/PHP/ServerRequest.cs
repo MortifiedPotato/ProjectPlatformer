@@ -5,17 +5,11 @@ using UnityEngine.Networking;
 
 public class ServerRequest : MonoBehaviour
 {
-    void Update()
+    public static ServerRequest Instance { get; private set; }
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            UserStats stats = new UserStats();
-            stats.username = DataManager.username;
-            stats.collectedSouls = 5;
-            stats.timesTeleported = 10;
-            string json = JsonUtility.ToJson(stats);
-            StartCoroutine(GetFruitASync(json));
-        }
+        Instance = this;
     }
 
     public IEnumerator RegisterAccount(string json)
@@ -74,7 +68,7 @@ public class ServerRequest : MonoBehaviour
         }
     }
 
-    public IEnumerator GetFruitASync(string json)
+    private IEnumerator UploadStats(string json)
     {
         WWWForm form = new WWWForm();
         form.AddField("userstats", json);
@@ -92,6 +86,19 @@ public class ServerRequest : MonoBehaviour
             }
         }
     }
+
+    public void UpdateStats()
+    {
+        UserStats stats = new UserStats();
+        stats.username = DataManager.username;
+        stats.collected_souls = DataManager.Instance.soulsCollected;
+        stats.times_teleported = DataManager.Instance.timesTeleported;
+        stats.times_jumped = DataManager.Instance.timesJumped;
+        stats.times_grappled = DataManager.Instance.timesHitGrapple;
+        string json = JsonUtility.ToJson(stats);
+        StartCoroutine(UploadStats(json));
+    }
+
 
     [System.Serializable]
     public class Data
@@ -118,7 +125,8 @@ public struct LoginData
 public struct UserStats
 {
     public string username;
-    public int collectedSouls;
-    public int timesTeleported;
+    public int collected_souls;
+    public int times_teleported;
+    public int times_jumped;
+    public int times_grappled;
 }
-

@@ -7,6 +7,7 @@ public class LoginSystem : MonoBehaviour
     [SerializeField] GameObject loginFields;
     [SerializeField] GameObject displayUsername;
     [SerializeField] GameObject feedback;
+    [SerializeField] GameObject Button_Logout;
 
     [SerializeField] TMP_InputField usernameField;
     [SerializeField] TMP_InputField passwordField;
@@ -22,6 +23,11 @@ public class LoginSystem : MonoBehaviour
         CustomEvents.OnLoginOrRegistry += HandleLoginPanel;
 
         feedback.SetActive(false);
+
+        if (DataManager.loggedIn)
+        {
+            displayUsername.GetComponent<TextMeshProUGUI>().text = DataManager.username;
+        }
     }
 
     void HandleLoginPanel()
@@ -34,12 +40,14 @@ public class LoginSystem : MonoBehaviour
             displayUsername.SetActive(true);
             feedback.SetActive(false);
             loginFields.SetActive(false);
+            Button_Logout.SetActive(true);
         }
         else
         {
             loginFields.SetActive(true);
             feedback.SetActive(true);
             displayUsername.SetActive(false);
+            Button_Logout.SetActive(false);
 
             feedback.GetComponent<TextMeshProUGUI>().text = "Wrong Combination";
         }
@@ -89,13 +97,13 @@ public class LoginSystem : MonoBehaviour
         StartCoroutine(server.LoginAccount(json));
     }
 
-    public void UpdateStats()
+    public void LogOut()
     {
-        UserStats stats = new UserStats();
-        stats.username = DataManager.username;
-        stats.collectedSouls = DataManager.Instance.soulsCollected;
-        stats.timesTeleported = DataManager.Instance.timesTeleported;
-        string json = JsonUtility.ToJson(stats);
-        StartCoroutine(server.GetFruitASync(json));
+        DataManager.username = null;
+        DataManager.loggedIn = false;
+        usernameField.text = "";
+        passwordField.text = "";
+
+        HandleLoginPanel();
     }
 }

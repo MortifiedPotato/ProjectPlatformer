@@ -2,6 +2,7 @@
 using UnityEngine;
 
 using SoulHunter.Player;
+using SoulHunter.Base;
 
 namespace SoulHunter.Input
 {
@@ -80,6 +81,10 @@ namespace SoulHunter.Input
                 if (playerMovement)
                 {
                     PlayerBase.isJumping = true;
+                    if (!PlayerBase.isSwinging)
+                    {
+                        DataManager.Instance.timesJumped++;
+                    }
                 }
             }
 

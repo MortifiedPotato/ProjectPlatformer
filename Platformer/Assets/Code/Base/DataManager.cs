@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-using SoulHunter.Enemy;
+﻿using UnityEngine;
 
 namespace SoulHunter.Base
 {

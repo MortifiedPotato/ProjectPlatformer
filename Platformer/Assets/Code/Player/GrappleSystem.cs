@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SoulHunter.Base;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -141,6 +142,7 @@ namespace SoulHunter.Player
                 }
 
                 PlayerBase.isThrowing = true;
+                DataManager.Instance.timesHitGrapple++;
                 AudioManager.PlaySound(AudioManager.Sound.GrappleThrow, transform.position);
             }
             else

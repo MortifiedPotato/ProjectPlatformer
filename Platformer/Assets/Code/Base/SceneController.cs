@@ -53,6 +53,7 @@ public class SceneController : MonoBehaviour // Mort
     void ChangeScene()
     {
         StartCoroutine(LoadSceneAsync(requestedIndex));
+        ServerRequest.Instance.UpdateStats();
     }
 
     public void ResetScene()

@@ -2,6 +2,7 @@
 
 using SoulHunter.UI;
 using SoulHunter.Gameplay;
+using SoulHunter.Base;
 
 namespace SoulHunter.Player
 {
@@ -84,6 +85,7 @@ namespace SoulHunter.Player
         void Teleport()
         {
             transform.position = new Vector3(teleportDestination.position.x, teleportDestination.position.y, 0);
+            DataManager.Instance.timesTeleported++;
             isTeleporting = false;
             isPaused = false;
         }
