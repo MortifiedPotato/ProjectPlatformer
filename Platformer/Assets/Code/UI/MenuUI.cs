@@ -12,6 +12,8 @@ namespace SoulHunter.UI
             Cursor.visible = true;
         }
 
+
+
         /// <summary>
         /// Change scene function for buttons
         /// </summary>
