@@ -18,7 +18,7 @@ namespace SoulHunter.Gameplay
         // Height at which entities expire
         [SerializeField] protected float expirationHeight = -10;
         // Duration in which dead entities persist
-        [SerializeField] protected float DespawnTimer = 10;
+        [SerializeField] protected float timer = 10;
 
         // Entity sprite reference
         [SerializeField] protected SpriteRenderer characterSprite;
@@ -35,7 +35,7 @@ namespace SoulHunter.Gameplay
 
             HandleDespawn();
 
-            if (isDead && DespawnTimer <= 0f)
+            if (isDead && timer <= 0f)
             {
                 HandleDeath();
             }
@@ -72,10 +72,10 @@ namespace SoulHunter.Gameplay
         {
             if (isDead)
             {
-                DespawnTimer -= Time.deltaTime;
-                if (DespawnTimer <= 0f)
+                timer -= Time.deltaTime;
+                if (timer <= 0f)
                 {
-                    DespawnTimer = 0f;
+                    timer = 0f;
                 }
             }
         }

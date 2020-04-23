@@ -17,9 +17,6 @@ namespace SoulHunter
         // Player interact state
         public static bool interacting;
 
-        // Dialogue state
-        public static bool initiatedDialogue;
-
         // List of enemies currently alive
         public List<EnemyBase> Enemies = new List<EnemyBase>();
 

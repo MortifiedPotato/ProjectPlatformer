@@ -1,5 +1,6 @@
 ﻿using Cinemachine;
 using SoulHunter;
+using SoulHunter.Dialogue;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour // Mort
@@ -102,13 +103,13 @@ public class CameraManager : MonoBehaviour // Mort
         }
 
         // If player is in a dialogue, zoom in
-        if (GameManager.initiatedDialogue && virtualCameraFollowZoom.m_Width > 1)
+        if (DialogueManager.inDialogue && virtualCameraFollowZoom.m_Width > 1)
         {
             virtualCameraFollowZoom.m_Width -= Time.deltaTime * 10;
             targetGroup.m_Targets[1].radius = 0;
         }
         // If player is no longer in dialogue, zoom out
-        else if (!GameManager.initiatedDialogue && virtualCameraFollowZoom.m_Width < 12)
+        else if (!DialogueManager.inDialogue && virtualCameraFollowZoom.m_Width < 12)
         {
             virtualCameraFollowZoom.m_Width += Time.deltaTime * 10;
             targetGroup.m_Targets[1].radius = 4;

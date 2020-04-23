@@ -37915,7 +37915,7 @@ PrefabInstance:
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
       propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[1]
-      value: Huh?
+      value: Your day is almost here, Vanth.
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -38205,6 +38205,46 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.exchanges.Array.data[19].isPointing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[2]
+      value: Your day is almost here, Vanth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[3]
+      value: Your day is almost here, Vanth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[4]
+      value: Your day is almost here, Vanth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[5]
+      value: Your day is almost here, Vanth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[6]
+      value: Your day is almost here, Vanth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[7]
+      value: Your day is almost here, Vanth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[8]
+      value: Your day is almost here, Vanth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
+        type: 3}
+      propertyPath: dialogue.exchanges.Array.data[0].sentences.Array.data[9]
+      value: Your day is almost here, Vanth.
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481580, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
@@ -43507,7 +43547,7 @@ PrefabInstance:
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
         type: 3}
       propertyPath: dialogue.exchanges.Array.data[4].sentences.Array.data[1]
-      value: First, the fanglings attempted to bride the hunters with offerings of
+      value: First, the fanglings attempted to bribe the hunters with offerings of
         peace, but it wasn't enough for the hunters.
       objectReference: {fileID: 0}
     - target: {fileID: 2003867850857481555, guid: 55815ac7d12e9884a88295b3aee29c0a,
@@ -59815,7 +59855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1767004083
 Transform:
   m_ObjectHideFlags: 0

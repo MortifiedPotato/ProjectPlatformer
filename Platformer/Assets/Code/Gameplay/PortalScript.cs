@@ -24,8 +24,10 @@ public class PortalScript : Interactable // Mort
 
     private void Start()
     {
+        // Assign portals of the same type to Connected Portals list
         AssignConnectedPortals();
 
+        // Assign closest Cinemachine Virtualcam Confiner
         closestConfiner = AssignClosestConfiner();
 
         // Stop all particles

@@ -6,25 +6,26 @@ using TMPro;
 
 using SoulHunter.Player;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 namespace SoulHunter.Dialogue
 {
     public class DialogueManager : MonoBehaviour // Mort
     {
         // Singleton Instance
-        public static DialogueManager Instance;
+        public static DialogueManager Instance { get; private set; }
+
+        // Dialogue state
+        public static bool inDialogue;
 
         // Queue of dialogue sentences
-        public Queue<string> sentences;
+        private Queue<string> sentences;
 
         // Currently triggered dialogue
-        [HideInInspector]
-        public Dialogue currentDialogue;
-        public DialogueTrigger currentTrigger;
+        private Dialogue currentDialogue;
+        private DialogueTrigger currentTrigger;
 
-        bool nonTriggerable;
-        int currentExchange;
+        private bool nonTriggerable;
+        private int currentExchange;
 
         Animator animator;
 
@@ -47,6 +48,7 @@ namespace SoulHunter.Dialogue
         void Start()
         {
             Instance = this;
+            inDialogue = false;
             sentences = new Queue<string>();
 
             animator = dialogueBox.GetComponent<Animator>();
@@ -56,30 +58,43 @@ namespace SoulHunter.Dialogue
         /// Initializes dialogue and sets respective text colors
         /// </summary>
         /// <param name="trigger"></param>
-        /// <param name="_dialogue"></param>
+        /// <param name="dialogue"></param>
         /// <param name="_nameColor"></param>
         /// <param name="_dialogueColor"></param>
-        public void StartDialogue(DialogueTrigger trigger, Dialogue _dialogue)
+        public void StartDialogue(DialogueTrigger trigger, Dialogue dialogue)
         {
-            currentTrigger = trigger;
-            currentDialogue = _dialogue;
-
-            currentExchange = 0;
-
-            GameManager.initiatedDialogue = true;
-            PlayerBase.isPaused = true;
-
-            animator.SetBool("inDialogue", GameManager.initiatedDialogue);
             ContinueButton.Select();
 
+            // Set current exchange index
+            currentExchange = 0;
+
+            // Set current trigger & dialogue references
+            currentTrigger = trigger;
+            currentDialogue = dialogue;
+
+            // Change dialogue state
+            inDialogue = true;
+            // Pause player input
+            PlayerBase.isPaused = true;
+
+            // Update animator parameters
+            animator.SetBool("inDialogue", inDialogue);
+
+            // Clear the queue of sentences
             sentences.Clear();
 
-            CheckNextSentence(_dialogue.exchanges[currentExchange]);
+            PrepareExchange(dialogue.exchanges[currentExchange]);
 
-            AudioManager.PlaySound(AudioManager.Sound.StartDialogue, currentTrigger.transform.position);
+            // Play dialogue start sound effect
+            AudioManager.PlaySound(AudioManager.Sound.StartDialogue,
+                currentTrigger.transform.position);
         }
 
-        public void CheckNextSentence(DialogueExchange exchange)
+        /// <summary>
+        /// Prepares the current exchange and initiates it
+        /// </summary>
+        /// <param name="exchange"></param>
+        public void PrepareExchange(DialogueExchange exchange)
         {
             UpdateDialogueElements();
 
@@ -96,27 +111,35 @@ namespace SoulHunter.Dialogue
         /// </summary>
         public void DisplayNextSentence()
         {
+            // At the start of each sentence, select continue button
             ContinueButton.Select();
 
             HandleNPCAnimation();
 
+            // If the dialogue isn't triggerable
             if (nonTriggerable)
             {
-                GameManager.initiatedDialogue = false;
-                animator.SetBool("inDialogue", GameManager.initiatedDialogue);
+                inDialogue = false;
+                animator.SetBool("inDialogue", inDialogue);
                 PlayerBase.isPaused = false;
                 nonTriggerable = false;
             }
             else
             {
+                // If dialogue sentences are finished
                 if (sentences.Count == 0)
                 {
+                    // If there are more exchanges in the dialogue
                     if (currentDialogue.exchanges.Length > currentExchange + 1)
                     {
+                        // Increase exchange index by 1
                         currentExchange++;
-                        CheckNextSentence(currentDialogue.exchanges[currentExchange]);
+                        // Prepare next exchange
+                        PrepareExchange(currentDialogue.exchanges[currentExchange]);
                         return;
                     }
+                    
+                    // Reset dialogue elements & values, and end dialogue.
                     dialogueText.fontStyle = FontStyles.Italic;
                     dialogueText.color = Color.white;
                     dialogueText.font = normalFont;
@@ -132,7 +155,7 @@ namespace SoulHunter.Dialogue
                 dialogueText.fontSize = 36;
                 string sentence = sentences.Dequeue();
                 StopAllCoroutines();
-                StartCoroutine(TypeSentence(sentence));
+                StartCoroutine(TypewriteSentence(sentence));
             }
         }
 
@@ -143,22 +166,28 @@ namespace SoulHunter.Dialogue
         {
             StopAllCoroutines();
             UpdateDialogueElements();
-            GameManager.initiatedDialogue = false;
+            inDialogue = false;
             PlayerBase.isPaused = false;
             nonTriggerable = true;
 
-            animator.SetBool("inDialogue", GameManager.initiatedDialogue);
+            // Update animator parameters
+            animator.SetBool("inDialogue", inDialogue);
 
-            currentTrigger.ManageDialogueTrigger(false);
+            // Handle trigger activation
+            currentTrigger.HandleTriggerActivation(false);
 
+            // Deselect all UI elements
             EventSystem.current.SetSelectedGameObject(null);
 
+            // Destroy NPC
             if (currentTrigger.NPC)
             {
                 Destroy(currentTrigger.NPC, 1);
             }
 
-            AudioManager.PlaySound(AudioManager.Sound.EndDialogue, currentTrigger.transform.position);
+            // Play dialogue end sound
+            AudioManager.PlaySound(AudioManager.Sound.EndDialogue,
+                currentTrigger.transform.position);
         }
 
         /// <summary>
@@ -166,7 +195,7 @@ namespace SoulHunter.Dialogue
         /// </summary>
         /// <param name="_sentence"></param>
         /// <returns></returns>
-        IEnumerator TypeSentence(string _sentence)
+        IEnumerator TypewriteSentence(string _sentence)
         {
             dialogueText.text = "";
             foreach (char letter in _sentence.ToCharArray())
@@ -176,9 +205,14 @@ namespace SoulHunter.Dialogue
             }
         }
 
+        /// <summary>
+        /// Updates elements in the dialogue UI in their 
+        /// respective context
+        /// </summary>
         void UpdateDialogueElements()
         {
-            CharacterData person = currentDialogue?.exchanges[currentExchange].character;
+            CharacterData person = currentDialogue?.
+                exchanges[currentExchange].character;
 
             if (person)
             {
@@ -210,6 +244,9 @@ namespace SoulHunter.Dialogue
             }
         }
 
+        /// <summary>
+        /// Handles NPC animation according to exchange being played
+        /// </summary>
         void HandleNPCAnimation()
         {
             if (!currentTrigger.NPC) return;
@@ -241,18 +278,15 @@ namespace SoulHunter.Dialogue
 
         private void Update()
         {
+            // When using mouse, reselects continue button
+            // to avoid losing the cursor and getting stuck
             if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if (GameManager.initiatedDialogue)
+                if (inDialogue)
                 {
                     ContinueButton.Select();
                 }
             }
-        }
-
-        private void OnDestroy()
-        {
-            GameManager.initiatedDialogue = false;
         }
     }
 

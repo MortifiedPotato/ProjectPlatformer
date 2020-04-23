@@ -34,7 +34,7 @@ namespace SoulHunter.Player
 
         protected void Start()
         {
-            DespawnTimer = 1f;
+            timer = 1f;
             healthUI = FindObjectOfType<GameUI>(); // <- Thomas
             SpiritOfTheWoods.instance.spiritAnchor = spiritAnchor;
         }
@@ -46,10 +46,10 @@ namespace SoulHunter.Player
 
             if (isTeleporting || isDead)
             {
-                DespawnTimer -= Time.deltaTime;
-                if (DespawnTimer <= 0f)
+                timer -= Time.deltaTime;
+                if (timer <= 0f)
                 {
-                    DespawnTimer = 0f;
+                    timer = 0f;
                     if (!isDead)
                     {
                         Teleport();
@@ -58,10 +58,10 @@ namespace SoulHunter.Player
             }
             else
             {
-                DespawnTimer += Time.deltaTime;
-                if (DespawnTimer >= 1f)
+                timer += Time.deltaTime;
+                if (timer >= 1f)
                 {
-                    DespawnTimer = 1f;
+                    timer = 1f;
                 }
                 else
                 {
@@ -75,7 +75,7 @@ namespace SoulHunter.Player
         /// </summary>
         void Dissolve()
         {
-            characterSprite.material.SetFloat("_Fade", DespawnTimer);
+            characterSprite.material.SetFloat("_Fade", timer);
         }
 
         /// <summary>

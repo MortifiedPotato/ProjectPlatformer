@@ -3,7 +3,16 @@ guid: 44ffbb1d8083a314cbd6cd4ca8385bd6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - currentTrigger: {instanceID: 0}
+  - dialogueFont: {fileID: 11400000, guid: 5d03e2ee28077b64596af22722708db3, type: 2}
+  - normalFont: {instanceID: 0}
+  - dialogueBox: {instanceID: 0}
+  - ContinueButton: {instanceID: 0}
+  - portraitImage: {instanceID: 0}
+  - portraitFrame: {instanceID: 0}
+  - nameText: {instanceID: 0}
+  - dialogueText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

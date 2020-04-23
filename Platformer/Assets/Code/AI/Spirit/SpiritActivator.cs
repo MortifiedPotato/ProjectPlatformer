@@ -15,7 +15,7 @@ public class SpiritActivator : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         // If dialogue is already initiated, return.
-        if (GameManager.initiatedDialogue) return;
+        if (DialogueManager.inDialogue) return;
 
         // If collision is on the player layer
         if (collision.transform.gameObject.layer == 10)

@@ -20,7 +20,9 @@ namespace SoulHunter.Dialogue
         // Dialogue particle
         ParticleSystem dialogueParticle;
 
-        Collider2D[] dialogueBorders; // Workaround because I don't want to touch the enemies' code - That's Thomas' area
+        // Workaround because I don't want to touch
+        // the enemies' code- That's Thomas' area
+        Collider2D[] dialogueBorders; 
 
         private void Start()
         {
@@ -57,7 +59,7 @@ namespace SoulHunter.Dialogue
         /// Set Current Dialogue Trigger State
         /// </summary>
         /// <param name="toggle"></param>
-        public void ManageDialogueTrigger(bool toggle)
+        public void HandleTriggerActivation(bool toggle)
         {
             if (toggle || isRepeatable)
             {
@@ -79,7 +81,7 @@ namespace SoulHunter.Dialogue
         /// <summary>
         /// Starts dialogue
         /// </summary>
-        void TriggerDialogue()
+        void InitiateDialogue()
         {
             DialogueManager.Instance.StartDialogue(this, dialogue);
 
@@ -92,13 +94,15 @@ namespace SoulHunter.Dialogue
         private void OnTriggerStay2D(Collider2D collision)
         {
             // If dialogue is already initiated, return.
-            if (GameManager.initiatedDialogue) return;
+            if (DialogueManager.inDialogue) return;
 
             // If collision is on the player layer
             if (collision.transform.gameObject.layer == 10)
             {
-                // If player isn't interacting and dialogue can't be triggered by collision, return.
-                if (!GameManager.interacting && !canTriggerByCollision) return;
+                // If player isn't interacting and dialogue
+                // can't be triggered by collision, return.
+                if (!GameManager.interacting && 
+                    !canTriggerByCollision) return;
 
                 // If player is swinging, return.
                 if (PlayerBase.isSwinging) return;
@@ -106,9 +110,9 @@ namespace SoulHunter.Dialogue
                 // If either activatable or repeatable, start dialogue.
                 if (isActivatable || isRepeatable)
                 {
-                    TriggerDialogue();
+                    InitiateDialogue();
 
-                    if (GameManager.initiatedDialogue)
+                    if (DialogueManager.inDialogue)
                     {
                         canTriggerByCollision = false;
                     }
