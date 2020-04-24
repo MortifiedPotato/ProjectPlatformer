@@ -23,45 +23,33 @@ public class LoginSystem : MonoBehaviour
         CustomEvents.OnLoginOrRegistry += HandleLoginPanel;
 
         feedback.SetActive(false);
-
-        if (DataManager.loggedIn)
-        {
-            displayUsername.GetComponent<TextMeshProUGUI>().text = DataManager.username;
-        }
     }
 
     void HandleLoginPanel()
     {
         if (DataManager.loggedIn)
         {
-            DataManager.username = usernameField.text;
             displayUsername.GetComponent<TextMeshProUGUI>().text = DataManager.username;
 
-            displayUsername.SetActive(true);
-            feedback.SetActive(false);
-            loginFields.SetActive(false);
-            Button_Logout.SetActive(true);
+            displayUsername?.SetActive(true);
+            Button_Logout?.SetActive(true);
+            loginFields?.SetActive(false);
+            feedback?.SetActive(false);
         }
         else
         {
-            loginFields.SetActive(true);
-            feedback.SetActive(true);
-            displayUsername.SetActive(false);
-            Button_Logout.SetActive(false);
+            displayUsername?.SetActive(false);
+            Button_Logout?.SetActive(false);
+            loginFields?.SetActive(true);
+            feedback?.SetActive(true);
 
-            feedback.GetComponent<TextMeshProUGUI>().text = "Wrong Combination";
-        }
-
-        if (DataManager.createdAccount)
-        {
-            feedback.SetActive(true);
-            feedback.GetComponent<TextMeshProUGUI>().text = "Account Made";
-
-            DataManager.createdAccount = false;
-        }
-        else
-        {
             feedback.GetComponent<TextMeshProUGUI>().text = "Invalid username or password";
+
+            if (DataManager.createdAccount)
+            {
+                feedback.GetComponent<TextMeshProUGUI>().text = "Account Made";
+                DataManager.createdAccount = false;
+            }
         }
     }
 
@@ -89,6 +77,10 @@ public class LoginSystem : MonoBehaviour
             feedback.GetComponent<TextMeshProUGUI>().text = "Invalid username or password";
             return;
         }
+        else
+        {
+            DataManager.username = usernameField.text;
+        }
 
         loginData = new LoginData();
         loginData.username = usernameField.text;
@@ -105,5 +97,10 @@ public class LoginSystem : MonoBehaviour
         passwordField.text = "";
 
         HandleLoginPanel();
+    }
+
+    private void OnDestroy()
+    {
+        CustomEvents.OnLoginOrRegistry -= HandleLoginPanel;
     }
 }
