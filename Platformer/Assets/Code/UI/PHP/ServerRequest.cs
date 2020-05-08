@@ -14,6 +14,7 @@ public class ServerRequest : MonoBehaviour
 
     public IEnumerator RegisterAccount(string json)
     {
+        // Deze functie door Thomas
         WWWForm form = new WWWForm();
         form.AddField("userdata", json);
         using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1/edsa-Soul%20Hunter%20Data/CreateAccount.php", form))
@@ -26,6 +27,7 @@ public class ServerRequest : MonoBehaviour
             }
             else
             {
+                // Onderstaande checks door Mort
                 Debug.Log(www.downloadHandler.text);
                 if (www.downloadHandler.text == "Account made")
                 {
@@ -42,6 +44,7 @@ public class ServerRequest : MonoBehaviour
 
     public IEnumerator LoginAccount(string json)
     {
+        // Deze functie door Thomas
         WWWForm form = new WWWForm();
         form.AddField("userdata", json);
         using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1/edsa-Soul%20Hunter%20Data/Login.php", form))
@@ -54,6 +57,7 @@ public class ServerRequest : MonoBehaviour
             }
             else
             {
+                // Onderstaande checks door Mort
                 Debug.Log(www.downloadHandler.text);
                 if (www.downloadHandler.text == "Logged in")
                 {
@@ -70,6 +74,7 @@ public class ServerRequest : MonoBehaviour
 
     private IEnumerator UploadStats(string json)
     {
+        // Deze functie door Thomas
         WWWForm form = new WWWForm();
         form.AddField("userstats", json);
         using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1/edsa-Soul%20Hunter%20Data/UpdateStats.php", form))
@@ -89,6 +94,7 @@ public class ServerRequest : MonoBehaviour
 
     public void UpdateStats()
     {
+        // Deze functie door Mort
         UserStats stats = new UserStats();
         stats.username = DataManager.username;
         stats.collected_souls = DataManager.Instance.soulsCollected;
@@ -98,25 +104,12 @@ public class ServerRequest : MonoBehaviour
         string json = JsonUtility.ToJson(stats);
         StartCoroutine(UploadStats(json));
     }
-
-
-    [System.Serializable]
-    public class Data
-    {
-        public fruit[] fruits;
-    }
-    [System.Serializable]
-    public class fruit
-    {
-        public int id;
-        public string name;
-        public string variety;
-    }
 }
 
 [System.Serializable]
 public struct LoginData
 {
+    // Deze struct door Thomas
     public string username;
     public string password;
 }
@@ -124,6 +117,7 @@ public struct LoginData
 [System.Serializable]
 public struct UserStats
 {
+    // Deze struct door Mort
     public string username;
     public int collected_souls;
     public int times_teleported;

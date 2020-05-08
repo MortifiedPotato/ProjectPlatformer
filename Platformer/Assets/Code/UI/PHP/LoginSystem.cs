@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LoginSystem : MonoBehaviour
 {
+    // Variables door Mort
     [SerializeField] GameObject loginFields;
     [SerializeField] GameObject displayUsername;
     [SerializeField] GameObject feedback;
@@ -17,6 +18,7 @@ public class LoginSystem : MonoBehaviour
 
     private void Start()
     {
+        // Start functie door Mort
         server = FindObjectOfType<ServerRequest>();
 
         HandleLoginPanel();
@@ -27,6 +29,8 @@ public class LoginSystem : MonoBehaviour
 
     void HandleLoginPanel()
     {
+        // Deze hele functie door mij (Mort) - Ik heb meer de UI functionaliteit gemaakt en bij JSON gedeeltes
+        // Thomas geholpen maar zelf laten programmeren.
         if (DataManager.loggedIn)
         {
             displayUsername.GetComponent<TextMeshProUGUI>().text = DataManager.username;
@@ -55,6 +59,7 @@ public class LoginSystem : MonoBehaviour
 
     public void InitiateRegister()
     {
+        // If statement door Mort
         if (string.IsNullOrEmpty(usernameField.text) || string.IsNullOrEmpty(passwordField.text))
         {
             feedback.SetActive(true);
@@ -62,6 +67,7 @@ public class LoginSystem : MonoBehaviour
             return;
         }
 
+        // Onderstaande door Thomas
         loginData = new LoginData();
         loginData.username = usernameField.text;
         loginData.password = passwordField.text;
@@ -71,6 +77,7 @@ public class LoginSystem : MonoBehaviour
 
     public void InitiateLogin()
     {
+        // If statement door Mort gemaakt
         if (string.IsNullOrEmpty(usernameField.text) || string.IsNullOrEmpty(passwordField.text))
         {
             feedback.SetActive(true);
@@ -82,6 +89,7 @@ public class LoginSystem : MonoBehaviour
             DataManager.username = usernameField.text;
         }
 
+        // Onderstaande door Thomas
         loginData = new LoginData();
         loginData.username = usernameField.text;
         loginData.password = passwordField.text;
@@ -91,6 +99,7 @@ public class LoginSystem : MonoBehaviour
 
     public void LogOut()
     {
+        // Deze functie door Mort
         DataManager.username = null;
         DataManager.loggedIn = false;
         usernameField.text = "";
@@ -101,6 +110,7 @@ public class LoginSystem : MonoBehaviour
 
     private void OnDestroy()
     {
+        // Mort
         CustomEvents.OnLoginOrRegistry -= HandleLoginPanel;
     }
 }
